@@ -1,0 +1,63 @@
+<div class="page-container"
+     fxLayout="column"
+     fxLayoutAlign="space-around center"
+     fxLayoutGap="12px"
+     fxLayoutGap.xs="8px">
+
+  <mat-card>
+    <mat-card-content>
+      <h2>Search</h2>
+      <mat-form-field>
+        <mat-select placeholder="Search type" [(ngModel)]="selectedSearchType" name="search">
+          <mat-option *ngFor="let search of searchTypes" [value]="search.code">
+            {{ search.displayName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="pokemonInputs">
+        <div class="search-input-item" *ngFor="let input of pokemonInputs">
+          <h2>{{input.name}}</h2>
+          <div fxLayout fxLayoutGap="8px">
+            <img src="/assets/pokemon/{{input.value.id}}.svg" alt="{{input.value.name}}" width="72" height="72" />
+            <div fxLayout="column" fxLayoutAlign="start">
+              <span>{{input.value.name}}</span>
+              <mat-form-field class="level-input">
+                <input matInput type="number" placeholder="Level" value="{{input.value.level}}" min="1" max="40" step="0.5">
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxLayout fxLayoutAlign="space-evenly" fxLayoutGap="16px">
+            <mat-form-field class="level-input">
+              <input matInput type="number" placeholder="Attack" value="{{input.value.attackIv}}" min="0" max="15" step="1">
+            </mat-form-field>
+            <mat-form-field class="level-input">
+              <input matInput type="number" placeholder="Defense" value="{{input.value.defenseIv}}" min="0" max="15" step="1">
+            </mat-form-field>
+            <mat-form-field class="level-input">
+              <input matInput type="number" placeholder="Stamina" value="{{input.value.staminaIv}}" min="0" max="15" step="1">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Quick move" [(ngModel)]="input.value.quickMove" name="quickMove">
+                <mat-option *ngFor="let quickMove of input.value.quickMoveList" [value]="quickMove">
+                  {{ quickMove }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
+                <mat-option *ngFor="let chargeMove of input.value.chargeMoveList" [value]="chargeMove">
+                  {{ chargeMove }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

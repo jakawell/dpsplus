@@ -1,0 +1,11 @@
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>Layer 1</title>
+  <circle id="lightbox" fill="#003f7f" cx="128" cy="128" r="126" stroke="#999999" stroke-width="0"/>
+  <path fill="#666666" stroke="#00ffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m87.982368,45.79793l36.972661,51.229561l-15.250886,6.041011l46.570688,43.899488l-15.250886,7.330165l57.574012,73.499799l-97.640152,-56.327508l18.621634,-7.81928l-60.666542,-36.079258l21.738834,-11.148334l-64.053792,-37.848807l71.384435,-32.77683l-0.000006,-0.000006l0,-0.000001z" id="bolt_shade"/>
+  <path fill="#666666" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m128.598436,63.125487l31.727042,0l0,-31.727045l32.545922,0l0,31.727045l31.727045,0l0,32.545926l-31.727045,0l0,31.727042l-32.545922,0l0,-31.727042l-31.727042,0l0,-32.545926z" id="plus_shade" stroke="#00ffff"/>
+  <path fill="#ffff00" stroke="#00ffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m90.784422,41.399991l36.97266,51.22956l-15.25089,6.04101l46.57069,43.89949l-15.25089,7.33016l57.57402,73.4998l-97.64016,-56.32751l18.62164,-7.81928l-60.66654,-36.07925l21.73883,-11.14834l-64.05379,-37.8488l71.38443,-32.77683l0,-0.00001z" id="bolt_front"/>
+  <path fill="#ffff00" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" d="m132.399999,58.527044l31.72704,0l0,-31.72705l32.54592,0l0,31.72705l31.72705,0l0,32.54592l-31.72705,0l0,31.72704l-32.54592,0l0,-31.72704l-31.72704,0l0,-32.54592z" stroke="#00ffff" id="plus_front"/>
+ </g>
+</svg>
