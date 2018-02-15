@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchInput } from '../shared/searchInput';
 import { PokemonInput } from '../shared/pokemonInput.model';
+import { WeatherInput } from '../shared/weatherInput.model';
+import { TypeInput } from '../shared/typeInput.model';
 import { SearchTypeModel } from '../shared/searchType.model';
 import { PokemonModel } from '../shared/pokemon.model';
 
@@ -13,6 +15,8 @@ export class HomeComponent implements OnInit {
 
   public searchTypes: SearchTypeModel[] = [];
   public pokemonInputs: SearchInput[] = [];
+  public weatherInputs: SearchInput[] = [];
+  public typeInputs: SearchInput[] = [];
 
   public pokemonList: string[] = [];
 
@@ -30,6 +34,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() { }
 
+  runQuery() {
+    console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInputs, this.typeInputs);
+  }
+
   private _selectedSearchType: string;
   get selectedSearchType(): string {
     return this._selectedSearchType;
@@ -37,12 +45,21 @@ export class HomeComponent implements OnInit {
   set selectedSearchType(selectedSearchType: string) {
     this._selectedSearchType = selectedSearchType;
     this.pokemonInputs = [];
-    if (selectedSearchType == 'Pokemon' || selectedSearchType == 'PokemonVsType') {
-      this.pokemonInputs.push(new PokemonInput('pokemon', 'Attacker', new PokemonModel(1, 'Bulbasaur')));
+    this.weatherInputs = [];
+    this.typeInputs = [];
+
+    if (selectedSearchType == 'Pokemon') {
+      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(1, 'Bulbasaur')));
+    }
+    else if (selectedSearchType == 'PokemonVsType') {
+      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(1, 'Bulbasaur')));
+      this.typeInputs.push(new TypeInput('types1', 'Counter Type'));
     }
     else if (selectedSearchType == 'PokemonVsPokemon') {
       this.pokemonInputs.push(new PokemonInput('attacker', 'Attacker', new PokemonModel(1, 'Bulbasaur')));
       this.pokemonInputs.push(new PokemonInput('defender', 'Defender', new PokemonModel(4, 'Charmander')));
     }
+
+    this.weatherInputs.push(new WeatherInput('weather', 'Weather'));
   }
 }

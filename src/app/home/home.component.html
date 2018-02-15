@@ -5,21 +5,25 @@
      fxLayoutGap.xs="8px">
 
   <mat-card>
-    <mat-card-content>
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
       <h2>Search</h2>
       <mat-form-field>
         <mat-select placeholder="Search type" [(ngModel)]="selectedSearchType" name="search">
           <mat-option *ngFor="let search of searchTypes" [value]="search.code">
-            {{ search.displayName }}
+            {{search.displayName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </mat-card-content>
+  </mat-card>
 
-      <div *ngIf="pokemonInputs">
+  <mat-card class="search-input-card">
+    <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
+      <div *ngIf="pokemonInputs" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around start">
         <div class="search-input-item" *ngFor="let input of pokemonInputs">
           <h2>{{input.name}}</h2>
           <div fxLayout fxLayoutGap="8px">
-            <img src="/assets/pokemon/{{input.value.id}}.svg" alt="{{input.value.name}}" width="72" height="72" />
+            <img src="/assets/pokemon/{{input.value.id}}.svg" alt="{{input.value.name}} Image" width="72" height="72" />
             <div fxLayout="column" fxLayoutAlign="start">
               <span>{{input.value.name}}</span>
               <mat-form-field class="level-input">
@@ -51,13 +55,47 @@
             <mat-form-field>
               <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
                 <mat-option *ngFor="let chargeMove of input.value.chargeMoveList" [value]="chargeMove">
-                  {{ chargeMove }}
+                  {{chargeMove}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="search-input-item" *ngFor="let input of weatherInputs">
+          <h2>{{input.name}}</h2>
+          <div>
+            <mat-form-field>
+              <mat-select placeholder="Weather type" [(ngModel)]="input.value" name="weatherType">
+                <mat-option *ngFor="let weatherType of input.weatherList" [value]="weatherType">
+                  {{weatherType}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="search-input-item" *ngFor="let input of typeInputs">
+          <h2>{{input.name}}</h2>
+          <div fxLayout="column">
+            <mat-form-field>
+              <mat-select placeholder="First type" [(ngModel)]="input.value.type1" name="type1">
+                <mat-option *ngFor="let type1 of input.types" [value]="type1">
+                  {{type1}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Second type" [(ngModel)]="input.value.type2" name="type2">
+                <mat-option *ngFor="let type2 of input.typesWithNone" [value]="type2">
+                  {{type2}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
         </div>
       </div>
+      <button mat-raised-button color="primary" (click)="runQuery()">Calculate</button>
     </mat-card-content>
   </mat-card>
 </div>

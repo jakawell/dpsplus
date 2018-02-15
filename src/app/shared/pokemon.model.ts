@@ -8,6 +8,8 @@ export class PokemonModel {
   public quickMove: string;
   public chargeMove: string;
 
+  private _isRaid: boolean;
+
   constructor(id: number, name: string) {
     this.id = id;
     this.name = name;
@@ -29,5 +31,12 @@ export class PokemonModel {
 
   get chargeMoveList(): string[] {
     return [ 'Growl', 'Bite' ];
+  }
+
+  set isRaid(isRaid: boolean) {
+    this._isRaid = isRaid;
+  }
+  get isRaid(): boolean {
+    return this._isRaid;
   }
 }
