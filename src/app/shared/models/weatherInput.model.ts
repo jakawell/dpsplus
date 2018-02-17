@@ -13,9 +13,13 @@ export class WeatherInput implements SearchInput {
 
   get weatherList(): string[] {
     return [
-      "Sunny",
+      "Clear/sunny",
+      "Partly cloudy",
       "Cloudy",
-      "Rain"
+      "Fog",
+      "Rainy",
+      "Snow",
+      "Windy",
     ]
   }
 }

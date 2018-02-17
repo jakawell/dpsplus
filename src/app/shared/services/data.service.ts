@@ -6,22 +6,44 @@ import * as csvParse from 'csv-parse/lib/sync';
 export class DataService {
 
   private _Pokedex: any[] = null;
+  private _Levels: any[] = null;
+  private _Types: any[] = null;
+  private _MovesQuick: any[] = null;
+  private _MovesCharge: any[] = null;
 
   constructor(private http: HttpClient) { }
 
-  private loadPokedex(callback) {
-    if (this._Pokedex) {
-      callback(this._Pokedex);
+  private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {
+    if (reference) {
+      callback(reference);
     }
     else {
-      this.http.get('assets/data/pokedex.csv', { responseType: 'text' })
+      this.http.get(filePath, { responseType: 'text' })
         .subscribe(data => {
-          console.log('loaded pokedex file...')
-          this._Pokedex = csvParse(data);
-          console.log('loaded pokedex: ', this._Pokedex);
-          callback(this._Pokedex);
+          reference = csvParse(data);
+          callback(reference);
         });
     }
+  }
+
+  private loadPokedex(callback) {
+    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', callback);
+  }
+
+  private loadLevels(callback) {
+    this.loadCsv(this._Levels, 'assets/data/levels.csv', callback);
+  }
+
+  private loadTypes(callback) {
+    this.loadCsv(this._Types, 'assets/data/types.csv', callback);
+  }
+
+  private loadQuickMoves(callback) {
+    this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', callback);
+  }
+
+  private loadChargeMoves(callback) {
+    this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', callback);
   }
 
   getPokedex(callback: (pokedex: any[]) => any) {
@@ -32,5 +54,45 @@ export class DataService {
     this.loadPokedex(pokedex => {
       callback(pokedex[index]);
     });
+  }
+
+  getLevelMultiplier(level: number, callback) {
+    this.loadLevels(levels => {
+      callback(levels[(level * 2) - 1][1]);
+    });
+  }
+
+  getTypes(callback) {
+    this.loadTypes(callback);
+  }
+
+  getQuickMoves(callback) {
+    this.loadQuickMoves(callback);
+  }
+
+  getChargeMoves(callback) {
+    this.loadChargeMoves(callback);
+  }
+
+  private getMove(name: string, isQuick: boolean, callback) {
+    let loader = isQuick ? this.loadQuickMoves : this.loadChargeMoves;
+    loader(moves => {
+      let result = null;
+      for (let move of moves) {
+        if (move[0] == name) result = move;
+      }
+      if (result)
+        callback(result);
+      else
+        throw Error(`The move '${name}' could not be found.'`);
+    });
+  }
+
+  getQuickMove(name: string, callback) {
+    this.getMove(name, true, callback);
+  }
+
+  getChargeMove(name: string, callback) {
+    this.getMove(name, false, callback);
   }
 }

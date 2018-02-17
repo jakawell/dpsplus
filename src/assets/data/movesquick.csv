@@ -1,0 +1,63 @@
+﻿Quick Move,Type,Power,Energy,Cast Time
+Struggle Bug,Bug,15,15,1.5
+Infestation,Bug,10,14,1.1
+Bug Bite,Bug,5,6,0.5
+Fury Cutter,Bug,3,6,0.4
+Snarl,Dark,12,12,1.1
+Feint Attack,Dark,10,9,0.9
+Sucker Punch,Dark,7,8,0.7
+Bite,Dark,6,4,0.5
+Dragon Tail,Dragon,15,9,1.1
+Dragon Breath,Dragon,6,4,0.5
+Volt Switch,Electric,20,25,2.3
+Charge Beam,Electric,8,15,1.1
+Spark,Electric,6,9,0.7
+Thunder Shock,Electric,5,8,0.6
+Rock Smash,Fighting,15,10,1.3
+Counter,Fighting,12,8,0.9
+Karate Chop,Fighting,8,10,0.8
+Low Kick,Fighting,6,6,0.6
+Fire Spin,Fire,14,10,1.1
+Fire Fang,Fire,11,8,0.9
+Ember,Fire,10,10,1
+Air Slash,Flying,14,10,1.2
+Peck,Flying,10,10,1
+Wing Attack,Flying,8,9,0.8
+Hex,Ghost,10,15,1.2
+Shadow Claw,Ghost,9,6,0.7
+Astonish,Ghost,8,14,1.1
+Lick,Ghost,5,6,0.5
+Razor Leaf,Grass,13,7,1
+Bullet Seed,Grass,8,14,1.1
+Vine Whip,Grass,7,6,0.6
+Mud-Slap,Ground,15,12,1.4
+Mud Shot,Ground,5,7,0.6
+Ice Shard,Ice,12,12,1.2
+Frost Breath,Ice,10,8,0.9
+Powder Snow,Ice,6,15,1
+Yawn,Normal,0,15,1.7
+Hidden Power,Normal,15,15,1.5
+Pound,Normal,7,6,0.6
+Transform,Normal,0,0,2.2
+Take Down,Normal,8,10,1.2
+Present,Normal,5,20,1.3
+Quick Attack,Normal,8,10,0.8
+Cut,Normal,5,5,0.5
+Tackle,Normal,5,5,0.5
+Scratch,Normal,6,4,0.5
+Poison Jab,Poison,10,7,0.8
+Acid,Poison,9,8,0.8
+Poison Sting,Poison,5,7,0.6
+Confusion,Psychic,20,15,1.6
+Extrasensory,Psychic,12,12,1.1
+Zen Headbutt,Psychic,12,10,1.1
+Psycho Cut,Psychic,5,8,0.6
+Rock Throw,Rock,12,7,0.9
+Iron Tail,Steel,15,7,1.1
+Steel Wing,Steel,11,6,0.8
+Bullet Punch,Steel,9,10,0.9
+Metal Claw,Steel,8,7,0.7
+Waterfall,Water,16,8,1.2
+Bubble,Water,12,14,1.2
+Water Gun,Water,5,5,0.5
+Splash,Water,0,20,1.7

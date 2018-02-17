@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     }
     else if (selectedSearchType == 'PokemonVsType') {
       this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(1, this.dataService)));
-      this.typeInputs.push(new TypeInput('types1', 'Counter Type'));
+      this.typeInputs.push(new TypeInput('types1', 'Counter Type', this.dataService));
     }
     else if (selectedSearchType == 'PokemonVsPokemon') {
       this.pokemonInputs.push(new PokemonInput('attacker', 'Attacker', new PokemonModel(1, this.dataService)));
