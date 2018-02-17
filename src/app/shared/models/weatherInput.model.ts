@@ -1,4 +1,4 @@
-import { SearchInput } from './searchInput';
+import { SearchInput } from '../searchInput';
 
 export class WeatherInput implements SearchInput {
   public code: string;

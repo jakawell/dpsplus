@@ -23,7 +23,7 @@
         <div class="search-input-item" *ngFor="let input of pokemonInputs">
           <h2>{{input.name}}</h2>
           <div fxLayout fxLayoutGap="8px">
-            <img src="/assets/pokemon/{{input.value.id}}.svg" alt="{{input.value.name}} Image" width="72" height="72" />
+            <img src="/assets/pokemon/{{input.value.species}}.svg" alt="{{input.value.name}} Image" width="72" height="72" />
             <div fxLayout="column" fxLayoutAlign="start">
               <span>{{input.value.name}}</span>
               <mat-form-field class="level-input">
@@ -45,8 +45,8 @@
           <div>
             <mat-form-field>
               <mat-select placeholder="Quick move" [(ngModel)]="input.value.quickMove" name="quickMove">
-                <mat-option *ngFor="let quickMove of input.value.quickMoveList" [value]="quickMove">
-                  {{ quickMove }}
+                <mat-option *ngFor="let quickMove of input.value.quickMoves" [value]="quickMove.name">
+                  {{quickMove.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -54,8 +54,8 @@
           <div>
             <mat-form-field>
               <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
-                <mat-option *ngFor="let chargeMove of input.value.chargeMoveList" [value]="chargeMove">
-                  {{chargeMove}}
+                <mat-option *ngFor="let chargeMove of input.value.chargeMoves" [value]="chargeMove.name">
+                  {{chargeMove.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>

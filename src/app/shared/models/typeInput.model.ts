@@ -1,4 +1,4 @@
-import { SearchInput } from './searchInput';
+import { SearchInput } from '../searchInput';
 
 export class TypeInput implements SearchInput {
   public code: string;
