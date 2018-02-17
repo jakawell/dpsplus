@@ -18,8 +18,6 @@ export class PokemonModel {
   public quickMove: string;
   public chargeMove: string;
 
-  private _isRaid: boolean;
-
   constructor(species: number, private dataService: DataService) {
     this.species = species;
     this.level = 20;
@@ -68,12 +66,5 @@ export class PokemonModel {
 
   get paddedNumber(): string {
     return (this.species < 10 ? '00' + this.species : (this.species < 100) ? '0' + this.species : '' + this.species);
-  }
-
-  set isRaid(isRaid: boolean) {
-    this._isRaid = isRaid;
-  }
-  get isRaid(): boolean {
-    return this._isRaid;
   }
 }

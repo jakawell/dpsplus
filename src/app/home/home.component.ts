@@ -15,16 +15,19 @@ export class HomeComponent implements OnInit {
   public weatherInputs: SearchInput[] = [];
   public typeInputs: SearchInput[] = [];
 
-  public pokemonList: string[] = [];
+  public pokemonList: any[] = [];
 
   constructor(private dataService: DataService) {
     this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Pokémon'));
     this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Pokémon vs Type'));
     this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Pokémon vs Pokémon'));
 
-    this.pokemonList.push("Bulbasaur");
-    this.pokemonList.push("Squirtle");
-    this.pokemonList.push("Charmander");
+    this.dataService.getPokedex(pokedex => {
+      this.pokemonList = pokedex.sort((a, b) => {
+        let aLower = a[0].toLowerCase(), bLower = b[0].toLowerCase();
+        return (aLower < bLower) ? -1 : ((aLower > bLower) ? 1 : 0);
+      })
+    });
 
     this.selectedSearchType = 'PokemonVsPokemon';
   }

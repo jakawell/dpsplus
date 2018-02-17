@@ -24,7 +24,11 @@ export class DataService {
     }
   }
 
-  getPokemon(index: number, callback) {
+  getPokedex(callback: (pokedex: any[]) => any) {
+    this.loadPokedex(pokedex => callback(pokedex.slice(1, 387)));
+  }
+
+  getPokemon(index: number, callback: (pokemon: any[]) => any) {
     this.loadPokedex(pokedex => {
       callback(pokedex[index]);
     });
