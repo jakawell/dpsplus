@@ -5,6 +5,7 @@ import * as csvParse from 'csv-parse/lib/sync';
 @Injectable()
 export class DataService {
   private LevelMultipliers: any[] = null;
+  public isPokedexLoaded = false;
 
   private _Pokedex: any[] = null;
   private _Types: any[] = null;
@@ -12,9 +13,11 @@ export class DataService {
   private _MovesCharge: any[] = null;
 
   constructor(private http: HttpClient) {
-    this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (levels) => {
-      this.LevelMultipliers = levels;
-    });
+    this.loadPokedex();
+    this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (data) => this.LevelMultipliers = data);
+    this.loadCsv(this._Types, 'assets/data/types.csv', (data) => this._Types = data);
+    this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', (data) => this._MovesQuick = data);
+    this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', (data) => this._MovesCharge = data);
   }
 
   private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {
@@ -30,67 +33,55 @@ export class DataService {
     }
   }
 
-  private loadPokedex(callback) {
-    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', callback);
-  }
-
-  private loadTypes(callback) {
-    this.loadCsv(this._Types, 'assets/data/types.csv', callback);
-  }
-
-  private loadQuickMoves(callback) {
-    this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', callback);
-  }
-
-  private loadChargeMoves(callback) {
-    this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', callback);
-  }
-
-  getPokedex(callback: (pokedex: any[]) => any) {
-    this.loadPokedex(pokedex => callback(pokedex.slice(1, 387)));
-  }
-
-  getPokemon(index: number, callback: (pokemon: any[]) => any) {
-    this.loadPokedex(pokedex => {
-      callback(pokedex[index]);
+  loadPokedex(callback?: (pokedex: any[]) => any) {
+    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (data) => {
+      this._Pokedex = data;
+      this.isPokedexLoaded = true;
+      if (callback) callback(this.getPokedex());
     });
+  }
+
+  getPokedex(): any[] {
+    return this._Pokedex.slice(1, 387);
+  }
+
+  getPokemon(index: number): any[] {
+    return this._Pokedex[index];
   }
 
   getLevelMultiplier(level: number): number {
     return this.LevelMultipliers[(level * 2) - 1][1]
   }
 
-  getTypes(callback) {
-    this.loadTypes(callback);
+  getTypes(): any[] {
+    return this._Types;
   }
 
-  getQuickMoves(callback) {
-    this.loadQuickMoves(callback);
+  getQuickMoves(): any[] {
+    return this._MovesQuick.slice(1);
   }
 
-  getChargeMoves(callback) {
-    this.loadChargeMoves(callback);
+  getChargeMoves(): any[] {
+    return this._MovesCharge.slice(1);
   }
 
-  private getMove(name: string, isQuick: boolean, callback) {
-    let loader = isQuick ? this.loadQuickMoves : this.loadChargeMoves;
-    loader(moves => {
-      let result = null;
-      for (let move of moves) {
-        if (move[0] == name) result = move;
-      }
-      if (result)
-        callback(result);
-      else
-        throw Error(`The move '${name}' could not be found.'`);
-    });
+  private getMove(name: string, isQuick: boolean): any[] {
+    let moves = isQuick ? this._MovesQuick : this._MovesCharge;
+    let result = null;
+    for (let move of moves) {
+      if (move[0] == name) result = move;
+    }
+    if (result)
+      return result;
+    else
+      throw Error(`The move '${name}' could not be found.'`);
   }
 
-  getQuickMove(name: string, callback) {
-    this.getMove(name, true, callback);
+  getQuickMove(name: string, callback): any[] {
+    return this.getMove(name, true);
   }
 
-  getChargeMove(name: string, callback) {
-    this.getMove(name, false, callback);
+  getChargeMove(name: string, callback): any[] {
+    return this.getMove(name, false);
   }
 }

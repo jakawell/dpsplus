@@ -14,17 +14,16 @@ export class TypeInput implements SearchInput {
     this.code = code;
     this.name = name;
 
-    dataService.getTypes(typeList => {
-      this.types = [];
-      this.typesWithNone = [ 'None' ];
-      for (let typeRow of typeList.splice(2,19)) {
-        this.types.push(typeRow[0]);
-        this.typesWithNone.push(typeRow[0]);
-      }
+    let typeList = this.dataService.getTypes();
+    this.types = [];
+    this.typesWithNone = [ 'None' ];
+    for (let typeRow of typeList.splice(2,19)) {
+      this.types.push(typeRow[0]);
+      this.typesWithNone.push(typeRow[0]);
+    }
 
-      this.type1 = this.types[0];
-      this.type2 = 'None';
-    });
+    this.type1 = this.types[0];
+    this.type2 = 'None';
   }
 
   get value(): { type1: string, type2: string } {

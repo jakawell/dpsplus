@@ -24,14 +24,16 @@ export class HomeComponent implements OnInit {
     this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Pokémon vs Type'));
     this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Pokémon vs Pokémon'));
 
-    this.dataService.getPokedex(pokedex => {
-      this.pokemonList = pokedex.sort((a, b) => {
-        let aLower = a[0].toLowerCase(), bLower = b[0].toLowerCase();
-        return (aLower < bLower) ? -1 : ((aLower > bLower) ? 1 : 0);
-      })
-    });
-
-    this.selectedSearchType = 'PokemonVsPokemon';
+    if (this.dataService.isPokedexLoaded) {
+      this.importPokedex(this.dataService.getPokedex());
+      this.selectedSearchType = 'PokemonVsPokemon';
+    }
+    else {
+      this.dataService.loadPokedex((pokedex) => {
+        this.importPokedex(pokedex);
+        this.selectedSearchType = 'PokemonVsPokemon';
+      });
+    }
   }
 
   ngOnInit() { }
@@ -43,6 +45,13 @@ export class HomeComponent implements OnInit {
     }
     this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
     console.log('DPS+ results: ', this.results);
+  }
+
+  private importPokedex(pokedex: any[]) {
+    this.pokemonList = pokedex.sort((a, b) => {
+      let aLower = a[0].toLowerCase(), bLower = b[0].toLowerCase();
+      return (aLower < bLower) ? -1 : ((aLower > bLower) ? 1 : 0);
+    });
   }
 
   private _selectedSearchType: string;

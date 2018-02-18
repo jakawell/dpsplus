@@ -31,18 +31,17 @@ export class PokemonModel {
 
   set species(species: number) {
     this._species = species;
-    this.dataService.getPokemon(species, data => {
-      this.name = data[0];
-      this.type1 = data[2];
-      this.type2 = data[3] == 'N/A' ? null : data[3];
-      this.attackBase = parseInt(data[4]);
-      this.defenseBase = parseInt(data[5]);
-      this.staminaBase = parseInt(data[6]);
+    let pokedexData = this.dataService.getPokemon(species);
+    this.name = pokedexData[0];
+    this.type1 = pokedexData[2];
+    this.type2 = (pokedexData[3] && pokedexData[3] != 'N/A') ? pokedexData[3] : null;
+    this.attackBase = parseInt(pokedexData[4]);
+    this.defenseBase = parseInt(pokedexData[5]);
+    this.staminaBase = parseInt(pokedexData[6]);
 
-      this.quickMoves = [];
-      this.parseMoves(data.slice(7, 21), true); // parse quick moves
-      this.parseMoves(data.slice(21, 37), false); // parse charge moves
-    });
+    this.quickMoves = [];
+    this.parseMoves(pokedexData.slice(7, 21), true); // parse quick moves
+    this.parseMoves(pokedexData.slice(21, 37), false); // parse charge moves
   }
   get species(): number {
     return this._species;
@@ -79,27 +78,22 @@ export class PokemonModel {
         moveSet.push({ name: rawMoveList[i + 1], code: rawMoveList[i]});
       }
     }
-    let processor = allMoves => {
-      let results: MoveModel[] = [];
-      for (let fromAll of allMoves.slice(1)) {
-        for (let fromSet of moveSet) {
-          if (fromSet.name == fromAll[0]) {
-            results.push(new MoveModel(fromSet.name, fromSet.code == 'l', fromSet.code == 'e', fromAll[1], parseInt(fromAll[2]), parseInt(fromAll[3]), parseFloat(fromAll[4])));
-          }
+    let allMoves = isQuick ? this.dataService.getQuickMoves() : this.dataService.getChargeMoves();
+    let results: MoveModel[] = [];
+    for (let fromAll of allMoves.slice(1)) {
+      for (let fromSet of moveSet) {
+        if (fromSet.name == fromAll[0]) {
+          results.push(new MoveModel(fromSet.name, fromSet.code == 'l', fromSet.code == 'e', fromAll[1], parseInt(fromAll[2]), parseInt(fromAll[3]), parseFloat(fromAll[4])));
         }
       }
-      if (isQuick) {
-        this.quickMoves = results;
-        this.quickMove = results[0].displayName;
-      }
-      else {
-        this.chargeMoves = results;
-        this.chargeMove = results[0].displayName;
-      }
     }
-    if (isQuick)
-      this.dataService.getQuickMoves(processor);
-    else
-      this.dataService.getChargeMoves(processor);
+    if (isQuick) {
+      this.quickMoves = results;
+      this.quickMove = results[0].displayName;
+    }
+    else {
+      this.chargeMoves = results;
+      this.chargeMove = results[0].displayName;
+    }
   }
 }
