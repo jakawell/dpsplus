@@ -4,14 +4,18 @@ import * as csvParse from 'csv-parse/lib/sync';
 
 @Injectable()
 export class DataService {
+  private LevelMultipliers: any[] = null;
 
   private _Pokedex: any[] = null;
-  private _Levels: any[] = null;
   private _Types: any[] = null;
   private _MovesQuick: any[] = null;
   private _MovesCharge: any[] = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (levels) => {
+      this.LevelMultipliers = levels;
+    });
+  }
 
   private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {
     if (reference) {
@@ -28,10 +32,6 @@ export class DataService {
 
   private loadPokedex(callback) {
     this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', callback);
-  }
-
-  private loadLevels(callback) {
-    this.loadCsv(this._Levels, 'assets/data/levels.csv', callback);
   }
 
   private loadTypes(callback) {
@@ -56,10 +56,8 @@ export class DataService {
     });
   }
 
-  getLevelMultiplier(level: number, callback) {
-    this.loadLevels(levels => {
-      callback(levels[(level * 2) - 1][1]);
-    });
+  getLevelMultiplier(level: number): number {
+    return this.LevelMultipliers[(level * 2) - 1][1]
   }
 
   getTypes(callback) {

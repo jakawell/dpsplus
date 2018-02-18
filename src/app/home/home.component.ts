@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchInput } from '../shared/searchInput';
 import { PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
+import { DpsPlusService } from '../shared/services/dpsplus.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,11 @@ export class HomeComponent implements OnInit {
   public pokemonInputs: PokemonInput[] = [];
   public weatherInputs: SearchInput[] = [];
   public typeInputs: SearchInput[] = [];
-
   public pokemonList: any[] = [];
+  public results: any[] = [];
+  public displayedColumns: string[] = [ 'quickMove', 'chargeMove', 'dpsPlus' ];
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private dpsPlusService: DpsPlusService) {
     this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Pokémon'));
     this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Pokémon vs Type'));
     this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Pokémon vs Pokémon'));
@@ -39,6 +41,8 @@ export class HomeComponent implements OnInit {
     for (let mon of this.pokemonInputs) {
       console.log(mon.name + ": ", mon.value);
     }
+    this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
+    console.log('DPS+ results: ', this.results);
   }
 
   private _selectedSearchType: string;
@@ -64,5 +68,10 @@ export class HomeComponent implements OnInit {
     }
 
     this.weatherInputs.push(new WeatherInput('weather', 'Weather'));
+  }
+
+  precisionRound(number, precision) {
+    let factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
   }
 }

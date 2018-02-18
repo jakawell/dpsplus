@@ -24,5 +24,15 @@
 }
 
 .pokemon-move-input {
-  
+
+}
+
+.results-container {
+  margin: 12px;
+  width: 80%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
 }

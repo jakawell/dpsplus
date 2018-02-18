@@ -6,13 +6,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule } from '@angular/material';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
 import { DataService } from './shared/services/data.service';
+import { DpsPlusService } from './shared/services/dpsplus.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -42,9 +43,11 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSnackBarModule,
     MatSelectModule,
+    MatTableModule,
   ],
   providers: [
     DataService,
+    DpsPlusService,
   ],
   bootstrap: [AppComponent]
 })

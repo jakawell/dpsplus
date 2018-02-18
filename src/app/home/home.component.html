@@ -54,7 +54,7 @@
             <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
               <mat-select placeholder="Quick move" [(ngModel)]="input.value.quickMove" name="quickMove">
                 <mat-option *ngFor="let quickMove of input.value.quickMoves" [value]="quickMove.name">
-                  {{ quickMove.name }}
+                  {{ quickMove.displayName }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -63,7 +63,7 @@
             <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
               <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
                 <mat-option *ngFor="let chargeMove of input.value.chargeMoves" [value]="chargeMove.name">
-                  {{ chargeMove.name }}
+                  {{ chargeMove.displayName }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -106,6 +106,30 @@
         </div>
       </div>
       <button mat-raised-button color="primary" (click)="runQuery()">Calculate</button>
+
+      <!-- Results table -->
+      <div class="results-container mat-elevation-z8" *ngIf="results.length > 0">
+        <mat-table #table [dataSource]="results">
+
+          <ng-container matColumnDef="quickMove">
+            <mat-header-cell *matHeaderCellDef>Quick Move</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[0]}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="chargeMove">
+            <mat-header-cell *matHeaderCellDef>Charge Move</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[1]}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="dpsPlus">
+            <mat-header-cell *matHeaderCellDef>DPS+</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{precisionRound(element[2], 1)}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
