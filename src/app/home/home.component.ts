@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit {
   public displayedColumns: string[] = [ 'quickMove', 'chargeMove', 'dpsPlus' ];
 
   constructor(private dataService: DataService, private dpsPlusService: DpsPlusService) {
-    this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Pokémon'));
-    this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Pokémon vs Type'));
-    this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Pokémon vs Pokémon'));
+    this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Best General Moves'));
+    this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Best Moves Vs. Type'));
+    this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Best Moves Vs. Pokémon'));
 
     if (this.dataService.isLoaded) {
       this.importPokedex(this.dataService.getPokedex());

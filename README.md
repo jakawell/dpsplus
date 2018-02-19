@@ -14,4 +14,4 @@ If you don't need to use the service worker, you can use the [Angular CLI](https
 
 Using the [Angular CLI](https://cli.angular.io/), run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-_This app is not affiliated in any way with Niantic, Inc., The Pokémon Company, Nintendo Co. Ltd., Creatures Inc. , or GAME FREAK Inc._
+_This app is not affiliated in any way with Niantic, Inc., The Pokémon Company, Nintendo Co. Ltd., Creatures Inc., or GAME FREAK Inc._
