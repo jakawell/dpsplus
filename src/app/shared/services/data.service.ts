@@ -5,7 +5,7 @@ import * as csvParse from 'csv-parse/lib/sync';
 @Injectable()
 export class DataService {
   private LevelMultipliers: any[] = null;
-  public isPokedexLoaded = false;
+  public isLoaded = false;
 
   private _Pokedex: any[] = null;
   private _Types: any[] = null;
@@ -13,11 +13,7 @@ export class DataService {
   private _MovesCharge: any[] = null;
 
   constructor(private http: HttpClient) {
-    this.loadPokedex();
-    this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (data) => this.LevelMultipliers = data);
-    this.loadCsv(this._Types, 'assets/data/types.csv', (data) => this._Types = data);
-    this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', (data) => this._MovesQuick = data);
-    this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', (data) => this._MovesCharge = data);
+    this.load();
   }
 
   private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {
@@ -33,11 +29,23 @@ export class DataService {
     }
   }
 
-  loadPokedex(callback?: (pokedex: any[]) => any) {
-    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (data) => {
-      this._Pokedex = data;
-      this.isPokedexLoaded = true;
-      if (callback) callback(this.getPokedex());
+  load(callback?: () => any) {
+    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (pokedex) => {
+      this._Pokedex = pokedex;
+      this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (levels) => {
+        this.LevelMultipliers = levels;
+        this.loadCsv(this._Types, 'assets/data/types.csv', (types) => {
+          this._Types = types;
+          this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', (movesQ) => {
+            this._MovesQuick = movesQ;
+            this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', (movesC) => {
+              this._MovesCharge = movesC;
+              this.isLoaded = true;
+              if (callback) callback();
+            });
+          });
+        });
+      });
     });
   }
 

@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
 
   public searchTypes: SearchTypeModel[] = [];
   public pokemonInputs: PokemonInput[] = [];
-  public weatherInputs: SearchInput[] = [];
-  public typeInputs: SearchInput[] = [];
+  public weatherInputs: WeatherInput[] = [];
+  public typeInputs: TypeInput[] = [];
   public pokemonList: any[] = [];
   public results: any[] = [];
   public displayedColumns: string[] = [ 'quickMove', 'chargeMove', 'dpsPlus' ];
@@ -24,13 +24,13 @@ export class HomeComponent implements OnInit {
     this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Pokémon vs Type'));
     this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Pokémon vs Pokémon'));
 
-    if (this.dataService.isPokedexLoaded) {
+    if (this.dataService.isLoaded) {
       this.importPokedex(this.dataService.getPokedex());
       this.selectedSearchType = 'PokemonVsPokemon';
     }
     else {
-      this.dataService.loadPokedex((pokedex) => {
-        this.importPokedex(pokedex);
+      this.dataService.load(() => {
+        this.importPokedex(this.dataService.getPokedex());
         this.selectedSearchType = 'PokemonVsPokemon';
       });
     }
@@ -43,7 +43,18 @@ export class HomeComponent implements OnInit {
     for (let mon of this.pokemonInputs) {
       console.log(mon.name + ": ", mon.value);
     }
-    this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
+    if (this.selectedSearchType == 'Pokemon') {
+      this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
+    }
+    else if (this.selectedSearchType == 'PokemonVsType') {
+      this.results = this.dpsPlusService.movesetListDPSPlusPokeVsType(this.pokemonInputs[0], this.typeInputs[0]);
+    }
+    else if (this._selectedSearchType == 'PokemonVsPokemon') {
+      this.results = this.dpsPlusService.movesetListDPSPlusPokeVsPoke(this.pokemonInputs[0], this.pokemonInputs[1], this.weatherInputs[0]);
+    }
+    else {
+      this.results = [];
+    }
     console.log('DPS+ results: ', this.results);
   }
 
@@ -65,18 +76,17 @@ export class HomeComponent implements OnInit {
     this.typeInputs = [];
 
     if (selectedSearchType == 'Pokemon') {
-      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(1, this.dataService)));
+      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(149, this.dataService)));
     }
     else if (selectedSearchType == 'PokemonVsType') {
-      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(1, this.dataService)));
+      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', new PokemonModel(149, this.dataService)));
       this.typeInputs.push(new TypeInput('types1', 'Counter Type', this.dataService));
     }
     else if (selectedSearchType == 'PokemonVsPokemon') {
-      this.pokemonInputs.push(new PokemonInput('attacker', 'Attacker', new PokemonModel(1, this.dataService)));
-      this.pokemonInputs.push(new PokemonInput('defender', 'Defender', new PokemonModel(12, this.dataService)));
+      this.pokemonInputs.push(new PokemonInput('attacker', 'Attacker', new PokemonModel(149, this.dataService)));
+      this.pokemonInputs.push(new PokemonInput('defender', 'Defender', new PokemonModel(384, this.dataService)));
+      this.weatherInputs.push(new WeatherInput('weather', 'Weather'));
     }
-
-    this.weatherInputs.push(new WeatherInput('weather', 'Weather'));
   }
 
   precisionRound(number, precision) {
