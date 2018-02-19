@@ -89,14 +89,14 @@
           <h2>{{ input.name }}</h2>
           <div fxLayout="column">
             <mat-form-field>
-              <mat-select placeholder="First type" [(ngModel)]="input.value.type1" name="type1">
+              <mat-select placeholder="First type" [(ngModel)]="input.type1" name="type1">
                 <mat-option *ngFor="let type1 of input.types" [value]="type1">
                   {{  type1 }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field>
-              <mat-select placeholder="Second type" [(ngModel)]="input.value.type2" name="type2">
+              <mat-select placeholder="Second type" [(ngModel)]="input.type2" name="type2">
                 <mat-option *ngFor="let type2 of input.typesWithNone" [value]="type2">
                   {{ type2 }}
                 </mat-option>
@@ -136,7 +136,7 @@
   <mat-card class="attribution-card">
     <mat-card-content>
       <div class="attribution-text">
-        <i>This app is not affiliated in any way with Niantic, Inc., The Pokémon Company, Nintendo Co. Ltd., Creatures Inc., or GAME FREAK Inc. The Pokémon names and images are copyright of their respective owners, used here as fair use.</i>
+        <i>This project is not affiliated in any way with Niantic, Inc., The Pokémon Company, Nintendo Co. Ltd., Creatures Inc., or GAME FREAK Inc. The Pokémon names and images are copyright of their respective owners; usage here is intended as fair use.</i>
       </div>
     </mat-card-content>
   </mat-card>

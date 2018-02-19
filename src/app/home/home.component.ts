@@ -43,6 +43,13 @@ export class HomeComponent implements OnInit {
     for (let mon of this.pokemonInputs) {
       console.log(mon.name + ": ", mon.value);
     }
+    for (let type of this.typeInputs) {
+      console.log(type.name + ": ", type);
+    }
+    for (let weather of this.weatherInputs) {
+        console.log(weather.name + ": ", weather);
+    }
+
     if (this.selectedSearchType == 'Pokemon') {
       this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
     }
