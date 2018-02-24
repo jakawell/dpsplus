@@ -1,11 +1,36 @@
-export class SearchTypeModel {
-  public id: number;
-  public code: string;
-  public displayName: string;
+export enum DpsPlusQueryType {
+  Pokemon,
+  PokemonVsType,
+  PokemonVsPokemon,
+}
 
-  constructor(id: number, code: string, displayName: string) {
-    this.id = id;
-    this.code = code;
-    this.displayName = displayName;
-  }
+export enum SearchInputType {
+  Pokemon,
+  Weather,
+  Type
+}
+
+export class SearchInputDefinition {
+  constructor(
+    public code: string,
+    public name: string,
+    public type: SearchInputType
+  ) { }
+}
+
+export class SearchResultsColumn {
+  constructor(
+    public name: string,
+    public display: string,
+    public index: number
+  ) { }
+}
+
+export class SearchTypeModel {
+  constructor(
+    public code: DpsPlusQueryType,
+    public displayName: string,
+    public inputs: SearchInputDefinition[],
+    public columns: SearchResultsColumn[]
+  ) { }
 }

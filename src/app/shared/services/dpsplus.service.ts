@@ -1,11 +1,56 @@
 import { Injectable } from '@angular/core';
-import { PokemonModel, SearchTypeModel, MoveModel, PokemonInput, TypeInput, WeatherInput } from '../models';
+import { PokemonModel, SearchTypeModel, DpsPlusQueryType, SearchInputType, SearchInputDefinition, SearchResultsColumn, MoveModel, PokemonInput, TypeInput, WeatherInput } from '../models';
 import { DataService } from './data.service';
 
 @Injectable()
 export class DpsPlusService {
 
   constructor(private dataService: DataService) { }
+
+  public get SearchTypes(): SearchTypeModel[] {
+    return [
+
+      new SearchTypeModel(DpsPlusQueryType.Pokemon, 'Best General Moves', [
+        new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon)
+      ], [
+        new SearchResultsColumn('quickMove', 'Quick Move2', 0),
+        new SearchResultsColumn('chargeMove', 'Charge Move2', 1),
+        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+      ]),
+
+      new SearchTypeModel(DpsPlusQueryType.PokemonVsType, 'Best Moves Vs. Type', [
+        new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
+        new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type)
+      ], [
+        new SearchResultsColumn('quickMove', 'Quick Move3', 0),
+        new SearchResultsColumn('chargeMove', 'Charge Move3', 1),
+        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+      ]),
+
+      new SearchTypeModel(DpsPlusQueryType.PokemonVsPokemon, 'Best Moves Vs. Pokémon', [
+        new SearchInputDefinition('attacker', 'Attacker', SearchInputType.Pokemon),
+        new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
+        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather)
+      ], [
+        new SearchResultsColumn('quickMove', 'Quick Move', 0),
+        new SearchResultsColumn('chargeMove', 'Charge Move', 1),
+        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+      ]),
+    ]
+  }
+
+  public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonInput[], weatherInputs: WeatherInput[], typeInputs: TypeInput[]): any[] {
+    switch (queryType) {
+      case DpsPlusQueryType.Pokemon:
+        return this.movesetListDPSPlusPoke(pokemonInputs[0]);
+      case DpsPlusQueryType.PokemonVsType:
+        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInputs[0]);
+      case DpsPlusQueryType.PokemonVsPokemon:
+        return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInputs[0]);
+      default:
+        throw new Error("Unsupported query type for DpsPlusService.");
+    }
+  }
 
   private getSTAB(pokeType1,pokeType2,quickType,chargeType){
     //Input: attacking pokemon type(s) and quick and charge move quickNameTypeStats
@@ -104,7 +149,7 @@ export class DpsPlusService {
     return weatherMult
   }
 
-  movesetListDPSPlusPoke(pokemonInput: PokemonInput){
+  private movesetListDPSPlusPoke(pokemonInput: PokemonInput): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon
     //Output: list of all the movesets with the calculated STAB boosted DPS+, and
@@ -147,7 +192,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  movesetListDPSPlusPokeVsType(pokemonInput: PokemonInput, defenseTypes: TypeInput){
+  private movesetListDPSPlusPokeVsType(pokemonInput: PokemonInput, defenseTypes: TypeInput): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon, the defender's
     //types (if the defender doesn't have a second type enter ""), the list of all
@@ -199,7 +244,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  movesetListDPSPlusPokeVsPoke(attackerInput: PokemonInput, defenderInput: PokemonInput, weatherInput: WeatherInput){
+  private movesetListDPSPlusPokeVsPoke(attackerInput: PokemonInput, defenderInput: PokemonInput, weatherInput: WeatherInput): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon, the defender's
     //types (if the defender doesn't have a second type enter ""), the attacker's and

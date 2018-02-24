@@ -9,7 +9,7 @@
       <h2>Search</h2>
       <mat-form-field>
         <mat-select placeholder="Search type" [(ngModel)]="selectedSearchType" name="search">
-          <mat-option *ngFor="let search of searchTypes" [value]="search.code">
+          <mat-option *ngFor="let search of searchTypes" [value]="search">
             {{ search.displayName }}
           </mat-option>
         </mat-select>
@@ -111,19 +111,9 @@
       <div class="mat-elevation-z8" ngClass="results-container" ngClass.xs="results-container-xs" *ngIf="results.length > 0">
         <mat-table #table [dataSource]="results">
 
-          <ng-container matColumnDef="quickMove">
-            <mat-header-cell *matHeaderCellDef>Quick Move</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element[0]}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="chargeMove">
-            <mat-header-cell *matHeaderCellDef>Charge Move</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element[1]}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="dpsPlus">
-            <mat-header-cell *matHeaderCellDef>DPS+</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{precisionRound(element[2], 1)}} </mat-cell>
+          <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
+            <mat-header-cell *matHeaderCellDef>{{column.display}}</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{massageDataCell(column.name, element[column.index])}} </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
 import { SearchInput } from '../shared/searchInput';
-import { PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput } from '../shared/models';
+import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
 import { DpsPlusService } from '../shared/services/dpsplus.service';
 
@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
   public typeInputs: TypeInput[] = [];
   public pokemonList: any[] = [];
   public results: any[] = [];
-  public displayedColumns: string[] = [ 'quickMove', 'chargeMove', 'dpsPlus' ];
+  public displayedColumns: string[] = [];
+  public columns: SearchResultsColumn[] = [];
 
   // These private "shadow" lists keep all the previous input objects in memory, even if removed from display
   private shadowPokemonInputs: PokemonModel[] = [];
@@ -32,18 +33,17 @@ export class HomeComponent implements OnInit {
       private swUpdate: SwUpdate,
       private snackBar: MatSnackBar
     ) {
-    this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Best General Moves'));
-    this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Best Moves Vs. Type'));
-    this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Best Moves Vs. Pokémon'));
 
     if (this.dataService.isLoaded) {
+      this.searchTypes = this.dpsPlusService.SearchTypes;
       this.importPokedex(this.dataService.getPokedex());
-      this.selectedSearchType = 'PokemonVsPokemon';
+      this.selectedSearchType = this.searchTypes[2];
     }
     else {
       this.dataService.load(() => {
+        this.searchTypes = this.dpsPlusService.SearchTypes;
         this.importPokedex(this.dataService.getPokedex());
-        this.selectedSearchType = 'PokemonVsPokemon';
+        this.selectedSearchType = this.searchTypes[2];
       });
     }
   }
@@ -59,30 +59,31 @@ export class HomeComponent implements OnInit {
   }
 
   runQuery() {
-    console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInputs, this.typeInputs);
-    for (let mon of this.pokemonInputs) {
-      console.log(mon.name + ": ", mon.value);
-    }
-    for (let type of this.typeInputs) {
-      console.log(type.name + ": ", type);
-    }
-    for (let weather of this.weatherInputs) {
-        console.log(weather.name + ": ", weather);
-    }
+    if (this.selectedSearchType) {
+      console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInputs, this.typeInputs);
+      for (let mon of this.pokemonInputs) {
+        console.log(mon.name + ": ", mon.value);
+      }
+      for (let type of this.typeInputs) {
+        console.log(type.name + ": ", type);
+      }
+      for (let weather of this.weatherInputs) {
+          console.log(weather.name + ": ", weather);
+      }
 
-    if (this.selectedSearchType == 'Pokemon') {
-      this.results = this.dpsPlusService.movesetListDPSPlusPoke(this.pokemonInputs[0]);
+      this.displayedColumns = [];
+      this.columns = [];
+      for (let column of this.selectedSearchType.columns) {
+        this.displayedColumns.push(column.name);
+        this.columns.push(column);
+      }
+
+      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInputs, this.typeInputs);
+      if (queryResults)
+        this.results = queryResults;
+
+      console.log('DPS+ results: ', this.results);
     }
-    else if (this.selectedSearchType == 'PokemonVsType') {
-      this.results = this.dpsPlusService.movesetListDPSPlusPokeVsType(this.pokemonInputs[0], this.typeInputs[0]);
-    }
-    else if (this._selectedSearchType == 'PokemonVsPokemon') {
-      this.results = this.dpsPlusService.movesetListDPSPlusPokeVsPoke(this.pokemonInputs[0], this.pokemonInputs[1], this.weatherInputs[0]);
-    }
-    else {
-      this.results = [];
-    }
-    console.log('DPS+ results: ', this.results);
   }
 
   private importPokedex(pokedex: any[]) {
@@ -92,44 +93,56 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  private _selectedSearchType: string;
-  get selectedSearchType(): string {
+  private _selectedSearchType: SearchTypeModel;
+  get selectedSearchType(): SearchTypeModel {
     return this._selectedSearchType;
   }
-  set selectedSearchType(selectedSearchType: string) {
+  set selectedSearchType(selectedSearchType: SearchTypeModel) {
     this._selectedSearchType = selectedSearchType;
 
-    // configure shadow lists
-    if (this.shadowPokemonInputs.length <= 0) {
-      this.shadowPokemonInputs.push(new PokemonModel(149, this.dataService));
-      this.shadowPokemonInputs.push(new PokemonModel(384, this.dataService));
-    }
-    if (this.shadowWeatherInputs.length <= 0) {
-      this.shadowWeatherInputs.push(new WeatherInput('weather', 'Weather'));
-    }
-    if (this.shadowTypeInputs.length <= 0) {
-      this.shadowTypeInputs.push(new TypeInput('types1', 'Counter Type', this.dataService));
-    }
+    this.pokemonInputs = []; let pokemonIndex = 0;
+    this.weatherInputs = []; let weatherIndex = 0;
+    this.typeInputs = []; let typeIndex = 0;
+    for (let input of selectedSearchType.inputs) {
 
-    this.pokemonInputs = [];
-    this.weatherInputs = [];
-    this.typeInputs = [];
+      if (input.type == SearchInputType.Pokemon) {
+        if (this.shadowPokemonInputs.length <= pokemonIndex) { // we don't have a shadow pokemon in memory
+          let defaultPokemon = pokemonIndex == 0 ? 149 : (pokemonIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
+          this.shadowPokemonInputs.push(new PokemonModel(defaultPokemon, this.dataService));
+        }
+        this.pokemonInputs.push(new PokemonInput(input.code, input.name, this.shadowPokemonInputs[pokemonIndex++]));
+      }
 
-    if (selectedSearchType == 'Pokemon') {
-      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', this.shadowPokemonInputs[0]));
-    }
-    else if (selectedSearchType == 'PokemonVsType') {
-      this.pokemonInputs.push(new PokemonInput('pokemon', 'Pokémon', this.shadowPokemonInputs[0]));
-      this.typeInputs.push(this.shadowTypeInputs[0]);
-    }
-    else if (selectedSearchType == 'PokemonVsPokemon') {
-      this.pokemonInputs.push(new PokemonInput('attacker', 'Attacker', this.shadowPokemonInputs[0]));
-      this.pokemonInputs.push(new PokemonInput('defender', 'Defender', this.shadowPokemonInputs[1]));
-      this.weatherInputs.push(this.shadowWeatherInputs[0]);
+      if (input.type == SearchInputType.Weather) {
+        if (this.shadowWeatherInputs.length <= weatherIndex) { // we don't have a shadow weather in memory
+          this.shadowWeatherInputs.push(new WeatherInput(input.code, input.name));
+        }
+        this.shadowWeatherInputs[weatherIndex].code = input.code;
+        this.shadowWeatherInputs[weatherIndex].name = input.name;
+        this.weatherInputs.push(this.shadowWeatherInputs[weatherIndex++]);
+      }
+
+      if (input.type == SearchInputType.Type) {
+        if (this.shadowTypeInputs.length <= typeIndex) { // we don't have a shadow type in memory
+          this.shadowTypeInputs.push(new TypeInput(input.code, input.name, this.dataService));
+        }
+        this.shadowTypeInputs[typeIndex].code = input.code;
+        this.shadowTypeInputs[typeIndex].name = input.name;
+        this.typeInputs.push(this.shadowTypeInputs[typeIndex++]);
+      }
     }
   }
 
-  precisionRound(number, precision) {
+  public massageDataCell(columnName: string, value: any): any {
+    if (columnName == 'dpsPlus') {
+      return this.precisionRound(value, 1);
+    }
+    else {
+      return value;
+    }
+  }
+
+  private precisionRound(number, precision): number {
     let factor = Math.pow(10, precision);
     return Math.round(number * factor) / factor;
   }
