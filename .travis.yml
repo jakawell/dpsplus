@@ -1,4 +1,8 @@
 language: node_js
 node_js:
-  - "8"
+- '8'
 script: npm run build
+deploy:
+  provider: firebase
+  token:
+    secure: "WyOlmM+JU6EuNvbte5HJm9BwN4gbZBULHqNm5+GC1pFoMA18dy+QAReDUgwh597Im/WfFJM2qVaSBX5g8oHoKuwYQh9bAvjWFCvgyYhmzp+h+ZBWbXZq3a+2oo3zlUf81nHOUTMhTBaJK+PTC328E2KLIiCtPVpfY50xkEl9sfnfKHJakYMKCIT3hWjpY5gssn/uQgE0QjPOtlAO9KQYcBpb4gQIsgS2vNSkT7HmoAmK/ZMs0ZtLAoQUwA6j8BBF2EC+DKwEM/3z8ix5mUwt5P3KhvZhHc4chAKGNzNrorBwBoa5r6EzW1Q2FtR5ECh9bms7ky0GsT/SMlqVhzh8wC6ctS1/GUjEa/65rPQeKsSrvIbMZK2y+QA5qTLA66gOTkafkSoymaxKzhI2bMZ576R/Go7EgctDIEo6fldTwuWovEcX+A/81eDYzOILufXuEIKsxWtKN5D4d5/Q8dn/ptBaGLxLVMsn7IXH2JjRLHXD28Cs/smWNKzdVDS3XF4xUP5zrB/GaZBJY1x7o87bILPWwhljL/1/u2yeeFKnKorU5qC6NzzMYv507sVHzJczx3NA14iUZAAxP9xjDLHsrPiy4jvRnE3AgBAJb0PmDEQGyfz27vJ+DFPjq4HuM1cHBVZb58hxVSmDo/71xPb6Wtd1VFHYnQ+/a+t3PrOcJKo="
