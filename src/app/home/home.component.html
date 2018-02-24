@@ -2,9 +2,9 @@
      fxLayout="column"
      fxLayoutAlign="space-around center"
      fxLayoutGap="12px"
-     fxLayoutGap.xs="8px">
+     fxLayoutGap.xs="2px">
 
-  <mat-card>
+  <mat-card ngClass.xs="search-type-card-xs">
     <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
       <h2>Search</h2>
       <mat-form-field>
@@ -17,7 +17,7 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="search-input-card">
+  <mat-card ngClass="search-input-card" ngClass.xs="search-input-card-xs">
     <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
 
       <!-- Pokemon inputs -->
@@ -108,7 +108,7 @@
       <button mat-raised-button color="primary" (click)="runQuery()">Calculate</button>
 
       <!-- Results table -->
-      <div class="results-container mat-elevation-z8" *ngIf="results.length > 0">
+      <div class="mat-elevation-z8" ngClass="results-container" ngClass.xs="results-container-xs" *ngIf="results.length > 0">
         <mat-table #table [dataSource]="results">
 
           <ng-container matColumnDef="quickMove">
@@ -133,7 +133,7 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="attribution-card">
+  <mat-card ngClass="attribution-card" ngClass.xs="attribution-card-xs">
     <mat-card-content>
       <div class="attribution-text">
         <i>This project is not affiliated in any way with Niantic, Inc., The Pokémon Company, Nintendo Co. Ltd., Creatures Inc., or GAME FREAK Inc. The Pokémon names and images are copyright of their respective owners; usage here is intended as fair use.</i>
