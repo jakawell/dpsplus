@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+import { SwUpdate } from '@angular/service-worker';
 import { SearchInput } from '../shared/searchInput';
 import { PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
@@ -19,7 +21,12 @@ export class HomeComponent implements OnInit {
   public results: any[] = [];
   public displayedColumns: string[] = [ 'quickMove', 'chargeMove', 'dpsPlus' ];
 
-  constructor(private dataService: DataService, private dpsPlusService: DpsPlusService) {
+  constructor(
+      private dataService: DataService,
+      private dpsPlusService: DpsPlusService,
+      private swUpdate: SwUpdate,
+      private snackBar: MatSnackBar
+    ) {
     this.searchTypes.push(new SearchTypeModel(0, 'Pokemon', 'Best General Moves'));
     this.searchTypes.push(new SearchTypeModel(1, 'PokemonVsType', 'Best Moves Vs. Type'));
     this.searchTypes.push(new SearchTypeModel(2, 'PokemonVsPokemon', 'Best Moves Vs. Pokémon'));
@@ -36,7 +43,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.swUpdate.available.subscribe(event => {
+      console.log('A newer version is now available. Refresh the page now to update the cache.');
+      this.snackBar.open("Refresh page to update.");
+    });
+    this.swUpdate.checkForUpdate();
+  }
 
   runQuery() {
     console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInputs, this.typeInputs);
