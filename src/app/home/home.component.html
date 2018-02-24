@@ -50,7 +50,7 @@
               <input matInput type="number" placeholder="Stamina" value="{{input.value.staminaIv}}" min="0" max="15" step="1">
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="input.value.canSelectMoves">
             <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
               <mat-select placeholder="Quick move" [(ngModel)]="input.value.quickMove" name="quickMove">
                 <mat-option *ngFor="let quickMove of input.value.quickMoves" [value]="quickMove.name">
@@ -59,7 +59,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="input.value.canSelectMoves">
             <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
               <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
                 <mat-option *ngFor="let chargeMove of input.value.chargeMoves" [value]="chargeMove.name">

@@ -19,6 +19,8 @@ export class PokemonModel {
   public quickMove: string;
   public chargeMove: string;
 
+  public canSelectMoves: boolean;
+
   constructor(species: number, private dataService: DataService) {
     this.species = species;
     this.level = 20;
