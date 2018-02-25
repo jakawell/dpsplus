@@ -51,7 +51,8 @@
   overflow: auto;
 }
 
-.mat-column-dpsPlus {
+mat-header-cell[class^='mat-column-dpsPlus'], mat-header-cell[class*=' mat-column-dpsPlus'],
+mat-cell[class^='mat-column-dpsPlus'], mat-cell[class*=' mat-column-dpsPlus'] {
   flex: 0 0 15%;
 }
 

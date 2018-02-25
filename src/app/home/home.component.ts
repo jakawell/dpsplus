@@ -70,12 +70,13 @@ export class HomeComponent implements OnInit {
       for (let weather of this.weatherInputs) {
           console.log(weather.name + ": ", weather);
       }
-
-      this.displayedColumns = [];
-      this.columns = [];
+      this.results = [];
+      this.columns.splice(0, this.columns.length);
+      this.displayedColumns.splice(0, this.displayedColumns.length);
       for (let column of this.selectedSearchType.columns) {
-        this.displayedColumns.push(column.name);
+        console.log('Configuring column', column.display);
         this.columns.push(column);
+        this.displayedColumns.push(column.name);
       }
 
       let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInputs, this.typeInputs);
@@ -134,7 +135,7 @@ export class HomeComponent implements OnInit {
   }
 
   public massageDataCell(columnName: string, value: any): any {
-    if (columnName == 'dpsPlus') {
+    if (columnName.startsWith('dpsPlus')) {
       return this.precisionRound(value, 1);
     }
     else {

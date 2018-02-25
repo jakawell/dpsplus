@@ -11,31 +11,32 @@ export class DpsPlusService {
     return [
 
       new SearchTypeModel(DpsPlusQueryType.Pokemon, 'Best General Moves', [
-        new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon)
+        new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
       ], [
-        new SearchResultsColumn('quickMove', 'Quick Move2', 0),
-        new SearchResultsColumn('chargeMove', 'Charge Move2', 1),
-        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+        new SearchResultsColumn('quickMove0', 'Quick Move', 0),
+        new SearchResultsColumn('chargeMove0', 'Charge Move', 1),
+        new SearchResultsColumn('dpsPlus0', 'DPS+', 2),
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.PokemonVsType, 'Best Moves Vs. Type', [
         new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
-        new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type)
+        new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type),
       ], [
-        new SearchResultsColumn('quickMove', 'Quick Move3', 0),
-        new SearchResultsColumn('chargeMove', 'Charge Move3', 1),
-        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+        new SearchResultsColumn('quickMove1', 'Quick Move', 0),
+        new SearchResultsColumn('chargeMove1', 'Charge Move', 1),
+        new SearchResultsColumn('dpsPlus1', 'DPS+', 2),
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.PokemonVsPokemon, 'Best Moves Vs. Pokémon', [
         new SearchInputDefinition('attacker', 'Attacker', SearchInputType.Pokemon),
         new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
-        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather)
+        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
       ], [
-        new SearchResultsColumn('quickMove', 'Quick Move', 0),
-        new SearchResultsColumn('chargeMove', 'Charge Move', 1),
-        new SearchResultsColumn('dpsPlus', 'DPS+', 2),
+        new SearchResultsColumn('quickMove2', 'Quick Move', 0),
+        new SearchResultsColumn('chargeMove2', 'Charge Move', 1),
+        new SearchResultsColumn('dpsPlus2', 'DPS+', 2),
       ]),
+
     ]
   }
 
