@@ -74,7 +74,6 @@ export class HomeComponent implements OnInit {
       this.columns.splice(0, this.columns.length);
       this.displayedColumns.splice(0, this.displayedColumns.length);
       for (let column of this.selectedSearchType.columns) {
-        console.log('Configuring column', column.display);
         this.columns.push(column);
         this.displayedColumns.push(column.name);
       }
