@@ -10,33 +10,63 @@ export class DpsPlusService {
   public get SearchTypes(): SearchTypeModel[] {
     return [
 
-      new SearchTypeModel(DpsPlusQueryType.Pokemon, 'Best General Moves', [
+      new SearchTypeModel(DpsPlusQueryType.Pokemon, 'Pokémon Top Moves', [
         new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
       ], [
-        new SearchResultsColumn('quickMove0', 'Quick Move', 0),
-        new SearchResultsColumn('chargeMove0', 'Charge Move', 1),
-        new SearchResultsColumn('dpsPlus0', 'DPS+', 2),
+        new SearchResultsColumn('quickMove0', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove0', 'Charge Move', 3),
+        new SearchResultsColumn('dpsPlus0', 'DPS+', 4),
       ]),
 
-      new SearchTypeModel(DpsPlusQueryType.PokemonVsType, 'Best Moves Vs. Type', [
+      new SearchTypeModel(DpsPlusQueryType.PokemonVsType, 'Pokémon Moves Vs. Type', [
         new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
         new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type),
       ], [
-        new SearchResultsColumn('quickMove1', 'Quick Move', 0),
-        new SearchResultsColumn('chargeMove1', 'Charge Move', 1),
-        new SearchResultsColumn('dpsPlus1', 'DPS+', 2),
+        new SearchResultsColumn('quickMove1', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove1', 'Charge Move', 3),
+        new SearchResultsColumn('dpsPlus1', 'DPS+', 4),
       ]),
 
-      new SearchTypeModel(DpsPlusQueryType.PokemonVsPokemon, 'Best Moves Vs. Pokémon', [
+      new SearchTypeModel(DpsPlusQueryType.PokemonVsPokemon, 'Pokémon Moves Vs. Pokémon', [
         new SearchInputDefinition('attacker', 'Attacker', SearchInputType.Pokemon),
         new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
         new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
       ], [
-        new SearchResultsColumn('quickMove2', 'Quick Move', 0),
-        new SearchResultsColumn('chargeMove2', 'Charge Move', 1),
-        new SearchResultsColumn('dpsPlus2', 'DPS+', 2),
+        new SearchResultsColumn('quickMove2', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove2', 'Charge Move', 3),
+        new SearchResultsColumn('dpsPlus2', 'DPS+', 4),
       ]),
 
+      new SearchTypeModel(DpsPlusQueryType.CountersAll, 'Top Moves', [
+
+      ], [
+        new SearchResultsColumn('pokemon3', 'Pokémon', 0),
+        new SearchResultsColumn('quickMove3', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove3', 'Charge Move', 3),
+        new SearchResultsColumn('tank3', 'Tank', 5),
+        new SearchResultsColumn('dpsPlus3', 'DPS+', 4),
+      ]),
+
+      new SearchTypeModel(DpsPlusQueryType.CountersVsType, 'Top Moves Vs. Type', [
+        new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type),
+      ], [
+        new SearchResultsColumn('pokemon4', 'Pokémon', 0),
+        new SearchResultsColumn('quickMove4', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove4', 'Charge Move', 3),
+        new SearchResultsColumn('tank4', 'Tank', 5),
+        new SearchResultsColumn('dpsPlus4', 'DPS+', 4),
+      ]),
+
+      new SearchTypeModel(DpsPlusQueryType.CountersVsPokemon, 'Top Moves Vs. Pokémon', [
+        new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
+        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
+      ], [
+        new SearchResultsColumn('pokemon5', 'Pokémon', 0),
+        new SearchResultsColumn('quickMove5', 'Quick Move', 2),
+        new SearchResultsColumn('chargeMove5', 'Charge Move', 3),
+        new SearchResultsColumn('tank5', 'Tank', 5),
+        new SearchResultsColumn('dpsPlus5', 'DPS+', 4),
+      ]),
     ]
   }
 
@@ -48,6 +78,10 @@ export class DpsPlusService {
         return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInputs[0]);
       case DpsPlusQueryType.PokemonVsPokemon:
         return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInputs[0]);
+      case DpsPlusQueryType.CountersAll:
+      case DpsPlusQueryType.CountersVsType:
+      case DpsPlusQueryType.CountersVsPokemon:
+        return this.topCounters(queryType, pokemonInputs, weatherInputs, typeInputs).slice(0, 50);
       default:
         throw new Error("Unsupported query type for DpsPlusService.");
     }
@@ -73,6 +107,12 @@ export class DpsPlusService {
     }//end else statement
     return stab
   }//End Function
+
+  private getTankiness(atk,def,hp){
+    var tank = def*hp/1000;
+
+    return tank
+  }
 
   private movesetPower(quickNameTypeStats: MoveModel,chargeNameTypeStats: MoveModel){
     //Input: one moveset and stab multipliers
@@ -167,8 +207,10 @@ export class DpsPlusService {
       for (let chargeMove of pokemon.chargeMoves) {
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
-        moveset[0] = quickMove.displayName;
-        moveset[1] = chargeMove.displayName;
+        moveset[0] = pokemon.name;
+        moveset[1] = pokemon.type1 + (pokemon.type2 ? ' / ' + pokemon.type2 : '');
+        moveset[2] = quickMove.displayName;
+        moveset[3] = chargeMove.displayName;
 
         //Determing the STAB multiplier for the quick and charge moves
         let stab = this.getSTAB(pokemon.type1, pokemon.type2, quickMove.type, chargeMove.type);
@@ -180,15 +222,16 @@ export class DpsPlusService {
         let chargeDamage = stab[1]*power[1];
 
         //Finally calculating DPS+ for the i, j moveset
-        moveset[2] = (quickDamage + chargeDamage)/power[2];
+        moveset[4] = (quickDamage + chargeDamage)/power[2];
+        moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
         movesets.push(moveset);
       }
     }
 
     // sort by DPS+
     return movesets.sort((a, b) => {
-      if (a[2] > b[2]) return -1;
-      else if (a[2] < b[2]) return 1;
+      if (a[4] > b[4]) return -1;
+      else if (a[4] < b[4]) return 1;
       else return 0;
     });
   }//End function
@@ -216,8 +259,10 @@ export class DpsPlusService {
       for (let chargeMove of pokemon.chargeMoves) {
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
-        moveset[0] = quickMove.displayName;
-        moveset[1] = chargeMove.displayName;
+        moveset[0] = pokemon.name;
+        moveset[1] = pokemon.type1 + (pokemon.type2 ? ' / ' + pokemon.type2 : '');
+        moveset[2] = quickMove.displayName;
+        moveset[3] = chargeMove.displayName;
 
         //Determing the STAB multiplier for the quick and charge moves
         let stab = this.getSTAB(pokemon.type1, pokemon.type2, quickMove.type, chargeMove.type);
@@ -232,15 +277,16 @@ export class DpsPlusService {
         let chargeDamage = stab[1]*typeMult[1]*power[1];
 
         //Finally calculating DPS+ for the i, j moveset
-        moveset[2] = (quickDamage + chargeDamage)/power[2];
+        moveset[4] = (quickDamage + chargeDamage)/power[2];
+        moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
         movesets.push(moveset);
       }
     }
 
     // sort by DPS+
     return movesets.sort((a, b) => {
-      if (a[2] > b[2]) return -1;
-      else if (a[2] < b[2]) return 1;
+      if (a[4] > b[4]) return -1;
+      else if (a[4] < b[4]) return 1;
       else return 0;
     });
   }//End function
@@ -268,8 +314,10 @@ export class DpsPlusService {
       for (let chargeMove of pokemon.chargeMoves) {
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
-        moveset[0] = quickMove.displayName;
-        moveset[1] = chargeMove.displayName;
+        moveset[0] = pokemon.name;
+        moveset[1] = pokemon.type1 + (pokemon.type2 ? ' / ' + pokemon.type2 : '');
+        moveset[2] = quickMove.displayName;
+        moveset[3] = chargeMove.displayName;
 
         //Determing the STAB multiplier for the quick and charge moves
         let stab = this.getSTAB(pokemon.type1, pokemon.type2, quickMove.type, chargeMove.type);
@@ -287,16 +335,52 @@ export class DpsPlusService {
         let chargeDamage = Math.floor(1/2*power[1]*weatherMult[1]*stab[1]*typeMult[1]*(pokemon.attack/defender.defense)) + 1;
 
         //Finally calculating DPS+ for the i, j moveset
-        moveset[2] = (quickDamage + chargeDamage)/power[2];
+        moveset[4] = (quickDamage + chargeDamage)/power[2];
+        moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
         movesets.push(moveset);
       }
     }
 
     // sort by DPS+
     return movesets.sort((a, b) => {
-      if (a[2] > b[2]) return -1;
-      else if (a[2] < b[2]) return 1;
+      if (a[4] > b[4]) return -1;
+      else if (a[4] < b[4]) return 1;
       else return 0;
     });
   }//End function
+
+  private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonInput[], weatherInputs: WeatherInput[], typeInputs: TypeInput[]): any[] {
+    //Initializing the stoarage array of all movesets and the counter for the total
+    //number of movesets
+    var movesetsCombined = [];
+
+    for (let pokemon of this.dataService.getPokedex()) {
+      let selectedPokemon = new PokemonModel(pokemon[1], this.dataService);
+      selectedPokemon.level = 27.5;
+      selectedPokemon.attackIv = 15;
+      selectedPokemon.defenseIv = 15;
+      selectedPokemon.staminaIv = 15;
+
+      let movesetsTotal = [];
+
+      if (queryType == DpsPlusQueryType.CountersAll) {
+        movesetsTotal = this.movesetListDPSPlusPoke(new PokemonInput('', '', selectedPokemon));
+      }
+      else if (queryType == DpsPlusQueryType.CountersVsType) {
+        movesetsTotal = this.movesetListDPSPlusPokeVsType(new PokemonInput('', '', selectedPokemon), typeInputs[0]);
+      }
+      else if (queryType == DpsPlusQueryType.CountersVsPokemon) {
+        movesetsTotal = this.movesetListDPSPlusPokeVsPoke(new PokemonInput('', '', selectedPokemon), pokemonInputs[0], weatherInputs[0]);
+      }
+
+      movesetsCombined = movesetsCombined.concat(movesetsTotal);
+    }
+
+    // sort by DPS+
+    return movesetsCombined.sort((a, b) => {
+      if (a[4] > b[4]) return -1;
+      else if (a[4] < b[4]) return 1;
+      else return 0;
+    });
+  }
 }

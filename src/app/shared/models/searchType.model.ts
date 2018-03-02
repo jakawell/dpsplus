@@ -2,6 +2,9 @@ export enum DpsPlusQueryType {
   Pokemon,
   PokemonVsType,
   PokemonVsPokemon,
+  CountersAll,
+  CountersVsType,
+  CountersVsPokemon,
 }
 
 export enum SearchInputType {

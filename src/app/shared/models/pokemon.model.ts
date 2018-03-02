@@ -23,7 +23,7 @@ export class PokemonModel {
 
   constructor(species: number, private dataService: DataService) {
     this.species = species;
-    this.level = 20;
+    this.level = 25;
     this.attackIv = 10;
     this.defenseIv = 10;
     this.staminaIv = 10;

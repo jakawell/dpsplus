@@ -37,13 +37,13 @@ export class HomeComponent implements OnInit {
     if (this.dataService.isLoaded) {
       this.searchTypes = this.dpsPlusService.SearchTypes;
       this.importPokedex(this.dataService.getPokedex());
-      this.selectedSearchType = this.searchTypes[2];
+      this.selectedSearchType = this.searchTypes[5];
     }
     else {
       this.dataService.load(() => {
         this.searchTypes = this.dpsPlusService.SearchTypes;
         this.importPokedex(this.dataService.getPokedex());
-        this.selectedSearchType = this.searchTypes[2];
+        this.selectedSearchType = this.searchTypes[5];
       });
     }
   }
@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit {
   }
 
   public massageDataCell(columnName: string, value: any): any {
-    if (columnName.startsWith('dpsPlus')) {
+    if (columnName.startsWith('dpsPlus') || columnName.startsWith('tank')) {
       return this.precisionRound(value, 1);
     }
     else {

@@ -52,7 +52,9 @@
 }
 
 mat-header-cell[class^='mat-column-dpsPlus'], mat-header-cell[class*=' mat-column-dpsPlus'],
-mat-cell[class^='mat-column-dpsPlus'], mat-cell[class*=' mat-column-dpsPlus'] {
+mat-cell[class^='mat-column-dpsPlus'], mat-cell[class*=' mat-column-dpsPlus'],
+mat-header-cell[class^='mat-column-tank'], mat-header-cell[class*=' mat-column-tank'],
+mat-cell[class^='mat-column-tank'], mat-cell[class*=' mat-column-tank']  {
   flex: 0 0 15%;
 }
 
