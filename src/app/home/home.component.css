@@ -12,12 +12,24 @@
   padding: 16px 8px;
 }
 
+.search-input-header > button {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 24px;
+}
+
 .search-input-item {
   margin: 12px;
 
   h2 {
     text-align: center;
   }
+}
+
+.search-input-add-button {
+  width: 200px;
 }
 
 .pokemon-image {

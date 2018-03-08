@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule, MatIconModule } from '@angular/material';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -44,6 +44,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatSelectModule,
     MatTableModule,
+    MatIconModule,
   ],
   providers: [
     DataService,

@@ -9,6 +9,7 @@ export enum DpsPlusQueryType {
 
 export enum SearchInputType {
   Pokemon,
+  PokemonSet,
   Weather,
   Type
 }
@@ -17,8 +18,16 @@ export class SearchInputDefinition {
   constructor(
     public code: string,
     public name: string,
-    public type: SearchInputType
+    public type: SearchInputType,
+    public options?: SearchInputDefinitionOpts
   ) { }
+}
+
+export interface SearchInputDefinitionOpts {
+  min: number;
+  max: number;
+  default: number;
+  addTitle: string;
 }
 
 export class SearchResultsColumn {

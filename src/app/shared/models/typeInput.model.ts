@@ -1,4 +1,4 @@
-import { SearchInput } from '../searchInput';
+import { SearchInput } from '../interfaces/searchInput';
 import { DataService } from '../services/data.service';
 
 export class TypeInput implements SearchInput {

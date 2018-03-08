@@ -21,9 +21,14 @@
     <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
 
       <!-- Pokemon inputs -->
-      <div *ngIf="pokemonInputs" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around start">
+      <div *ngIf="pokemonInputs" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
         <div class="search-input-item" *ngFor="let input of pokemonInputs">
-          <h2>{{ input.name }}</h2>
+          <div class="search-input-header" fxLayout fxLayoutAlign="start center">
+            <h2>{{ input.name }}</h2>
+            <button *ngIf="input.isRemovable" mat-icon-button (click)="input.removeSelf()">
+              <mat-icon aria-label="Remove input">clear</mat-icon>
+            </button>
+          </div>
           <div fxLayout fxLayoutGap="8px">
             <img class="pokemon-image" src="/assets/pokemon/{{input.value.species}}.svg" alt="{{input.value.name}} image" width="72" height="72" />
             <div fxLayout="column" fxLayoutAlign="start">
@@ -68,6 +73,12 @@
               </mat-select>
             </mat-form-field>
           </div>
+        </div>
+        <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
+          <button mat-fab disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
+            <mat-icon aria-label="Add Pokémon">add_circle_outline</mat-icon>
+          </button>
+          <h3>{{currentPokemonSetDef.options.addTitle}}</h3>
         </div>
 
         <!-- Weather inputs -->
