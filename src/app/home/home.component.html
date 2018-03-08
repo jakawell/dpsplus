@@ -74,8 +74,9 @@
             </mat-form-field>
           </div>
         </div>
+
         <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
-          <button mat-fab disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
+          <button mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
             <mat-icon aria-label="Add Pokémon">add_circle_outline</mat-icon>
           </button>
           <h3>{{currentPokemonSetDef.options.addTitle}}</h3>

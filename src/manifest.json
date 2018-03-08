@@ -1,10 +1,11 @@
 {
   "name": "DPS+",
-  "description": "Find the true power of your Pokémon!",
+  "short_name": "DPS+",
+  "description": "Find the true power of your team!",
   "lang": "en-US",
   "start_url": "/index.html",
   "display": "standalone",
-  "theme_color": "#4caf50",
+  "theme_color": "#43A047",
   "background_color": "#303030",
   "icons": [
     {
@@ -30,6 +31,11 @@
     {
       "src": "/assets/icon256.png",
       "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
