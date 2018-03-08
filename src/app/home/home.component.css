@@ -12,12 +12,15 @@
   padding: 16px 8px;
 }
 
+.search-input-header > h2 {
+  margin: 4px 0px;
+}
+
 .search-input-header > button {
-  margin-left: auto;
-  margin-right: 0;
-  text-align: center;
-  vertical-align: middle;
+  margin: 2px 0 4px auto;
   width: 24px;
+  height: 24px;
+  line-height: 24px;
 }
 
 .search-input-item {
