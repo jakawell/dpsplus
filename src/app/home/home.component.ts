@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
+import { FormControl } from '@angular/forms';
 import { SearchInput, HostPokemonList } from '../shared/interfaces';
 import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
@@ -99,6 +100,10 @@ export class HomeComponent implements OnInit, HostPokemonList {
 
       console.log('DPS+ results: ', this.results);
     }
+  }
+
+  public get allPokemonList(): any[] {
+    return this.pokemonList;
   }
 
   private importPokedex(pokedex: any[]) {

@@ -33,6 +33,15 @@
             <img class="pokemon-image" src="/assets/pokemon/{{input.value.species}}.svg" alt="{{input.value.name}} image" width="72" height="72" />
             <div fxLayout="column" fxLayoutAlign="start">
               <mat-form-field class="pokemon-name-input">
+                <input type="text" placeholder="Pokémon" matInput [formControl]="input.selectorControl" [matAutocomplete]="pokeAuto" />
+                <mat-autocomplete #pokeAuto="matAutocomplete">
+                  <mat-option *ngFor="let species of input.filteredPokemon | async" [value]="species">
+                    {{ species[0] }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field class="pokemon-name-input">
                 <mat-select placeholder="Pokémon" [(ngModel)]="input.value.species" name="species">
                   <mat-option *ngFor="let species of pokemonList" [value]="species[1]">
                     {{ species[0] }}
