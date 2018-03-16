@@ -82,7 +82,7 @@ export class PokemonModel {
     }
     let allMoves = isQuick ? this.dataService.getQuickMoves() : this.dataService.getChargeMoves();
     let results: MoveModel[] = [];
-    for (let fromAll of allMoves.slice(1)) {
+    for (let fromAll of allMoves) {
       for (let fromSet of moveSet) {
         if (fromSet.name == fromAll[0]) {
           results.push(new MoveModel(fromSet.name, fromSet.code == 'l', fromSet.code == 'e', fromAll[1], parseInt(fromAll[2]), parseInt(fromAll[3]), parseFloat(fromAll[4])));
