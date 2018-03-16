@@ -1,3 +1,64 @@
-<p>
-  pokemon-input works!
-</p>
+<div class="search-input-item" [formGroup]="pokemonForm">
+  <div class="search-input-header" fxLayout fxLayoutAlign="start start">
+    <h2>{{ model.internalTitle }}</h2>
+    <button type="button" *ngIf="model.isRemovable" mat-icon-button (click)="removeSelf()">
+      <mat-icon aria-label="Remove input">clear</mat-icon>
+    </button>
+  </div>
+  <div fxLayout fxLayoutGap="8px">
+    <img class="pokemon-image" src="/assets/pokemon/{{selectedSpecies}}.svg" alt="{{selectedName}} image" width="72" height="72" />
+    <div fxLayout="column" fxLayoutAlign="start">
+
+      <mat-form-field class="pokemon-name-input">
+        <input type="text" placeholder="Pokémon" matInput formControlName="species" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="autoDisplayFn">
+          <mat-option *ngFor="let option of filteredPokemon | async" [value]="option">
+            {{ option[0] }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="pokemon-level-input">
+        <input matInput type="number" placeholder="Level" formControlName="level" min="1" max="40" step="0.5">
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div fxLayout fxLayoutAlign="space-evenly" fxLayoutGap="16px">
+
+    <mat-form-field class="pokemon-level-input">
+      <input matInput type="number" placeholder="Attack" formControlName="attackIv" min="0" max="15" step="1">
+    </mat-form-field>
+
+    <mat-form-field class="pokemon-level-input">
+      <input matInput type="number" placeholder="Defense" formControlName="defenseIv" min="0" max="15" step="1">
+    </mat-form-field>
+
+    <mat-form-field class="pokemon-level-input">
+      <input matInput type="number" placeholder="Stamina" formControlName="staminaIv" min="0" max="15" step="1">
+    </mat-form-field>
+
+  </div>
+  <div *ngIf="model.canSelectMoves">
+
+    <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
+      <mat-select placeholder="Quick move" [(ngModel)]="input.value.quickMove" name="quickMove">
+        <mat-option *ngFor="let quickMove of input.value.quickMoves" [value]="quickMove.name">
+          {{ quickMove.displayName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div *ngIf="model.canSelectMoves">
+
+    <mat-form-field class="pokemon-move-input" fxLayoutAlign="space-around">
+      <mat-select placeholder="Charge move" [(ngModel)]="input.value.chargeMove" name="chargeMove">
+        <mat-option *ngFor="let chargeMove of input.value.chargeMoves" [value]="chargeMove.name">
+          {{ chargeMove.displayName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</div>

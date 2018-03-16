@@ -19,9 +19,12 @@ export class PokemonModel {
   public quickMove: string;
   public chargeMove: string;
 
+  public internalId: string;
+  public internalTitle: string;
+  public isRemovable: boolean;
   public canSelectMoves: boolean;
 
-  constructor(species: number, private dataService: DataService) {
+  constructor(species: number,  private dataService: DataService, internalId?: string, internalTitle?: string, isRemovable?: boolean, canSelectMoves?: boolean) {
     this.species = species;
     this.level = 25;
     this.attackIv = 10;
@@ -29,6 +32,11 @@ export class PokemonModel {
     this.staminaIv = 10;
     this.quickMove = 'Tackle';
     this.chargeMove = 'Growl';
+
+    this.internalId = internalId || 'pokemon';
+    this.internalTitle = internalTitle || 'Pokémon';
+    this.isRemovable = isRemovable || false;
+    this.canSelectMoves = canSelectMoves || false;
   }
 
   set species(species: number) {

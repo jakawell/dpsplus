@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PokemonModel, SearchTypeModel, DpsPlusQueryType, SearchInputType, SearchInputDefinition, SearchResultsColumn, MoveModel, PokemonInput, TypeInput, WeatherInput } from '../models';
+import { PokemonModel, SearchTypeModel, DpsPlusQueryType, SearchInputType, SearchInputDefinition, SearchResultsColumn, MoveModel, TypeInput, WeatherInput } from '../models';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -9,33 +9,6 @@ export class DpsPlusService {
 
   public get SearchTypes(): SearchTypeModel[] {
     return [
-
-      // new SearchTypeModel(DpsPlusQueryType.Pokemon, 'Pokémon Top Moves', [
-      //   new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
-      // ], [
-      //   new SearchResultsColumn('quickMove0', 'Quick Move', 2),
-      //   new SearchResultsColumn('chargeMove0', 'Charge Move', 3),
-      //   new SearchResultsColumn('dpsPlus0', 'DPS+', 4),
-      // ]),
-      //
-      // new SearchTypeModel(DpsPlusQueryType.PokemonVsType, 'Pokémon Moves Vs. Type', [
-      //   new SearchInputDefinition('pokemon', 'Pokémon', SearchInputType.Pokemon),
-      //   new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type),
-      // ], [
-      //   new SearchResultsColumn('quickMove1', 'Quick Move', 2),
-      //   new SearchResultsColumn('chargeMove1', 'Charge Move', 3),
-      //   new SearchResultsColumn('dpsPlus1', 'DPS+', 4),
-      // ]),
-      //
-      // new SearchTypeModel(DpsPlusQueryType.PokemonVsPokemon, 'Pokémon Moves Vs. Pokémon', [
-      //   new SearchInputDefinition('attacker', 'Attacker', SearchInputType.Pokemon),
-      //   new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
-      //   new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
-      // ], [
-      //   new SearchResultsColumn('quickMove2', 'Quick Move', 2),
-      //   new SearchResultsColumn('chargeMove2', 'Charge Move', 3),
-      //   new SearchResultsColumn('dpsPlus2', 'DPS+', 4),
-      // ]),
 
       new SearchTypeModel(DpsPlusQueryType.CountersAll, 'Top Moves', [
         new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
@@ -72,18 +45,18 @@ export class DpsPlusService {
     ]
   }
 
-  public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonInput[], weatherInputs: WeatherInput[], typeInputs: TypeInput[]): any[] {
+  public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput): any[] {
     switch (queryType) {
       case DpsPlusQueryType.Pokemon:
-        return this.movesetListDPSPlusPoke(pokemonInputs[0].value);
+        return this.movesetListDPSPlusPoke(pokemonInputs[0]);
       case DpsPlusQueryType.PokemonVsType:
-        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0].value, typeInputs[0]);
+        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInput);
       case DpsPlusQueryType.PokemonVsPokemon:
-        return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0].value, pokemonInputs[1].value, weatherInputs[0]);
+        return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInput);
       case DpsPlusQueryType.CountersAll:
       case DpsPlusQueryType.CountersVsType:
       case DpsPlusQueryType.CountersVsPokemon:
-        return this.topCounters(queryType, pokemonInputs, weatherInputs, typeInputs).slice(0, 50);
+        return this.topCounters(queryType, pokemonInputs, weatherInput, typeInput).slice(0, 50);
       default:
         throw new Error("Unsupported query type for DpsPlusService.");
     }
@@ -112,7 +85,6 @@ export class DpsPlusService {
 
   private getTankiness(atk,def,hp){
     var tank = def*hp/1000;
-
     return tank
   }
 
@@ -347,7 +319,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonInput[], weatherInputs: WeatherInput[], typeInputs: TypeInput[]): any[] {
+  private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput): any[] {
     //Initializing the stoarage array of all movesets and the counter for the total
     //number of movesets
     var movesetsCombined = [];
@@ -356,17 +328,15 @@ export class DpsPlusService {
     let defenderSet: PokemonModel[] = [];
 
     for (let pokemonInput of pokemonInputs) {
-      if (pokemonInput.code.startsWith('attacker')) {
-        attackerSet.push(pokemonInput.value);
+      if (pokemonInput.internalId.startsWith('attacker')) {
+        attackerSet.push(pokemonInput);
       }
-      else if (pokemonInput.code.startsWith('defender')) {
-        defenderSet.push(pokemonInput.value);
+      else if (pokemonInput.internalId.startsWith('defender')) {
+        defenderSet.push(pokemonInput);
       }
     }
 
     let defender: PokemonModel = defenderSet.length > 0 ? defenderSet[0] : null;
-    let typeInput: TypeInput = typeInputs.length > 0 ? typeInputs[0] : null;
-    let weatherInput: WeatherInput = weatherInputs.length > 0 ? weatherInputs[0] : null;
 
     if (attackerSet.length > 0) {
       for (let attacker of attackerSet) {

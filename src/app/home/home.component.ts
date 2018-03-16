@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
-import { FormControl } from '@angular/forms';
-import { SearchInput, HostPokemonList } from '../shared/interfaces';
-import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, PokemonInput, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { SearchInput } from '../shared/interfaces';
+import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
 import { DpsPlusService } from '../shared/services/dpsplus.service';
 
@@ -12,12 +12,13 @@ import { DpsPlusService } from '../shared/services/dpsplus.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, HostPokemonList {
+export class HomeComponent implements OnInit {
 
+  public inputsForm: FormGroup;
   public searchTypes: SearchTypeModel[] = [];
-  public pokemonInputs: PokemonInput[] = [];
-  public weatherInputs: WeatherInput[] = [];
-  public typeInputs: TypeInput[] = [];
+  public pokemonInputs: PokemonModel[] = [];
+  public weatherInput: WeatherInput;
+  public typeInput: TypeInput;
   public pokemonSetCount = 0;
   public maxAddablePokemon: number = 0;
   public currentPokemonSetDef: SearchInputDefinition;
@@ -28,12 +29,13 @@ export class HomeComponent implements OnInit, HostPokemonList {
 
   // These private "shadow" lists keep all the previous input objects in memory, even if removed from display
   private shadowPokemonInputs: PokemonModel[] = [];
-  private shadowWeatherInputs: WeatherInput[] = [];
-  private shadowTypeInputs: TypeInput[] = [];
+  private shadowWeatherInput: WeatherInput;
+  private shadowTypeInput: TypeInput;
 
   private defaultSearchType: DpsPlusQueryType = DpsPlusQueryType.CountersVsPokemon;
 
   constructor(
+      private formBuilder: FormBuilder,
       private dataService: DataService,
       private dpsPlusService: DpsPlusService,
       private swUpdate: SwUpdate,
@@ -62,6 +64,13 @@ export class HomeComponent implements OnInit, HostPokemonList {
         }
       });
     }
+
+    this.inputsForm = this.formBuilder.group({
+      pokemon: this.formBuilder.array([]),
+      weather: '',
+      type1: '',
+      type2: '',
+    })
   }
 
   ngOnInit() {
@@ -76,16 +85,8 @@ export class HomeComponent implements OnInit, HostPokemonList {
 
   runQuery() {
     if (this.selectedSearchType) {
-      console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInputs, this.typeInputs);
-      for (let mon of this.pokemonInputs) {
-        console.log(mon.name + ": ", mon.value);
-      }
-      for (let type of this.typeInputs) {
-        console.log(type.name + ": ", type);
-      }
-      for (let weather of this.weatherInputs) {
-          console.log(weather.name + ": ", weather);
-      }
+      console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInput, this.typeInput);
+
       this.results = [];
       this.columns.splice(0, this.columns.length);
       this.displayedColumns.splice(0, this.displayedColumns.length);
@@ -94,7 +95,7 @@ export class HomeComponent implements OnInit, HostPokemonList {
         this.displayedColumns.push(column.name);
       }
 
-      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInputs, this.typeInputs);
+      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInput, this.typeInput);
       if (queryResults)
         this.results = queryResults;
 
@@ -121,8 +122,8 @@ export class HomeComponent implements OnInit, HostPokemonList {
     this._selectedSearchType = selectedSearchType;
 
     this.pokemonInputs = []; let pokemonIndex = 0;
-    this.weatherInputs = []; let weatherIndex = 0;
-    this.typeInputs = []; let typeIndex = 0;
+    this.weatherInput = null;
+    this.typeInput = null;
     this.maxAddablePokemon = 0;
 
     for (let input of selectedSearchType.inputs) {
@@ -141,21 +142,17 @@ export class HomeComponent implements OnInit, HostPokemonList {
       }
 
       if (input.type == SearchInputType.Weather) {
-        if (this.shadowWeatherInputs.length <= weatherIndex) { // we don't have a shadow weather in memory
-          this.shadowWeatherInputs.push(new WeatherInput(input.code, input.name));
+        if (!this.shadowWeatherInput) { // we don't have a shadow weather in memory
+          this.shadowWeatherInput = new WeatherInput(input.code, input.name);
         }
-        this.shadowWeatherInputs[weatherIndex].code = input.code;
-        this.shadowWeatherInputs[weatherIndex].name = input.name;
-        this.weatherInputs.push(this.shadowWeatherInputs[weatherIndex++]);
+        this.weatherInput = this.shadowWeatherInput;
       }
 
       if (input.type == SearchInputType.Type) {
-        if (this.shadowTypeInputs.length <= typeIndex) { // we don't have a shadow type in memory
-          this.shadowTypeInputs.push(new TypeInput(input.code, input.name, this.dataService));
+        if (!this.shadowTypeInput) { // we don't have a shadow type in memory
+          this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
         }
-        this.shadowTypeInputs[typeIndex].code = input.code;
-        this.shadowTypeInputs[typeIndex].name = input.name;
-        this.typeInputs.push(this.shadowTypeInputs[typeIndex++]);
+        this.typeInput = this.shadowTypeInput;
       }
     }
   }
@@ -165,18 +162,18 @@ export class HomeComponent implements OnInit, HostPokemonList {
     this.pokemonSetCount++;
   }
 
-  private addPokemon(code: string, name: string, isRemovable: boolean, atIndex: number) {
+  private addPokemon(code: string, title: string, isRemovable: boolean, atIndex: number) {
     if (this.shadowPokemonInputs.length <= atIndex) { // we don't have a shadow pokemon in memory
       let defaultPokemon = atIndex == 0 ? 149 : (atIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
-      this.shadowPokemonInputs.push(new PokemonModel(defaultPokemon, this.dataService));
+      this.shadowPokemonInputs.push(new PokemonModel(defaultPokemon, this.dataService, code, title, isRemovable, false));
     }
-    this.pokemonInputs.push(new PokemonInput(code, name, this.shadowPokemonInputs[atIndex], isRemovable, this));
+    this.pokemonInputs.push(this.shadowPokemonInputs[atIndex]);
   }
 
   public removePokemon(id: string) {
     let pokemonIndex = -1;
     for (let input of this.pokemonInputs) {
-      if (input.code == id) pokemonIndex = this.pokemonInputs.indexOf(input);
+      if (input.internalId == id) pokemonIndex = this.pokemonInputs.indexOf(input);
     }
     if (pokemonIndex >= 0) {
       this.pokemonSetCount--; // only set pokemon can be removed
