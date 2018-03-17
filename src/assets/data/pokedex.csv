@@ -1,7 +1,7 @@
 Pokemon Name,Dex #,Type 1,Type 2,ATK,DEF,STA,QuickLegacy,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,ChargeLegacy,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move,legacy status,move
 Bulbasaur,1,Grass,Poison,118,118,90,c,Vine Whip,c,Tackle,c,,c,,c,,c,,c,,c,Sludge Bomb,c,Power Whip,c,Seed Bomb,c,,c,,c,,c,,c,
 Ivysaur,2,Grass,Poison,151,151,120,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Solar Beam,c,Sludge Bomb,c,Power Whip,c,,c,,c,,c,,c,
-Venusaur,3,Grass,Poison,198,198,160,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Petal Blizzard,c,Solar Beam,c,Sludge Bomb,c,,c,,c,,c,,c,
+Venusaur,3,Grass,Poison,198,198,160,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Petal Blizzard,c,Solar Beam,c,Sludge Bomb,e,Frenzy Plant,c,,c,,c,,c,
 Charmander,4,Fire,,116,96,78,c,Scratch,c,Ember,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Burst,c,Flame Charge,c,,c,,c,,c,,c,
 Charmeleon,5,Fire,,158,129,116,c,Fire Fang,l,Scratch,c,Ember,c,,c,,c,,c,,c,Flamethrower,c,Flame Burst,c,Fire Punch,c,,c,,c,,c,,c,
 Charizard,6,Fire,Flying,223,176,156,c,Fire Spin,c,Air Slash,l,Wing Attack,l,Ember,c,,c,,c,,c,Overheat,c,Fire Blast,l,Flamethrower,c,Dragon Claw,c,,c,,c,,c,

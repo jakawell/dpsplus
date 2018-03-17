@@ -17,7 +17,7 @@ export class TypeInput implements SearchInput {
     let typeList = this.dataService.getTypes();
     this.types = [];
     this.typesWithNone = [ 'None' ];
-    for (let typeRow of typeList.slice(2,19)) {
+    for (let typeRow of typeList.slice(2)) {
       this.types.push(typeRow[0]);
       this.typesWithNone.push(typeRow[0]);
     }
