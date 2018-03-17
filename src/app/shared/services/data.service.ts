@@ -8,6 +8,7 @@ export class DataService {
   public isLoaded = false;
 
   private _Pokedex: any[] = null;
+  private _PokedexAlpha: any[] = null;
   private _Types: any[] = null;
   private _MovesQuick: any[] = null;
   private _MovesCharge: any[] = null;
@@ -32,6 +33,11 @@ export class DataService {
   load(callback?: () => any) {
     this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (pokedex) => {
       this._Pokedex = pokedex;
+      this._PokedexAlpha = pokedex.slice().sort((a, b) => {
+        if (a[0] < b[0]) return -1;
+        if (a[0] > b[0]) return 1;
+        return 0;
+      })
       this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (levels) => {
         this.LevelMultipliers = levels;
         this.loadCsv(this._Types, 'assets/data/types.csv', (types) => {
@@ -51,6 +57,10 @@ export class DataService {
 
   getPokedex(): any[] {
     return this._Pokedex.slice(1, 387);
+  }
+
+  getPokedexAlpha(): any[] {
+    return this._PokedexAlpha.slice(1, 387);
   }
 
   getPokemon(index: number): any[] {

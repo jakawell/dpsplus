@@ -20,53 +20,56 @@
   <mat-card ngClass="search-input-card" ngClass.xs="search-input-card-xs">
     <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
 
-      <!-- Pokemon inputs -->
-      <div *ngIf="pokemonInputs" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
-        <app-pokemon-input *ngFor="let input of pokemonInputs" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
+      <form (ngSubmit)="runQuery()" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
+          <!-- Pokemon inputs -->
+          <app-pokemon-input *ngFor="let input of pokemonInputs"  [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
 
-        <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
-          <button mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
-            <mat-icon aria-label="Add Pokémon">add_circle</mat-icon>
-          </button>
-          <h3>{{currentPokemonSetDef.options.addTitle}}</h3>
-        </div>
+          <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
+            <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
+              <mat-icon aria-label="Add Pokémon">add_circle</mat-icon>
+            </button>
+            <h3>{{currentPokemonSetDef.options.addTitle}}</h3>
+          </div>
 
-        <!-- Weather inputs -->
-        <div class="search-input-item" *ngFor="let input of weatherInputs">
-          <h2>{{ input.name }}</h2>
-          <div>
-            <mat-form-field>
-              <mat-select placeholder="Weather type" [(ngModel)]="input.value" name="weatherType">
-                <mat-option *ngFor="let weatherType of input.weatherList" [value]="weatherType">
-                  {{ weatherType }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <!-- Weather inputs -->
+          <div *ngIf="weatherInput" class="search-input-item">
+            <h2>{{ weatherInput.name }}</h2>
+            <div>
+              <mat-form-field>
+                <mat-select placeholder="Weather type" [(ngModel)]="weatherInput.value" name="weatherType">
+                  <mat-option *ngFor="let weatherType of weatherInput.weatherList" [value]="weatherType">
+                    {{ weatherType }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Type inputs -->
+          <div *ngIf="typeInput" class="search-input-item">
+            <h2>{{ typeInput.name }}</h2>
+            <div fxLayout="column">
+              <mat-form-field>
+                <mat-select placeholder="First type" [(ngModel)]="typeInput.type1" name="type1">
+                  <mat-option *ngFor="let type1 of typeInput.types" [value]="type1">
+                    {{  type1 }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Second type" [(ngModel)]="typeInput.type2" name="type2">
+                  <mat-option *ngFor="let type2 of typeInput.typesWithNone" [value]="type2">
+                    {{ type2 }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </div>
 
-        <!-- Type inputs -->
-        <div class="search-input-item" *ngFor="let input of typeInputs">
-          <h2>{{ input.name }}</h2>
-          <div fxLayout="column">
-            <mat-form-field>
-              <mat-select placeholder="First type" [(ngModel)]="input.type1" name="type1">
-                <mat-option *ngFor="let type1 of input.types" [value]="type1">
-                  {{  type1 }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-              <mat-select placeholder="Second type" [(ngModel)]="input.type2" name="type2">
-                <mat-option *ngFor="let type2 of input.typesWithNone" [value]="type2">
-                  {{ type2 }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <button mat-raised-button color="primary" (click)="runQuery()">Calculate</button>
+        <button type="submit" mat-raised-button color="primary">Calculate</button>
+      </form>
 
       <!-- Results table -->
       <div class="mat-elevation-z8" ngClass="results-container" ngClass.xs="results-container-xs" *ngIf="results.length > 0">

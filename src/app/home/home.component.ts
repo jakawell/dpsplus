@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { map } from 'rxjs/operators/map';
 import { SearchInput } from '../shared/interfaces';
 import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
 import { DataService } from '../shared/services/data.service';
@@ -125,6 +126,7 @@ export class HomeComponent implements OnInit {
     this.weatherInput = null;
     this.typeInput = null;
     this.maxAddablePokemon = 0;
+    this.resetPokemonFormArray();
 
     for (let input of selectedSearchType.inputs) {
 
@@ -167,7 +169,15 @@ export class HomeComponent implements OnInit {
       let defaultPokemon = atIndex == 0 ? 149 : (atIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
       this.shadowPokemonInputs.push(new PokemonModel(defaultPokemon, this.dataService, code, title, isRemovable, false));
     }
+    else { // we do have a shadow pokemon, and need to update the code and title
+      const shadow = this.shadowPokemonInputs[atIndex];
+      shadow.internalId = code;
+      shadow.internalTitle = title;
+      shadow.isRemovable = isRemovable;
+      shadow.canSelectMoves = false;
+    }
     this.pokemonInputs.push(this.shadowPokemonInputs[atIndex]);
+    this.resetPokemonFormArray();
   }
 
   public removePokemon(id: string) {
@@ -185,7 +195,15 @@ export class HomeComponent implements OnInit {
 
       // remove the pokemon
       this.pokemonInputs.splice(pokemonIndex, 1);
+      this.resetPokemonFormArray();
     }
+  }
+
+  private resetPokemonFormArray() {
+    // const pokemonFormGroups = this.pokemonInputs.map(input => this.formBuilder.group(input));
+    // const pokemonFormArray = this.formBuilder.array(pokemonFormGroups);
+    // console.log('Updating array with ' + pokemonFormArray.controls.length + ' items.');
+    // this.inputsForm.setControl('pokemon', pokemonFormArray);
   }
 
   public triggerAddPokemon() {
