@@ -14,7 +14,7 @@ export class DataService {
   private _MovesCharge: any[] = null;
 
   constructor(private http: HttpClient) {
-    this.load();
+    //this.load();
   }
 
   private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {

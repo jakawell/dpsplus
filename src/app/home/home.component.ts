@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   private shadowWeatherInput: WeatherInput;
   private shadowTypeInput: TypeInput;
 
+  private isLoading = true;
   private defaultSearchType: DpsPlusQueryType = DpsPlusQueryType.CountersVsPokemon;
 
   constructor(
@@ -41,28 +42,6 @@ export class HomeComponent implements OnInit {
       private swUpdate: SwUpdate,
       private snackBar: MatSnackBar
     ) {
-
-    if (this.dataService.isLoaded) {
-      this.searchTypes = this.dpsPlusService.SearchTypes;
-      for (let searchType of this.searchTypes) {
-          if (searchType.code == this.defaultSearchType) {
-            this.selectedSearchType = searchType;
-            break;
-          }
-      }
-    }
-    else {
-      this.dataService.load(() => {
-        this.searchTypes = this.dpsPlusService.SearchTypes;
-        for (let searchType of this.searchTypes) {
-            if (searchType.code == this.defaultSearchType) {
-              this.selectedSearchType = searchType;
-              break;
-            }
-        }
-      });
-    }
-
     this.inputsForm = this.formBuilder.group({
       pokemon: this.formBuilder.array([]),
       weather: '',
@@ -72,6 +51,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchTypes = this.dpsPlusService.SearchTypes;
+    if (this.dataService.isLoaded) {
+      this.isLoading = false;
+      this.setSelectedSearchTypeByCode(this.defaultSearchType);
+    }
+    else {
+      this.dataService.load(() => {
+        this.isLoading = false;
+        this.setSelectedSearchTypeByCode(this.defaultSearchType);
+      });
+    }
+
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
         console.log('A newer version is now available. Refresh the page now to update the cache.');
@@ -99,6 +90,15 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  private setSelectedSearchTypeByCode(code: DpsPlusQueryType) {
+    for (let searchType of this.searchTypes) {
+      if (searchType.code === code) {
+        this.selectedSearchType = searchType;
+        break;
+      }
+    }
+  }
+
   private _selectedSearchType: SearchTypeModel;
   get selectedSearchType(): SearchTypeModel {
     return this._selectedSearchType;
@@ -106,39 +106,44 @@ export class HomeComponent implements OnInit {
   set selectedSearchType(selectedSearchType: SearchTypeModel) {
     this._selectedSearchType = selectedSearchType;
 
-    this.pokemonInputs = []; let pokemonIndex = 0;
-    this.weatherInput = null;
-    this.typeInput = null;
-    this.maxAddablePokemon = 0;
-    this.resetPokemonFormArray();
+    if (this.isLoading) {
+      this.defaultSearchType = selectedSearchType.code;
+    }
+    else {
+      this.pokemonInputs = []; let pokemonIndex = 0;
+      this.weatherInput = null;
+      this.typeInput = null;
+      this.maxAddablePokemon = 0;
+      this.resetPokemonFormArray();
 
-    for (let input of selectedSearchType.inputs) {
+      for (let input of selectedSearchType.inputs) {
 
-      if (input.type == SearchInputType.Pokemon) {
-        this.addPokemon(input.code, input.name, false, pokemonIndex++);
-      }
-
-      if (input.type == SearchInputType.PokemonSet) {
-        this.pokemonSetCount = 0;
-        for (let i = 0; i < input.options.default; i++) {
-          this.addPokemonFromSet(input, pokemonIndex++);
+        if (input.type == SearchInputType.Pokemon) {
+          this.addPokemon(input.code, input.name, false, pokemonIndex++);
         }
-        this.currentPokemonSetDef = input;
-        this.maxAddablePokemon = input.options.max;
-      }
 
-      if (input.type == SearchInputType.Weather) {
-        if (!this.shadowWeatherInput) { // we don't have a shadow weather in memory
-          this.shadowWeatherInput = new WeatherInput(input.code, input.name);
+        if (input.type == SearchInputType.PokemonSet) {
+          this.pokemonSetCount = 0;
+          for (let i = 0; i < input.options.default; i++) {
+            this.addPokemonFromSet(input, pokemonIndex++);
+          }
+          this.currentPokemonSetDef = input;
+          this.maxAddablePokemon = input.options.max;
         }
-        this.weatherInput = this.shadowWeatherInput;
-      }
 
-      if (input.type == SearchInputType.Type) {
-        if (!this.shadowTypeInput) { // we don't have a shadow type in memory
-          this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
+        if (input.type == SearchInputType.Weather) {
+          if (!this.shadowWeatherInput) { // we don't have a shadow weather in memory
+            this.shadowWeatherInput = new WeatherInput(input.code, input.name);
+          }
+          this.weatherInput = this.shadowWeatherInput;
         }
-        this.typeInput = this.shadowTypeInput;
+
+        if (input.type == SearchInputType.Type) {
+          if (!this.shadowTypeInput) { // we don't have a shadow type in memory
+            this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
+          }
+          this.typeInput = this.shadowTypeInput;
+        }
       }
     }
   }

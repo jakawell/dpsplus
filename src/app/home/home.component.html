@@ -17,7 +17,9 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card ngClass="search-input-card" ngClass.xs="search-input-card-xs">
+  <mat-spinner *ngIf="isLoading" [diameter]="48"></mat-spinner>
+
+  <mat-card *ngIf="!isLoading" ngClass="search-input-card" ngClass.xs="search-input-card-xs">
     <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
 
       <form (ngSubmit)="runQuery()" fxLayout="column" fxLayoutAlign="space-evenly center">
