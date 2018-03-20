@@ -11,6 +11,7 @@ export class DpsPlusService {
     return [
 
       new SearchTypeModel(DpsPlusQueryType.CountersAll, 'Top Moves', [
+        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
         new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon3', 'Pokémon', 0),
@@ -21,8 +22,9 @@ export class DpsPlusService {
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.CountersVsType, 'Top Moves Vs. Type', [
-        new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
         new SearchInputDefinition('types', 'Counter Type', SearchInputType.Type),
+        new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
+        new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon4', 'Pokémon', 0),
         new SearchResultsColumn('quickMove4', 'Quick Move', 2),
@@ -32,9 +34,9 @@ export class DpsPlusService {
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.CountersVsPokemon, 'Top Moves Vs. Pokémon', [
-        new SearchInputDefinition('defender', 'Defender', SearchInputType.Pokemon),
-        new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 3, addTitle: 'Add Attacker' }),
+        new SearchInputDefinition('defender', 'Defender', SearchInputType.Defender),
         new SearchInputDefinition('weather', 'Weather', SearchInputType.Weather),
+        new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 3, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon5', 'Pokémon', 0),
         new SearchResultsColumn('quickMove5', 'Quick Move', 2),
@@ -48,9 +50,9 @@ export class DpsPlusService {
   public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput): any[] {
     switch (queryType) {
       case DpsPlusQueryType.Pokemon:
-        return this.movesetListDPSPlusPoke(pokemonInputs[0]);
+        return this.movesetListDPSPlusPoke(pokemonInputs[0], weatherInput);
       case DpsPlusQueryType.PokemonVsType:
-        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInput);
+        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInput, weatherInput);
       case DpsPlusQueryType.PokemonVsPokemon:
         return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInput);
       case DpsPlusQueryType.CountersAll:
@@ -164,7 +166,7 @@ export class DpsPlusService {
     return weatherMult
   }
 
-  private movesetListDPSPlusPoke(pokemon: PokemonModel): any[] {
+  private movesetListDPSPlusPoke(pokemon: PokemonModel, weatherInput: WeatherInput): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon
     //Output: list of all the movesets with the calculated STAB boosted DPS+, and
@@ -187,11 +189,14 @@ export class DpsPlusService {
         //Determing the STAB multiplier for the quick and charge moves
         let stab = this.getSTAB(pokemon.type1, pokemon.type2, quickMove.type, chargeMove.type);
 
+        //Determing the weather multiplier
+        let weatherMult = this.getWeatherMult(quickMove.type,chargeMove.type,weatherInput.boostedTypes);
+
         //Calculating the power for the quick and charge moves and the cycle time
         let power = this.movesetPower(quickMove, chargeMove);
         //Calculating the damage output over one cycle for the quick and charge moves
-        let quickDamage = stab[0]*power[0];
-        let chargeDamage = stab[1]*power[1];
+        let quickDamage = stab[0]*weatherMult[0]*power[0];
+        let chargeDamage = stab[1]*weatherMult[1]*power[1];
 
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage + chargeDamage)/power[2];
@@ -208,7 +213,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  private movesetListDPSPlusPokeVsType(pokemon: PokemonModel, defenseTypes: TypeInput): any[] {
+  private movesetListDPSPlusPokeVsType(pokemon: PokemonModel, defenseTypes: TypeInput, weatherInput: WeatherInput): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon, the defender's
     //types (if the defender doesn't have a second type enter ""), the list of all
@@ -241,11 +246,14 @@ export class DpsPlusService {
         //Determind the type advantage multipliers for the quick and charge moves
         let typeMult = this.getTypeAdvantageMult(quickMove.type,chargeMove.type,defType1,defType2);
 
+        //Determing the weather multiplier
+        let weatherMult = this.getWeatherMult(quickMove.type,chargeMove.type,weatherInput.boostedTypes);
+
         //Calculating the power for the quick and charge moves and the cycle time
         let power = this.movesetPower(quickMove,chargeMove);
         //Calculating the damage output over one cycle for the quick and charge moves
-        let quickDamage = stab[0]*typeMult[0]*power[0];
-        let chargeDamage = stab[1]*typeMult[1]*power[1];
+        let quickDamage = stab[0]*weatherMult[0]*typeMult[0]*power[0];
+        let chargeDamage = stab[1]*weatherMult[1]*typeMult[1]*power[1];
 
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage + chargeDamage)/power[2];
@@ -366,10 +374,10 @@ export class DpsPlusService {
     let movesetsTotal = [];
 
     if (queryType == DpsPlusQueryType.CountersAll) {
-      movesetsTotal = this.movesetListDPSPlusPoke(selectedPokemon);
+      movesetsTotal = this.movesetListDPSPlusPoke(selectedPokemon, weatherInput);
     }
     else if (queryType == DpsPlusQueryType.CountersVsType) {
-      movesetsTotal = this.movesetListDPSPlusPokeVsType(selectedPokemon, typeInput);
+      movesetsTotal = this.movesetListDPSPlusPokeVsType(selectedPokemon, typeInput, weatherInput);
     }
     else if (queryType == DpsPlusQueryType.CountersVsPokemon) {
       movesetsTotal = this.movesetListDPSPlusPokeVsPoke(selectedPokemon, defender, weatherInput);

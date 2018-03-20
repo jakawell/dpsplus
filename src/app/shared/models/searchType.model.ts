@@ -8,6 +8,7 @@ export enum DpsPlusQueryType {
 }
 
 export enum SearchInputType {
+  Defender,
   Pokemon,
   PokemonSet,
   Weather,

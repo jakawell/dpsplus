@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   public inputsForm: FormGroup;
   public searchTypes: SearchTypeModel[] = [];
+  public defenderInput: PokemonModel;
   public pokemonInputs: PokemonModel[] = [];
   public weatherInput: WeatherInput;
   public typeInput: TypeInput;
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
   public isLoading = true;
 
   // These private "shadow" lists keep all the previous input objects in memory, even if removed from display
+  private shadowDefenderInput: PokemonModel;
   private shadowPokemonInputs: PokemonModel[] = [];
   private shadowWeatherInput: WeatherInput;
   private shadowTypeInput: TypeInput;
@@ -74,7 +76,8 @@ export class HomeComponent implements OnInit {
 
   runQuery() {
     if (this.selectedSearchType) {
-      console.log('Running query: ', this.selectedSearchType, this.pokemonInputs, this.weatherInput, this.typeInput);
+      const allPokemon = this.pokemonInputs.concat(this.defenderInput ? [ this.defenderInput ] : []);
+      console.log('Running query: ', this.selectedSearchType, allPokemon, this.weatherInput, this.typeInput);
 
       this.results = [];
       this.columns.splice(0, this.columns.length);
@@ -84,7 +87,7 @@ export class HomeComponent implements OnInit {
         this.displayedColumns.push(column.name);
       }
 
-      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInput, this.typeInput);
+      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput);
       if (queryResults)
         this.results = queryResults;
     }
@@ -110,6 +113,7 @@ export class HomeComponent implements OnInit {
       this.defaultSearchType = selectedSearchType.code;
     }
     else {
+      this.defenderInput = null;
       this.pokemonInputs = []; let pokemonIndex = 0;
       this.weatherInput = null;
       this.typeInput = null;
@@ -117,6 +121,19 @@ export class HomeComponent implements OnInit {
       this.resetPokemonFormArray();
 
       for (let input of selectedSearchType.inputs) {
+
+        if (input.type == SearchInputType.Defender) {
+          if (!this.shadowDefenderInput) {
+            this.shadowDefenderInput = new PokemonModel(249, this.dataService, input.code, input.name, false, false);
+          }
+          this.shadowDefenderInput.internalId = input.code;
+          this.shadowDefenderInput.internalTitle = input.name;
+          this.shadowDefenderInput.level = 40;
+          this.shadowDefenderInput.attackIv = 15;
+          this.shadowDefenderInput.defenseIv = 15;
+          this.shadowDefenderInput.staminaIv = 15;
+          this.defenderInput = this.shadowDefenderInput;
+        }
 
         if (input.type == SearchInputType.Pokemon) {
           this.addPokemon(input.code, input.name, false, pokemonIndex++);

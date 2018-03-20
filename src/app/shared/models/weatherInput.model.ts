@@ -13,6 +13,7 @@ export class WeatherInput implements SearchInput {
 
   get weatherList(): string[] {
     return [
+      "Neutral",
       "Clear/sunny",
       "Partly Cloudy",
       "Cloudy",
@@ -40,6 +41,8 @@ export class WeatherInput implements SearchInput {
       boostedTypes = ["Dark", "Ghost"];
     } else if (this.value === "Windy"){
       boostedTypes = ["Dragon", "Flying", "Psychic"];
+    } else {
+      boostedTypes = [];
     }//End if statements
 
     return boostedTypes
