@@ -56,11 +56,11 @@ export class DataService {
   }
 
   getPokedex(): any[] {
-    return this._Pokedex.slice(1, 387);
+    return this._Pokedex.slice(1);
   }
 
   getPokedexAlpha(): any[] {
-    return this._PokedexAlpha.slice(1, 387);
+    return this._PokedexAlpha.slice(1);
   }
 
   getPokemon(index: number): any[] {

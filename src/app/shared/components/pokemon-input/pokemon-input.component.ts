@@ -12,13 +12,33 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./pokemon-input.component.css', '../../../home/home.component.css']
 })
 export class PokemonInputComponent implements OnInit {
-  @Input() model: PokemonModel;
+  @Input()
+  set id(id: string) {
+    this._id = id;
+    if (this.model)
+      this.resetForm();
+  }
+  get id(): string {
+    return this._id;
+  }
+
+  @Input()
+  set model(model: PokemonModel) {
+    this._model = model;
+  }
+  get model(): PokemonModel {
+    return this._model;
+  }
+
   @Output() removed: EventEmitter<string> = new EventEmitter<string>();
 
   public pokemonForm: FormGroup;
   public filteredPokemon: Observable<any[]>;
   public selectedSpecies: number;
   public selectedName: string;
+
+  private _id: string;
+  private _model: PokemonModel;
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService) {
     // build the form

@@ -23,7 +23,7 @@
       <form (ngSubmit)="runQuery()" fxLayout="column" fxLayoutAlign="space-evenly center">
         <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
           <!-- Pokemon inputs -->
-          <app-pokemon-input *ngFor="let input of pokemonInputs"  [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
+          <app-pokemon-input *ngFor="let input of pokemonInputs" [id]="input.internalId" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
 
           <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
             <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">

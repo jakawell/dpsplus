@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   public pokemonSetCount = 0;
   public maxAddablePokemon: number = 0;
   public currentPokemonSetDef: SearchInputDefinition;
-  public pokemonList: any[] = [];
   public results: any[] = [];
   public displayedColumns: string[] = [];
   public columns: SearchResultsColumn[] = [];
@@ -45,7 +44,6 @@ export class HomeComponent implements OnInit {
 
     if (this.dataService.isLoaded) {
       this.searchTypes = this.dpsPlusService.SearchTypes;
-      this.importPokedex(this.dataService.getPokedex());
       for (let searchType of this.searchTypes) {
           if (searchType.code == this.defaultSearchType) {
             this.selectedSearchType = searchType;
@@ -56,7 +54,6 @@ export class HomeComponent implements OnInit {
     else {
       this.dataService.load(() => {
         this.searchTypes = this.dpsPlusService.SearchTypes;
-        this.importPokedex(this.dataService.getPokedex());
         for (let searchType of this.searchTypes) {
             if (searchType.code == this.defaultSearchType) {
               this.selectedSearchType = searchType;
@@ -99,20 +96,7 @@ export class HomeComponent implements OnInit {
       let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, this.pokemonInputs, this.weatherInput, this.typeInput);
       if (queryResults)
         this.results = queryResults;
-
-      console.log('DPS+ results: ', this.results);
     }
-  }
-
-  public get allPokemonList(): any[] {
-    return this.pokemonList;
-  }
-
-  private importPokedex(pokedex: any[]) {
-    this.pokemonList = pokedex.sort((a, b) => {
-      let aLower = a[0].toLowerCase(), bLower = b[0].toLowerCase();
-      return (aLower < bLower) ? -1 : ((aLower > bLower) ? 1 : 0);
-    });
   }
 
   private _selectedSearchType: SearchTypeModel;
@@ -167,7 +151,8 @@ export class HomeComponent implements OnInit {
   private addPokemon(code: string, title: string, isRemovable: boolean, atIndex: number) {
     if (this.shadowPokemonInputs.length <= atIndex) { // we don't have a shadow pokemon in memory
       let defaultPokemon = atIndex == 0 ? 149 : (atIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
-      this.shadowPokemonInputs.push(new PokemonModel(defaultPokemon, this.dataService, code, title, isRemovable, false));
+      const newPokemon = new PokemonModel(defaultPokemon, this.dataService, code, title, isRemovable, false);
+      this.shadowPokemonInputs.push(newPokemon);
     }
     else { // we do have a shadow pokemon, and need to update the code and title
       const shadow = this.shadowPokemonInputs[atIndex];
@@ -176,7 +161,20 @@ export class HomeComponent implements OnInit {
       shadow.isRemovable = isRemovable;
       shadow.canSelectMoves = false;
     }
-    this.pokemonInputs.push(this.shadowPokemonInputs[atIndex]);
+    const pokemon = this.shadowPokemonInputs[atIndex];
+    if (code.toLowerCase().startsWith('defend')) {
+      pokemon.level = 40;
+      pokemon.attackIv = 15;
+      pokemon.defenseIv = 15;
+      pokemon.staminaIv = 15;
+    }
+    else {
+      pokemon.level = 30;
+      pokemon.attackIv = 10;
+      pokemon.defenseIv = 10;
+      pokemon.staminaIv = 10;
+    }
+    this.pokemonInputs.push(pokemon);
     this.resetPokemonFormArray();
   }
 
@@ -197,6 +195,24 @@ export class HomeComponent implements OnInit {
       this.pokemonInputs.splice(pokemonIndex, 1);
       this.resetPokemonFormArray();
     }
+
+    // check search query input types for the PokemonSet input type to reset the list title numbers
+    let nonSetPokemonCount = 0;
+    for (let input of this._selectedSearchType.inputs) {
+      if (input.type === SearchInputType.Pokemon) {
+        nonSetPokemonCount++;
+      }
+      else if (input.type === SearchInputType.PokemonSet) {
+        for (let i = nonSetPokemonCount; i < this.pokemonInputs.length; i++) {
+          this.pokemonInputs[i].internalId = input.code + (i - nonSetPokemonCount);
+          this.pokemonInputs[i].internalTitle = input.name + (i - nonSetPokemonCount + 1);
+          this.shadowPokemonInputs[i].internalId = input.code + (i - nonSetPokemonCount);
+          this.shadowPokemonInputs[i].internalTitle = input.name + (i - nonSetPokemonCount + 1);
+        }
+        break;
+      }
+    }
+
   }
 
   private resetPokemonFormArray() {
