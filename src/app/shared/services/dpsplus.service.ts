@@ -58,7 +58,7 @@ export class DpsPlusService {
       case DpsPlusQueryType.CountersAll:
       case DpsPlusQueryType.CountersVsType:
       case DpsPlusQueryType.CountersVsPokemon:
-        return this.topCounters(queryType, pokemonInputs, weatherInput, typeInput).slice(0, 50);
+        return this.topCounters(queryType, pokemonInputs, weatherInput, typeInput).slice(0, 100);
       default:
         throw new Error("Unsupported query type for DpsPlusService.");
     }

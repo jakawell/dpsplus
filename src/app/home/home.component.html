@@ -62,7 +62,7 @@
         </div>
 
         <h1>VS</h1>
-
+        <button type="button" mat-button color="accent" (click)="calculateFromPokedex()">Select top 100 movesets from the entire Pokédex</button>
         <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
           <!-- Attacker inputs -->
           <app-pokemon-input *ngFor="let input of pokemonInputs" [id]="input.internalId" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>

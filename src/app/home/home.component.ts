@@ -250,6 +250,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  public calculateFromPokedex() {
+    // remove all attackers
+    this.pokemonInputs = [];
+    this.pokemonSetCount = 0;
+    
+    this.runQuery();
+  }
+
   public massageDataCell(columnName: string, value: any): any {
     if (columnName.startsWith('dpsPlus') || columnName.startsWith('tank')) {
       return this.precisionRound(value, 1);
