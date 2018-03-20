@@ -26,13 +26,13 @@ export class HomeComponent implements OnInit {
   public results: any[] = [];
   public displayedColumns: string[] = [];
   public columns: SearchResultsColumn[] = [];
+  public isLoading = true;
 
   // These private "shadow" lists keep all the previous input objects in memory, even if removed from display
   private shadowPokemonInputs: PokemonModel[] = [];
   private shadowWeatherInput: WeatherInput;
   private shadowTypeInput: TypeInput;
 
-  private isLoading = true;
   private defaultSearchType: DpsPlusQueryType = DpsPlusQueryType.CountersVsPokemon;
 
   constructor(
