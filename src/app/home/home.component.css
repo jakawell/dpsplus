@@ -1,3 +1,11 @@
+.page-container {
+  margin: 12px 8px;
+}
+
+.page-container-xs {
+  margin: 2px 8px;
+}
+
 .search-type-card-xs {
   width: 100%;
   padding: 16px 8px;
