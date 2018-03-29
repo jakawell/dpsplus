@@ -67,8 +67,11 @@ export class HomeComponent implements OnInit {
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
-        console.log('A newer version is now available. Refresh the page now to update the cache.');
-        this.snackBar.open("Refresh page to update.");
+        console.log('Service worker update available.');
+        let updateSnack = this.snackBar.open("Update available!", "Reload");
+        updateSnack.onAction().subscribe(() => {
+          window.location.reload();
+        });
       });
       this.swUpdate.checkForUpdate();
     }
@@ -254,7 +257,7 @@ export class HomeComponent implements OnInit {
     // remove all attackers
     this.pokemonInputs = [];
     this.pokemonSetCount = 0;
-    
+
     this.runQuery();
   }
 
