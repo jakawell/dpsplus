@@ -32,6 +32,20 @@
   <link rel="apple-touch-icon" type="image/png" sizes="256x256" href="/assets/icon256.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon512.png">
   <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="/assets/icon512.png">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      },
+      showMathMenu: false,
+      menuSettings: {
+        context: "MathJax"
+      }
+    });
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
 <body>
   <app-root></app-root>

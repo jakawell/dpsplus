@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule, MatIconModule, MatAutocompleteModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule, MatIconModule, MatAutocompleteModule, MatDialogModule } from '@angular/material';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -15,9 +15,12 @@ import { HomeComponent } from './home/home.component';
 import { DataService } from './shared/services/data.service';
 import { DpsPlusService } from './shared/services/dpsplus.service';
 import { PokemonInputComponent } from './shared/components/pokemon-input/pokemon-input.component';
+import { MathJaxDirective } from './math-jax-directive.directive';
+import { DocsComponent } from './docs/docs.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'docs', component: DocsComponent },
 ];
 
 @NgModule({
@@ -25,6 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     PokemonInputComponent,
+    MathJaxDirective,
+    DocsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatDialogModule,
   ],
   providers: [
     DataService,
