@@ -21,6 +21,11 @@
     "resources": {
       "files": [
         "/assets/**"
+      ],
+      "urls": [
+        "https://fonts.googleapis.com/**",
+        "https://dpsplus-assets.firebaseapp.com/**",
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/**",
       ]
     }
   }]
