@@ -49,9 +49,59 @@ export class PokemonModel {
     this.defenseBase = parseInt(pokedexData[5]);
     this.staminaBase = parseInt(pokedexData[6]);
 
-    this.quickMoves = [];
-    this.parseMoves(pokedexData.slice(7, 21), true); // parse quick moves
-    this.parseMoves(pokedexData.slice(21, 37), false); // parse charge moves
+    if (this._species == 151) { // darn you mew. y u break all the things.
+      const mewQuick = [ "c",
+        "Pound", "c",
+        "Steel Wing", "c",
+        "Charge Beam", "c",
+        "Shadow Claw", "c",
+        "Volt Switch", "c",
+        "Struggle Bug", "c",
+        "Frost Breath", "c",
+        "Dragon Tail", "c",
+        "Infestation", "c",
+        "Poison Jab", "c",
+        "Rock Smash", "c",
+        "Snarl", "c",
+        "Cut",
+      ];
+      const mewCharge = [ "c",
+        "Blizzard", "c",
+        "Earthquake", "c",
+        "Psychic", "c",
+        "Focus Blast", "c",
+        "Thunder", "c",
+        "Fire Blast", "c",
+        "Hyper Beam", "c",
+        "Solar Beam", "c",
+        "Ancient Power", "c",
+        "Dragon Claw", "c",
+        "Psyshock", "c",
+        "Ice Beam", "c",
+        "Thunderbolt", "c",
+        "Flame Charge", "c",
+        "Low Sweep", "c",
+        "Overheat", "c",
+        "Focus Blast", "c",
+        "Energy Ball", "c",
+        "Gyro Ball", "c",
+        "Bulldoze", "c",
+        "Rock Slide", "c",
+        "Grass Knot", "c",
+        "Flash Cannon", "c",
+        "Wild Charge", "c",
+        "Dark Pulse", "c",
+        "Dazzling Gleam",
+        "l", "Hurricane", "l",
+        "Dragon Pulse",
+      ];
+      this.parseMoves(mewQuick, true); // parse quick moves
+      this.parseMoves(mewCharge, false); // parse charge moves
+    }
+    else {
+      this.parseMoves(pokedexData.slice(7, 21), true); // parse quick moves
+      this.parseMoves(pokedexData.slice(21, 37), false); // parse charge moves
+    }
   }
   get species(): number {
     return this._species;
