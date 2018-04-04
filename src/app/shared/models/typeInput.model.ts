@@ -49,4 +49,21 @@ export class TypeInput implements SearchInput {
     }
     this._type2 = type;
   }
+
+  public serialize() {
+    return JSON.stringify({
+      code: this.code,
+      name: this.name,
+      type1: this.type1,
+      type2: this.type2,
+    });
+  }
+
+  public deserialize(source: string) {
+    const sourceObj: any = JSON.parse(source);
+    if (sourceObj.code) this.code = sourceObj.code;
+    if (sourceObj.name) this.name = sourceObj.name;
+    if (sourceObj.type1) this.type1 = sourceObj.type1;
+    if (sourceObj.type2) this.type2 = sourceObj.type2;
+  }
 }

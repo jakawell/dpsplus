@@ -26,10 +26,10 @@ export class PokemonModel {
 
   constructor(species: number,  private dataService: DataService, internalId?: string, internalTitle?: string, isRemovable?: boolean, canSelectMoves?: boolean) {
     this.species = species;
-    this.level = 25;
-    this.attackIv = 10;
-    this.defenseIv = 10;
-    this.staminaIv = 10;
+    this.level = 30;
+    this.attackIv = 15;
+    this.defenseIv = 15;
+    this.staminaIv = 15;
     this.quickMove = 'Tackle';
     this.chargeMove = 'Growl';
 
@@ -82,7 +82,6 @@ export class PokemonModel {
         "Flame Charge", "c",
         "Low Sweep", "c",
         "Overheat", "c",
-        "Focus Blast", "c",
         "Energy Ball", "c",
         "Gyro Ball", "c",
         "Bulldoze", "c",
@@ -131,6 +130,38 @@ export class PokemonModel {
     return (this.species < 10 ? '00' + this.species : (this.species < 100) ? '0' + this.species : '' + this.species);
   }
 
+  public serialize() {
+    return JSON.stringify({
+      species: this.species,
+      level: this.level,
+      attackIv: this.attackIv,
+      defenseIv: this.defenseIv,
+      staminaIv: this.staminaIv,
+      quickMove: this.quickMove,
+      chargeMove: this.chargeMove,
+
+      internalId: this.internalId,
+      internalTitle: this.internalTitle,
+      isRemovable: this.isRemovable,
+      canSelectMoves: this.canSelectMoves,
+    });
+  }
+
+  public deserialize(source: string) {
+    const sourceObj: any = JSON.parse(source);
+    if (sourceObj.species) this.species = sourceObj.species;
+    if (sourceObj.level) this.level = sourceObj.level;
+    if (sourceObj.attackIv) this.attackIv = sourceObj.attackIv;
+    if (sourceObj.defenseIv) this.defenseIv = sourceObj.defenseIv;
+    if (sourceObj.staminaIv) this.staminaIv = sourceObj.staminaIv;
+    if (sourceObj.quickMove) this.quickMove = sourceObj.quickMove;
+    if (sourceObj.chargeMove) this.chargeMove = sourceObj.chargeMove;
+    if (sourceObj.internalId) this.internalId = sourceObj.internalId;
+    if (sourceObj.internalTitle) this.internalTitle = sourceObj.internalTitle;
+    if (sourceObj.isRemovable) this.isRemovable = sourceObj.isRemovable;
+    if (sourceObj.canSelectMoves) this.canSelectMoves = sourceObj.canSelectMoves;
+  }
+
   private parseMoves(rawMoveList: any[], isQuick: boolean) {
     let moveSet: { name: string, code: string }[] = [];
     for (let i = 0; i < rawMoveList.length; i += 2) {
@@ -144,7 +175,29 @@ export class PokemonModel {
       for (let fromSet of moveSet) {
         if (fromSet.name == fromAll[0]) {
           results.push(new MoveModel(fromSet.name, fromSet.code == 'l', fromSet.code == 'e', fromAll[1], parseInt(fromAll[2]), parseInt(fromAll[3]), parseFloat(fromAll[4])));
+          break;
         }
+      }
+    }
+    if (results.length != moveSet.length) {
+      console.warn('Some moves are missing.', results, moveSet);
+      for (let move of moveSet) {
+          let found = false;
+          for (let result of results) {
+            if (result.name == move.name) {
+              found = true;
+              break;
+            }
+          }
+          let duplicateCount = 0;
+          for (let move2 of moveSet) {
+            if (move2.name == move.name)
+              duplicateCount++;
+          }
+          if (!found)
+            console.warn('Missing ' + move.name);
+          if (duplicateCount > 1)
+            console.warn('Duplicate move ' + move.name);
       }
     }
     if (isQuick) {

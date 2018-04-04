@@ -12,8 +12,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
-import { DataService } from './shared/services/data.service';
-import { DpsPlusService } from './shared/services/dpsplus.service';
+import { DataService, DpsPlusService, StorageService } from './shared/services';
 import { PokemonInputComponent } from './shared/components/pokemon-input/pokemon-input.component';
 import { MathJaxDirective } from './math-jax-directive.directive';
 import { DocsComponent } from './docs/docs.component';
@@ -59,6 +58,7 @@ const appRoutes: Routes = [
   providers: [
     DataService,
     DpsPlusService,
+    StorageService,
   ],
   bootstrap: [AppComponent]
 })

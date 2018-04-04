@@ -47,4 +47,19 @@ export class WeatherInput implements SearchInput {
 
     return boostedTypes
   }
+
+  public serialize() {
+    return JSON.stringify({
+      code: this.code,
+      name: this.name,
+      value: this.value,
+    });
+  }
+
+  public deserialize(source: string) {
+    const sourceObj: any = JSON.parse(source);
+    if (sourceObj.code) this.code = sourceObj.code;
+    if (sourceObj.name) this.name = sourceObj.name;
+    if (sourceObj.value) this.value = sourceObj.value;
+  }
 }

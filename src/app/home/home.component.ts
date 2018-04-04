@@ -5,8 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators/map';
 import { SearchInput } from '../shared/interfaces';
 import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
-import { DataService } from '../shared/services/data.service';
-import { DpsPlusService } from '../shared/services/dpsplus.service';
+import { DataService, DpsPlusService, StorageService } from '../shared/services';
 
 @Component({
   selector: 'app-home',
@@ -34,6 +33,7 @@ export class HomeComponent implements OnInit {
   private shadowPokemonInputs: PokemonModel[] = [];
   private shadowWeatherInput: WeatherInput;
   private shadowTypeInput: TypeInput;
+  private selectedSetCount?: number = null;
 
   private defaultSearchType: DpsPlusQueryType = DpsPlusQueryType.CountersVsPokemon;
 
@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
       private formBuilder: FormBuilder,
       private dataService: DataService,
       private dpsPlusService: DpsPlusService,
+      private storageService: StorageService,
       private swUpdate: SwUpdate,
       private snackBar: MatSnackBar
     ) {
@@ -55,15 +56,19 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.searchTypes = this.dpsPlusService.SearchTypes;
     if (this.dataService.isLoaded) {
-      this.isLoading = false;
-      this.setSelectedSearchTypeByCode(this.defaultSearchType);
+      this.afterLoad();
     }
     else {
       this.dataService.load(() => {
-        this.isLoading = false;
-        this.setSelectedSearchTypeByCode(this.defaultSearchType);
+        this.afterLoad();
       });
     }
+
+    this.storageService.getLastSearchType()
+      .then((searchType: string) => {
+        if (searchType)
+          this.setSelectedSearchTypeByCode(DpsPlusQueryType[searchType]);
+      });
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
@@ -75,6 +80,11 @@ export class HomeComponent implements OnInit {
       });
       this.swUpdate.checkForUpdate();
     }
+  }
+
+  private afterLoad() {
+    this.isLoading = false;
+    this.setSelectedSearchTypeByCode(this.defaultSearchType);
   }
 
   runQuery() {
@@ -93,6 +103,8 @@ export class HomeComponent implements OnInit {
       let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput);
       if (queryResults)
         this.results = queryResults;
+
+      this.saveQuery();
     }
   }
 
@@ -127,15 +139,27 @@ export class HomeComponent implements OnInit {
 
         if (input.type == SearchInputType.Defender) {
           if (!this.shadowDefenderInput) {
-            this.shadowDefenderInput = new PokemonModel(249, this.dataService, input.code, input.name, false, false);
+            this.storageService.getLastDefender().then((defender: PokemonModel) => {
+              if (defender) { // found a saved value
+                this.shadowDefenderInput = defender;
+              }
+              else { // no saved value, so creating new one
+                this.shadowDefenderInput = new PokemonModel(381, this.dataService, input.code, input.name, false, false);
+                this.shadowDefenderInput.level = 40;
+                this.shadowDefenderInput.attackIv = 15;
+                this.shadowDefenderInput.defenseIv = 15;
+                this.shadowDefenderInput.staminaIv = 15;
+              }
+              this.shadowDefenderInput.internalId = input.code;
+              this.shadowDefenderInput.internalTitle = input.name;
+              this.defenderInput = this.shadowDefenderInput;
+            });
           }
-          this.shadowDefenderInput.internalId = input.code;
-          this.shadowDefenderInput.internalTitle = input.name;
-          this.shadowDefenderInput.level = 40;
-          this.shadowDefenderInput.attackIv = 15;
-          this.shadowDefenderInput.defenseIv = 15;
-          this.shadowDefenderInput.staminaIv = 15;
-          this.defenderInput = this.shadowDefenderInput;
+          else {
+            this.shadowDefenderInput.internalId = input.code;
+            this.shadowDefenderInput.internalTitle = input.name;
+            this.defenderInput = this.shadowDefenderInput;
+          }
         }
 
         if (input.type == SearchInputType.Pokemon) {
@@ -143,29 +167,86 @@ export class HomeComponent implements OnInit {
         }
 
         if (input.type == SearchInputType.PokemonSet) {
-          this.pokemonSetCount = 0;
-          for (let i = 0; i < input.options.default; i++) {
-            this.addPokemonFromSet(input, pokemonIndex++);
+          if (this.selectedSetCount == null || this.shadowPokemonInputs.length <= 0) {
+            this.storageService.getLastCountersCount()
+              .then((lastCount: number) => {
+                if (lastCount != null && lastCount >= 0) {
+                  this.selectedSetCount = lastCount;
+                }
+                else {
+                  this.selectedSetCount = input.options.default;
+                }
+
+                this.storageService.getLastCounters()
+                  .then((counters: PokemonModel[]) => {
+                    if (counters) {
+                      this.shadowPokemonInputs = counters;
+                    }
+
+                    this.configurePokemonSetFromInput(input, pokemonIndex);
+                  });
+              });
           }
-          this.currentPokemonSetDef = input;
-          this.maxAddablePokemon = input.options.max;
+          else {
+            this.configurePokemonSetFromInput(input, pokemonIndex);
+          }
         }
 
         if (input.type == SearchInputType.Weather) {
           if (!this.shadowWeatherInput) { // we don't have a shadow weather in memory
-            this.shadowWeatherInput = new WeatherInput(input.code, input.name);
+            this.storageService.getLastWeatherInput() // get from storage
+              .then((weather: WeatherInput) => {
+                if (weather) { // if storage had the value, use it
+                  this.shadowWeatherInput = weather;
+                  this.shadowWeatherInput.code = input.code;
+                  this.shadowWeatherInput.name = input.name;
+                }
+                else { // if not, create a new one
+                  this.shadowWeatherInput = new WeatherInput(input.code, input.name);
+                }
+                this.weatherInput = this.shadowWeatherInput;
+              });
           }
-          this.weatherInput = this.shadowWeatherInput;
+          else { // already have in memory
+            this.shadowWeatherInput.code = input.code;
+            this.shadowWeatherInput.name = input.name;
+            this.weatherInput = this.shadowWeatherInput;
+          }
         }
 
         if (input.type == SearchInputType.Type) {
           if (!this.shadowTypeInput) { // we don't have a shadow type in memory
-            this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
+            this.storageService.getLastTypeInput() // get from storage
+              .then((type: TypeInput) => {
+                if (type) { // if storage had the value, use it
+                  this.shadowTypeInput = type;
+                  this.shadowTypeInput.code = input.code;
+                  this.shadowTypeInput.name = input.name;
+                }
+                else { // if not, create a new one
+                  this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
+                }
+                this.typeInput = this.shadowTypeInput;
+              });
           }
-          this.typeInput = this.shadowTypeInput;
+          else { // already have in memory
+            this.shadowTypeInput.code = input.code;
+            this.shadowTypeInput.name = input.name;
+            this.typeInput = this.shadowTypeInput;
+          }
         }
       }
     }
+  }
+
+  private configurePokemonSetFromInput(input: SearchInputDefinition, pokemonIndex: number) {
+    this.pokemonSetCount = 0;
+    const total: number = Math.min(this.selectedSetCount, input.options.max)
+    for (let i = 0; i < total; i++) {
+      this.addPokemonFromSet(input, pokemonIndex++);
+    }
+    this.currentPokemonSetDef = input;
+    this.maxAddablePokemon = input.options.max;
   }
 
   private addPokemonFromSet(input: SearchInputDefinition, atIndex: number) {
@@ -187,18 +268,6 @@ export class HomeComponent implements OnInit {
       shadow.canSelectMoves = false;
     }
     const pokemon = this.shadowPokemonInputs[atIndex];
-    if (code.toLowerCase().startsWith('defend')) {
-      pokemon.level = 40;
-      pokemon.attackIv = 15;
-      pokemon.defenseIv = 15;
-      pokemon.staminaIv = 15;
-    }
-    else {
-      pokemon.level = 30;
-      pokemon.attackIv = 10;
-      pokemon.defenseIv = 10;
-      pokemon.staminaIv = 10;
-    }
     this.pokemonInputs.push(pokemon);
     this.resetPokemonFormArray();
   }
@@ -210,6 +279,7 @@ export class HomeComponent implements OnInit {
     }
     if (pokemonIndex >= 0) {
       this.pokemonSetCount--; // only set pokemon can be removed
+      this.selectedSetCount--;
 
       // move the removed pokemon to the end of the shadow list
       let tempShadow = this.shadowPokemonInputs[pokemonIndex];
@@ -249,6 +319,7 @@ export class HomeComponent implements OnInit {
 
   public triggerAddPokemon() {
     if (this.pokemonSetCount < this.maxAddablePokemon && this.currentPokemonSetDef) {
+      this.selectedSetCount++;
       this.addPokemonFromSet(this.currentPokemonSetDef, this.pokemonInputs.length);
     }
   }
@@ -257,7 +328,7 @@ export class HomeComponent implements OnInit {
     // remove all attackers
     this.pokemonInputs = [];
     this.pokemonSetCount = 0;
-
+    this.selectedSetCount = 0;
     this.runQuery();
   }
 
@@ -268,6 +339,16 @@ export class HomeComponent implements OnInit {
     else {
       return value;
     }
+  }
+
+  private saveQuery() {
+    this.storageService.setLastSearchType(DpsPlusQueryType[this.selectedSearchType.code]);
+    if (this.defenderInput) this.storageService.setLastDefender(this.defenderInput);
+    if (this.typeInput) this.storageService.setLastTypeInput(this.typeInput);
+    if (this.weatherInput) this.storageService.setLastWeatherInput(this.weatherInput);
+
+    if (this.selectedSetCount != null) this.storageService.setLastCountersCount(this.selectedSetCount);
+    this.storageService.setLastCounters(this.shadowPokemonInputs);
   }
 
   private precisionRound(number, precision): number {
