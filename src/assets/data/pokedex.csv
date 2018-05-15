@@ -4,7 +4,7 @@ Ivysaur,2,Grass,Poison,151,151,120,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Sol
 Venusaur,3,Grass,Poison,198,198,160,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Petal Blizzard,c,Solar Beam,c,Sludge Bomb,e,Frenzy Plant,c,,c,,c,,c,
 Charmander,4,Fire,,116,96,78,c,Scratch,c,Ember,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Burst,c,Flame Charge,c,,c,,c,,c,,c,
 Charmeleon,5,Fire,,158,129,116,c,Fire Fang,l,Scratch,c,Ember,c,,c,,c,,c,,c,Flamethrower,c,Flame Burst,c,Fire Punch,c,,c,,c,,c,,c,
-Charizard,6,Fire,Flying,223,176,156,c,Fire Spin,c,Air Slash,l,Wing Attack,l,Ember,c,,c,,c,,c,Overheat,c,Fire Blast,l,Flamethrower,c,Dragon Claw,c,,c,,c,,c,
+Charizard,6,Fire,Flying,223,176,156,c,Fire Spin,c,Air Slash,l,Wing Attack,l,Ember,c,,c,,c,,c,Overheat,c,Fire Blast,l,Flamethrower,c,Dragon Claw,e,Blast Burn,c,,c,,c,
 Squirtle,7,Water,,94,122,88,c,Bubble,c,Tackle,c,,c,,c,,c,,c,,c,Aqua Tail,c,Water Pulse,c,Aqua Jet,c,,c,,c,,c,,c,
 Wartortle,8,Water,,126,155,118,c,Bite,c,Water Gun,c,,c,,c,,c,,c,,c,Hydro Pump,c,Ice Beam,c,Aqua Jet,c,,c,,c,,c,,c,
 Blastoise,9,Water,,171,210,158,c,Bite,c,Water Gun,c,,c,,c,,c,,c,,c,Hydro Pump,c,Flash Cannon,c,Ice Beam,c,,c,,c,,c,,c,
