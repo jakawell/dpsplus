@@ -64,6 +64,7 @@ export class DpsPlusService {
     }
   }
 
+
   private getSTAB(pokeType1,pokeType2,quickType,chargeType){
     //Input: attacking pokemon type(s) and quick and charge move quickNameTypeStats
     //Output: STAB multipliers
@@ -95,7 +96,15 @@ export class DpsPlusService {
     //Output: Power output over charge time cycle for both moves and cycle time
 
     //Calculating the charge time to use the charge move
-    let chargeTime = chargeNameTypeStats.energy*(quickNameTypeStats.castTime/quickNameTypeStats.energy);
+    //The if statement is making sure that if the charge move is a one bar charge move, the user will lose some energy
+    //if it is used and the energy gain of the quick move is not a factor of 100. Basically, you will actually use more 
+    //than 100 energy when using a one bar charge move.
+      var chargeTime;
+    if (chargeNameTypeStats.energy === 100){
+      let chargeTime = Math.ceil(chargeNameTypeStats.energy/quickNameTypeStats.energy)*quickNameTypeStats.castTime;
+    } else {
+      let chargeTime = chargeNameTypeStats.energy*(quickNameTypeStats.castTime/quickNameTypeStats.energy);
+    }//End If statement
 
     //Calculating the cycle time (charge time + charge move cast time)
     let cycleTime = chargeTime + chargeNameTypeStats.castTime;
