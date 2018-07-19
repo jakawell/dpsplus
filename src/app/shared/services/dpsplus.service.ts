@@ -99,6 +99,7 @@ export class DpsPlusService {
     //The if statement is making sure that if the charge move is a one bar charge move, the user will lose some energy
     //if it is used and the energy gain of the quick move is not a factor of 100. Basically, you will actually use more 
     //than 100 energy when using a one bar charge move.
+      var chargeTime;
     if (chargeNameTypeStats.energy === 100){
       let chargeTime = Math.ceil(chargeNameTypeStats.energy/quickNameTypeStats.energy)*quickNameTypeStats.castTime;
     } else {
