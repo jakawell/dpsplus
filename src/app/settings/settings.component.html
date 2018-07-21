@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Settings</h2>
+<mat-dialog-content ngClass="page-container" fxLayout="column">
+  <mat-checkbox [(ngModel)]="data.showLegacyMoves">Show legacy moves</mat-checkbox>
+  <mat-checkbox [(ngModel)]="data.showEventMoves">Show event moves</mat-checkbox>
+  <mat-checkbox [(ngModel)]="data.showTankiness">Show tankiness</mat-checkbox>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data">Save</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

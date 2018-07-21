@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule, MatIconModule, MatAutocompleteModule, MatDialogModule } from '@angular/material';
+import { MatToolbarModule, MatSidenavModule, MatCardModule, MatProgressSpinnerModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatSnackBarModule, MatSelectModule, MatTableModule, MatIconModule, MatAutocompleteModule, MatDialogModule, MatCheckboxModule } from '@angular/material';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { DataService, DpsPlusService, StorageService } from './shared/services';
 import { PokemonInputComponent } from './shared/components/pokemon-input/pokemon-input.component';
 import { MathJaxDirective } from './math-jax-directive.directive';
 import { DocsComponent } from './docs/docs.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     HomeComponent,
     PokemonInputComponent,
     MathJaxDirective,
-    DocsComponent
+    DocsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,10 @@ const appRoutes: Routes = [
     MatIconModule,
     MatAutocompleteModule,
     MatDialogModule,
+    MatCheckboxModule,
+  ],
+  entryComponents: [
+    SettingsComponent,
   ],
   providers: [
     DataService,

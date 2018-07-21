@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PokemonModel, SearchTypeModel, DpsPlusQueryType, SearchInputType, SearchInputDefinition, SearchResultsColumn, MoveModel, TypeInput, WeatherInput } from '../models';
 import { DataService } from './data.service';
+import { AppOptions } from '../interfaces';
 
 @Injectable()
 export class DpsPlusService {
@@ -47,18 +48,18 @@ export class DpsPlusService {
     ]
   }
 
-  public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput): any[] {
+  public runQuery(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput, appOptions: AppOptions): any[] {
     switch (queryType) {
       case DpsPlusQueryType.Pokemon:
-        return this.movesetListDPSPlusPoke(pokemonInputs[0], weatherInput);
+        return this.movesetListDPSPlusPoke(pokemonInputs[0], weatherInput, appOptions);
       case DpsPlusQueryType.PokemonVsType:
-        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInput, weatherInput);
+        return this.movesetListDPSPlusPokeVsType(pokemonInputs[0], typeInput, weatherInput, appOptions);
       case DpsPlusQueryType.PokemonVsPokemon:
-        return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInput);
+        return this.movesetListDPSPlusPokeVsPoke(pokemonInputs[0], pokemonInputs[1], weatherInput, appOptions);
       case DpsPlusQueryType.CountersAll:
       case DpsPlusQueryType.CountersVsType:
       case DpsPlusQueryType.CountersVsPokemon:
-        return this.topCounters(queryType, pokemonInputs, weatherInput, typeInput).slice(0, 100);
+        return this.topCounters(queryType, pokemonInputs, weatherInput, typeInput, appOptions).slice(0, 100);
       default:
         throw new Error("Unsupported query type for DpsPlusService.");
     }
@@ -174,7 +175,7 @@ export class DpsPlusService {
     return weatherMult
   }
 
-  private movesetListDPSPlusPoke(pokemon: PokemonModel, weatherInput: WeatherInput): any[] {
+  private movesetListDPSPlusPoke(pokemon: PokemonModel, weatherInput: WeatherInput, appOptions: AppOptions): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon
     //Output: list of all the movesets with the calculated STAB boosted DPS+, and
@@ -185,8 +186,12 @@ export class DpsPlusService {
     //Storing all possible movesets and calculating and storing dps+
     //Looping over the number of quick moves
     for (let quickMove of pokemon.quickMoves) {
+      if ((quickMove.isEvent && !appOptions.showEventMoves) || (quickMove.isLegacy && !appOptions.showLegacyMoves))
+        continue;
       //Looping over the number of charge movesets
       for (let chargeMove of pokemon.chargeMoves) {
+        if ((chargeMove.isEvent && !appOptions.showEventMoves) || (chargeMove.isLegacy && !appOptions.showLegacyMoves))
+          continue;
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
         moveset[0] = pokemon.name;
@@ -221,7 +226,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  private movesetListDPSPlusPokeVsType(pokemon: PokemonModel, defenseTypes: TypeInput, weatherInput: WeatherInput): any[] {
+  private movesetListDPSPlusPokeVsType(pokemon: PokemonModel, defenseTypes: TypeInput, weatherInput: WeatherInput, appOptions: AppOptions): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon, the defender's
     //types (if the defender doesn't have a second type enter ""), the list of all
@@ -239,8 +244,12 @@ export class DpsPlusService {
     //Storing all possible movesets and calculating and storing dps+
     //Looping over the number of quick moves
     for (let quickMove of pokemon.quickMoves) {
+      if ((quickMove.isEvent && !appOptions.showEventMoves) || (quickMove.isLegacy && !appOptions.showLegacyMoves))
+        continue;
       //Looping over the number of charge movesets
       for (let chargeMove of pokemon.chargeMoves) {
+        if ((chargeMove.isEvent && !appOptions.showEventMoves) || (chargeMove.isLegacy && !appOptions.showLegacyMoves))
+          continue;
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
         moveset[0] = pokemon.name;
@@ -278,7 +287,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  private movesetListDPSPlusPokeVsPoke(attacker: PokemonModel, defender: PokemonModel, weatherInput: WeatherInput): any[] {
+  private movesetListDPSPlusPokeVsPoke(attacker: PokemonModel, defender: PokemonModel, weatherInput: WeatherInput, appOptions: AppOptions): any[] {
     //Input: an array of the pokemon's name, dex number and type(s), two arrays
     //containing the quick and charge moves for the attacking pokemon, the defender's
     //types (if the defender doesn't have a second type enter ""), the attacker's and
@@ -296,8 +305,12 @@ export class DpsPlusService {
     //Storing all possible movesets and calculating and storing dps+
     //Looping over the number of quick moves
     for (let quickMove of pokemon.quickMoves) {
+      if ((quickMove.isEvent && !appOptions.showEventMoves) || (quickMove.isLegacy && !appOptions.showLegacyMoves))
+        continue;
       //Looping over the number of charge movesets
       for (let chargeMove of pokemon.chargeMoves) {
+        if ((chargeMove.isEvent && !appOptions.showEventMoves) || (chargeMove.isLegacy && !appOptions.showLegacyMoves))
+          continue;
         let moveset = [];
         //Storing the quick and charge moves names in the storage array
         moveset[0] = pokemon.name;
@@ -335,7 +348,7 @@ export class DpsPlusService {
     });
   }//End function
 
-  private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput): any[] {
+  private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput, appOptions: AppOptions): any[] {
     //Initializing the stoarage array of all movesets and the counter for the total
     //number of movesets
     var movesetsCombined = [];
@@ -356,7 +369,7 @@ export class DpsPlusService {
 
     if (attackerSet.length > 0) {
       for (let attacker of attackerSet) {
-        movesetsCombined = movesetsCombined.concat(this.calculateTopCounter(queryType, attacker, defender, typeInput, weatherInput));
+        movesetsCombined = movesetsCombined.concat(this.calculateTopCounter(queryType, attacker, appOptions, defender, typeInput, weatherInput));
       }
     }
     else {
@@ -366,7 +379,7 @@ export class DpsPlusService {
         selectedPokemon.attackIv = 15;
         selectedPokemon.defenseIv = 15;
         selectedPokemon.staminaIv = 15;
-        movesetsCombined = movesetsCombined.concat(this.calculateTopCounter(queryType, selectedPokemon, defender, typeInput, weatherInput));
+        movesetsCombined = movesetsCombined.concat(this.calculateTopCounter(queryType, selectedPokemon, appOptions, defender, typeInput, weatherInput));
       }
     }
 
@@ -378,17 +391,17 @@ export class DpsPlusService {
     });
   }
 
-  private calculateTopCounter(queryType: DpsPlusQueryType, selectedPokemon: PokemonModel, defender?: PokemonModel, typeInput?: TypeInput, weatherInput?: WeatherInput): any[] {
+  private calculateTopCounter(queryType: DpsPlusQueryType, selectedPokemon: PokemonModel, appOptions: AppOptions, defender?: PokemonModel, typeInput?: TypeInput, weatherInput?: WeatherInput): any[] {
     let movesetsTotal = [];
 
     if (queryType == DpsPlusQueryType.CountersAll) {
-      movesetsTotal = this.movesetListDPSPlusPoke(selectedPokemon, weatherInput);
+      movesetsTotal = this.movesetListDPSPlusPoke(selectedPokemon, weatherInput, appOptions);
     }
     else if (queryType == DpsPlusQueryType.CountersVsType) {
-      movesetsTotal = this.movesetListDPSPlusPokeVsType(selectedPokemon, typeInput, weatherInput);
+      movesetsTotal = this.movesetListDPSPlusPokeVsType(selectedPokemon, typeInput, weatherInput, appOptions);
     }
     else if (queryType == DpsPlusQueryType.CountersVsPokemon) {
-      movesetsTotal = this.movesetListDPSPlusPokeVsPoke(selectedPokemon, defender, weatherInput);
+      movesetsTotal = this.movesetListDPSPlusPokeVsPoke(selectedPokemon, defender, weatherInput, appOptions);
     }
 
     return movesetsTotal;

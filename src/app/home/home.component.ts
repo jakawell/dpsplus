@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators/map';
-import { SearchInput } from '../shared/interfaces';
+import { SettingsComponent } from '.././settings/settings.component';
+import { SearchInput, AppOptions } from '../shared/interfaces';
 import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
 import { DataService, DpsPlusService, StorageService } from '../shared/services';
 
@@ -24,7 +25,6 @@ export class HomeComponent implements OnInit {
   public maxAddablePokemon: number = 0;
   public currentPokemonSetDef: SearchInputDefinition;
   public results: any[] = [];
-  public displayedColumns: string[] = [];
   public columns: SearchResultsColumn[] = [];
   public isLoading = true;
 
@@ -37,13 +37,26 @@ export class HomeComponent implements OnInit {
 
   private defaultSearchType: DpsPlusQueryType = DpsPlusQueryType.CountersVsPokemon;
 
+  private appOptions: AppOptions = {
+    showLegacyMoves: true,
+    showEventMoves: true,
+    showCustomMoves: false,
+    showTankiness: true,
+    showDpsPlus: true,
+    showPercentMaxDps: false,
+    showPokemonLevel: false,
+    showLineNumbers: false,
+    topMovesetDisplayLimit: 0,
+  }
+
   constructor(
       private formBuilder: FormBuilder,
       private dataService: DataService,
       private dpsPlusService: DpsPlusService,
       private storageService: StorageService,
       private swUpdate: SwUpdate,
-      private snackBar: MatSnackBar
+      private snackBar: MatSnackBar,
+      private dialog: MatDialog
     ) {
     this.inputsForm = this.formBuilder.group({
       pokemon: this.formBuilder.array([]),
@@ -55,6 +68,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.searchTypes = this.dpsPlusService.SearchTypes;
+    this.storageService.getAppOptions(this.appOptions).then((options: AppOptions) => this.appOptions = options);
     if (this.dataService.isLoaded) {
       this.afterLoad();
     }
@@ -87,6 +101,20 @@ export class HomeComponent implements OnInit {
     this.setSelectedSearchTypeByCode(this.defaultSearchType);
   }
 
+  openSettings() {
+    let settingsResults = this.dialog.open(SettingsComponent, {
+      data: Object.assign({}, this.appOptions)
+    });
+    settingsResults.afterClosed().subscribe(newSettings => {
+      if (newSettings) {
+        this.appOptions = newSettings as AppOptions;
+        this.storageService.setAppOptions(this.appOptions);
+        if (this.results.length > 0) // if there are current results displayed, rerun them with the new settings
+          this.runQuery();
+      }
+    });
+  }
+
   runQuery() {
     if (this.selectedSearchType) {
       const allPokemon = this.pokemonInputs.concat(this.defenderInput ? [ this.defenderInput ] : []);
@@ -94,13 +122,16 @@ export class HomeComponent implements OnInit {
 
       this.results = [];
       this.columns.splice(0, this.columns.length);
-      this.displayedColumns.splice(0, this.displayedColumns.length);
       for (let column of this.selectedSearchType.columns) {
+        if (!this.appOptions.showTankiness && column.name.startsWith('tank'))
+          continue;
+        if (!this.appOptions.showDpsPlus && column.name.startsWith('dpsPlus'))
+          continue;
+
         this.columns.push(column);
-        this.displayedColumns.push(column.name);
       }
 
-      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput);
+      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput, this.appOptions);
       if (queryResults)
         this.results = queryResults;
 

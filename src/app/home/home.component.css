@@ -6,6 +6,13 @@
   margin: 2px 8px;
 }
 
+.info-box {
+  text-align: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
 .search-type-card-xs {
   width: 100%;
   padding: 16px 8px;
@@ -44,17 +51,33 @@
 }
 
 .results-container {
-  margin: 12px;
-  min-width: 60%;
+  margin: 2px 12px;
 }
 
 .results-container-xs {
-  margin: 12px 2px;
+  margin: 2px 0px;
   width: 100%;
 }
 
-.mat-table {
-  overflow: auto;
+.results-table {
+  table-layout: auto;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.results-table-cell {
+  flex: 1 1 auto;
+  overflow: visible;
+  word-wrap: normal;
+  padding: 0px 12px;
+}
+
+.results-table-row {
+  display: table-row;
 }
 
 mat-header-cell[class^='mat-column-dpsPlus'], mat-header-cell[class*=' mat-column-dpsPlus'],

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as localForage from 'localforage';
 import { PokemonModel, TypeInput, WeatherInput } from '../models/';
 import { DataService } from './data.service';
+import { AppOptions } from '../interfaces';
 
 @Injectable()
 export class StorageService {
@@ -12,6 +13,7 @@ export class StorageService {
   private KEY_LAST_WEATHER: string = 'LAST_WEATHER';
   private KEY_LAST_ATTACKERS: string = 'LAST_ATTACKERS';
   private KEY_LAST_ATTACKERS_COUNT: string = 'KEY_LAST_ATTACKERS_COUNT';
+  private KEY_APP_OPTIONS: string = "KEY_APP_OPTIONS";
 
   constructor(private dataService: DataService) { }
 
@@ -89,6 +91,14 @@ export class StorageService {
 
   public setLastCountersCount(count: number): void {
     this.setItem(this.KEY_LAST_ATTACKERS_COUNT, count.toString());
+  }
+
+  public getAppOptions(defaultOptions: AppOptions): Promise<AppOptions> {
+    return this.getItem<AppOptions>(this.KEY_APP_OPTIONS, (value: string) => value ? JSON.parse(value) as AppOptions : defaultOptions);
+  }
+
+  public setAppOptions(appOptions: AppOptions): void {
+    this.setItem(this.KEY_APP_OPTIONS, JSON.stringify(appOptions));
   }
 
   private deserializePokemonModel(pokemonSerialized: string): PokemonModel {
