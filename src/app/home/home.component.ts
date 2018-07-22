@@ -103,7 +103,9 @@ export class HomeComponent implements OnInit {
 
   openSettings() {
     let settingsResults = this.dialog.open(SettingsComponent, {
-      data: Object.assign({}, this.appOptions)
+      data: Object.assign({}, this.appOptions),
+      width: '90%',
+      maxWidth: '400px',
     });
     settingsResults.afterClosed().subscribe(newSettings => {
       if (newSettings) {

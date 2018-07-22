@@ -1,8 +1,16 @@
 <h2 mat-dialog-title>Settings</h2>
-<mat-dialog-content ngClass="page-container" fxLayout="column">
-  <mat-checkbox [(ngModel)]="data.showLegacyMoves">Show legacy moves</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.showEventMoves">Show event moves</mat-checkbox>
-  <mat-checkbox [(ngModel)]="data.showTankiness">Show tankiness</mat-checkbox>
+<mat-dialog-content>
+  <div ngClass="settings-container" fxLayout="column">
+    <div ngClass="checkbox-wrapper">
+      <mat-checkbox [(ngModel)]="data.showLegacyMoves">Show legacy moves</mat-checkbox>
+    </div>
+    <div ngClass="checkbox-wrapper">
+      <mat-checkbox [(ngModel)]="data.showEventMoves">Show event moves</mat-checkbox>
+    </div>
+    <div ngClass="checkbox-wrapper">
+      <mat-checkbox [(ngModel)]="data.showTankiness">Show tankiness</mat-checkbox>
+    </div>
+  </div>
 </mat-dialog-content>
 
 <mat-dialog-actions>

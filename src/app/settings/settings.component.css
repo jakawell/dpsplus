@@ -1,3 +1,15 @@
-.page-container {
+.settings-container {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.setting-entry {
+  margin: 4px;
+}
+
+.checkbox-wrapper {
+    min-height: 50px;
+    display: flex;
+    >mat-checkbox{
+        align-self: center;
+    }
 }
