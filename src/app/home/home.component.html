@@ -97,13 +97,19 @@
     <table class="mat-table results-table">
       <thead>
         <tr class="mat-header-row results-table-row">
+          <th class="mat-header-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
+            <i>#</i>
+          </th>
           <th class="mat-header-cell results-table-cell" *ngFor="let column of columns">
             {{column.display}}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr class="mat-row results-table-row" *ngFor="let result of results">
+        <tr class="mat-row results-table-row" *ngFor="let result of results; let i = index">
+          <td class="mat-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
+            <i>{{i + 1}}</i>
+          </td>
           <td class="mat-cell results-table-cell" *ngFor="let column of columns">
             {{massageDataCell(column.name, result[column.index])}}
           </td>
