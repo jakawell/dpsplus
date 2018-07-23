@@ -86,7 +86,10 @@ export class HomeComponent implements OnInit {
           window.location.reload();
         });
       });
-      this.swUpdate.checkForUpdate();
+      this.swUpdate.checkForUpdate(); // check for update on load
+      setInterval(() => {
+        this.swUpdate.checkForUpdate();
+      }, 120000); // check for updates every 2 minutes
     }
   }
 
@@ -128,9 +131,13 @@ export class HomeComponent implements OnInit {
       this.results = [];
       this.columns.splice(0, this.columns.length);
       for (let column of this.selectedSearchType.columns) {
+        if (this.pokemonInputs.length == 1 && column.name.startsWith('pokemon'))
+          continue;
         if (!this.appOptions.showTankiness && column.name.startsWith('tank'))
           continue;
         if (!this.appOptions.showDpsPlus && column.name.startsWith('dpsPlus'))
+          continue;
+        if (!this.appOptions.showPokemonLevel && column.name.startsWith('stats'))
           continue;
 
         this.columns.push(column);

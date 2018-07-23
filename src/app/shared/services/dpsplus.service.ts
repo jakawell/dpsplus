@@ -16,10 +16,11 @@ export class DpsPlusService {
         new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon3', 'Pokémon', 0),
+        new SearchResultsColumn('stats3', 'Stats', 6),
         new SearchResultsColumn('quickMove3', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove3', 'Charge Move', 3),
-        new SearchResultsColumn('tank3', 'Tank', 5),
         new SearchResultsColumn('dpsPlus3', 'DPS+', 4),
+        new SearchResultsColumn('tank3', 'Tank', 5),
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.CountersVsType, 'Top Moves Vs. Type', [
@@ -28,10 +29,11 @@ export class DpsPlusService {
         new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 2, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon4', 'Pokémon', 0),
+        new SearchResultsColumn('stats4', 'Stats', 6),
         new SearchResultsColumn('quickMove4', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove4', 'Charge Move', 3),
-        new SearchResultsColumn('tank4', 'Tank', 5),
         new SearchResultsColumn('dpsPlus4', 'DPS+', 4),
+        new SearchResultsColumn('tank4', 'Tank', 5),
       ]),
 
       new SearchTypeModel(DpsPlusQueryType.CountersVsPokemon, 'Top Moves Vs. Pokémon', [
@@ -40,10 +42,11 @@ export class DpsPlusService {
         new SearchInputDefinition('attacker', 'Attacker #', SearchInputType.PokemonSet, { min: 0, max: 6, default: 3, addTitle: 'Add Attacker' }),
       ], [
         new SearchResultsColumn('pokemon5', 'Pokémon', 0),
+        new SearchResultsColumn('stats5', 'Stats', 6),
         new SearchResultsColumn('quickMove5', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove5', 'Charge Move', 3),
-        new SearchResultsColumn('tank5', 'Tank', 5),
         new SearchResultsColumn('dpsPlus5', 'DPS+', 4),
+        new SearchResultsColumn('tank5', 'Tank', 5),
       ]),
     ]
   }
@@ -214,6 +217,7 @@ export class DpsPlusService {
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
+        moveset[6] = `L ${pokemon.level}, ${pokemon.attackIv}/${pokemon.defenseIv}/${pokemon.staminaIv}`;
         movesets.push(moveset);
       }
     }
@@ -275,6 +279,7 @@ export class DpsPlusService {
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
+        moveset[6] = `L ${pokemon.level}, ${pokemon.attackIv}/${pokemon.defenseIv}/${pokemon.staminaIv}`;
         movesets.push(moveset);
       }
     }
@@ -336,6 +341,7 @@ export class DpsPlusService {
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(pokemon.attack, pokemon.defense, pokemon.stamina);
+        moveset[6] = `L ${pokemon.level}, ${pokemon.attackIv}/${pokemon.defenseIv}/${pokemon.staminaIv}`;
         movesets.push(moveset);
       }
     }
