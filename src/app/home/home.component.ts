@@ -78,12 +78,6 @@ export class HomeComponent implements OnInit {
       });
     }
 
-    this.storageService.getLastSearchType()
-      .then((searchType: string) => {
-        if (searchType)
-          this.setSelectedSearchTypeByCode(DpsPlusQueryType[searchType]);
-      });
-
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
         console.log('Service worker update available.');
@@ -98,7 +92,16 @@ export class HomeComponent implements OnInit {
 
   private afterLoad() {
     this.isLoading = false;
-    this.setSelectedSearchTypeByCode(this.defaultSearchType);
+
+    this.storageService.getLastSearchType()
+      .then((searchType: string) => {
+        if (searchType) {
+          this.setSelectedSearchTypeByCode(DpsPlusQueryType[searchType]);
+        }
+        else {
+          this.setSelectedSearchTypeByCode(this.defaultSearchType);
+        }
+      });
   }
 
   openSettings() {
