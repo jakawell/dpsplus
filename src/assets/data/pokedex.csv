@@ -385,3 +385,21 @@ Groudon,383,Ground,,270,251,182,c,Dragon Tail,c,Mud Shot,c,,c,,c,,c,,c,,c,Earthq
 Rayquaza,384,Dragon,Flying,284,170,191,c,Dragon Tail,c,Air Slash,c,,c,,c,,c,,c,,c,Outrage,c,Aerial Ace,c,Ancient Power,c,,c,,c,,c,,c,
 Jirachi,385,Steel,Psychic,210,210,200,c,Confusion,c,Charge Beam,c,,c,,c,,c,,c,,c,Doom Desire,c,Psychic,c,Dazzling Gleam,c,,c,,c,,c,,c,
 Deoxys,386,Psychic,,345,115,100,c,Counter,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Swift,c,Psycho Boost,c,,c,,c,,c,,c,
+Rattata (Alolan),1019,Dark,Normal,103,70,60,,c,Tackle,c,Quick Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Hyper Fang,c,Shadow Ball,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Raticate (Alolan),1020,Dark,Normal,135,159,150,,c,Bite,c,Quick Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Hyper Fang,c,Hyper Beam,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Raichu (Alolan),1026,Electric,Psychic,201,172,120,,c,Volt Switch,c,Spark,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Psychic,c,Thunder Punch,c,Wild Charge,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Sandshrew (Alolan),1027,Ice,Steel,125,154,100,,c,Metal Claw,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Blizzard,c,Gyro Ball,c,Night Slash,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Sandslash (Alolan),1028,Ice,Steel,177,221,150,,c,Metal Claw,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Blizzard,c,Gyro Ball,c,Bulldoze,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Vulpix (Alolan),1037,Ice,N/A,96,122,76,,c,Zen Headbutt,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dark Pulse,c,Ice Beam,c,Blizzard,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Ninetales (Alolan),1038,Ice,Fairy,170,207,146,,c,Feint Attack,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dazzling Gleam,c,Ice Beam,c,Blizzard,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Diglett (Alolan),1050,Ground,Steel,108,89,20,,c,Mud Slap,c,Metal Claw,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dig,c,Mud Bomb,c,Rock Tomb,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Dugtrio (Alolan),1051,Ground,Steel,201,148,70,,c,Metal Claw,c,Mud-Slap,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Earthquake,c,Mud Bomb,c,Iron Head,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Meowth (Alolan),1052,Dark,N/A,99,81,80,,c,Scratch,c,Bite,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Night Slash,c,Dark Pulse,c,Foul Play,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Persian (Alolan),1053,Dark,N/A,158,139,130,,c,Scratch,c,Feint Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Foul Play,c,Dark Pulse,c,Play Rough,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Geodude (Alolan),1074,Rock,Electric,132,163,80,,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Rock Slide,c,Rock Tomb,c,Thunderbolt,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Graveler (Alolan),1075,Rock,Electric,164,196,110,,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Thunderbolt,c,Stone Edge,c,Rock Blast,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Golem (Alolan),1076,Rock,Electric,211,229,160,,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Stone Edge,c,Rock Blast,c,Wild Charge,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Grimer (Alolan),1088,Poison,Dark,135,90,160,,c,Poison Jab,c,Bite,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Gunk Shot,c,Sludge Bomb,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Muk (Alolan),1089,Poison,Dark,190,184,210,,c,Bite,c,Poison Jab,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dark Pulse,c,Gunk Shot,c,Sludge Wave,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Exeggutor (Alolan),1103,Grass,Dragon,230,158,190,,c,Dragon Tail,c,Bullet Seed,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Solar Beam,c,Seed Bomb,c,Dragon Pulse,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
+Marowak (Alolan),1105,Fire,Ghost,144,200,120,,c,Hex,c,Rock Smash,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Bone Club,c,Shadow Ball,c,Fire Blast,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
