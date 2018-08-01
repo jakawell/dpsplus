@@ -9,7 +9,4 @@
 .checkbox-wrapper {
     min-height: 50px;
     display: flex;
-    >mat-checkbox{
-        align-self: center;
-    }
 }
