@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { SwUpdate } from '@angular/service-worker';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { map } from 'rxjs/operators/map';
+import { map } from 'rxjs/operators';
 import { SettingsComponent } from '.././settings/settings.component';
 import { SearchInput, AppOptions } from '../shared/interfaces';
 import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';

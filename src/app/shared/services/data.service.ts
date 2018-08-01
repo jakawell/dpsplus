@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as csvParse from 'csv-parse/lib/sync';
+import { Papa } from 'ngx-papaparse';
 
 @Injectable()
 export class DataService {
@@ -13,7 +13,7 @@ export class DataService {
   private _MovesQuick: any[] = null;
   private _MovesCharge: any[] = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private papa: Papa) {
     //this.load();
   }
 
@@ -24,7 +24,7 @@ export class DataService {
     else {
       this.http.get(filePath, { responseType: 'text' })
         .subscribe(data => {
-          reference = csvParse(data);
+          reference = this.papa.parse(data, { skipEmptyLines: true }).data;
           callback(reference);
         });
     }
@@ -33,7 +33,7 @@ export class DataService {
   load(callback?: () => any) {
     this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (pokedex) => {
       this._Pokedex = pokedex;
-      this._PokedexAlpha = pokedex.slice().sort((a, b) => {
+      this._PokedexAlpha = pokedex.slice(1).sort((a, b) => {
         if (a[0] < b[0]) return -1;
         if (a[0] > b[0]) return 1;
         return 0;
@@ -60,7 +60,7 @@ export class DataService {
   }
 
   getPokedexAlpha(): any[] {
-    return this._PokedexAlpha.slice(1);
+    return this._PokedexAlpha.slice();
   }
 
   getPokemon(index: number): any[] {

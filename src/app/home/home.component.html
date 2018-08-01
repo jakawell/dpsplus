@@ -28,7 +28,7 @@
     <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly center">
 
       <form (ngSubmit)="runQuery()" fxLayout="column" fxLayoutAlign="space-evenly center">
-        <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around start">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around start">
           <!-- Defender input -->
           <app-pokemon-input class="search-input-item" *ngIf="defenderInput" [id]="defenderInput.internalId" [model]="defenderInput"></app-pokemon-input>
           <!-- Type input -->
@@ -68,7 +68,7 @@
 
         <h1>VS</h1>
         <button type="button" mat-button color="accent" (click)="calculateFromPokedex()">Select top 100 movesets from the Pokédex</button>
-        <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-around center">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around center">
           <!-- Attacker inputs -->
           <app-pokemon-input *ngFor="let input of pokemonInputs" [id]="input.internalId" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
 
@@ -116,7 +116,7 @@
         </tr>
       </tbody>
     </table>
-    <mat-table class="mat-table" #table [dataSource]="[]">
+    <mat-table class="mat-table" #table [dataSource]="[]" style="display: none;">
       <!-- Wanna hear a funny story? Angular Material won't properly include the styling for
            for standard HTML tables (like above) unless you include a mat-table somewhere too!
            HAHAHAHAHAHAHAHAHAHH!!1!!!! Isn't that HILARIOUS!! HAHAHAHAHAHA-BWHAHAHOHOOHO0!!!
