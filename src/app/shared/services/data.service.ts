@@ -63,8 +63,11 @@ export class DataService {
     return this._PokedexAlpha.slice();
   }
 
-  getPokemon(index: number): any[] {
-    return this._Pokedex[index];
+  getPokemon(species: number, form: string): any[] {
+    for (let pokemon of this._Pokedex)
+      if (pokemon[1] == species && (!form || pokemon[2] == form))
+        return pokemon;
+    return null;
   }
 
   getLevelMultiplier(level: number): number {

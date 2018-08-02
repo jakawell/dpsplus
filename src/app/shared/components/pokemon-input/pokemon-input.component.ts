@@ -34,6 +34,7 @@ export class PokemonInputComponent implements OnInit {
   public pokemonForm: FormGroup;
   public filteredPokemon: Observable<any[]>;
   public selectedSpecies: number;
+  public selectedForm: string;
   public selectedName: string;
 
   private _id: string;
@@ -63,7 +64,8 @@ export class PokemonInputComponent implements OnInit {
       if (typeof value !== 'string') {
         this.selectedName = value[0];
         this.selectedSpecies = value[1] as number;
-        this.model.species = this.selectedSpecies;
+        this.selectedForm = value[2] as string;
+        this.model.changeSpecies(this.selectedSpecies, this.selectedForm);
       }
     });
     this.pokemonForm.get('level').valueChanges.forEach((value: number) => this.model.level = value);
@@ -85,7 +87,7 @@ export class PokemonInputComponent implements OnInit {
 
   public submitForm() {
     const formModel = this.pokemonForm.value;
-    this.model.species = this.selectedSpecies;
+    this.model.changeSpecies(this.selectedSpecies, this.selectedForm);
     this.model.level = formModel.level as number;
     this.model.attackIv = formModel.attackIv as number;
     this.model.defenseIv = formModel.defenseIv as number;
@@ -101,7 +103,7 @@ export class PokemonInputComponent implements OnInit {
 
   private resetForm() {
     this.pokemonForm.reset({
-      species: [this.model.name, this.model.species],
+      species: [this.model.name, this.model.species, this.model.form],
       level: this.model.level,
       attackIv: this.model.attackIv,
       defenseIv: this.model.defenseIv,

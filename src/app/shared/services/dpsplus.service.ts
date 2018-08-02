@@ -384,7 +384,7 @@ export class DpsPlusService {
     }
     else {
       for (let pokemon of this.dataService.getPokedex()) {
-        let selectedPokemon = new PokemonModel(pokemon[1], this.dataService);
+        let selectedPokemon = new PokemonModel(pokemon[1], pokemon[2], this.dataService);
         selectedPokemon.level = 30;
         selectedPokemon.attackIv = 15;
         selectedPokemon.defenseIv = 15;

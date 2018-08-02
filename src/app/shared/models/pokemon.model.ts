@@ -3,6 +3,7 @@ import { DataService } from '../services/data.service';
 
 export class PokemonModel {
   private _species: number;
+  private _form: string;
   public name: string;
   public type1: string;
   public type2: string;
@@ -24,8 +25,8 @@ export class PokemonModel {
   public isRemovable: boolean;
   public canSelectMoves: boolean;
 
-  constructor(species: number,  private dataService: DataService, internalId?: string, internalTitle?: string, isRemovable?: boolean, canSelectMoves?: boolean) {
-    this.species = species;
+  constructor(species: number, form: string, private dataService: DataService, internalId?: string, internalTitle?: string, isRemovable?: boolean, canSelectMoves?: boolean) {
+    this.changeSpecies(species, form);
     this.level = 30;
     this.attackIv = 15;
     this.defenseIv = 15;
@@ -39,15 +40,48 @@ export class PokemonModel {
     this.canSelectMoves = canSelectMoves || false;
   }
 
-  set species(species: number) {
+  get species(): number {
+    return this._species;
+  }
+
+  get form(): string {
+    return this._form;
+  }
+
+  get levelMultiplier(): number {
+    return this.dataService.getLevelMultiplier(this.level);
+  }
+
+  get attack(): number {
+    return (this.attackBase + this.attackIv) * this.levelMultiplier;
+  }
+
+  get defense(): number {
+    return (this.defenseBase + this.defenseIv) * this.levelMultiplier;
+  }
+
+  get stamina(): number {
+    return (this.staminaBase + this.staminaIv) * this.levelMultiplier;
+  }
+
+  get cp(): number {
+    return Math.floor(Math.max((this.attack * Math.pow(this.defense, 0.5) * Math.pow(this.stamina, 0.5) * Math.pow(this.levelMultiplier, 2)) / 10, 10));
+  }
+
+  get paddedNumber(): string {
+    return (this.species < 10 ? '00' + this.species : (this.species < 100) ? '0' + this.species : '' + this.species);
+  }
+
+  public changeSpecies(species: number, form: string) {
     this._species = species;
-    let pokedexData = this.dataService.getPokemon(species);
+    this._form = form;
+    let pokedexData = this.dataService.getPokemon(species, form);
     this.name = pokedexData[0];
-    this.type1 = pokedexData[2];
-    this.type2 = (pokedexData[3] && pokedexData[3] != 'N/A') ? pokedexData[3] : null;
-    this.attackBase = parseInt(pokedexData[4]);
-    this.defenseBase = parseInt(pokedexData[5]);
-    this.staminaBase = parseInt(pokedexData[6]);
+    this.type1 = pokedexData[3];
+    this.type2 = (pokedexData[4] && pokedexData[4] != 'N/A') ? pokedexData[4] : null;
+    this.attackBase = parseInt(pokedexData[5]);
+    this.defenseBase = parseInt(pokedexData[6]);
+    this.staminaBase = parseInt(pokedexData[7]);
 
     if (this._species == 151) { // darn you mew. y u break all the things.
       const mewQuick = [ "c",
@@ -98,41 +132,15 @@ export class PokemonModel {
       this.parseMoves(mewCharge, false); // parse charge moves
     }
     else {
-      this.parseMoves(pokedexData.slice(7, 21), true); // parse quick moves
-      this.parseMoves(pokedexData.slice(21, 37), false); // parse charge moves
+      this.parseMoves(pokedexData.slice(8, 22), true); // parse quick moves
+      this.parseMoves(pokedexData.slice(22, 38), false); // parse charge moves
     }
-  }
-  get species(): number {
-    return this._species;
-  }
-
-  get levelMultiplier(): number {
-    return this.dataService.getLevelMultiplier(this.level);
-  }
-
-  get attack(): number {
-    return (this.attackBase + this.attackIv) * this.levelMultiplier;
-  }
-
-  get defense(): number {
-    return (this.defenseBase + this.defenseIv) * this.levelMultiplier;
-  }
-
-  get stamina(): number {
-    return (this.staminaBase + this.staminaIv) * this.levelMultiplier;
-  }
-
-  get cp(): number {
-    return Math.floor(Math.max((this.attack * Math.pow(this.defense, 0.5) * Math.pow(this.stamina, 0.5) * Math.pow(this.levelMultiplier, 2)) / 10, 10));
-  }
-
-  get paddedNumber(): string {
-    return (this.species < 10 ? '00' + this.species : (this.species < 100) ? '0' + this.species : '' + this.species);
   }
 
   public serialize() {
     return JSON.stringify({
       species: this.species,
+      form: this.form,
       level: this.level,
       attackIv: this.attackIv,
       defenseIv: this.defenseIv,
@@ -149,7 +157,9 @@ export class PokemonModel {
 
   public deserialize(source: string) {
     const sourceObj: any = JSON.parse(source);
-    if (sourceObj.species) this.species = sourceObj.species;
+    if (sourceObj.species) {
+      this.changeSpecies(sourceObj.species, sourceObj.form);
+    }
     if (sourceObj.level) this.level = sourceObj.level;
     if (sourceObj.attackIv) this.attackIv = sourceObj.attackIv;
     if (sourceObj.defenseIv) this.defenseIv = sourceObj.defenseIv;

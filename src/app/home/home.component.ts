@@ -187,7 +187,7 @@ export class HomeComponent implements OnInit {
                 this.shadowDefenderInput = defender;
               }
               else { // no saved value, so creating new one
-                this.shadowDefenderInput = new PokemonModel(381, this.dataService, input.code, input.name, false, false);
+                this.shadowDefenderInput = new PokemonModel(381, null, this.dataService, input.code, input.name, false, false);
                 this.shadowDefenderInput.level = 40;
                 this.shadowDefenderInput.attackIv = 15;
                 this.shadowDefenderInput.defenseIv = 15;
@@ -300,7 +300,7 @@ export class HomeComponent implements OnInit {
   private addPokemon(code: string, title: string, isRemovable: boolean, atIndex: number) {
     if (this.shadowPokemonInputs.length <= atIndex) { // we don't have a shadow pokemon in memory
       let defaultPokemon = atIndex == 0 ? 149 : (atIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
-      const newPokemon = new PokemonModel(defaultPokemon, this.dataService, code, title, isRemovable, false);
+      const newPokemon = new PokemonModel(defaultPokemon, null, this.dataService, code, title, isRemovable, false);
       this.shadowPokemonInputs.push(newPokemon);
     }
     else { // we do have a shadow pokemon, and need to update the code and title

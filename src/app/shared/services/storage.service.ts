@@ -105,7 +105,7 @@ export class StorageService {
     if (!pokemonSerialized)
       return null;
     const pokemon: any = JSON.parse(pokemonSerialized);
-    const result = new PokemonModel(pokemon.species, this.dataService);
+    const result = new PokemonModel(pokemon.species, pokemon.form, this.dataService);
     result.deserialize(pokemonSerialized);
     return result;
   }
