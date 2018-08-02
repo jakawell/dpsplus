@@ -93,38 +93,42 @@
   </mat-card>
 
   <!-- Results table -->
-  <div class="mat-elevation-z8" ngClass="results-container" ngClass.xs="results-container-xs" *ngIf="results.length > 0" fxLayout="column" fxLayoutAlign="start center">
-    <table class="mat-table results-table">
-      <thead>
-        <tr class="mat-header-row results-table-row">
-          <th class="mat-header-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
-            <i>#</i>
-          </th>
-          <th class="mat-header-cell results-table-cell" *ngFor="let column of columns">
-            {{column.display}}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="mat-row results-table-row" *ngFor="let result of results; let i = index">
-          <td class="mat-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
-            <i>{{i + 1}}</i>
-          </td>
-          <td class="mat-cell results-table-cell" *ngFor="let column of columns">
-            {{massageDataCell(column.name, result[column.index])}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <mat-table class="mat-table" #table [dataSource]="[]" style="display: none;">
-      <!-- Wanna hear a funny story? Angular Material won't properly include the styling for
-           for standard HTML tables (like above) unless you include a mat-table somewhere too!
-           HAHAHAHAHAHAHAHAHAHH!!1!!!! Isn't that HILARIOUS!! HAHAHAHAHAHA-BWHAHAHOHOOHO0!!!
-         -->
-      <mat-header-row *matHeaderRowDef="[]"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: [];"></mat-row>
-    </mat-table>
-  </div>
+  <mat-card ngClass="results-container" ngClass.xs="results-container-xs" *ngIf="results.length > 0" >
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <table class="mat-table results-table">
+          <thead>
+            <tr class="mat-header-row results-table-row">
+              <th class="mat-header-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
+                <i>#</i>
+              </th>
+              <th class="mat-header-cell results-table-cell" *ngFor="let column of columns">
+                {{column.display}}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="mat-row results-table-row" *ngFor="let result of results; let i = index">
+              <td class="mat-cell results-table-cell line-num-col" *ngIf="appOptions.showLineNumbers">
+                <i>{{i + 1}}</i>
+              </td>
+              <td class="mat-cell results-table-cell" *ngFor="let column of columns">
+                {{massageDataCell(column.name, result[column.index])}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <mat-table class="mat-table" #table [dataSource]="[]" style="display: none;">
+          <!-- Wanna hear a funny story? Angular Material won't properly include the styling for
+               for standard HTML tables (like above) unless you include a mat-table somewhere too!
+               HAHAHAHAHAHAHAHAHAHH!!1!!!! Isn't that HILARIOUS!! HAHAHAHAHAHA-BWHAHAHOHOOHO0!!!
+             -->
+          <mat-header-row *matHeaderRowDef="[]"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: [];"></mat-row>
+        </mat-table>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
   <mat-card ngClass="attribution-card" ngClass.xs="attribution-card-xs">
     <mat-card-content>

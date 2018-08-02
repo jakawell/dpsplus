@@ -98,11 +98,15 @@ export class DpsPlusService {
     //Input: one moveset and stab multipliers
     //Output: Power output over charge time cycle for both moves and cycle time
 
+    if (quickNameTypeStats.name == 'Transform') { // transform is a quick move that is irrelevant for DPS and breaks some calculations, so we just return with 0 power
+      return [0, 0, 1000];
+    }
+
     //Calculating the charge time to use the charge move
     //The if statement is making sure that if the charge move is a one bar charge move, the user will lose some energy
     //if it is used and the energy gain of the quick move is not a factor of 100. Basically, you will actually use more
     //than 100 energy when using a one bar charge move.
-    var chargeTime
+    var chargeTime;
     if (chargeNameTypeStats.energy === 100){
       chargeTime = Math.ceil(chargeNameTypeStats.energy/quickNameTypeStats.energy)*quickNameTypeStats.castTime;
     } else {

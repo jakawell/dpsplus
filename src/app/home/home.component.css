@@ -55,8 +55,8 @@
 }
 
 .results-container-xs {
-  margin: 2px 0px;
   width: 100%;
+  padding: 16px 8px;
 }
 
 .results-table {
