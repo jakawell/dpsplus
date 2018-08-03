@@ -18,15 +18,20 @@ Pidgey,16,,Normal,Flying,85,76,80,c,Quick Attack,c,Tackle,c,,c,,c,,c,,c,,c,Aeria
 Pidgeotto,17,,Normal,Flying,117,108,126,c,Steel Wing,c,Wing Attack,c,,c,,c,,c,,c,,c,Aerial Ace,c,Air Cutter,c,Twister,c,,c,,c,,c,,c,
 Pidgeot,18,,Normal,Flying,166,157,166,c,Air Slash,c,Steel Wing,l,Wing Attack,c,,c,,c,,c,,c,Brave Bird,c,Hurricane,c,Aerial Ace,l,Air Cutter,c,,c,,c,,c,
 Rattata,19,,Normal,,103,70,60,c,Quick Attack,c,Tackle,c,,c,,c,,c,,c,,c,Hyper Fang,c,Body Slam,c,Dig,c,,c,,c,,c,,c,
+Rattata (Alolan),19,alolan,Dark,Normal,103,70,60,c,Tackle,c,Quick Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Hyper Fang,c,Shadow Ball,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Raticate,20,,Normal,,161,144,110,c,Bite,c,Quick Attack,c,,c,,c,,c,,c,,c,Hyper Beam,c,Hyper Fang,c,Dig,c,,c,,c,,c,,c,
+Raticate (Alolan),20,alolan,Dark,Normal,135,159,150,c,Bite,c,Quick Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Hyper Fang,c,Hyper Beam,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Spearow,21,,Normal,Flying,112,61,80,c,Peck,c,Quick Attack,c,,c,,c,,c,,c,,c,Sky Attack,c,Drill Peck,c,Aerial Ace,l,Twister,c,,c,,c,,c,
 Fearow,22,,Normal,Flying,182,135,130,c,Steel Wing,c,Peck,c,,c,,c,,c,,c,,c,Sky Attack,c,Drill Run,c,Aerial Ace,l,Twister,c,,c,,c,,c,
 Ekans,23,,Poison,,110,102,70,c,Acid,c,Poison Sting,c,,c,,c,,c,,c,,l,Gunk Shot,c,Sludge Bomb,c,Poison Fang,c,Wrap,c,,c,,c,,c,
 Arbok,24,,Poison,,167,158,120,c,Acid,c,Bite,c,,c,,c,,c,,c,,c,Gunk Shot,c,Sludge Wave,c,Dark Pulse,c,,c,,c,,c,,c,
 Pikachu,25,,Electric,,112,101,70,c,Quick Attack,c,Thunder Shock,e,Present,c,,c,,c,,c,,l,Thunder,c,Wild Charge,c,Thunderbolt,c,Discharge,e,Surf,c,,c,,c,
 Raichu,26,,Electric,,193,165,120,c,Volt Switch,c,Spark,l,Thunder Shock,c,,c,,c,,c,,l,Thunder,c,Wild Charge,c,Thunder Punch,c,Brick Break,c,,c,,c,,c,
+Raichu (Alolan),26,alolan,Electric,Psychic,201,172,120,c,Volt Switch,c,Spark,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Psychic,c,Thunder Punch,c,Wild Charge,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Sandshrew,27,,Ground,,126,145,100,c,Scratch,c,Mud Shot,c,,c,,c,,c,,c,,c,Rock Slide,c,Dig,c,Sand Tomb,l,Rock Tomb,c,,c,,c,,c,
+Sandshrew (Alolan),27,alolan,Ice,Steel,125,154,100,c,Metal Claw,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Blizzard,c,Gyro Ball,c,Night Slash,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Sandslash,28,,Ground,,182,202,150,c,Metal Claw,c,Mud Shot,c,,c,,c,,c,,c,,c,Earthquake,c,Bulldoze,c,Rock Tomb,c,,c,,c,,c,,c,
+Sandslash (Alolan),28,alolan,Ice,Steel,177,221,150,c,Metal Claw,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Blizzard,c,Gyro Ball,c,Bulldoze,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Nidoran F,29,,Poison,,86,94,110,c,Bite,c,Poison Sting,c,,c,,c,,c,,c,,c,Sludge Bomb,c,Body Slam,c,Poison Fang,c,,c,,c,,c,,c,
 Nidorina,30,,Poison,,117,126,140,c,Bite,c,Poison Sting,c,,c,,c,,c,,c,,c,Sludge Bomb,c,Poison Fang,c,Dig,c,,c,,c,,c,,c,
 Nidoqueen,31,,Poison,Ground,180,174,180,c,Poison Jab,c,Bite,c,,c,,c,,c,,c,,c,Stone Edge,c,Sludge Wave,c,Earthquake,c,,c,,c,,c,,c,
@@ -36,7 +41,9 @@ Nidoking,34,,Poison,Ground,204,157,162,c,Poison Jab,c,Iron Tail,l,Fury Cutter,c,
 Clefairy,35,,Normal,,107,116,140,c,Pound,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Moonblast,c,Body Slam,c,Disarming Voice,c,,c,,c,,c,,c,
 Clefable,36,,Normal,,178,171,190,l,Pound,c,Zen Headbutt,c,Charge Beam,c,,c,,c,,c,,c,Moonblast,c,Psychic,c,Dazzling Gleam,c,,c,,c,,c,,c,
 Vulpix,37,,Fire,,96,122,76,c,Ember,c,Quick Attack,c,,c,,c,,c,,c,,c,Flamethrower,c,Body Slam,c,Flame Charge,c,,c,,c,,c,,c,
+Vulpix (Alolan),37,alolan,Ice,N/A,96,122,76,c,Zen Headbutt,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dark Pulse,c,Ice Beam,c,Blizzard,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Ninetales,38,,Fire,,169,204,146,c,Fire Spin,l,Ember,c,Feint Attack,c,,c,,c,,c,,c,Overheat,l,Fire Blast,l,Flamethrower,c,Heat Wave,c,Solar Beam,c,,c,,c,
+Ninetales (Alolan),38,alolan,Ice,Fairy,170,207,146,c,Feint Attack,c,Powder Snow,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dazzling Gleam,c,Ice Beam,c,Blizzard,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Jigglypuff,39,,Normal,,80,44,230,c,Pound,c,Feint Attack,c,,c,,c,,c,,c,,l,Play Rough,c,Dazzling Gleam,l,Body Slam,c,Gyro Ball,c,Disarming Voice,c,,c,,c,
 Wigglytuff,40,,Normal,,156,93,280,c,Pound,c,Feint Attack,c,,c,,c,,c,,c,,c,Hyper Beam,c,Play Rough,c,Dazzling Gleam,c,,c,,c,,c,,c,
 Zubat,41,,Poison,Flying,83,76,80,c,Bite,c,Quick Attack,c,,c,,c,,c,,c,,l,Sludge Bomb,c,Air Cutter,c,Poison Fang,c,Swift,c,,c,,c,,c,
@@ -49,9 +56,13 @@ Parasect,47,,Bug,Grass,165,146,120,l,Bug Bite,c,Struggle Bug,c,Fury Cutter,c,,c,
 Venonat,48,,Bug,Poison,100,102,120,c,Confusion,c,Bug Bite,c,,c,,c,,c,,c,,c,Signal Beam,c,Poison Fang,c,Psybeam,c,,c,,c,,c,,c,
 Venomoth,49,,Bug,Poison,179,150,140,c,Confusion,l,Bug Bite,c,Infestation,c,,c,,c,,c,,c,Psychic,c,Bug Buzz,l,Poison Fang,c,Silver Wind,c,,c,,c,,c,
 Diglett,50,,Ground,,109,88,20,c,Mud-Slap,c,Scratch,l,Mud Shot,c,,c,,c,,c,,c,Mud Bomb,c,Dig,c,Rock Tomb,c,,c,,c,,c,,c,
+Diglett (Alolan),50,alolan,Ground,Steel,108,89,20,c,Mud-Slap,c,Metal Claw,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dig,c,Mud Bomb,c,Rock Tomb,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Dugtrio,51,,Ground,,167,147,70,c,Mud-Slap,c,Sucker Punch,l,Mud Shot,c,,c,,c,,c,,c,Stone Edge,c,Earthquake,c,Mud Bomb,c,,c,,c,,c,,c,
+Dugtrio (Alolan),51,alolan,Ground,Steel,201,148,70,c,Metal Claw,c,Mud-Slap,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Earthquake,c,Mud Bomb,c,Iron Head,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Meowth,52,,Normal,,92,81,80,c,Scratch,c,Bite,c,,c,,c,,c,,c,,c,Foul Play,l,Body Slam,c,Dark Pulse,c,Night Slash,c,,c,,c,,c,
+Meowth (Alolan),52,alolan,Dark,N/A,99,81,80,c,Scratch,c,Bite,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Night Slash,c,Dark Pulse,c,Foul Play,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Persian,53,,Normal,,150,139,130,c,Scratch,c,Feint Attack,c,,c,,c,,c,,c,,c,Foul Play,c,Play Rough,c,Power Gem,l,Night Slash,c,,c,,c,,c,
+Persian (Alolan),53,alolan,Dark,N/A,158,139,130,c,Scratch,c,Feint Attack,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Foul Play,c,Dark Pulse,c,Play Rough,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Psyduck,54,,Water,,122,96,100,c,Water Gun,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Cross Chop,c,Aqua Tail,c,Psybeam,c,,c,,c,,c,,c,
 Golduck,55,,Water,,191,163,160,c,Confusion,c,Water Gun,c,,c,,c,,c,,c,,c,Hydro Pump,c,Psychic,c,Ice Beam,c,,c,,c,,c,,c,
 Mankey,56,,Fighting,,148,87,80,c,Scratch,c,Karate Chop,c,,c,,c,,c,,c,,c,Cross Chop,c,Brick Break,c,Low Sweep,c,,c,,c,,c,,c,
@@ -73,8 +84,11 @@ Victreebel,71,,Grass,Poison,207,138,160,c,Razor Leaf,c,Acid,c,,c,,c,,c,,c,,c,Sol
 Tentacool,72,,Water,Poison,97,182,80,c,Bubble,c,Poison Sting,c,,c,,c,,c,,c,,c,Bubble Beam,c,Water Pulse,c,Wrap,c,,c,,c,,c,,c,
 Tentacruel,73,,Water,Poison,166,237,160,c,Poison Jab,c,Acid,c,,c,,c,,c,,c,,c,Hydro Pump,c,Blizzard,c,Sludge Wave,c,,c,,c,,c,,c,
 Geodude,74,,Rock,Ground,132,163,80,c,Rock Throw,c,Tackle,c,,c,,c,,c,,c,,c,Rock Slide,c,Rock Tomb,c,Dig,c,,c,,c,,c,,c,
+Geodude (Alolan),74,alolan,Rock,Electric,132,163,80,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Rock Slide,c,Rock Tomb,c,Thunderbolt,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Graveler,75,,Rock,Ground,164,196,110,c,Rock Throw,c,Mud-Slap,l,Mud Shot,c,,c,,c,,c,,c,Stone Edge,l,Rock Slide,c,Rock Blast,c,Dig,c,,c,,c,,c,
+Graveler (Alolan),75,alolan,Rock,Electric,164,196,110,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Thunderbolt,c,Stone Edge,c,Rock Blast,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Golem,76,,Rock,Ground,211,229,160,c,Rock Throw,c,Mud-Slap,l,Mud Shot,c,,c,,c,,c,,c,Stone Edge,c,Earthquake,c,Rock Blast,l,Ancient Power,c,,c,,c,,c,
+Golem (Alolan),76,alolan,Rock,Electric,211,229,160,c,Rock Throw,c,Volt Switch,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Stone Edge,c,Rock Blast,c,Wild Charge,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Ponyta,77,,Fire,,170,132,100,c,Ember,c,Tackle,c,,c,,c,,c,,c,,l,Fire Blast,c,Stomp,c,Flame Wheel,c,Flame Charge,c,,c,,c,,c,
 Rapidash,78,,Fire,,207,167,130,c,Fire Spin,l,Ember,c,Low Kick,c,,c,,c,,c,,c,Fire Blast,c,Heat Wave,c,Drill Run,c,,c,,c,,c,,c,
 Slowpoke,79,,Water,Psychic,109,109,180,c,Confusion,c,Water Gun,c,,c,,c,,c,,c,,c,Psychic,c,Psyshock,c,Water Pulse,c,,c,,c,,c,,c,
@@ -87,7 +101,9 @@ Dodrio,85,,Normal,Flying,218,145,120,c,Steel Wing,c,Feint Attack,c,,c,,c,,c,,c,,
 Seel,86,,Water,,85,128,130,l,Water Gun,c,Lick,c,Ice Shard,c,,c,,c,,c,,c,Aqua Tail,c,Aurora Beam,l,Aqua Jet,c,Icy Wind,c,,c,,c,,c,
 Dewgong,87,,Water,Ice,139,184,180,c,Iron Tail,c,Frost Breath,l,Ice Shard,c,,c,,c,,c,,c,Blizzard,c,Aurora Beam,c,Water Pulse,l,Icy Wind,l,Aqua Jet,c,,c,,c,
 Grimer,88,,Poison,,135,90,160,c,Poison Jab,l,Acid,c,Mud-Slap,c,,c,,c,,c,,c,Sludge Bomb,c,Sludge,c,Mud Bomb,c,,c,,c,,c,,c,
+Grimer (Alolan),88,alolan,Poison,Dark,135,90,160,c,Poison Jab,c,Bite,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Crunch,c,Gunk Shot,c,Sludge Bomb,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Muk,89,,Poison,,190,184,210,c,Poison Jab,l,Acid,l,Lick,c,Infestation,c,,c,,c,,c,Gunk Shot,c,Sludge Wave,c,Dark Pulse,c,,c,,c,,c,,c,
+Muk (Alolan),89,alolan,Poison,Dark,190,184,210,c,Bite,c,Poison Jab,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Dark Pulse,c,Gunk Shot,c,Sludge Wave,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Shellder,90,,Water,,116,168,60,c,Tackle,c,Ice Shard,c,,c,,c,,c,,c,,c,Bubble Beam,c,Water Pulse,c,Icy Wind,c,,c,,c,,c,,c,
 Cloyster,91,,Water,Ice,186,323,100,c,Frost Breath,c,Ice Shard,c,,c,,c,,c,,c,,l,Blizzard,c,Hydro Pump,c,Avalanche,c,Aurora Beam,l,Icy Wind,c,,c,,c,
 Gastly,92,,Ghost,Poison,186,70,60,c,Lick,l,Sucker Punch,c,Astonish,c,,c,,c,,c,,c,Sludge Bomb,c,Night Shade,c,Dark Pulse,l,Ominous Wind,c,,c,,c,,c,
@@ -102,7 +118,9 @@ Voltorb,100,,Electric,,109,114,80,c,Spark,c,Tackle,c,,c,,c,,c,,c,,c,Thunderbolt,
 Electrode,101,,Electric,,173,179,120,c,Volt Switch,c,Spark,l,Tackle,c,,c,,c,,c,,c,Hyper Beam,c,Thunderbolt,c,Discharge,c,,c,,c,,c,,c,
 Exeggcute,102,,Grass,Psychic,107,140,120,c,Confusion,c,Bullet Seed,c,,c,,c,,c,,c,,c,Psychic,c,Seed Bomb,c,Ancient Power,c,,c,,c,,c,,c,
 Exeggutor,103,,Grass,Psychic,233,158,190,l,Confusion,l,Zen Headbutt,c,Extrasensory,c,Bullet Seed,c,,c,,c,,c,Solar Beam,c,Psychic,c,Seed Bomb,c,,c,,c,,c,,c,
+Exeggutor (Alolan),103,alolan,Grass,Dragon,230,158,190,c,Dragon Tail,c,Bullet Seed,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Solar Beam,c,Seed Bomb,c,Dragon Pulse,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Cubone,104,,Ground,,90,165,100,c,Mud-Slap,c,Rock Smash,c,,c,,c,,c,,c,,c,Bone Club,c,Bulldoze,c,Dig,c,,c,,c,,c,,c,
+Marowak (Alolan),105,alolan,Fire,Ghost,144,200,120,c,Hex,c,Rock Smash,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A,c,Bone Club,c,Shadow Ball,c,Fire Blast,c,N/A,c,N/A,c,N/A,c,N/A,c,N/A
 Marowak,105,,Ground,,144,200,120,c,Mud-Slap,c,Rock Smash,c,,c,,c,,c,,c,,c,Earthquake,c,Bone Club,c,Dig,c,,c,,c,,c,,c,
 Hitmonlee,106,,Fighting,,224,211,100,c,Rock Smash,c,Low Kick,c,,c,,c,,c,,c,,c,Close Combat,c,Stone Edge,l,Stomp,l,Brick Break,c,Low Sweep,c,,c,,c,
 Hitmonchan,107,,Fighting,,193,212,100,c,Counter,l,Rock Smash,c,Bullet Punch,c,,c,,c,,c,,c,Close Combat,l,Brick Break,c,Ice Punch,c,Thunder Punch,c,Fire Punch,c,,c,,c,
