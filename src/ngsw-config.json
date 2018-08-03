@@ -23,6 +23,7 @@
       "urls": [
         "https://fonts.googleapis.com/**",
         "https://dpsplus-assets.firebaseapp.com/**",
+        "https://static.dpsplus.app/**",
         "https://cdnjs.cloudflare.com/ajax/libs/mathjax/**"
       ]
     }

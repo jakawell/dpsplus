@@ -87,9 +87,6 @@ export class HomeComponent implements OnInit {
         });
       });
       this.swUpdate.checkForUpdate(); // check for update on load
-      setInterval(() => {
-        this.swUpdate.checkForUpdate();
-      }, 120000); // check for updates every 2 minutes
     }
   }
 

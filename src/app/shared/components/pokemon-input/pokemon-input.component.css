@@ -7,6 +7,10 @@
   width: 120px;
 }
 
+.pokemon-name-option {
+  font-size: 12px;
+}
+
 .pokemon-level-input {
   width: 48px;
 }
