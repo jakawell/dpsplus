@@ -195,6 +195,10 @@ export class DpsPlusService {
     let defender: PokemonModel = defenderSet.length > 0 ? defenderSet[0] : null;
 
     if (attackerSet.length > 0) {
+      if (attackerSet.length == 1) {
+        appOptions = Object.assign({}, appOptions);
+        appOptions.limitTopMovesets = false;
+      }
       for (let attacker of attackerSet) {
         movesetsCombined = movesetsCombined.concat(this.calculateTopCounter(queryType, attacker, appOptions, defender, typeInput, weatherInput));
       }

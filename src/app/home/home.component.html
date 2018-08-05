@@ -72,7 +72,7 @@
           <!-- Attacker inputs -->
           <app-pokemon-input *ngFor="let input of pokemonInputs" [id]="input.internalId" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
 
-          <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" width="160px" fxLayout="column" fxLayoutAlign="space-around center">
+          <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" fxLayout="column" fxLayoutAlign="space-around center">
             <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
               <mat-icon aria-label="Add Pokémon">add_circle</mat-icon>
             </button>
