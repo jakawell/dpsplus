@@ -32,7 +32,7 @@ export class DataService {
 
   load(callback?: () => any) {
     this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (pokedex) => {
-      this._Pokedex = pokedex;
+      this._Pokedex = pokedex.slice(1);
       this._PokedexAlpha = pokedex.slice(1).sort((a, b) => {
         if (a[0] < b[0]) return -1;
         if (a[0] > b[0]) return 1;
@@ -56,7 +56,7 @@ export class DataService {
   }
 
   getPokedex(): any[] {
-    return this._Pokedex.slice(1);
+    return this._Pokedex.slice();
   }
 
   getPokedexAlpha(): any[] {
@@ -65,7 +65,7 @@ export class DataService {
 
   getPokemon(species: number, form: string): any[] {
     for (let pokemon of this._Pokedex)
-      if (pokemon[1] == species && (!form || pokemon[2] == form))
+      if (pokemon[1] == species && (form ? pokemon[2] == form : !pokemon[2]))
         return pokemon;
     return null;
   }

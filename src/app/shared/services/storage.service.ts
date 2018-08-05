@@ -94,7 +94,7 @@ export class StorageService {
   }
 
   public getAppOptions(defaultOptions: AppOptions): Promise<AppOptions> {
-    return this.getItem<AppOptions>(this.KEY_APP_OPTIONS, (value: string) => value ? JSON.parse(value) as AppOptions : defaultOptions);
+    return this.getItem<AppOptions>(this.KEY_APP_OPTIONS, (value: string) => value ? (Object.assign(defaultOptions, JSON.parse(value))) as AppOptions : defaultOptions);
   }
 
   public setAppOptions(appOptions: AppOptions): void {

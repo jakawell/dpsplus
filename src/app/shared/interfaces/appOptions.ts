@@ -7,5 +7,6 @@ export interface AppOptions {
   showPercentMaxDps: boolean;
   showPokemonLevel: boolean;
   showLineNumbers: boolean;
+  limitTopMovesets: boolean;
   topMovesetDisplayLimit: number;
 }

@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
     showPercentMaxDps: false,
     showPokemonLevel: false,
     showLineNumbers: false,
+    limitTopMovesets: false,
     topMovesetDisplayLimit: 0,
   }
 
@@ -112,6 +113,7 @@ export class HomeComponent implements OnInit {
     });
     settingsResults.afterClosed().subscribe(newSettings => {
       if (newSettings) {
+        newSettings.topMovesetDisplayLimit = Math.max(1, newSettings.topMovesetDisplayLimit); // the limit can't be less than 1, and I stupidly defaulted it to 0 at first...
         this.appOptions = newSettings as AppOptions;
         this.storageService.setAppOptions(this.appOptions);
         if (this.results.length > 0) // if there are current results displayed, rerun them with the new settings
