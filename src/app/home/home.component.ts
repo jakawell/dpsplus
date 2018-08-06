@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     showPokemonLevel: false,
     showLineNumbers: false,
     limitTopMovesets: false,
-    topMovesetDisplayLimit: 0,
+    topMovesetDisplayLimit: 0
   }
 
   constructor(
@@ -135,6 +135,8 @@ export class HomeComponent implements OnInit {
         if (!this.appOptions.showTankiness && column.name.startsWith('tank'))
           continue;
         if (!this.appOptions.showDpsPlus && column.name.startsWith('dpsPlus'))
+          continue;
+        if (!this.appOptions.showPercentMaxDps && column.name.startsWith('tdpsPercent'))
           continue;
         if (!this.appOptions.showPokemonLevel && column.name.startsWith('stats'))
           continue;
@@ -377,6 +379,10 @@ export class HomeComponent implements OnInit {
   public massageDataCell(columnName: string, value: any): any {
     if (columnName.startsWith('dpsPlus') || columnName.startsWith('tank')) {
       return this.precisionRound(value, 1);
+    }
+    else if (columnName.startsWith('tdpsPercent')) {
+      let percentage = this.precisionRound(value * 100, 1);
+      return percentage == 100 ? '-' : (percentage + '%');
     }
     else {
       return value;

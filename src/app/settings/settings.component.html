@@ -19,6 +19,12 @@
     <div ngClass="checkbox-wrapper">
       <mat-checkbox [(ngModel)]="data.limitTopMovesets">Show only top moveset per Pokémon</mat-checkbox>
     </div>
+    <div ngClass="checkbox-wrapper">
+      <mat-checkbox [(ngModel)]="data.showDpsPlus">Show DPS+ score</mat-checkbox>
+    </div>
+    <div ngClass="checkbox-wrapper">
+      <mat-checkbox [(ngModel)]="data.showPercentMaxDps">Show percentage of top DPS+</mat-checkbox>
+    </div>
   </div>
 </mat-dialog-content>
 

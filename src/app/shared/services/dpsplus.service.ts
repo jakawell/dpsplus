@@ -19,6 +19,7 @@ export class DpsPlusService {
         new SearchResultsColumn('quickMove3', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove3', 'Charge Move', 3),
         new SearchResultsColumn('dpsPlus3', 'DPS+', 4),
+        new SearchResultsColumn('tdpsPercent3', 'DPS+%', 7),
         new SearchResultsColumn('tank3', 'Tank', 5),
       ]),
 
@@ -32,6 +33,7 @@ export class DpsPlusService {
         new SearchResultsColumn('quickMove4', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove4', 'Charge Move', 3),
         new SearchResultsColumn('dpsPlus4', 'DPS+', 4),
+        new SearchResultsColumn('tdpsPercent4', 'DPS+%', 7),
         new SearchResultsColumn('tank4', 'Tank', 5),
       ]),
 
@@ -45,6 +47,7 @@ export class DpsPlusService {
         new SearchResultsColumn('quickMove5', 'Quick Move', 2),
         new SearchResultsColumn('chargeMove5', 'Charge Move', 3),
         new SearchResultsColumn('dpsPlus5', 'DPS+', 4),
+        new SearchResultsColumn('tdpsPercent5', 'DPS+%', 7),
         new SearchResultsColumn('tank5', 'Tank', 5),
       ]),
     ]
@@ -215,11 +218,20 @@ export class DpsPlusService {
     }
 
     // sort by DPS+
-    return movesetsCombined.sort((a, b) => {
+    let movesetsSorted =  movesetsCombined.sort((a, b) => {
       if (a[4] > b[4]) return -1;
       else if (a[4] < b[4]) return 1;
       else return 0;
     });
+
+    if (appOptions.showPercentMaxDps && movesetsSorted.length > 0) {
+      let top = movesetsSorted[0][4];
+      for (let moveset of movesetsSorted) {
+        moveset[7] = moveset[4] / top;
+      }
+    }
+
+    return movesetsSorted;
   }
 
   private calculateTopCounter(queryType: DpsPlusQueryType, selectedPokemon: PokemonModel, appOptions: AppOptions, defender?: PokemonModel, typeInput?: TypeInput, weatherInput?: WeatherInput): any[] {
@@ -274,6 +286,7 @@ export class DpsPlusService {
         moveset[4] = (quickDamage + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(selectedPokemon.attack, selectedPokemon.defense, selectedPokemon.stamina);
         moveset[6] = `L ${selectedPokemon.level}, ${selectedPokemon.attackIv}/${selectedPokemon.defenseIv}/${selectedPokemon.staminaIv}`;
+        moveset[7] = null; // placeholder for the Percentage of Top DPS+
         movesets.push(moveset);
       }
     }

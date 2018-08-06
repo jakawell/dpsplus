@@ -47,7 +47,7 @@
 }
 
 .search-input-add-button {
-  width: 224px;
+  width: 240px;
 }
 
 .results-container {
@@ -84,6 +84,8 @@ mat-header-cell[class^='mat-column-dpsPlus'], mat-header-cell[class*=' mat-colum
 mat-cell[class^='mat-column-dpsPlus'], mat-cell[class*=' mat-column-dpsPlus'],
 mat-header-cell[class^='mat-column-tank'], mat-header-cell[class*=' mat-column-tank'],
 mat-cell[class^='mat-column-tank'], mat-cell[class*=' mat-column-tank'],
+mat-header-cell[class^='mat-column-tdpsPercent'], mat-header-cell[class*=' mat-column-tdpsPercent'],
+mat-cell[class^='mat-column-tdpsPercent'], mat-cell[class*=' mat-column-tdpsPercent'],
 .line-num-col {
   flex: 0 0 15%;
 }
