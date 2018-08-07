@@ -46,8 +46,8 @@ export class HomeComponent implements OnInit {
     showPercentMaxDps: false,
     showPokemonLevel: false,
     showLineNumbers: false,
-    limitTopMovesets: false,
-    topMovesetDisplayLimit: 0
+    limitTopMovesets: true,
+    topMovesetDisplayLimit: 1
   }
 
   constructor(
