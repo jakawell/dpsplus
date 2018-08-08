@@ -14,7 +14,7 @@
       <h2>Search</h2>
       <mat-form-field>
         <mat-select placeholder="Search type" [(ngModel)]="selectedSearchType" name="search">
-          <mat-option *ngFor="let search of searchTypes" [value]="search">
+          <mat-option *ngFor="let search of searchTypes" [value]="search" role="option">
             {{ search.displayName }}
           </mat-option>
         </mat-select>
@@ -57,7 +57,7 @@
             <div>
               <mat-form-field>
                 <mat-select placeholder="Weather type" [(ngModel)]="weatherInput.value" name="weatherType">
-                  <mat-option *ngFor="let weatherType of weatherInput.weatherList" [value]="weatherType">
+                  <mat-option *ngFor="let weatherType of weatherInput.weatherList" [value]="weatherType" role="option">
                     {{ weatherType }}
                   </mat-option>
                 </mat-select>
@@ -73,7 +73,7 @@
           <app-pokemon-input *ngFor="let input of pokemonInputs" [id]="input.internalId" [model]="input" (removed)="removePokemon($event)"></app-pokemon-input>
 
           <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" fxLayout="column" fxLayoutAlign="space-around center">
-            <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()">
+            <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()" aria-label="Add Pokémon">
               <mat-icon aria-label="Add Pokémon">add_circle</mat-icon>
             </button>
             <h3>{{currentPokemonSetDef.options.addTitle}}</h3>
@@ -82,7 +82,7 @@
 
         <div fxLayout="row">
           <button type="submit" mat-raised-button color="primary">Calculate</button>
-          <button type="button" mat-icon-button (click)="openSettings()">
+          <button type="button" mat-icon-button (click)="openSettings()" aria-label="Settings">
             <mat-icon aria-label="Settings">settings</mat-icon>
           </button>
         </div>

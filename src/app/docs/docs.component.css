@@ -1,11 +1,11 @@
 .page-container {
   margin: 12px 20%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, Helvetica, sans-serif;
 }
 
 .page-container-xs {
   margin: 2px 10%;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, Helvetica, sans-serif;
 }
 
 .back-button {
