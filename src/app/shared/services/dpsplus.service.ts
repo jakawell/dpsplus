@@ -284,7 +284,7 @@ export class DpsPlusService {
         }
 
         //Finally calculating DPS+ for the i, j moveset
-        moveset[4] = (quickDamage*(power[4]/power[3] + chargeDamage)/power[2];
+        moveset[4] = (quickDamage*(power[4]/power[3]) + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(selectedPokemon.attack, selectedPokemon.defense, selectedPokemon.stamina);
         moveset[6] = `L ${selectedPokemon.level}, ${selectedPokemon.attackIv}/${selectedPokemon.defenseIv}/${selectedPokemon.staminaIv}`;
         moveset[7] = null; // placeholder for the Percentage of Top DPS+
