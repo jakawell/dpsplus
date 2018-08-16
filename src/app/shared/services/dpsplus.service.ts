@@ -113,10 +113,11 @@ export class DpsPlusService {
     let cycleTime = chargeTime + chargeNameTypeStats.castTime;
 
     //Calculating the individual DPS+ for the charge and quick moves
-    let quickPower = (quickNameTypeStats.power/quickNameTypeStats.castTime)*chargeTime;
+    let quickPower = quickNameTypeStats.power;
     let chargePower = chargeNameTypeStats.power;
+    let quickCT = quickNameTypeStats.castTime;
 
-    return [quickPower, chargePower, cycleTime]
+    return [quickPower, chargePower, cycleTime, quickCT, chargeTime]
   }
 
   private getIndex(type,typemultiplierslist){
@@ -283,7 +284,7 @@ export class DpsPlusService {
         }
 
         //Finally calculating DPS+ for the i, j moveset
-        moveset[4] = (quickDamage + chargeDamage)/power[2];
+        moveset[4] = (quickDamage*(power[4]/power[3]) + chargeDamage)/power[2];
         moveset[5] = this.getTankiness(selectedPokemon.attack, selectedPokemon.defense, selectedPokemon.stamina);
         moveset[6] = `L ${selectedPokemon.level}, ${selectedPokemon.attackIv}/${selectedPokemon.defenseIv}/${selectedPokemon.staminaIv}`;
         moveset[7] = null; // placeholder for the Percentage of Top DPS+
