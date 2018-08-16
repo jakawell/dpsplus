@@ -278,8 +278,8 @@ export class DpsPlusService {
           chargeDamage = Math.floor(0.5*power[1]*weatherMult[1]*stab[1]*typeMult[1]*(selectedPokemon.attack/defender.defense)) + 1;
         }
         else {
-          quickDamage = stab[0]*weatherMult[0]*power[0]*(typeMult ? typeMult[0] : 1);
-          chargeDamage = stab[1]*weatherMult[1]*power[1]*(typeMult ? typeMult[1] : 1);
+          quickDamage  = Math.floor(0.5*stab[0]*weatherMult[0]*power[0]*(selectedPokemon.attack/200)*(typeMult ? typeMult[0] : 1)) + 1;
+          chargeDamage = Math.floor(0.5*stab[1]*weatherMult[1]*power[1]*(selectedPokemon.attack/200)*(typeMult ? typeMult[1] : 1)) + 1;
         }
 
         //Finally calculating DPS+ for the i, j moveset
