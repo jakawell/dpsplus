@@ -272,8 +272,8 @@ export class DpsPlusService {
         //Calculating the power for the quick and charge moves and the cycle time
         let power = this.movesetPower(quickMove,chargeMove);
         //Calculating the damage output over one cycle for the quick and charge moves
-        let quickDamage = Math.floor(0.5*stab[0]*weatherMult[0]*power[0]*(typeMult ? typeMult[0] : 1)*(selectedPokemon.attack/(defender ? defender.defense : 200))) + 1;
-        let chargeDamage = Math.floor(0.5*stab[1]*weatherMult[1]*power[1]*(typeMult ? typeMult[1] : 1)*(selectedPokemon.attack/(defender ? defender.defense : 200))) + 1;
+        let quickDamage = Math.floor(0.5*stab[0]*weatherMult[0]*power[0]*(typeMult ? typeMult[0] : 1)*(selectedPokemon.attack/(defender ? defender.defense : 100))) + 1;
+        let chargeDamage = Math.floor(0.5*stab[1]*weatherMult[1]*power[1]*(typeMult ? typeMult[1] : 1)*(selectedPokemon.attack/(defender ? defender.defense : 100))) + 1;
 
         //Finally calculating DPS+ for the i, j moveset
         moveset[4] = (quickDamage*(power[4]/power[3]) + chargeDamage)/power[2];
