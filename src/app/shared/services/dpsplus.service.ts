@@ -95,7 +95,7 @@ export class DpsPlusService {
     //Output: Power output over charge time cycle for both moves and cycle time
 
     if (quickNameTypeStats.name == 'Transform') { // transform is a quick move that is irrelevant for DPS and breaks some calculations, so we just return with 0 power
-      return [0, 0, 1000];
+      return [0, 0, 1000, 1000, 0];
     }
 
     //Calculating the charge time to use the charge move
