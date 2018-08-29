@@ -162,7 +162,7 @@ Aerodactyl,142,,Rock,Flying,221,164,160,c,Steel Wing,c,Bite,c,,c,,c,,c,,c,,c,Hyp
 Snorlax,143,,Normal,,190,190,320,c,Zen Headbutt,c,Lick,c,,c,,c,,c,,c,,c,Hyper Beam,c,Earthquake,c,Heavy Slam,l,Body Slam,c,,c,,c,,c,
 Articuno,144,,Ice,Flying,192,249,180,c,Frost Breath,c,,c,,c,,c,,c,,c,,c,Blizzard,c,Ice Beam,c,Icy Wind,c,,c,,c,,c,,c,
 Zapdos,145,,Electric,Flying,253,188,180,e,Thunder Shock,c,Charge Beam,c,,c,,c,,c,,c,,c,Thunder,c,Zap Cannon,c,Thunderbolt,l,Discharge,c,,c,,c,,c,
-Moltres,146,,Fire,Flying,251,184,180,c,Fire Spin,l,Ember,c,,c,,c,,c,,c,,c,Overheat,c,Fire Blast,l,Flamethrower,c,Heat Wave,c,,c,,c,,c,
+Moltres,146,,Fire,Flying,251,184,180,c,Fire Spin,l,Ember,c,,c,,c,,c,,c,,c,Overheat,c,Fire Blast,l,Flamethrower,c,Heat Wave,e,Sky Attack,c,,c,,c,
 Dratini,147,,Dragon,,119,94,82,c,Dragon Breath,c,Iron Tail,c,,c,,c,,c,,c,,c,Aqua Tail,c,Wrap,c,Twister,c,,c,,c,,c,,c,
 Dragonair,148,,Dragon,,163,138,122,c,Dragon Breath,c,Iron Tail,c,,c,,c,,c,,c,,c,Dragon Pulse,c,Aqua Tail,c,Wrap,c,,c,,c,,c,,c,
 Dragonite,149,,Dragon,Flying,263,201,182,c,Dragon Tail,l,Dragon Breath,c,Steel Wing,c,,c,,c,,c,,c,Hurricane,c,Hyper Beam,l,Dragon Claw,c,Outrage,l,Dragon Pulse,e,Draco Meteor,c,,c,
