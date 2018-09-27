@@ -405,4 +405,7 @@ Kyogre,382,,Water,,270,251,182,c,Waterfall,l,Dragon Tail,c,,c,,c,,c,,c,,c,Hydro 
 Groudon,383,,Ground,,270,251,182,c,Dragon Tail,c,Mud Shot,c,,c,,c,,c,,c,,c,Earthquake,c,Solar Beam,c,Fire Blast,c,,c,,c,,c,,c,
 Rayquaza,384,,Dragon,Flying,284,170,191,c,Dragon Tail,c,Air Slash,c,,c,,c,,c,,c,,c,Outrage,c,Aerial Ace,c,Ancient Power,c,,c,,c,,c,,c,
 Jirachi,385,,Steel,Psychic,210,210,200,c,Confusion,c,Charge Beam,c,,c,,c,,c,,c,,c,Doom Desire,c,Psychic,c,Dazzling Gleam,c,,c,,c,,c,,c,
-Deoxys,386,,Psychic,,345,115,100,c,Counter,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Swift,c,Psycho Boost,c,,c,,c,,c,,c,
+Deoxys (Normal),386,normal,,Psychic,,345,115,100,c,Charge Beam,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Thunderbolt,c,Psycho Boost,c,Hyper Beam,c,,c,,c,,c,
+Deoxys (Attack),386,attack,,Psychic,,414,46,100,c,Poison Jab,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Dark Pulse,c,Psycho Boost,c,,c,,c,,c,,c,
+Deoxys (Defense),386,defense,,Psychic,,144,330,100,c,Counter,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Rock Slide,c,Psycho Boost,c,,c,,c,,c,,c,
+Deoxys (Speed),386,speed,,Psychic,,230,218,100,c,Charge Beam,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Zap Cannon,c,Swift,c,Psycho Boost,c,,c,,c,,c,,c,
