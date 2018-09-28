@@ -49,6 +49,7 @@ export class DpsPlusService {
         new SearchResultsColumn('dpsPlus5', 'DPS+', 4),
         new SearchResultsColumn('tdpsPercent5', 'DPS+%', 7),
         new SearchResultsColumn('tank5', 'Tank', 5),
+        new SearchResultsColumn('requiredTrainers5','# Trainers',8)
       ]),
     ]
   }
@@ -179,6 +180,35 @@ export class DpsPlusService {
     return weatherMult
   }
 
+  private getTrainers2Win(raidT,dps,secondsRemaining){
+    //Input: raid tier, moveset DPS, and number of seconds subtracted from
+    //raid timer to account for errors
+    //Ouput: Number of trainers required to beat raid boss if all having same pokemon
+
+    var raidTime = 0;
+    var defHP = 0;
+
+    if (raidT == 5) {
+      defHP = 12500;
+      raidTime = 300;
+    } else if (raidT == 4) {
+      defHP = 7500;
+      raidTime = 180;
+    } else if (raidT == 3) {
+      defHP = 3000;
+      raidTime = 180;
+    } else if (raidT == 2) {
+      defHP = 1800;
+      raidTime = 180;
+    } else if (raidT == 1) {
+      defHP = 600;
+      raidTime = 180;
+    }
+    var trainers2win = defHP/dps/(raidTime - secondsRemaining);
+
+    return trainers2win
+  }
+
   private topCounters(queryType: DpsPlusQueryType, pokemonInputs: PokemonModel[], weatherInput: WeatherInput, typeInput: TypeInput, appOptions: AppOptions): any[] {
     //Initializing the stoarage array of all movesets and the counter for the total
     //number of movesets
@@ -280,6 +310,9 @@ export class DpsPlusService {
         moveset[5] = this.getTankiness(selectedPokemon.attack, selectedPokemon.defense, selectedPokemon.stamina);
         moveset[6] = `L ${selectedPokemon.level}, ${selectedPokemon.attackIv}/${selectedPokemon.defenseIv}/${selectedPokemon.staminaIv}`;
         moveset[7] = null; // placeholder for the Percentage of Top DPS+
+        if (defender) {
+          moveset[8] = this.getTrainers2Win(defender.raidTier,moveset[4],10);
+        }
         movesets.push(moveset);
       }
     }

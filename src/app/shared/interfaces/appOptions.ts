@@ -9,4 +9,5 @@ export interface AppOptions {
   showLineNumbers: boolean;
   limitTopMovesets: boolean;
   topMovesetDisplayLimit: number;
+  showRaidTrainers: boolean;
 }

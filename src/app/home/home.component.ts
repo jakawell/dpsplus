@@ -47,7 +47,8 @@ export class HomeComponent implements OnInit {
     showPokemonLevel: false,
     showLineNumbers: false,
     limitTopMovesets: true,
-    topMovesetDisplayLimit: 1
+    topMovesetDisplayLimit: 1,
+    showRaidTrainers: false,
   }
 
   constructor(
@@ -139,6 +140,8 @@ export class HomeComponent implements OnInit {
         if (!this.appOptions.showPercentMaxDps && column.name.startsWith('tdpsPercent'))
           continue;
         if (!this.appOptions.showPokemonLevel && column.name.startsWith('stats'))
+          continue;
+        if (!this.appOptions.showRaidTrainers && column.name.startsWith('requiredTrainers'))
           continue;
 
         this.columns.push(column);
@@ -383,6 +386,9 @@ export class HomeComponent implements OnInit {
     else if (columnName.startsWith('tdpsPercent')) {
       let percentage = this.precisionRound(value * 100, 1);
       return percentage == 100 ? '-' : (percentage + '%');
+    }
+    else if (columnName.startsWith('requiredTrainers')) {
+      return this.precisionRound(value, 2);
     }
     else {
       return value;

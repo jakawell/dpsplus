@@ -5,6 +5,7 @@ export class PokemonModel {
   private _species: number;
   private _form: string;
   public name: string;
+  public raidTier: number;
   public type1: string;
   public type2: string;
   public attackBase: number;
@@ -77,11 +78,12 @@ export class PokemonModel {
     this._form = form;
     let pokedexData = this.dataService.getPokemon(species, form);
     this.name = pokedexData[0];
-    this.type1 = pokedexData[3];
-    this.type2 = (pokedexData[4] && pokedexData[4] != 'N/A') ? pokedexData[4] : null;
-    this.attackBase = parseInt(pokedexData[5]);
-    this.defenseBase = parseInt(pokedexData[6]);
-    this.staminaBase = parseInt(pokedexData[7]);
+    this.raidTier = pokedexData[3];
+    this.type1 = pokedexData[4];
+    this.type2 = (pokedexData[5] && pokedexData[5] != 'N/A') ? pokedexData[5] : null;
+    this.attackBase = parseInt(pokedexData[6]);
+    this.defenseBase = parseInt(pokedexData[7]);
+    this.staminaBase = parseInt(pokedexData[8]);
 
     if (this._species == 151) { // darn you mew. y u break all the things.
       const mewQuick = [ "c",
@@ -132,8 +134,8 @@ export class PokemonModel {
       this.parseMoves(mewCharge, false); // parse charge moves
     }
     else {
-      this.parseMoves(pokedexData.slice(8, 22), true); // parse quick moves
-      this.parseMoves(pokedexData.slice(22, 38), false); // parse charge moves
+      this.parseMoves(pokedexData.slice(9, 23), true); // parse quick moves
+      this.parseMoves(pokedexData.slice(23, 39), false); // parse charge moves
     }
   }
 

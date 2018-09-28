@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run build && http-server dist -p 42003",
-    "pwa": "ng build && http-server dist -p 42002",
+    "pwa": "ng build --prod && http-server dist -p 42002",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
