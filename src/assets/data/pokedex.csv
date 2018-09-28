@@ -170,7 +170,7 @@ Mewtwo,150,,5,Psychic,,300,182,193,c,Confusion,c,Psycho Cut,c,,c,,c,,c,,c,,c,Psy
 Mew,151,,,Psychic,,210,210,200,c,Pound,c,,c,,c,,c,,c,,c,,c,Psychic,c,Blizzard,c,Thunder,c,Focus Blast,c,Hyper Beam,c,Solar Beam,c,Earthquake,c,Fire Blast
 Chikorita,152,,1,Grass,,92,122,90,l,Razor Leaf,c,Vine Whip,c,Tackle,c,,c,,c,,c,,c,Grass Knot,c,Energy Ball,c,Body Slam,c,,c,,c,,c,,c,
 Bayleef,153,,1,Grass,,122,155,120,c,Razor Leaf,c,Tackle,c,,c,,c,,c,,c,,c,Grass Knot,c,Energy Ball,c,Ancient Power,c,,c,,c,,c,,c,
-Meganium,154,,,Grass,,168,202,160,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Solar Beam,c,Earthquake,c,Petal Blizzard,c,,c,,c,,c,,c,
+Meganium,154,,,Grass,,168,202,160,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Solar Beam,c,Earthquake,c,Petal Blizzard,e,Frenzy Plant,c,,c,,c,,c,
 Cyndaquil,155,,1,Fire,,116,96,78,c,Ember,c,Tackle,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Charge,c,Swift,c,,c,,c,,c,,c,
 Quilava,156,,1,Fire,,158,129,116,c,Ember,c,Tackle,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Charge,c,Dig,c,,c,,c,,c,,c,
 Typhlosion,157,,,Fire,,223,176,156,c,Shadow Claw,c,Ember,c,,c,,c,,c,,c,,c,Overheat,c,Fire Blast,c,Solar Beam,c,,c,,c,,c,,c,
