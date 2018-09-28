@@ -239,6 +239,8 @@ export class DpsPlusService {
     }
     else {
       for (let pokemon of this.dataService.getPokedex()) {
+        if (!appOptions.showDeoxysAttack && pokemon[1] == 386 && pokemon[2] == 'attack')
+          continue;
         let selectedPokemon = new PokemonModel(pokemon[1], pokemon[2], this.dataService);
         selectedPokemon.level = 40;
         selectedPokemon.attackIv = 15;

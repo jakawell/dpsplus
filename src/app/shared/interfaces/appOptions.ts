@@ -10,4 +10,5 @@ export interface AppOptions {
   limitTopMovesets: boolean;
   topMovesetDisplayLimit: number;
   showRaidTrainers: boolean;
+  showDeoxysAttack: boolean;
 }

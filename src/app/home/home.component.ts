@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
     limitTopMovesets: true,
     topMovesetDisplayLimit: 1,
     showRaidTrainers: false,
+    showDeoxysAttack: true,
   }
 
   constructor(
