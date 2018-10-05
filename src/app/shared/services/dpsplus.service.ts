@@ -180,15 +180,18 @@ export class DpsPlusService {
     return weatherMult
   }
 
-  private getTrainers2Win(raidT,dps,secondsRemaining){
-    //Input: raid tier, moveset DPS, and number of seconds subtracted from
-    //raid timer to account for errors
+  private getTrainers2Win(raidT,dps,realism_factor){
+    //Input: raid tier, moveset DPS, realism factor to account for time after
+    //Pokemon faints, lag, etc. (0: worst case, 1: ideal battle)
     //Ouput: Number of trainers required to beat raid boss if all having same pokemon
 
     var raidTime = 0;
     var defHP = 0;
 
-    if (raidT == 5) {
+    if (raidT == 6) {
+      defHP = 18750;
+      raidTime = 300;
+    } else if (raidT == 5) {
       defHP = 12500;
       raidTime = 300;
     } else if (raidT == 4) {
@@ -204,7 +207,7 @@ export class DpsPlusService {
       defHP = 600;
       raidTime = 180;
     }
-    var trainers2win = defHP/dps/(raidTime - secondsRemaining);
+    var trainers2win = defHP/dps/(raidTime*realism_factor);
 
     return trainers2win
   }
@@ -313,7 +316,7 @@ export class DpsPlusService {
         moveset[6] = `L ${selectedPokemon.level}, ${selectedPokemon.attackIv}/${selectedPokemon.defenseIv}/${selectedPokemon.staminaIv}`;
         moveset[7] = null; // placeholder for the Percentage of Top DPS+
         if (defender) {
-          moveset[8] = this.getTrainers2Win(defender.raidTier,moveset[4],10);
+          moveset[8] = this.getTrainers2Win(defender.raidTier,moveset[4],0.9);
         }
         movesets.push(moveset);
       }
