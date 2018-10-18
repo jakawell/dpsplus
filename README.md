@@ -1,6 +1,6 @@
 # DPS+
 
-A progressive web app for deeper analysis of Pokémon moves in [Pokémon GO](https://www.pokemongo.com/).
+A progressive web app for deeper analysis of Pokémon moves in [Pokémon GO](https://www.pokemongo.com/). The published deployment is available at https://dpsplus.app
 
 [![Build Status](https://travis-ci.org/jakawell/dpsplus.svg?branch=master)](https://travis-ci.org/jakawell/dpsplus)
 
