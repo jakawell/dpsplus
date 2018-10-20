@@ -4,7 +4,7 @@ A progressive web app for deeper analysis of Pokémon moves in [Pokémon GO](htt
 
 [![Build Status](https://travis-ci.org/jakawell/dpsplus.svg?branch=master)](https://travis-ci.org/jakawell/dpsplus)
 
-## Development 
+## Development
 
 Install the latest LTS version of [NodeJS](https://nodejs.org/en/download/) on your environment, clone the repository locally, and run `npm install` in the clone to install all the necessary dependencies.
 
