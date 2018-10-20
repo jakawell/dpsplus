@@ -395,7 +395,7 @@ Shelgon,372,,,Dragon,,172,155,163,c,Dragon Breath,c,Ember,c,,c,,c,,c,,c,,c,Flame
 Salamence,373,,,Dragon,Flying,277,168,216,c,Dragon Tail,c,Fire Fang,c,,c,,c,,c,,c,,c,Draco Meteor,c,Hydro Pump,c,Fire Blast,c,,c,,c,,c,,c,
 Beldum,374,,,Steel,Psychic,96,132,120,c,Take Down,c,,c,,c,,c,,c,,c,,c,Struggle,c,,c,,c,,c,,c,,c,,c,
 Metang,375,,,Steel,Psychic,138,176,155,c,Metal Claw,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Psychic,c,Gyro Ball,c,Psyshock,c,,c,,c,,c,,c,
-Metagross,376,,,Steel,Psychic,257,228,190,c,Zen Headbutt,c,Bullet Punch,c,,c,,c,,c,,c,,c,Flash Cannon,c,Psychic,c,Earthquake,c,,c,,c,,c,,c,
+Metagross,376,,,Steel,Psychic,257,228,190,c,Zen Headbutt,c,Bullet Punch,c,,c,,c,,c,,c,,c,Flash Cannon,c,Psychic,c,Earthquake,e,Meteor Mash,c,,c,,c,,c,
 Regirock,377,,5,Rock,,179,309,190,c,Rock Throw,c,Rock Smash,c,,c,,c,,c,,c,,c,Stone Edge,c,Focus Blast,c,Zap Cannon,c,,c,,c,,c,,c,
 Regice,378,,5,Ice,,179,309,190,c,Frost Breath,c,Rock Smash,c,,c,,c,,c,,c,,c,Blizzard,c,Focus Blast,c,Earthquake,c,,c,,c,,c,,c,
 Registeel,379,,5,Steel,,143,285,190,c,Metal Claw,c,Rock Smash,c,,c,,c,,c,,c,,c,Flash Cannon,c,Focus Blast,c,Hyper Beam,c,,c,,c,,c,,c,
