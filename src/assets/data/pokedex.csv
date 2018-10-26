@@ -108,7 +108,7 @@ Shellder,90,,1,Water,,116,134,102,c,Tackle,c,Ice Shard,c,,c,,c,,c,,c,,c,Bubble B
 Cloyster,91,,2,Water,Ice,186,256,137,c,Frost Breath,c,Ice Shard,c,,c,,c,,c,,c,,l,Blizzard,c,Hydro Pump,c,Avalanche,c,Aurora Beam,l,Icy Wind,c,,c,,c,
 Gastly,92,,,Ghost,Poison,186,67,102,c,Lick,l,Sucker Punch,c,Astonish,c,,c,,c,,c,,c,Sludge Bomb,c,Night Shade,c,Dark Pulse,l,Ominous Wind,c,,c,,c,,c,
 Haunter,93,,,Ghost,Poison,223,107,128,c,Shadow Claw,l,Lick,c,Astonish,c,,c,,c,,c,,c,Sludge Bomb,l,Shadow Ball,c,Shadow Punch,c,Dark Pulse,c,,c,,c,,c,
-Gengar,94,,3,Ghost,Poison,261,149,155,l,Shadow Claw,c,Sucker Punch,c,Hex,c,,c,,c,,c,,c,Sludge Bomb,l,Sludge Wave,c,Focus Blast,c,Shadow Ball,l,Dark Pulse,e,Psychic,c,,c,
+Gengar,94,,3,Ghost,Poison,261,149,155,l,Shadow Claw,c,Sucker Punch,c,Hex,e,Lick,c,,c,,c,,c,Sludge Bomb,l,Sludge Wave,c,Focus Blast,c,Shadow Ball,l,Dark Pulse,e,Psychic,c,,c,
 Onix,95,,3,Rock,Ground,85,232,111,c,Rock Throw,c,Tackle,c,,c,,c,,c,,c,,c,Stone Edge,l,Rock Slide,c,Heavy Slam,l,Iron Head,c,Sand Tomb,c,,c,,c,
 Drowzee,96,,,Psychic,,89,136,155,c,Confusion,c,Pound,c,,c,,c,,c,,c,,c,Psychic,c,Psyshock,c,Psybeam,c,,c,,c,,c,,c,
 Hypno,97,,,Psychic,,144,193,198,c,Confusion,c,Zen Headbutt,c,,c,,c,,c,,c,,c,Futuresight,c,Psychic,c,Focus Blast,l,Shadow Ball,l,Psyshock,c,,c,,c,
