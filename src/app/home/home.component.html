@@ -74,7 +74,7 @@
 
           <div class="search-input-add-button" *ngIf="maxAddablePokemon > 0" fxLayout="column" fxLayoutAlign="space-around center">
             <button type="button" mat-fab color="primary" disabled="{{pokemonSetCount >= maxAddablePokemon}}" (click)="triggerAddPokemon()" aria-label="Add Pokémon">
-              <mat-icon aria-label="Add Pokémon">add_circle</mat-icon>
+              <mat-icon aria-label="Add Pokémon" svgIcon="add_circle"></mat-icon>
             </button>
             <h3>{{currentPokemonSetDef.options.addTitle}}</h3>
           </div>
@@ -83,7 +83,7 @@
         <div fxLayout="row">
           <button type="submit" mat-raised-button color="primary">Calculate</button>
           <button type="button" mat-icon-button (click)="openSettings()" aria-label="Settings">
-            <mat-icon aria-label="Settings">settings</mat-icon>
+            <mat-icon aria-label="Settings" svgIcon="settings"></mat-icon>
           </button>
         </div>
       </form>

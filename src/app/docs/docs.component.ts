@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-docs',
@@ -35,7 +37,12 @@ export class DocsComponent implements OnInit {
   public teq12_10 = '$$FT\\approx\\frac{Health\\ast Def}{f{(P,Atk,STAB,Effective,CT)}}\\label{p}\\tag{2.10}$$';
   public teq13_11 = '$$\\mathrm T=\\frac{Health\\ast Def}{1000}=\\frac{(HP_{Base}+HP_{IV})(Def_{Base}+Def_{IV})CPM^2}{1000}\\label{q}\\tag{2.11}$$';
 
-  constructor() { }
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    this.iconRegistry.addSvgIcon('keyboard_arrow_left', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/keyboard_arrow_left.svg'));
+  }
 
   ngOnInit() { }
 

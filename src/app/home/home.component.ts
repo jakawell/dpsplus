@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
@@ -59,8 +60,14 @@ export class HomeComponent implements OnInit {
       private storageService: StorageService,
       private swUpdate: SwUpdate,
       private snackBar: MatSnackBar,
-      private dialog: MatDialog
-    ) {
+      private dialog: MatDialog,
+      private iconRegistry: MatIconRegistry,
+      private sanitizer: DomSanitizer
+  ) {
+    this.iconRegistry.addSvgIcon('add_circle', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/add_circle.svg'));
+    this.iconRegistry.addSvgIcon('clear', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/clear.svg'));
+    this.iconRegistry.addSvgIcon('settings', sanitizer.bypassSecurityTrustResourceUrl('assets/icons/settings.svg'));
+
     this.inputsForm = this.formBuilder.group({
       pokemon: this.formBuilder.array([]),
       weather: '',
