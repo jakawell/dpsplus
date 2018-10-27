@@ -21,7 +21,6 @@
         "/assets/**"
       ],
       "urls": [
-        "https://fonts.googleapis.com/**",
         "https://dpsplus-assets.firebaseapp.com/**",
         "https://static.dpsplus.app/**"
       ]
