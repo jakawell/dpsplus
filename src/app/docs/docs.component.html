@@ -5,37 +5,37 @@
     The purpose of this equation is to calculate the actual damage per second of a move set. Before we delve into the equations, I will define the nomenclature we will use:
   </p>
   <p>
-    <span [mathJax]="eq1"></span> Charge move Power
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_1.svg" /></span> Charge move Power
   </p>
   <p>
-    <span [mathJax]="eq2"></span> Quick move Power
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_2.svg" /></span> Quick move Power
   </p>
   <p>
-    <span [mathJax]="eq3"></span> Charge move Cast Time
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_3.svg" /></span> Charge move Cast Time
   </p>
   <p>
-    <span [mathJax]="eq4"></span> Quick move Cast Time
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_4.svg" /></span> Quick move Cast Time
   </p>
   <p>
-    <span [mathJax]="eq5"></span> Charge time (time needed to charge the charge move)
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_5.svg" style="height: 48px;" /></span> Charge time (time needed to charge the charge move)
   </p>
   <p>
-    <span [mathJax]="eq6"></span> Quick move Energy gain
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_6.svg" /></span> Quick move Energy gain
   </p>
   <p>
-    <span [mathJax]="eq7"></span> Charge move Energy use
+    <span><img class="inline-eq-img" src="/assets/images/p_eq_7.svg" /></span> Charge move Energy use
   </p>
   <p>
     To begin, we calculate the power (the base damage output of a move) of a moveset with the following equation:
   </p>
   <p>
-    <span [mathJax]="eq8_1"></span>
+    <img class="eq-img" src="/assets/images/eq_1_1.svg" />
   </p>
   <p>
     To obtain the power per second for a moveset, we divide the power output over a charge cycle by the charge cycle time plus the cast time for the charge move:
   </p>
   <p>
-    <span [mathJax]="eq9_2"></span>
+    <img class="eq-img" src="/assets/images/eq_1_2.svg" />
   </p>
   <p>
     Multiplying Eq. (2) by STAB bonuses or type multipliers will give the power per second of a Pokémon against a particular type.
@@ -44,7 +44,7 @@
     The process of calculating the damage per second (DPS) of a Pokémon against another Pokémon is slightly more complicated. To calculate the DPS of a charge move, you simply put the charge move power in the damage formula from <a href="https://pokemongo.gamepress.gg/damage-mechanics" target="_blank">GamePress</a>, and divide this damage by the charge cycle time plus the charge move cast time:
   </p>
   <p>
-    <span [mathJax]="eq10_3"></span>
+    <img class="eq-img" src="/assets/images/eq_1_3.svg" />
   </p>
   <p>
     Where Atk is the attack stat of the attacking Pokémon, Def is the defense stat of the defending Pokémon, STAB is the special type attack bonus, and Effective is the type multiplier.
@@ -53,19 +53,19 @@
     The damage output of the quick move is calculated by the same damage formula from GamePress and is shown in Eq. (4):
   </p>
   <p>
-    <span [mathJax]="eq11_4"></span>
+    <img class="eq-img" src="/assets/images/eq_1_4.svg" />
   </p>
   <p>
     To calculate the DPS of the quick move we need its damage output over a charge cycle. To get this, we divide the damage of the quick move by the cast time of the quick move and multiply that by the charge time to obtain the damage output of the quick move over the charge time. Finally, we divide that by the charge time plus the cast time for the charge move.
   </p>
   <p>
-    <span [mathJax]="eq12_5"></span>
+    <img class="eq-img" src="/assets/images/eq_1_5.svg" />
   </p>
   <p>
     Then the total DPS of a moveset is calculated as:
   </p>
   <p>
-    <span [mathJax]="eq13_6"></span>
+    <img class="eq-img" src="/assets/images/eq_1_6.svg" />
   </p>
 
   <h1>Tankiness</h1>
@@ -73,55 +73,55 @@
     The tankiness of a Pokémon is a slightly less quantifiable value than the dps of a moveset. However, the dps is not the only important value when fighting gyms as your Pokémon needs to be able to survive to inflict damage (Jynx against Rayquaza is an excellent illustration of this point). The health points of a Pokémon are calculated using this formula:
   </p>
   <p>
-    <span [mathJax]="teq1_1"></span>
+    <img class="eq-img" src="/assets/images/eq_2_1.svg" />
   </p>
   <p>
     Where the CPM is a function of the Pokémon’s level. As described in the DPS writeup, the DPS for an attacker’s moveset is given using this equation:
   </p>
   <p>
-    <span [mathJax]="teq2_2"></span>
+    <img class="eq-img" src="/assets/images/eq_2_2.svg" />
   </p>
   <p>
     Where
   </p>
   <p>
-    <span [mathJax]="teq3_3"></span>
+    <img class="eq-img" src="/assets/images/eq_2_3.svg" />
   </p>
   <p>
-    <span [mathJax]="teq4_4"></span>
+    <img class="eq-img" src="/assets/images/eq_2_4.svg" />
   </p>
   <p>
-    from <a href="https://pokemongo.gamepress.gg/damage-mechanics" target="_blank">GamePress</a>. In these two expressions, <span [mathJax]="teq5"></span> and <span [mathJax]="teq6"></span>. Combining Eqs. (2.1) and (2.2), the time necessary to faint a Pokémon (FT) is given using the following equation:
+    from <a href="https://pokemongo.gamepress.gg/damage-mechanics" target="_blank">GamePress</a>. In these two expressions, <span><img class="inline-eq-img" src="/assets/images/p_eq_8.svg" /></span> and <span><img class="inline-eq-img" src="/assets/images/p_eq_9.svg" /></span>. Combining Eqs. (2.1) and (2.2), the time necessary to faint a Pokémon (FT) is given using the following equation:
   </p>
   <p>
-    <span [mathJax]="teq7_5"></span>
+    <img class="eq-img" src="/assets/images/eq_2_5.svg" />
   </p>
   <p>
     Consequently, when selecting the ideal attacker, you want to maximize the DPS while also maximizing the faint time of your Pokémon. However, it is best to have a generic tankiness stat of your Pokémon that is not a function of the other Pokémon’s moveset. To isolate your defensive terms from the other Pokémon’s attacking terms, we will have to fudge the mathematics a bit using the following modification of Eq. (2.2) where
   </p>
   <p>
-    <span [mathJax]="teq8_6"></span>
+    <img class="eq-img" src="/assets/images/eq_2_6.svg" />
   </p>
   <p>
-    <span [mathJax]="teq9_7"></span>
+    <img class="eq-img" src="/assets/images/eq_2_7.svg" />
   </p>
   <p>
     To ensure that the equation will show on the page.
   </p>
   <p>
-    <span [mathJax]="teq10_8"></span>
+    <img class="eq-img" src="/assets/images/eq_2_8.svg" />
   </p>
   <p>
     In the numerator of the above equation there are three terms. The first two are essentially the damage output of the quick and charge moves respectively, and the third term is a small addition. The third term will be approximately 1/5 of the size of the other two terms. Consequently, we can now say that the DPS can be approximately written as a function of the attacking stats of the other Pokémon, divided by the defensive stat of your Pokémon.
   </p>
   <p>
-    <span [mathJax]="teq11_9"></span>
+    <img class="eq-img" src="/assets/images/eq_2_9.svg" />
   </p>
   <p>
     Now we substitute this approximate formulation for DPS into Eq. 2.3:
   </p>
   <p>
-    <span [mathJax]="teq12_10"></span>
+    <img class="eq-img" src="/assets/images/eq_2_10.svg" />
   </p>
   <p>
     Now the faint time is your Pokémon’s defensive and health stats divided by the attacker’s stats. Then to generically maximize your Pokémon’s faint time regardless of your opponent, you maximize the numerator. However, because these defensive values are on the order of 10³ or 10⁴, we will normalize the tankiness stat by 10³:
@@ -130,6 +130,6 @@
     <b>TL;DR:</b> The Tankiness of a Pokémon (T) is given by:
   </p>
   <p>
-    <span [mathJax]="teq13_11"></span>
+    <img class="eq-img" src="/assets/images/eq_2_11.svg" />
   </p>
 </div>
