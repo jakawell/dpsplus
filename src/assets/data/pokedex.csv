@@ -173,7 +173,7 @@ Bayleef,153,,1,Grass,,122,155,155,c,Razor Leaf,c,Tackle,c,,c,,c,,c,,c,,c,Grass K
 Meganium,154,,,Grass,,168,202,190,c,Razor Leaf,c,Vine Whip,c,,c,,c,,c,,c,,c,Solar Beam,c,Earthquake,c,Petal Blizzard,e,Frenzy Plant,c,,c,,c,,c,
 Cyndaquil,155,,1,Fire,,116,93,118,c,Ember,c,Tackle,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Charge,c,Swift,c,,c,,c,,c,,c,
 Quilava,156,,1,Fire,,158,126,151,c,Ember,c,Tackle,c,,c,,c,,c,,c,,c,Flamethrower,c,Flame Charge,c,Dig,c,,c,,c,,c,,c,
-Typhlosion,157,,,Fire,,223,173,186,c,Shadow Claw,c,Ember,c,,c,,c,,c,,c,,c,Overheat,c,Fire Blast,c,Solar Beam,c,,c,,c,,c,,c,
+Typhlosion,157,,,Fire,,223,173,186,c,Shadow Claw,c,Ember,c,,c,,c,,c,,c,,c,Overheat,c,Fire Blast,c,Solar Beam,e,Blast Burn,c,,c,,c,,c,
 Totodile,158,,1,Water,,117,109,137,c,Scratch,c,Water Gun,c,,c,,c,,c,,c,,c,Water Pulse,c,Crunch,c,Aqua Jet,c,,c,,c,,c,,c,
 Croconaw,159,,2,Water,,150,142,163,c,Scratch,c,Water Gun,c,,c,,c,,c,,c,,c,Ice Punch,c,Water Pulse,c,Crunch,c,,c,,c,,c,,c,
 Feraligatr,160,,4,Water,,205,188,198,c,Bite,l,Water Gun,c,Waterfall,c,,c,,c,,c,,c,Hydro Pump,c,Ice Beam,c,Crunch,c,,c,,c,,c,,c,
