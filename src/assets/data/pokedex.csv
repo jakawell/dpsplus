@@ -500,7 +500,7 @@ Yanmega,469,,,Bug,Flying,231,156,200,c,Bug Bite,c,Wing Attack,c,,c,,c,,c,,c,,c,A
 Leafeon,470,,,Grass,,216,219,163,c,Razor Leaf,c,Quick Attack,c,,c,,c,,c,,c,,c,Solar Beam,c,Leaf Blade,c,Energy Ball,c,,c,,c,,c,,c,
 Glaceon,471,,,Ice,,238,205,163,c,Ice Shard,c,Frost Breath,c,,c,,c,,c,,c,,c,Avalanche,c,Icy Wind,c,Ice Beam,c,,c,,c,,c,,c,
 Gliscor,472,,,Ground,Flying,185,222,181,c,Fury Cutter,c,Wing Attack,c,,c,,c,,c,,c,,c,Earthquake,c,Aerial Ace,c,Night Slash,c,,c,,c,,c,,c,
-Mamoswine,473,,,Ice,Ground,247,146,242,c,Mud-Slap,c,Powder Snow,c,,c,,c,,c,,c,,c,Avalanche,c,Bulldoze,c,Stone Edge,c,,c,,c,,c,,c,
+Mamoswine,473,,,Ice,Ground,247,146,242,c,Mud-Slap,c,Powder Snow,c,,c,,c,,c,,c,,c,Avalanche,c,Bulldoze,c,Stone Edge,e,Ancient Power,c,,c,,c,,c,
 Porygon-Z,474,,,Normal,,264,150,198,c,Hidden Power,c,Charge Beam,c,,c,,c,,c,,c,,c,Solar Beam,c,Hyper Beam,c,Zap Cannon,c,,c,,c,,c,,c,
 Gallade,475,,,Psychic,Fighting,237,195,169,c,Confusion,c,Low Kick,c,,c,,c,,c,,c,,c,Close Combat,c,Psychic,c,Leaf Blade,c,,c,,c,,c,,c,
 Probopass,476,,,Rock,Steel,135,275,155,c,Rock Throw,c,Spark,c,,c,,c,,c,,c,,c,Magnet Bomb,c,Rock Slide,c,Thunderbolt,c,,c,,c,,c,,c,
