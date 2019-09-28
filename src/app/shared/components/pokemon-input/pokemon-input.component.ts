@@ -2,8 +2,9 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith ,  map } from 'rxjs/operators';
-import { PokemonModel } from '../../models';
+import { PokemonSpecies } from 'pogo-master-import';
 import { DataService } from '../../services/data.service';
+import { PokemonModel } from '../../models/index';
 
 @Component({
   selector: 'app-pokemon-input',
@@ -14,8 +15,9 @@ export class PokemonInputComponent implements OnInit {
   @Input()
   set id(id: string) {
     this._id = id;
-    if (this.model)
+    if (this.model) {
       this.resetForm();
+    }
   }
   get id(): string {
     return this._id;
@@ -32,13 +34,12 @@ export class PokemonInputComponent implements OnInit {
   @Output() removed: EventEmitter<string> = new EventEmitter<string>();
 
   public pokemonForm: FormGroup;
-  public filteredPokemon: Observable<any[]>;
-  public selectedSpecies: number;
-  public selectedForm: string;
-  public selectedName: string;
+  public filteredPokemon: Observable<PokemonSpecies[]>;
+  public selectedSpecies: PokemonSpecies;
 
   private _id: string;
   private _model: PokemonModel;
+  private _alphabeticalSpecies: PokemonSpecies[];
 
   constructor(private formBuilder: FormBuilder, private dataService: DataService) {
     // build the form
@@ -51,27 +52,26 @@ export class PokemonInputComponent implements OnInit {
       quickMove: '',
       chargeMove: '',
     });
+    this._alphabeticalSpecies = Array.from(dataService.speciesAlphabetical.values());
   }
 
   ngOnInit() {
     const speciesControl = this.pokemonForm.get('species');
     this.filteredPokemon = speciesControl.valueChanges.pipe(
-      startWith<string | any[]>(''),
-      map(value => typeof value === 'string' ? value : value[0]),
-      map(name => name ? this.filterPokemon(name) : this.dataService.getPokedexAlpha().slice())
+      startWith<string | PokemonSpecies>(''),
+      map(value => typeof value === 'string' ? value : value.speciesName),
+      map(name => name ? this.filterPokemon(name) : this._alphabeticalSpecies)
     );
-    speciesControl.valueChanges.forEach((value: string | any[]) => {
+    speciesControl.valueChanges.forEach((value: string | PokemonSpecies) => {
       if (typeof value !== 'string') {
-        this.selectedName = value[0];
-        this.selectedSpecies = value[1] as number;
-        this.selectedForm = value[2] as string;
-        this.model.changeSpecies(this.selectedSpecies, this.selectedForm);
+        this.selectedSpecies = value;
+        this.model.setSpecies(value);
       }
     });
-    this.pokemonForm.get('level').valueChanges.forEach((value: number) => this.model.level = value);
-    this.pokemonForm.get('attackIv').valueChanges.forEach((value: number) => this.model.attackIv = value);
-    this.pokemonForm.get('defenseIv').valueChanges.forEach((value: number) => this.model.defenseIv = value);
-    this.pokemonForm.get('staminaIv').valueChanges.forEach((value: number) => this.model.staminaIv = value);
+    this.pokemonForm.get('level').valueChanges.forEach((value: number) => this.model.basePokemon.level = value);
+    this.pokemonForm.get('attackIv').valueChanges.forEach((value: number) => this.model.basePokemon.attackIv = value);
+    this.pokemonForm.get('defenseIv').valueChanges.forEach((value: number) => this.model.basePokemon.defenseIv = value);
+    this.pokemonForm.get('staminaIv').valueChanges.forEach((value: number) => this.model.basePokemon.staminaIv = value);
     this.pokemonForm.get('quickMove').valueChanges.forEach((value: string) => this.model.quickMove = value);
     this.pokemonForm.get('chargeMove').valueChanges.forEach((value: string) => this.model.chargeMove = value);
     this.resetForm();
@@ -81,35 +81,35 @@ export class PokemonInputComponent implements OnInit {
     this.removed.emit(this.model.internalId);
   }
 
-  public autoDisplayFn(pokemon?: any[]): string | undefined {
-    return pokemon ? (typeof pokemon === 'string' ? pokemon : pokemon[0]) : undefined;
+  public autoDisplayFn(pokemon: string | PokemonSpecies): string | undefined {
+    return pokemon ? (typeof pokemon === 'string' ? pokemon : pokemon.speciesName) : undefined;
   }
 
   public submitForm() {
     const formModel = this.pokemonForm.value;
-    this.model.changeSpecies(this.selectedSpecies, this.selectedForm);
-    this.model.level = formModel.level as number;
-    this.model.attackIv = formModel.attackIv as number;
-    this.model.defenseIv = formModel.defenseIv as number;
-    this.model.staminaIv = formModel.staminaIv as number;
+    this.model.setSpecies(this.selectedSpecies);
+    this.model.basePokemon.level = formModel.level as number;
+    this.model.basePokemon.attackIv = formModel.attackIv as number;
+    this.model.basePokemon.defenseIv = formModel.defenseIv as number;
+    this.model.basePokemon.staminaIv = formModel.staminaIv as number;
     this.model.quickMove = formModel.quickMove as string;
     this.model.chargeMove = formModel.chargeMove as string;
   }
 
   private filterPokemon(name: string) {
-    return this.dataService.getPokedexAlpha().filter(pokemon =>
-      pokemon[0].toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return this._alphabeticalSpecies.filter(pokemon =>
+      pokemon.speciesName.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   private resetForm() {
     this.pokemonForm.reset({
-      species: [this.model.name, this.model.species, this.model.form],
-      level: this.model.level,
-      attackIv: this.model.attackIv,
-      defenseIv: this.model.defenseIv,
-      staminaIv: this.model.staminaIv,
+      species: this.model.basePokemon.species,
+      level: this.model.basePokemon.level,
+      attackIv: this.model.basePokemon.attackIv,
+      defenseIv: this.model.basePokemon.defenseIv,
+      staminaIv: this.model.basePokemon.staminaIv,
       quickMove: this.model.quickMove,
       chargeMove: this.model.chargeMove,
-    })
+    });
   }
 }

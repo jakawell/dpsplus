@@ -4,10 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SwUpdate } from '@angular/service-worker';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { SettingsComponent } from '.././settings/settings.component';
 import { SearchInput, AppOptions } from '../shared/interfaces';
-import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models';
+import { SettingsComponent } from '.././settings/settings.component';
 import { DataService, DpsPlusService, StorageService } from '../shared/services';
+import { DpsPlusQueryType, SearchInputType, SearchResultsColumn, PokemonModel, SearchTypeModel, TypeInput, WeatherInput, SearchInputDefinition } from '../shared/models/index';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   public weatherInput: WeatherInput;
   public typeInput: TypeInput;
   public pokemonSetCount = 0;
-  public maxAddablePokemon: number = 0;
+  public maxAddablePokemon = 0;
   public currentPokemonSetDef: SearchInputDefinition;
   public results: any[] = [];
   public columns: SearchResultsColumn[] = [];
@@ -51,7 +51,8 @@ export class HomeComponent implements OnInit {
     topMovesetDisplayLimit: 1,
     showRaidTrainers: false,
     showDeoxysAttack: true,
-  }
+  };
+  private _selectedSearchType: SearchTypeModel;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -73,25 +74,17 @@ export class HomeComponent implements OnInit {
       weather: '',
       type1: '',
       type2: '',
-    })
+    });
   }
 
   ngOnInit() {
     this.searchTypes = this.dpsPlusService.SearchTypes;
     this.storageService.getAppOptions(this.appOptions).then((options: AppOptions) => this.appOptions = options);
-    if (this.dataService.isLoaded) {
-      this.afterLoad();
-    }
-    else {
-      this.dataService.load(() => {
-        this.afterLoad();
-      });
-    }
 
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
         console.log('Service worker update available.');
-        let updateSnack = this.snackBar.open("Update available!", "Reload");
+        const updateSnack = this.snackBar.open('Update available!', 'Reload');
         updateSnack.onAction().subscribe(() => {
           window.location.reload();
         });
@@ -107,15 +100,14 @@ export class HomeComponent implements OnInit {
       .then((searchType: string) => {
         if (searchType) {
           this.setSelectedSearchTypeByCode(DpsPlusQueryType[searchType]);
-        }
-        else {
+        } else {
           this.setSelectedSearchTypeByCode(this.defaultSearchType);
         }
       });
   }
 
   openSettings() {
-    let settingsResults = this.dialog.open(SettingsComponent, {
+    const settingsResults = this.dialog.open(SettingsComponent, {
       data: Object.assign({}, this.appOptions),
       width: '90%',
       maxWidth: '400px',
@@ -138,8 +130,8 @@ export class HomeComponent implements OnInit {
 
       this.results = [];
       this.columns.splice(0, this.columns.length);
-      for (let column of this.selectedSearchType.columns) {
-        if (this.pokemonInputs.length == 1 && column.name.startsWith('pokemon'))
+      for (const column of this.selectedSearchType.columns) {
+        if (this.pokemonInputs.length === 1 && column.name.startsWith('pokemon'))
           continue;
         if (!this.appOptions.showTankiness && column.name.startsWith('tank'))
           continue;
@@ -155,7 +147,7 @@ export class HomeComponent implements OnInit {
         this.columns.push(column);
       }
 
-      let queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput, this.appOptions);
+      const queryResults = this.dpsPlusService.runQuery(this.selectedSearchType.code, allPokemon, this.weatherInput, this.typeInput, this.appOptions);
       if (queryResults)
         this.results = queryResults;
 
@@ -164,7 +156,7 @@ export class HomeComponent implements OnInit {
   }
 
   private setSelectedSearchTypeByCode(code: DpsPlusQueryType) {
-    for (let searchType of this.searchTypes) {
+    for (const searchType of this.searchTypes) {
       if (searchType.code === code) {
         this.selectedSearchType = searchType;
         break;
@@ -172,7 +164,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  private _selectedSearchType: SearchTypeModel;
   get selectedSearchType(): SearchTypeModel {
     return this._selectedSearchType;
   }
@@ -181,8 +172,7 @@ export class HomeComponent implements OnInit {
 
     if (this.isLoading) {
       this.defaultSearchType = selectedSearchType.code;
-    }
-    else {
+    } else {
       this.defenderInput = null;
       this.pokemonInputs = []; let pokemonIndex = 0;
       this.weatherInput = null;
@@ -190,45 +180,42 @@ export class HomeComponent implements OnInit {
       this.maxAddablePokemon = 0;
       this.resetPokemonFormArray();
 
-      for (let input of selectedSearchType.inputs) {
+      for (const input of selectedSearchType.inputs) {
 
-        if (input.type == SearchInputType.Defender) {
+        if (input.type === SearchInputType.Defender) {
           if (!this.shadowDefenderInput) {
             this.storageService.getLastDefender().then((defender: PokemonModel) => {
               if (defender) { // found a saved value
                 this.shadowDefenderInput = defender;
-              }
-              else { // no saved value, so creating new one
-                this.shadowDefenderInput = new PokemonModel(381, null, this.dataService, input.code, input.name, false, false);
-                this.shadowDefenderInput.level = 40;
-                this.shadowDefenderInput.attackIv = 15;
-                this.shadowDefenderInput.defenseIv = 15;
-                this.shadowDefenderInput.staminaIv = 15;
+              } else { // no saved value, so creating new one
+                this.shadowDefenderInput = new PokemonModel(this.dataService.getSpecies('ZEKROM_NORMAL'), input.code, input.name, false, false);
+                this.shadowDefenderInput.basePokemon.level = 40;
+                this.shadowDefenderInput.basePokemon.attackIv = 15;
+                this.shadowDefenderInput.basePokemon.defenseIv = 15;
+                this.shadowDefenderInput.basePokemon.staminaIv = 15;
               }
               this.shadowDefenderInput.internalId = input.code;
               this.shadowDefenderInput.internalTitle = input.name;
               this.defenderInput = this.shadowDefenderInput;
             });
-          }
-          else {
+          } else {
             this.shadowDefenderInput.internalId = input.code;
             this.shadowDefenderInput.internalTitle = input.name;
             this.defenderInput = this.shadowDefenderInput;
           }
         }
 
-        if (input.type == SearchInputType.Pokemon) {
+        if (input.type === SearchInputType.Pokemon) {
           this.addPokemon(input.code, input.name, false, pokemonIndex++);
         }
 
-        if (input.type == SearchInputType.PokemonSet) {
+        if (input.type === SearchInputType.PokemonSet) {
           if (this.selectedSetCount == null || this.shadowPokemonInputs.length <= 0) {
             this.storageService.getLastCountersCount()
               .then((lastCount: number) => {
                 if (lastCount != null && lastCount >= 0) {
                   this.selectedSetCount = lastCount;
-                }
-                else {
+                } else {
                   this.selectedSetCount = input.options.default;
                 }
 
@@ -241,13 +228,12 @@ export class HomeComponent implements OnInit {
                     this.configurePokemonSetFromInput(input, pokemonIndex);
                   });
               });
-          }
-          else {
+          } else {
             this.configurePokemonSetFromInput(input, pokemonIndex);
           }
         }
 
-        if (input.type == SearchInputType.Weather) {
+        if (input.type === SearchInputType.Weather) {
           if (!this.shadowWeatherInput) { // we don't have a shadow weather in memory
             this.storageService.getLastWeatherInput() // get from storage
               .then((weather: WeatherInput) => {
@@ -255,21 +241,19 @@ export class HomeComponent implements OnInit {
                   this.shadowWeatherInput = weather;
                   this.shadowWeatherInput.code = input.code;
                   this.shadowWeatherInput.name = input.name;
-                }
-                else { // if not, create a new one
+                } else { // if not, create a new one
                   this.shadowWeatherInput = new WeatherInput(input.code, input.name);
                 }
                 this.weatherInput = this.shadowWeatherInput;
               });
-          }
-          else { // already have in memory
+          } else { // already have in memory
             this.shadowWeatherInput.code = input.code;
             this.shadowWeatherInput.name = input.name;
             this.weatherInput = this.shadowWeatherInput;
           }
         }
 
-        if (input.type == SearchInputType.Type) {
+        if (input.type === SearchInputType.Type) {
           if (!this.shadowTypeInput) { // we don't have a shadow type in memory
             this.storageService.getLastTypeInput() // get from storage
               .then((type: TypeInput) => {
@@ -277,14 +261,12 @@ export class HomeComponent implements OnInit {
                   this.shadowTypeInput = type;
                   this.shadowTypeInput.code = input.code;
                   this.shadowTypeInput.name = input.name;
-                }
-                else { // if not, create a new one
+                } else { // if not, create a new one
                   this.shadowTypeInput = new TypeInput(input.code, input.name, this.dataService);
                 }
                 this.typeInput = this.shadowTypeInput;
               });
-          }
-          else { // already have in memory
+          } else { // already have in memory
             this.shadowTypeInput.code = input.code;
             this.shadowTypeInput.name = input.name;
             this.typeInput = this.shadowTypeInput;
@@ -296,7 +278,7 @@ export class HomeComponent implements OnInit {
 
   private configurePokemonSetFromInput(input: SearchInputDefinition, pokemonIndex: number) {
     this.pokemonSetCount = 0;
-    const total: number = Math.min(this.selectedSetCount, input.options.max)
+    const total: number = Math.min(this.selectedSetCount, input.options.max);
     for (let i = 0; i < total; i++) {
       this.addPokemonFromSet(input, pokemonIndex++);
     }
@@ -311,11 +293,11 @@ export class HomeComponent implements OnInit {
 
   private addPokemon(code: string, title: string, isRemovable: boolean, atIndex: number) {
     if (this.shadowPokemonInputs.length <= atIndex) { // we don't have a shadow pokemon in memory
-      let defaultPokemon = atIndex == 0 ? 149 : (atIndex == 1 ? 384 : (Math.floor(Math.random() * 386) + 1));
-      const newPokemon = new PokemonModel(defaultPokemon, null, this.dataService, code, title, isRemovable, false);
+      const allPokemon = Array.from(this.dataService.species.values());
+      const defaultPokemon = allPokemon[(Math.floor(Math.random() * allPokemon.length))];
+      const newPokemon = new PokemonModel(defaultPokemon, code, title, isRemovable, false);
       this.shadowPokemonInputs.push(newPokemon);
-    }
-    else { // we do have a shadow pokemon, and need to update the code and title
+    } else { // we do have a shadow pokemon, and need to update the code and title
       const shadow = this.shadowPokemonInputs[atIndex];
       shadow.internalId = code;
       shadow.internalTitle = title;
@@ -329,15 +311,15 @@ export class HomeComponent implements OnInit {
 
   public removePokemon(id: string) {
     let pokemonIndex = -1;
-    for (let input of this.pokemonInputs) {
-      if (input.internalId == id) pokemonIndex = this.pokemonInputs.indexOf(input);
+    for (const input of this.pokemonInputs) {
+      if (input.internalId === id) pokemonIndex = this.pokemonInputs.indexOf(input);
     }
     if (pokemonIndex >= 0) {
       this.pokemonSetCount--; // only set pokemon can be removed
       this.selectedSetCount--;
 
       // move the removed pokemon to the end of the shadow list
-      let tempShadow = this.shadowPokemonInputs[pokemonIndex];
+      const tempShadow = this.shadowPokemonInputs[pokemonIndex];
       this.shadowPokemonInputs.splice(pokemonIndex, 1);
       this.shadowPokemonInputs.push(tempShadow);
 
@@ -348,11 +330,10 @@ export class HomeComponent implements OnInit {
 
     // check search query input types for the PokemonSet input type to reset the list title numbers
     let nonSetPokemonCount = 0;
-    for (let input of this._selectedSearchType.inputs) {
+    for (const input of this._selectedSearchType.inputs) {
       if (input.type === SearchInputType.Pokemon) {
         nonSetPokemonCount++;
-      }
-      else if (input.type === SearchInputType.PokemonSet) {
+      } else if (input.type === SearchInputType.PokemonSet) {
         for (let i = nonSetPokemonCount; i < this.pokemonInputs.length; i++) {
           this.pokemonInputs[i].internalId = input.code + (i - nonSetPokemonCount);
           this.pokemonInputs[i].internalTitle = input.name + (i - nonSetPokemonCount + 1);
@@ -390,15 +371,12 @@ export class HomeComponent implements OnInit {
   public massageDataCell(columnName: string, value: any): any {
     if (columnName.startsWith('dpsPlus') || columnName.startsWith('tank')) {
       return this.precisionRound(value, 1);
-    }
-    else if (columnName.startsWith('tdpsPercent')) {
-      let percentage = this.precisionRound(value * 100, 1);
-      return percentage == 100 ? '-' : (percentage + '%');
-    }
-    else if (columnName.startsWith('requiredTrainers')) {
+    } else if (columnName.startsWith('tdpsPercent')) {
+      const percentage = this.precisionRound(value * 100, 1);
+      return percentage === 100 ? '-' : (percentage + '%');
+    } else if (columnName.startsWith('requiredTrainers')) {
       return this.precisionRound(value, 2);
-    }
-    else {
+    } else {
       return value;
     }
   }
@@ -414,7 +392,7 @@ export class HomeComponent implements OnInit {
   }
 
   private precisionRound(number, precision): number {
-    let factor = Math.pow(10, precision);
+    const factor = Math.pow(10, precision);
     return Math.round(number * factor) / factor;
   }
 }

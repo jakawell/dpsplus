@@ -1,0 +1,273 @@
+[
+  {
+    "name": "NORMAL",
+    "immunes": [
+      "GHOST"
+    ],
+    "weaknesses": [
+      "ROCK",
+      "STEEL"
+    ],
+    "strengths": []
+  },
+  {
+    "name": "FIRE",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "WATER",
+      "ROCK",
+      "DRAGON"
+    ],
+    "strengths": [
+      "GRASS",
+      "ICE",
+      "BUG",
+      "STEEL"
+    ]
+  },
+  {
+    "name": "WATER",
+    "immunes": [],
+    "weaknesses": [
+      "WATER",
+      "GRASS",
+      "DRAGON"
+    ],
+    "strengths": [
+      "FIRE",
+      "GROUND",
+      "ROCK"
+    ]
+  },
+  {
+    "name": "ELECTRIC",
+    "immunes": [
+      "GROUND"
+    ],
+    "weaknesses": [
+      "ELECTRIC",
+      "GRASS",
+      "DRAGON"
+    ],
+    "strengths": [
+      "WATER",
+      "FLYING"
+    ]
+  },
+  {
+    "name": "GRASS",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "GRASS",
+      "POISON",
+      "FLYING",
+      "BUG",
+      "DRAGON",
+      "STEEL"
+    ],
+    "strengths": [
+      "WATER",
+      "GROUND",
+      "ROCK"
+    ]
+  },
+  {
+    "name": "ICE",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "WATER",
+      "ICE",
+      "STEEL"
+    ],
+    "strengths": [
+      "GRASS",
+      "GROUND",
+      "FLYING",
+      "DRAGON"
+    ]
+  },
+  {
+    "name": "FIGHTING",
+    "immunes": [
+      "GHOST"
+    ],
+    "weaknesses": [
+      "POISON",
+      "FLYING",
+      "PSYCHIC",
+      "BUG",
+      "FAIRY"
+    ],
+    "strengths": [
+      "NORMAL",
+      "ICE",
+      "ROCK",
+      "DARK",
+      "STEEL"
+    ]
+  },
+  {
+    "name": "POISON",
+    "immunes": [
+      "STEEL"
+    ],
+    "weaknesses": [
+      "POISON",
+      "GROUND",
+      "ROCK",
+      "GHOST"
+    ],
+    "strengths": [
+      "GRASS",
+      "FAIRY"
+    ]
+  },
+  {
+    "name": "GROUND",
+    "immunes": [
+      "FLYING"
+    ],
+    "weaknesses": [
+      "GRASS",
+      "BUG"
+    ],
+    "strengths": [
+      "FIRE",
+      "ELECTRIC",
+      "POISON",
+      "ROCK",
+      "STEEL"
+    ]
+  },
+  {
+    "name": "FLYING",
+    "immunes": [],
+    "weaknesses": [
+      "ELECTRIC",
+      "ROCK",
+      "STEEL"
+    ],
+    "strengths": [
+      "GRASS",
+      "FIGHTING",
+      "BUG"
+    ]
+  },
+  {
+    "name": "PSYCHIC",
+    "immunes": [
+      "DARK"
+    ],
+    "weaknesses": [
+      "PSYCHIC",
+      "STEEL"
+    ],
+    "strengths": [
+      "FIGHTING",
+      "POISON"
+    ]
+  },
+  {
+    "name": "BUG",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "FIGHTING",
+      "POISON",
+      "FLYING",
+      "GHOST",
+      "STEEL",
+      "FAIRY"
+    ],
+    "strengths": [
+      "GRASS",
+      "PSYCHIC",
+      "DARK"
+    ]
+  },
+  {
+    "name": "ROCK",
+    "immunes": [],
+    "weaknesses": [
+      "FIGHTING",
+      "GROUND",
+      "STEEL"
+    ],
+    "strengths": [
+      "FIRE",
+      "ICE",
+      "FLYING",
+      "BUG"
+    ]
+  },
+  {
+    "name": "GHOST",
+    "immunes": [
+      "NORMAL"
+    ],
+    "weaknesses": [
+      "DARK"
+    ],
+    "strengths": [
+      "PSYCHIC",
+      "GHOST"
+    ]
+  },
+  {
+    "name": "DRAGON",
+    "immunes": [
+      "FAIRY"
+    ],
+    "weaknesses": [
+      "STEEL"
+    ],
+    "strengths": [
+      "DRAGON"
+    ]
+  },
+  {
+    "name": "DARK",
+    "immunes": [],
+    "weaknesses": [
+      "FIGHTING",
+      "DARK",
+      "FAIRY"
+    ],
+    "strengths": [
+      "PSYCHIC",
+      "GHOST"
+    ]
+  },
+  {
+    "name": "STEEL",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "WATER",
+      "ELECTRIC",
+      "STEEL"
+    ],
+    "strengths": [
+      "ICE",
+      "ROCK",
+      "FAIRY"
+    ]
+  },
+  {
+    "name": "FAIRY",
+    "immunes": [],
+    "weaknesses": [
+      "FIRE",
+      "POISON",
+      "STEEL"
+    ],
+    "strengths": [
+      "FIGHTING",
+      "DRAGON",
+      "DARK"
+    ]
+  }
+]
