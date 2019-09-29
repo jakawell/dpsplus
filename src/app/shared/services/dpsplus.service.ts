@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Move } from 'pogo-master-import';
+import { Move } from 'pogo-objects';
 import { AppOptions } from '../interfaces';
 import { DataService } from './data.service';
 import { PokemonModel, SearchTypeModel, DpsPlusQueryType, SearchInputType, SearchInputDefinition, SearchResultsColumn, TypeInput, WeatherInput } from '../models';
@@ -106,7 +106,7 @@ export class DpsPlusService {
     // than 100 energy when using a one bar charge move.
     const chargeEnergy = chargeNameTypeStats.pveStats.energyDelta * -1;
     const quickEnergy = quickNameTypeStats.pveStats.energyDelta;
-    const quickCastTime = quickNameTypeStats.pveStats.castTime;
+    const quickCastTime = quickNameTypeStats.pveStats.castTime / 1000; // in seconds
     let chargeTime;
     if (chargeEnergy === 100) {
       chargeTime = Math.ceil(chargeEnergy / quickEnergy) * quickCastTime;
@@ -115,7 +115,7 @@ export class DpsPlusService {
     }// End If statement
 
     // Calculating the cycle time (charge time + charge move cast time)
-    const cycleTime = chargeTime + chargeNameTypeStats.pveStats.castTime;
+    const cycleTime = chargeTime + chargeNameTypeStats.pveStats.castTime / 1000; // in seconds
 
     // Calculating the individual DPS+ for the charge and quick moves
     const quickPower = quickNameTypeStats.pveStats.power;
@@ -246,51 +246,54 @@ export class DpsPlusService {
 
     // Storing all possible movesets and calculating and storing dps+
     // Looping over the number of quick moves
-    for (const quickMoveId of selectedSpecies.fastMoves) {
-      const quickMove = this.dataService.getMove(quickMoveId);
-      if (quickMove.isLegacy && !appOptions.showLegacyMoves)
-        continue;
-      // Looping over the number of charge movesets
-      for (const chargeMoveId of selectedSpecies.chargeMoves) {
-        const chargeMove = this.dataService.getMove(chargeMoveId);
-        if (chargeMove.isLegacy && !appOptions.showLegacyMoves)
+    if (selectedSpecies.fastMoves && selectedSpecies.fastMoves.length > 0
+      && selectedSpecies.chargeMoves && selectedSpecies.chargeMoves.length > 0) {
+      for (const quickMoveId of selectedSpecies.fastMoves) {
+        const quickMove = this.dataService.getMove(quickMoveId);
+        if (quickMove.isLegacy && !appOptions.showLegacyMoves)
           continue;
-        const moveset = [];
-        // Storing the quick and charge moves names in the storage array
-        moveset[0] = selectedSpecies.speciesName;
-        moveset[1] = selectedSpecies.types[0] + (selectedSpecies.types[1] ? ' / ' + selectedSpecies.types[1] : '');
-        moveset[2] = quickMove.name;
-        moveset[3] = chargeMove.name;
+        // Looping over the number of charge movesets
+        for (const chargeMoveId of selectedSpecies.chargeMoves) {
+          const chargeMove = this.dataService.getMove(chargeMoveId);
+          if (chargeMove.isLegacy && !appOptions.showLegacyMoves)
+            continue;
+          const moveset = [];
+          // Storing the quick and charge moves names in the storage array
+          moveset[0] = selectedSpecies.speciesName;
+          moveset[1] = selectedSpecies.types[0] + (selectedSpecies.types[1] ? ' / ' + selectedSpecies.types[1] : '');
+          moveset[2] = quickMove.name;
+          moveset[3] = chargeMove.name;
 
-        // Determing the STAB multiplier for the quick and charge moves
-        const stab = this.getSTAB(selectedSpecies.types[0], selectedSpecies.types[1], quickMove.type, chargeMove.type);
+          // Determing the STAB multiplier for the quick and charge moves
+          const stab = this.getSTAB(selectedSpecies.types[0], selectedSpecies.types[1], quickMove.type, chargeMove.type);
 
-        // Determind the type advantage multipliers for the quick and charge moves
-        let typeMult = null;
-        if (defender) {
-          typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, defender.basePokemon.species.types[0], defender.basePokemon.species.types[1]);
-        } else if (typeInput && typeInput.type1) {
-          typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, typeInput.type1.toUpperCase(), typeInput.type2.toUpperCase());
+          // Determind the type advantage multipliers for the quick and charge moves
+          let typeMult = null;
+          if (defender) {
+            typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, defender.basePokemon.species.types[0], defender.basePokemon.species.types[1]);
+          } else if (typeInput && typeInput.type1) {
+            typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, typeInput.type1.toUpperCase(), typeInput.type2.toUpperCase());
+          }
+
+          // Determing the weather multiplier
+          const weatherMult = this.getWeatherMult(quickMove.type, chargeMove.type, weatherInput.boostedTypes);
+
+          // Calculating the power for the quick and charge moves and the cycle time
+          const power = this.movesetPower(quickMove, chargeMove);
+          // Calculating the damage output over one cycle for the quick and charge moves
+          const quickDamage = Math.floor(0.5 * stab[0] * weatherMult[0] * power[0] * (typeMult ? typeMult[0] : 1) * (selectedPokemon.basePokemon.attack / (defender ? defender.basePokemon.defense : 100))) + 1;
+          const chargeDamage = Math.floor(0.5 * stab[1] * weatherMult[1] * power[1] * (typeMult ? typeMult[1] : 1) * (selectedPokemon.basePokemon.attack / (defender ? defender.basePokemon.defense : 100))) + 1;
+
+          // Finally calculating DPS+ for the i, j moveset
+          moveset[4] = (quickDamage * (power[4] / power[3]) + chargeDamage) / power[2];
+          moveset[5] = this.getTankiness(selectedPokemon.basePokemon.attack, selectedPokemon.basePokemon.defense, selectedPokemon.basePokemon.stamina);
+          moveset[6] = `L ${selectedPokemon.basePokemon.level}, ${selectedPokemon.basePokemon.attackIv}/${selectedPokemon.basePokemon.defenseIv}/${selectedPokemon.basePokemon.staminaIv}`;
+          moveset[7] = null; //  placeholder for the Percentage of Top DPS+
+          if (defender) {
+            moveset[8] = this.getTrainers2Win(defender.raidTier, moveset[4], 0.9);
+          }
+          movesets.push(moveset);
         }
-
-        // Determing the weather multiplier
-        const weatherMult = this.getWeatherMult(quickMove.type, chargeMove.type, weatherInput.boostedTypes);
-
-        // Calculating the power for the quick and charge moves and the cycle time
-        const power = this.movesetPower(quickMove, chargeMove);
-        // Calculating the damage output over one cycle for the quick and charge moves
-        const quickDamage = Math.floor(0.5 * stab[0] * weatherMult[0] * power[0] * (typeMult ? typeMult[0] : 1) * (selectedPokemon.basePokemon.attack / (defender ? defender.basePokemon.defense : 100))) + 1;
-        const chargeDamage = Math.floor(0.5 * stab[1] * weatherMult[1] * power[1] * (typeMult ? typeMult[1] : 1) * (selectedPokemon.basePokemon.attack / (defender ? defender.basePokemon.defense : 100))) + 1;
-
-        // Finally calculating DPS+ for the i, j moveset
-        moveset[4] = (quickDamage * (power[4] / power[3]) + chargeDamage) / power[2];
-        moveset[5] = this.getTankiness(selectedPokemon.basePokemon.attack, selectedPokemon.basePokemon.defense, selectedPokemon.basePokemon.stamina);
-        moveset[6] = `L ${selectedPokemon.basePokemon.level}, ${selectedPokemon.basePokemon.attackIv}/${selectedPokemon.basePokemon.defenseIv}/${selectedPokemon.basePokemon.staminaIv}`;
-        moveset[7] = null; //  placeholder for the Percentage of Top DPS+
-        if (defender) {
-          moveset[8] = this.getTrainers2Win(defender.raidTier, moveset[4], 0.9);
-        }
-        movesets.push(moveset);
       }
     }
 

@@ -1,4 +1,4 @@
-import { Pokemon, PokemonSpecies } from 'pogo-master-import';
+import { Pokemon, PokemonSpecies } from 'pogo-objects';
 
 export class PokemonModel {
   public basePokemon: Pokemon;
@@ -48,8 +48,16 @@ export class PokemonModel {
 
   public setSpecies(newSpecies: PokemonSpecies) {
     this.basePokemon = new Pokemon(newSpecies, 30, 15, 15, 15);
-    this.quickMove = this.basePokemon.species.fastMoves[0];
-    this.chargeMove = this.basePokemon.species.chargeMoves[0];
+    if (this.basePokemon.species.fastMoves) {
+      this.quickMove = this.basePokemon.species.fastMoves[0];
+    } else {
+      console.warn(`Missing fast moves for ${this.basePokemon.species.id}`, this.basePokemon.species);
+    }
+    if (this.basePokemon.species.fastMoves) {
+      this.chargeMove = this.basePokemon.species.chargeMoves[0];
+    } else {
+      console.warn(`Missing charge moves for ${this.basePokemon.species.id}`, this.basePokemon.species);
+    }
   }
 
   public serialize() {

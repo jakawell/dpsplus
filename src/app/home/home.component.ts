@@ -81,6 +81,8 @@ export class HomeComponent implements OnInit {
     this.searchTypes = this.dpsPlusService.SearchTypes;
     this.storageService.getAppOptions(this.appOptions).then((options: AppOptions) => this.appOptions = options);
 
+    this.afterLoad();
+
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(event => {
         console.log('Service worker update available.');

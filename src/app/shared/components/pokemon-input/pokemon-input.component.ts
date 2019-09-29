@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith ,  map } from 'rxjs/operators';
-import { PokemonSpecies } from 'pogo-master-import';
+import { PokemonSpecies } from 'pogo-objects';
 import { DataService } from '../../services/data.service';
 import { PokemonModel } from '../../models/index';
 
@@ -75,6 +75,13 @@ export class PokemonInputComponent implements OnInit {
     this.pokemonForm.get('quickMove').valueChanges.forEach((value: string) => this.model.quickMove = value);
     this.pokemonForm.get('chargeMove').valueChanges.forEach((value: string) => this.model.chargeMove = value);
     this.resetForm();
+  }
+
+  public get selectedSpeciesImage() {
+    const form = !this.selectedSpecies || this.selectedSpecies.form === 'NORMAL'
+      ? ''
+      : this.selectedSpecies.form.toLowerCase();
+    return `${this.selectedSpecies.pokedexNumber}${form}`;
   }
 
   public removeSelf() {

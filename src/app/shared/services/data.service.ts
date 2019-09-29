@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameMasterImport, PokemonSpecies, Move } from 'pogo-master-import';
+import { ImportFromSaved, PokemonSpecies, Move } from 'pogo-objects';
 import { TypeModel } from '../models/type.model';
 import GameMaster from './master.json';
 import Types from './typeChart.json';
@@ -11,7 +11,7 @@ export class DataService {
   private _Types = new Map<string, TypeModel>();
 
   constructor() {
-    const { speciesList, movesList } = GameMasterImport.importFromSaved(GameMaster);
+    const { speciesList, movesList } = ImportFromSaved(GameMaster);
     this._Species = speciesList;
     this._Moves = movesList;
 
