@@ -55,7 +55,7 @@ export class DataService {
       immunes: []
     } as TypeModel;
 
-    if (defense1.immunes.includes(attack.name) || defense2.immunes.includes(attack.name) // "No effect" / "Immune"
+    if (attack.immunes.includes(defense1.name) || attack.immunes.includes(defense2.name) // "No effect" / "Immune"
     ) {
       return 0.39;
     }

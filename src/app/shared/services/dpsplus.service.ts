@@ -104,8 +104,8 @@ export class DpsPlusService {
     // The if statement is making sure that if the charge move is a one bar charge move, the user will lose some energy
     // if it is used and the energy gain of the quick move is not a factor of 100. Basically, you will actually use more
     // than 100 energy when using a one bar charge move.
-    const chargeEnergy = chargeNameTypeStats.pveStats.energyDelta * -1;
-    const quickEnergy = quickNameTypeStats.pveStats.energyDelta;
+    const chargeEnergy = (chargeNameTypeStats.pveStats.energyDelta || 0) * -1;
+    const quickEnergy = (quickNameTypeStats.pveStats.energyDelta || 1);
     const quickCastTime = quickNameTypeStats.pveStats.castTime / 1000; // in seconds
     let chargeTime;
     if (chargeEnergy === 100) {
@@ -115,11 +115,11 @@ export class DpsPlusService {
     }// End If statement
 
     // Calculating the cycle time (charge time + charge move cast time)
-    const cycleTime = chargeTime + chargeNameTypeStats.pveStats.castTime / 1000; // in seconds
+    const cycleTime = chargeTime + (chargeNameTypeStats.pveStats.castTime / 1000); // in seconds
 
     // Calculating the individual DPS+ for the charge and quick moves
-    const quickPower = quickNameTypeStats.pveStats.power;
-    const chargePower = chargeNameTypeStats.pveStats.power;
+    const quickPower = (quickNameTypeStats.pveStats.power || 0);
+    const chargePower = (chargeNameTypeStats.pveStats.power || 0);
     const quickCT = quickCastTime;
 
     return [quickPower, chargePower, cycleTime, quickCT, chargeTime];
@@ -223,8 +223,14 @@ export class DpsPlusService {
       }
     }
 
+    const movesetsFiltered = movesetsCombined.filter(elem => !Number.isNaN(elem[4]));
+    if (movesetsFiltered.length !== movesetsCombined.length) {
+      const nanDps = movesetsCombined.filter(elem => Number.isNaN(elem[4]));
+      console.error('There are movesets with a DPS+ of NaN. Example:', nanDps[0]);
+    }
+
     //  sort by DPS+
-    const movesetsSorted =  movesetsCombined.sort((a, b) => {
+    const movesetsSorted =  movesetsFiltered.sort((a, b) => {
       if (a[4] > b[4]) return -1;
       else if (a[4] < b[4]) return 1;
       else return 0;
@@ -272,7 +278,7 @@ export class DpsPlusService {
           if (defender) {
             typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, defender.basePokemon.species.types[0], defender.basePokemon.species.types[1]);
           } else if (typeInput && typeInput.type1) {
-            typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, typeInput.type1.toUpperCase(), typeInput.type2.toUpperCase());
+            typeMult = this.getTypeAdvantageMult(quickMove.type, chargeMove.type, typeInput.type1.toUpperCase(), typeInput.type2 ? typeInput.type2.toUpperCase() : null);
           }
 
           // Determing the weather multiplier

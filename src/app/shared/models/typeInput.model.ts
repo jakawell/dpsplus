@@ -1,5 +1,6 @@
 import { SearchInput } from '../interfaces/searchInput';
 import { DataService } from '../services/data.service';
+import { TypeModel } from './type.model';
 
 export class TypeInput implements SearchInput {
   public code: string;
@@ -14,12 +15,13 @@ export class TypeInput implements SearchInput {
     this.code = code;
     this.name = name;
 
-    const typeList = Array.from(this.dataService.types.values());
+    const typeList = Array.from(this.dataService.types.values())
+      .map((type: TypeModel) => type.name.charAt(0).toUpperCase() + type.name.slice(1).toLowerCase()).sort();
     this.types = [];
     this.typesWithNone = [ 'None' ];
     for (const type of typeList) {
-      this.types.push(type.name);
-      this.typesWithNone.push(type.name);
+      this.types.push(type);
+      this.typesWithNone.push(type);
     }
 
     this.type1 = this.types[0];

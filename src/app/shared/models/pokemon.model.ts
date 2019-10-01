@@ -50,12 +50,12 @@ export class PokemonModel {
     this.basePokemon = new Pokemon(newSpecies, 30, 15, 15, 15);
     if (this.basePokemon.species.fastMoves) {
       this.quickMove = this.basePokemon.species.fastMoves[0];
-    } else {
+    } else if (this.basePokemon.species.id !== 'SMEARGLE_NORMAL') { // Smeargle has no stored moves
       console.warn(`Missing fast moves for ${this.basePokemon.species.id}`, this.basePokemon.species);
     }
     if (this.basePokemon.species.fastMoves) {
       this.chargeMove = this.basePokemon.species.chargeMoves[0];
-    } else {
+    } else if (this.basePokemon.species.id !== 'SMEARGLE_NORMAL') { // Smeargle has no stored moves
       console.warn(`Missing charge moves for ${this.basePokemon.species.id}`, this.basePokemon.species);
     }
   }
