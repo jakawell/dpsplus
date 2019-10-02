@@ -6,14 +6,15 @@
     </button>
   </div>
   <div fxLayout fxLayoutGap="8px">
-    <img class="pokemon-image" src="https://static.dpsplus.app/mon-icons/{{selectedSpecies + (selectedForm || '')}}.svg" alt="{{selectedName}} image" width="72" height="72" />
+    <img class="pokemon-image" src="https://static.dpsplus.app/mon-icons/{{selectedSpeciesImage}}"
+      onError="this.src='./assets/images/pokeball.svg';" alt="{{selectedSpecies.speciesName}} image" width="72" height="72" />
     <div fxLayout="column" fxLayoutAlign="start">
 
       <mat-form-field class="pokemon-name-input">
         <input type="text" placeholder="Pokémon" matInput formControlName="species" [matAutocomplete]="auto" />
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="autoDisplayFn">
           <mat-option *ngFor="let option of filteredPokemon | async" [value]="option" class="pokemon-name-option">
-            {{ option[0] }}
+            {{ option.speciesName }}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

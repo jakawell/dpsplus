@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import * as localForage from 'localforage';
-import { PokemonModel, TypeInput, WeatherInput } from '../models/';
-import { DataService } from './data.service';
 import { AppOptions } from '../interfaces';
+import { DataService } from './data.service';
+import { PokemonModel } from '../models/pokemon.model';
+import { TypeInput } from '../models/typeInput.model';
+import { WeatherInput } from '../models/weatherInput.model';
 
 @Injectable()
 export class StorageService {
 
-  private KEY_LAST_SEARCH_TYPE: string = 'LAST_SEARCH_TYPE';
-  private KEY_LAST_DEFENDER: string = 'LAST_DEFENDER';
-  private KEY_LAST_TYPE: string = 'LAST_TYPE';
-  private KEY_LAST_WEATHER: string = 'LAST_WEATHER';
-  private KEY_LAST_ATTACKERS: string = 'LAST_ATTACKERS';
-  private KEY_LAST_ATTACKERS_COUNT: string = 'KEY_LAST_ATTACKERS_COUNT';
-  private KEY_APP_OPTIONS: string = "KEY_APP_OPTIONS";
+  private KEY_LAST_SEARCH_TYPE = 'LAST_SEARCH_TYPE';
+  private KEY_LAST_DEFENDER = 'LAST_DEFENDER';
+  private KEY_LAST_TYPE = 'LAST_TYPE';
+  private KEY_LAST_WEATHER = 'LAST_WEATHER';
+  private KEY_LAST_ATTACKERS = 'LAST_ATTACKERS';
+  private KEY_LAST_ATTACKERS_COUNT = 'KEY_LAST_ATTACKERS_COUNT';
+  private KEY_APP_OPTIONS = 'KEY_APP_OPTIONS';
 
   constructor(private dataService: DataService) { }
 
@@ -67,7 +69,7 @@ export class StorageService {
       if (!value)
         return result;
       const serializedPokemon = value.split('\n');
-      for (let serialized of serializedPokemon) {
+      for (const serialized of serializedPokemon) {
         result.push(this.deserializePokemonModel(serialized));
       }
       return result;
@@ -75,8 +77,8 @@ export class StorageService {
   }
 
   public setLastCounters(counters: PokemonModel[]): void {
-    let serialized: string = '';
-    for (let counter of counters) {
+    let serialized = '';
+    for (const counter of counters) {
       if (counter)
         serialized += counter.serialize() + '\n';
     }
@@ -86,7 +88,7 @@ export class StorageService {
   }
 
   public getLastCountersCount(): Promise<number> {
-    return this.getItem<number>(this.KEY_LAST_ATTACKERS_COUNT, (value: string) => value ? parseInt(value) : null);
+    return this.getItem<number>(this.KEY_LAST_ATTACKERS_COUNT, (value: string) => value ? parseInt(value, 10) : null);
   }
 
   public setLastCountersCount(count: number): void {
@@ -104,10 +106,7 @@ export class StorageService {
   private deserializePokemonModel(pokemonSerialized: string): PokemonModel {
     if (!pokemonSerialized)
       return null;
-    const pokemon: any = JSON.parse(pokemonSerialized);
-    const result = new PokemonModel(pokemon.species, pokemon.form, this.dataService);
-    result.deserialize(pokemonSerialized);
-    return result;
+    return PokemonModel.deserialize(pokemonSerialized);
   }
 
   private getItem<T>(key: string, parser?: (value: string) => T, defaultResult?: T): Promise<T> {

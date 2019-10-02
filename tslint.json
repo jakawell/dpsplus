@@ -10,7 +10,9 @@
       true,
       "check-space"
     ],
-    "curly": true,
+    "curly": {
+      "severity": "off"
+    },
     "deprecation": {
       "severity": "warn"
     },
@@ -27,10 +29,12 @@
     ],
     "interface-over-type-literal": true,
     "label-position": true,
-    "max-line-length": [
-      true,
-      140
-    ],
+    "max-line-length": {
+      "options": {
+        "limit": 140,
+        "ignore-pattern": "^import |^export {(.*?)}|class [a-zA-Z]+ implements |// "
+      }
+    },
     "member-access": false,
     "member-ordering": [
       true,

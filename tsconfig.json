@@ -11,10 +11,16 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "types": [
+      "node"
+    ],
     "lib": [
       "es2017",
       "dom"
     ],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
     "module": "es2015",
     "baseUrl": "./",
     "paths": {

@@ -13,39 +13,39 @@ export class WeatherInput implements SearchInput {
 
   get weatherList(): string[] {
     return [
-      "Neutral",
-      "Clear/sunny",
-      "Partly Cloudy",
-      "Cloudy",
-      "Fog",
-      "Rainy",
-      "Snow",
-      "Windy",
-    ]
+      'Neutral',
+      'Clear/sunny',
+      'Partly Cloudy',
+      'Cloudy',
+      'Fog',
+      'Rainy',
+      'Snow',
+      'Windy',
+    ];
   }
 
   get boostedTypes(): string[] {
-    var boostedTypes = [];
+    let boostedTypes = [];
 
-    if (this.value === "Clear/sunny"){
-      boostedTypes = ["Fire", "Grass", "Ground"];
-    } else if (this.value === "Partly Cloudy"){
-      boostedTypes = ["Normal", "Rock"];
-    } else if (this.value === "Cloudy"){
-      boostedTypes = ["Fairy", "Fighting", "Poison"];
-    } else if (this.value === "Rainy"){
-      boostedTypes = ["Water", "Electric", "Bug"];
-    } else if (this.value === "Snow"){
-      boostedTypes = ["Ice", "Steel"];
-    } else if (this.value === "Fog"){
-      boostedTypes = ["Dark", "Ghost"];
-    } else if (this.value === "Windy"){
-      boostedTypes = ["Dragon", "Flying", "Psychic"];
+    if (this.value === 'Clear/sunny') {
+      boostedTypes = ['FIRE', 'GRASS', 'GROUND'];
+    } else if (this.value === 'Partly Cloudy') {
+      boostedTypes = ['NORMAL', 'ROCK'];
+    } else if (this.value === 'Cloudy') {
+      boostedTypes = ['FAIRY', 'FIGHTING', 'POISON'];
+    } else if (this.value === 'Rainy') {
+      boostedTypes = ['WATER', 'ELECTRIC', 'BUG'];
+    } else if (this.value === 'Snow') {
+      boostedTypes = ['ICE', 'STEEL'];
+    } else if (this.value === 'Fog') {
+      boostedTypes = ['DARK', 'GHOST'];
+    } else if (this.value === 'Windy') {
+      boostedTypes = ['DRAGON', 'FLYING', 'PSYCHIC'];
     } else {
       boostedTypes = [];
-    }//End if statements
+    }
 
-    return boostedTypes
+    return boostedTypes;
   }
 
   public serialize() {

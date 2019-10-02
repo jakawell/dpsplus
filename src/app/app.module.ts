@@ -14,7 +14,6 @@ import { HomeComponent } from './home/home.component';
 
 import { DataService, DpsPlusService, StorageService } from './shared/services';
 import { PokemonInputComponent } from './shared/components/pokemon-input/pokemon-input.component';
-import { PapaParseModule } from 'ngx-papaparse';
 import { DocsComponent } from './docs/docs.component';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
     MatAutocompleteModule,
     MatDialogModule,
     MatCheckboxModule,
-    PapaParseModule,
   ],
   entryComponents: [
     SettingsComponent,

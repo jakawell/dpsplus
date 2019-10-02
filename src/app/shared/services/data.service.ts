@@ -1,108 +1,76 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Papa } from 'ngx-papaparse';
+import { ImportFromSaved, PokemonSpecies, Move } from 'pogo-objects';
+import { TypeModel } from '../models/type.model';
+import GameMaster from './master.json';
+import Types from './typeChart.json';
 
 @Injectable()
 export class DataService {
-  private LevelMultipliers: any[] = null;
-  public isLoaded = false;
+  private _Species = new Map<string, PokemonSpecies>();
+  private _Moves = new Map<string, Move>();
+  private _Types = new Map<string, TypeModel>();
 
-  private _Pokedex: any[] = null;
-  private _PokedexAlpha: any[] = null;
-  private _Types: any[] = null;
-  private _MovesQuick: any[] = null;
-  private _MovesCharge: any[] = null;
+  constructor() {
+    const { speciesList, movesList } = ImportFromSaved(GameMaster);
+    this._Species = speciesList;
+    this._Moves = movesList;
 
-  constructor(private http: HttpClient, private papa: Papa) {
-    //this.load();
-  }
-
-  private loadCsv(reference: any, filePath: string, callback: (reference: any) => any) {
-    if (reference) {
-      callback(reference);
-    }
-    else {
-      this.http.get(filePath, { responseType: 'text' })
-        .subscribe(data => {
-          reference = this.papa.parse(data, { skipEmptyLines: true }).data;
-          callback(reference);
-        });
+    const types = Types as TypeModel[];
+    for (const type of types) {
+      this._Types.set(type.name, type);
     }
   }
 
-  load(callback?: () => any) {
-    this.loadCsv(this._Pokedex, 'assets/data/pokedex.csv', (pokedex) => {
-      this._Pokedex = pokedex.slice(1);
-      this._PokedexAlpha = pokedex.slice(1).sort((a, b) => {
-        if (a[0] < b[0]) return -1;
-        if (a[0] > b[0]) return 1;
-        return 0;
-      })
-      this.loadCsv(this.LevelMultipliers, 'assets/data/levels.csv', (levels) => {
-        this.LevelMultipliers = levels;
-        this.loadCsv(this._Types, 'assets/data/types.csv', (types) => {
-          this._Types = types;
-          this.loadCsv(this._MovesQuick, 'assets/data/movesquick.csv', (movesQ) => {
-            this._MovesQuick = movesQ;
-            this.loadCsv(this._MovesCharge, 'assets/data/movescharge.csv', (movesC) => {
-              this._MovesCharge = movesC;
-              this.isLoaded = true;
-              if (callback) callback();
-            });
-          });
-        });
-      });
-    });
+  public get species(): Map<string, PokemonSpecies> {
+    return this._Species;
   }
 
-  getPokedex(): any[] {
-    return this._Pokedex.slice();
+  public get speciesAlphabetical(): Map<string, PokemonSpecies> {
+    return new Map([...Array.from(this.species.entries())].sort());
   }
 
-  getPokedexAlpha(): any[] {
-    return this._PokedexAlpha.slice();
+  public get moves(): Map<string, Move> {
+    return this._Moves;
   }
 
-  getPokemon(species: number, form: string): any[] {
-    for (let pokemon of this._Pokedex)
-      if (pokemon[1] == species && (form ? pokemon[2] == form : !pokemon[2]))
-        return pokemon;
-    return null;
-  }
-
-  getLevelMultiplier(level: number): number {
-    return this.LevelMultipliers[(level * 2) - 1][1]
-  }
-
-  getTypes(): any[] {
+  public get types(): Map<string, TypeModel> {
     return this._Types;
   }
 
-  getQuickMoves(): any[] {
-    return this._MovesQuick.slice(1);
+  public getSpecies(id: string): PokemonSpecies {
+    return this._Species.get(id);
   }
 
-  getChargeMoves(): any[] {
-    return this._MovesCharge.slice(1);
+  public getMove(id: string): Move {
+    return this._Moves.get(id);
   }
 
-  private getMove(name: string, isQuick: boolean): any[] {
-    let moves = isQuick ? this._MovesQuick : this._MovesCharge;
-    let result = null;
-    for (let move of moves) {
-      if (move[0] == name) result = move;
+  public getTypeEffectiveness(attackingType: string, defendingType1: string, defendingType2?: string): number {
+    const attack = this._Types.get(attackingType);
+    const defense1 = this._Types.get(defendingType1);
+    const defense2 = defendingType2 ? this._Types.get(defendingType2) : {
+      name: 'none',
+      strengths: [],
+      weaknesses: [],
+      immunes: []
+    } as TypeModel;
+
+    if (attack.immunes.includes(defense1.name) || attack.immunes.includes(defense2.name) // "No effect" / "Immune"
+    ) {
+      return 0.39;
     }
-    if (result)
-      return result;
-    else
-      throw Error(`The move '${name}' could not be found.'`);
-  }
-
-  getQuickMove(name: string, callback): any[] {
-    return this.getMove(name, true);
-  }
-
-  getChargeMove(name: string, callback): any[] {
-    return this.getMove(name, false);
+    if (attack.weaknesses.includes(defense1.name) && attack.weaknesses.includes(defense2.name)) { // "Doubly not very effective"
+      return 0.39;
+    }
+    if (attack.weaknesses.includes(defense1.name) || attack.weaknesses.includes(defense2.name)) { // "Not very effective"
+      return 0.625;
+    }
+    if (attack.strengths.includes(defense1.name) && attack.strengths.includes(defense2.name)) { // "Doubly effective"
+      return 2.56;
+    }
+    if (attack.strengths.includes(defense1.name) || attack.strengths.includes(defense2.name)) { // "Super effective"
+      return 1.6;
+    }
+    return 1; // "Normally effective"
   }
 }
