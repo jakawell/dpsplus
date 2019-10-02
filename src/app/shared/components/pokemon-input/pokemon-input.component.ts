@@ -81,7 +81,10 @@ export class PokemonInputComponent implements OnInit {
     const form = !this.selectedSpecies || this.selectedSpecies.form === 'NORMAL'
       ? ''
       : this.selectedSpecies.form.toLowerCase();
-    return `${this.selectedSpecies.pokedexNumber}${form}`;
+    const extension = this.selectedSpecies.pokedexNumber > 649 || this.selectedSpecies.form === 'GALARIAN'
+      ? '.png'
+      : '.svg';
+    return `${this.selectedSpecies.pokedexNumber}${form}${extension}`;
   }
 
   public removeSelf() {
