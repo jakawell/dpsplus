@@ -6,7 +6,8 @@
     </button>
   </div>
   <div fxLayout fxLayoutGap="8px">
-    <img class="pokemon-image" src="https://static.dpsplus.app/mon-icons/{{selectedSpeciesImage}}.svg" alt="{{selectedSpecies.speciesName}} image" width="72" height="72" />
+    <img class="pokemon-image" src="https://static.dpsplus.app/mon-icons/{{selectedSpeciesImage}}.svg"
+      onError="this.src='./assets/images/pokeball.svg';" alt="{{selectedSpecies.speciesName}} image" width="72" height="72" />
     <div fxLayout="column" fxLayoutAlign="start">
 
       <mat-form-field class="pokemon-name-input">

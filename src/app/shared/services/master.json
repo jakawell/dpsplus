@@ -69,7 +69,8 @@
         "PETAL_BLIZZARD",
         "SOLAR_BEAM",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "FRENZY_PLANT"
       ],
       "baseAttack": 198,
       "baseDefense": 189,
@@ -112,7 +113,8 @@
       ],
       "fastMoves": [
         "EMBER_FAST",
-        "FIRE_FANG_FAST"
+        "FIRE_FANG_FAST",
+        "SCRATCH_FAST"
       ],
       "chargeMoves": [
         "FIRE_PUNCH",
@@ -137,14 +139,16 @@
       ],
       "fastMoves": [
         "FIRE_SPIN_FAST",
-        "AIR_SLASH_FAST"
+        "AIR_SLASH_FAST",
+        "WING_ATTACK_FAST"
       ],
       "chargeMoves": [
         "FIRE_BLAST",
         "DRAGON_CLAW",
         "OVERHEAT",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "BLAST_BURN"
       ],
       "baseAttack": 223,
       "baseDefense": 173,
@@ -220,7 +224,8 @@
         "HYDRO_PUMP",
         "SKULL_BASH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "HYDRO_CANNON"
       ],
       "baseAttack": 171,
       "baseDefense": 207,
@@ -280,7 +285,8 @@
       ],
       "fastMoves": [
         "STRUGGLE_BUG_FAST",
-        "CONFUSION_FAST"
+        "CONFUSION_FAST",
+        "BUG_BITE_FAST"
       ],
       "chargeMoves": [
         "BUG_BUZZ",
@@ -345,7 +351,8 @@
       ],
       "fastMoves": [
         "INFESTATION_FAST",
-        "POISON_JAB_FAST"
+        "POISON_JAB_FAST",
+        "BUG_BITE_FAST"
       ],
       "chargeMoves": [
         "SLUDGE_BOMB",
@@ -414,12 +421,14 @@
       ],
       "fastMoves": [
         "AIR_SLASH_FAST",
-        "STEEL_WING_FAST"
+        "STEEL_WING_FAST",
+        "WING_ATTACK_FAST"
       ],
       "chargeMoves": [
         "HURRICANE",
         "AERIAL_ACE",
-        "BRAVE_BIRD"
+        "BRAVE_BIRD",
+        "AIR_CUTTER"
       ],
       "baseAttack": 166,
       "baseDefense": 154,
@@ -538,7 +547,8 @@
       "chargeMoves": [
         "AERIAL_ACE",
         "DRILL_PECK",
-        "SKY_ATTACK"
+        "SKY_ATTACK",
+        "TWISTER"
       ],
       "baseAttack": 112,
       "baseDefense": 60,
@@ -561,7 +571,8 @@
       "chargeMoves": [
         "AERIAL_ACE",
         "DRILL_RUN",
-        "SKY_ATTACK"
+        "SKY_ATTACK",
+        "TWISTER"
       ],
       "baseAttack": 182,
       "baseDefense": 133,
@@ -584,7 +595,8 @@
       "chargeMoves": [
         "WRAP",
         "POISON_FANG",
-        "SLUDGE_BOMB"
+        "SLUDGE_BOMB",
+        "GUNK_SHOT"
       ],
       "baseAttack": 110,
       "baseDefense": 97,
@@ -627,12 +639,14 @@
       ],
       "fastMoves": [
         "THUNDER_SHOCK_FAST",
-        "QUICK_ATTACK_FAST"
+        "QUICK_ATTACK_FAST",
+        "PRESENT_FAST"
       ],
       "chargeMoves": [
         "DISCHARGE",
         "THUNDERBOLT",
-        "WILD_CHARGE"
+        "WILD_CHARGE",
+        "THUNDER"
       ],
       "baseAttack": 112,
       "baseDefense": 96,
@@ -675,13 +689,15 @@
       "fastMoves": [
         "VOLT_SWITCH_FAST",
         "SPARK_FAST",
-        "CHARM_FAST"
+        "CHARM_FAST",
+        "THUNDER_SHOCK_FAST"
       ],
       "chargeMoves": [
         "BRICK_BREAK",
         "THUNDER_PUNCH",
         "WILD_CHARGE",
-        "SKULL_BASH"
+        "SKULL_BASH",
+        "THUNDER"
       ],
       "baseAttack": 193,
       "baseDefense": 151,
@@ -727,7 +743,8 @@
       "chargeMoves": [
         "DIG",
         "ROCK_SLIDE",
-        "SAND_TOMB"
+        "SAND_TOMB",
+        "ROCK_TOMB"
       ],
       "baseAttack": 126,
       "baseDefense": 120,
@@ -907,7 +924,8 @@
       ],
       "fastMoves": [
         "POISON_JAB_FAST",
-        "IRON_TAIL_FAST"
+        "IRON_TAIL_FAST",
+        "FURY_CUTTER_FAST"
       ],
       "chargeMoves": [
         "EARTHQUAKE",
@@ -955,7 +973,8 @@
       "fastMoves": [
         "CHARGE_BEAM_FAST",
         "ZEN_HEADBUTT_FAST",
-        "CHARM_FAST"
+        "CHARM_FAST",
+        "POUND_FAST"
       ],
       "chargeMoves": [
         "DAZZLING_GLEAM",
@@ -1049,13 +1068,15 @@
       ],
       "fastMoves": [
         "FEINT_ATTACK_FAST",
-        "FIRE_SPIN_FAST"
+        "FIRE_SPIN_FAST",
+        "EMBER_FAST"
       ],
       "chargeMoves": [
         "HEAT_WAVE",
         "OVERHEAT",
         "SOLAR_BEAM",
-        "PSYSHOCK"
+        "PSYSHOCK",
+        "FLAMETHROWER"
       ],
       "baseAttack": 169,
       "baseDefense": 190,
@@ -1078,7 +1099,8 @@
       "chargeMoves": [
         "DISARMING_VOICE",
         "GYRO_BALL",
-        "DAZZLING_GLEAM"
+        "DAZZLING_GLEAM",
+        "BODY_SLAM"
       ],
       "baseAttack": 80,
       "baseDefense": 41,
@@ -1128,7 +1150,8 @@
         "AIR_CUTTER",
         "SWIFT",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SLUDGE_BOMB"
       ],
       "baseAttack": 83,
       "baseDefense": 73,
@@ -1153,7 +1176,8 @@
         "AIR_CUTTER",
         "POISON_FANG",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "OMINOUS_WIND"
       ],
       "baseAttack": 161,
       "baseDefense": 150,
@@ -1270,7 +1294,8 @@
       ],
       "fastMoves": [
         "STRUGGLE_BUG_FAST",
-        "FURY_CUTTER_FAST"
+        "FURY_CUTTER_FAST",
+        "BUG_BITE_FAST"
       ],
       "chargeMoves": [
         "CROSS_POISON",
@@ -1318,14 +1343,16 @@
       ],
       "fastMoves": [
         "INFESTATION_FAST",
-        "CONFUSION_FAST"
+        "CONFUSION_FAST",
+        "BUG_BITE_FAST"
       ],
       "chargeMoves": [
         "SILVER_WIND",
         "PSYCHIC",
         "BUG_BUZZ",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "POISON_FANG"
       ],
       "baseAttack": 179,
       "baseDefense": 143,
@@ -1366,7 +1393,8 @@
       ],
       "fastMoves": [
         "MUD_SLAP_FAST",
-        "SCRATCH_FAST"
+        "SCRATCH_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "DIG",
@@ -1412,7 +1440,8 @@
       ],
       "fastMoves": [
         "SUCKER_PUNCH_FAST",
-        "MUD_SLAP_FAST"
+        "MUD_SLAP_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "EARTHQUAKE",
@@ -1463,7 +1492,8 @@
       "chargeMoves": [
         "NIGHT_SLASH",
         "DARK_PULSE",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "BODY_SLAM"
       ],
       "baseAttack": 92,
       "baseDefense": 78,
@@ -1509,7 +1539,8 @@
       "chargeMoves": [
         "FOUL_PLAY",
         "POWER_GEM",
-        "PLAY_ROUGH"
+        "PLAY_ROUGH",
+        "NIGHT_SLASH"
       ],
       "baseAttack": 150,
       "baseDefense": 136,
@@ -1600,12 +1631,14 @@
       ],
       "fastMoves": [
         "LOW_KICK_FAST",
-        "COUNTER_FAST"
+        "COUNTER_FAST",
+        "KARATE_CHOP_FAST"
       ],
       "chargeMoves": [
         "CLOSE_COMBAT",
         "LOW_SWEEP",
-        "NIGHT_SLASH"
+        "NIGHT_SLASH",
+        "CROSS_CHOP"
       ],
       "baseAttack": 207,
       "baseDefense": 138,
@@ -1648,14 +1681,16 @@
       ],
       "fastMoves": [
         "FIRE_FANG_FAST",
-        "SNARL_FAST"
+        "SNARL_FAST",
+        "BITE_FAST"
       ],
       "chargeMoves": [
         "FIRE_BLAST",
         "WILD_CHARGE",
         "CRUNCH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "FLAMETHROWER"
       ],
       "baseAttack": 227,
       "baseDefense": 166,
@@ -1705,7 +1740,8 @@
         "MUD_BOMB",
         "BUBBLE_BEAM",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SCALD"
       ],
       "baseAttack": 130,
       "baseDefense": 123,
@@ -1723,7 +1759,8 @@
       ],
       "fastMoves": [
         "BUBBLE_FAST",
-        "ROCK_SMASH_FAST"
+        "ROCK_SMASH_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
@@ -1731,7 +1768,8 @@
         "ICE_PUNCH",
         "POWER_UP_PUNCH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SUBMISSION"
       ],
       "baseAttack": 182,
       "baseDefense": 184,
@@ -1807,7 +1845,8 @@
         "SHADOW_BALL",
         "FIRE_PUNCH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "PSYCHIC"
       ],
       "baseAttack": 271,
       "baseDefense": 167,
@@ -1825,7 +1864,8 @@
       ],
       "fastMoves": [
         "ROCK_SMASH_FAST",
-        "KARATE_CHOP_FAST"
+        "KARATE_CHOP_FAST",
+        "LOW_KICK_FAST"
       ],
       "chargeMoves": [
         "LOW_SWEEP",
@@ -1853,7 +1893,8 @@
       "chargeMoves": [
         "SUBMISSION",
         "BRICK_BREAK",
-        "DYNAMIC_PUNCH"
+        "DYNAMIC_PUNCH",
+        "CROSS_CHOP"
       ],
       "baseAttack": 177,
       "baseDefense": 125,
@@ -1871,13 +1912,15 @@
       ],
       "fastMoves": [
         "BULLET_PUNCH_FAST",
-        "COUNTER_FAST"
+        "COUNTER_FAST",
+        "KARATE_CHOP_FAST"
       ],
       "chargeMoves": [
         "HEAVY_SLAM",
         "DYNAMIC_PUNCH",
         "CLOSE_COMBAT",
-        "ROCK_SLIDE"
+        "ROCK_SLIDE",
+        "SUBMISSION"
       ],
       "baseAttack": 234,
       "baseDefense": 159,
@@ -1918,7 +1961,8 @@
       ],
       "fastMoves": [
         "BULLET_SEED_FAST",
-        "ACID_FAST"
+        "ACID_FAST",
+        "RAZOR_LEAF_FAST"
       ],
       "chargeMoves": [
         "POWER_WHIP",
@@ -2082,12 +2126,14 @@
       ],
       "fastMoves": [
         "ROCK_THROW_FAST",
-        "MUD_SLAP_FAST"
+        "MUD_SLAP_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "DIG",
         "STONE_EDGE",
-        "ROCK_BLAST"
+        "ROCK_BLAST",
+        "ROCK_SLIDE"
       ],
       "baseAttack": 164,
       "baseDefense": 164,
@@ -2128,12 +2174,14 @@
       ],
       "fastMoves": [
         "ROCK_THROW_FAST",
-        "MUD_SLAP_FAST"
+        "MUD_SLAP_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "STONE_EDGE",
         "ROCK_BLAST",
-        "EARTHQUAKE"
+        "EARTHQUAKE",
+        "ANCIENT_POWER"
       ],
       "baseAttack": 211,
       "baseDefense": 198,
@@ -2156,7 +2204,8 @@
       "chargeMoves": [
         "FLAME_CHARGE",
         "FLAME_WHEEL",
-        "STOMP"
+        "STOMP",
+        "FIRE_BLAST"
       ],
       "baseAttack": 170,
       "baseDefense": 127,
@@ -2174,7 +2223,8 @@
       ],
       "fastMoves": [
         "LOW_KICK_FAST",
-        "FIRE_SPIN_FAST"
+        "FIRE_SPIN_FAST",
+        "EMBER_FAST"
       ],
       "chargeMoves": [
         "FIRE_BLAST",
@@ -2266,12 +2316,14 @@
       ],
       "fastMoves": [
         "SPARK_FAST",
-        "CHARGE_BEAM_FAST"
+        "CHARGE_BEAM_FAST",
+        "THUNDER_SHOCK_FAST"
       ],
       "chargeMoves": [
         "ZAP_CANNON",
         "MAGNET_BOMB",
-        "FLASH_CANNON"
+        "FLASH_CANNON",
+        "DISCHARGE"
       ],
       "baseAttack": 223,
       "baseDefense": 169,
@@ -2289,7 +2341,8 @@
       ],
       "fastMoves": [
         "AIR_SLASH_FAST",
-        "FURY_CUTTER_FAST"
+        "FURY_CUTTER_FAST",
+        "CUT_FAST"
       ],
       "chargeMoves": [
         "AERIAL_ACE",
@@ -2317,7 +2370,8 @@
       "chargeMoves": [
         "DRILL_PECK",
         "AERIAL_ACE",
-        "BRAVE_BIRD"
+        "BRAVE_BIRD",
+        "SWIFT"
       ],
       "baseAttack": 158,
       "baseDefense": 83,
@@ -2340,7 +2394,8 @@
       "chargeMoves": [
         "DRILL_PECK",
         "AERIAL_ACE",
-        "BRAVE_BIRD"
+        "BRAVE_BIRD",
+        "AIR_CUTTER"
       ],
       "baseAttack": 218,
       "baseDefense": 140,
@@ -2358,12 +2413,14 @@
       ],
       "fastMoves": [
         "ICE_SHARD_FAST",
-        "LICK_FAST"
+        "LICK_FAST",
+        "WATER_GUN_FAST"
       ],
       "chargeMoves": [
         "AURORA_BEAM",
         "ICY_WIND",
-        "AQUA_TAIL"
+        "AQUA_TAIL",
+        "AQUA_JET"
       ],
       "baseAttack": 85,
       "baseDefense": 121,
@@ -2381,12 +2438,14 @@
       ],
       "fastMoves": [
         "FROST_BREATH_FAST",
-        "IRON_TAIL_FAST"
+        "IRON_TAIL_FAST",
+        "ICE_SHARD_FAST"
       ],
       "chargeMoves": [
         "AURORA_BEAM",
         "WATER_PULSE",
-        "BLIZZARD"
+        "BLIZZARD",
+        "ICY_WIND"
       ],
       "baseAttack": 139,
       "baseDefense": 177,
@@ -2427,7 +2486,8 @@
       ],
       "fastMoves": [
         "POISON_JAB_FAST",
-        "MUD_SLAP_FAST"
+        "MUD_SLAP_FAST",
+        "ACID_FAST"
       ],
       "chargeMoves": [
         "SLUDGE",
@@ -2477,7 +2537,8 @@
       ],
       "fastMoves": [
         "INFESTATION_FAST",
-        "POISON_JAB_FAST"
+        "POISON_JAB_FAST",
+        "LICK_FAST"
       ],
       "chargeMoves": [
         "DARK_PULSE",
@@ -2532,7 +2593,8 @@
       "chargeMoves": [
         "AURORA_BEAM",
         "HYDRO_PUMP",
-        "AVALANCHE"
+        "AVALANCHE",
+        "ICY_WIND"
       ],
       "baseAttack": 186,
       "baseDefense": 256,
@@ -2550,12 +2612,14 @@
       ],
       "fastMoves": [
         "LICK_FAST",
-        "ASTONISH_FAST"
+        "ASTONISH_FAST",
+        "SUCKER_PUNCH_FAST"
       ],
       "chargeMoves": [
         "NIGHT_SHADE",
         "DARK_PULSE",
-        "SLUDGE_BOMB"
+        "SLUDGE_BOMB",
+        "OMINOUS_WIND"
       ],
       "baseAttack": 186,
       "baseDefense": 67,
@@ -2573,12 +2637,14 @@
       ],
       "fastMoves": [
         "SHADOW_CLAW_FAST",
-        "ASTONISH_FAST"
+        "ASTONISH_FAST",
+        "LICK_FAST"
       ],
       "chargeMoves": [
         "SHADOW_PUNCH",
         "DARK_PULSE",
-        "SLUDGE_BOMB"
+        "SLUDGE_BOMB",
+        "SHADOW_BALL"
       ],
       "baseAttack": 223,
       "baseDefense": 107,
@@ -2596,12 +2662,14 @@
       ],
       "fastMoves": [
         "SUCKER_PUNCH_FAST",
-        "HEX_FAST"
+        "HEX_FAST",
+        "LICK_FAST"
       ],
       "chargeMoves": [
         "SHADOW_BALL",
         "FOCUS_BLAST",
-        "SLUDGE_BOMB"
+        "SLUDGE_BOMB",
+        "PSYCHIC"
       ],
       "baseAttack": 261,
       "baseDefense": 149,
@@ -2624,7 +2692,8 @@
       "chargeMoves": [
         "SAND_TOMB",
         "STONE_EDGE",
-        "HEAVY_SLAM"
+        "HEAVY_SLAM",
+        "ROCK_SLIDE"
       ],
       "baseAttack": 85,
       "baseDefense": 232,
@@ -2677,7 +2746,8 @@
         "ICE_PUNCH",
         "THUNDER_PUNCH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SHADOW_BALL"
       ],
       "baseAttack": 144,
       "baseDefense": 193,
@@ -2718,7 +2788,8 @@
       ],
       "fastMoves": [
         "BUBBLE_FAST",
-        "METAL_CLAW_FAST"
+        "METAL_CLAW_FAST",
+        "MUD_SHOT_FAST"
       ],
       "chargeMoves": [
         "VICE_GRIP",
@@ -2747,7 +2818,8 @@
       "chargeMoves": [
         "DISCHARGE",
         "THUNDERBOLT",
-        "GYRO_BALL"
+        "GYRO_BALL",
+        "SIGNAL_BEAM"
       ],
       "baseAttack": 109,
       "baseDefense": 111,
@@ -2765,7 +2837,8 @@
       ],
       "fastMoves": [
         "SPARK_FAST",
-        "VOLT_SWITCH_FAST"
+        "VOLT_SWITCH_FAST",
+        "TACKLE_FAST"
       ],
       "chargeMoves": [
         "DISCHARGE",
@@ -2835,7 +2908,8 @@
       ],
       "fastMoves": [
         "BULLET_SEED_FAST",
-        "EXTRASENSORY_FAST"
+        "EXTRASENSORY_FAST",
+        "ZEN_HEADBUTT_FAST"
       ],
       "chargeMoves": [
         "SEED_BOMB",
@@ -2936,7 +3010,8 @@
       "chargeMoves": [
         "CLOSE_COMBAT",
         "LOW_SWEEP",
-        "STONE_EDGE"
+        "STONE_EDGE",
+        "BRICK_BREAK"
       ],
       "baseAttack": 224,
       "baseDefense": 181,
@@ -2954,7 +3029,8 @@
       ],
       "fastMoves": [
         "BULLET_PUNCH_FAST",
-        "COUNTER_FAST"
+        "COUNTER_FAST",
+        "ROCK_SMASH_FAST"
       ],
       "chargeMoves": [
         "FIRE_PUNCH",
@@ -2963,7 +3039,8 @@
         "CLOSE_COMBAT",
         "POWER_UP_PUNCH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "BRICK_BREAK"
       ],
       "baseAttack": 193,
       "baseDefense": 197,
@@ -3004,7 +3081,8 @@
       ],
       "fastMoves": [
         "TACKLE_FAST",
-        "INFESTATION_FAST"
+        "INFESTATION_FAST",
+        "ACID_FAST"
       ],
       "chargeMoves": [
         "SLUDGE",
@@ -3027,7 +3105,8 @@
       ],
       "fastMoves": [
         "TACKLE_FAST",
-        "INFESTATION_FAST"
+        "INFESTATION_FAST",
+        "ACID_FAST"
       ],
       "chargeMoves": [
         "SLUDGE_BOMB",
@@ -3079,7 +3158,8 @@
       "chargeMoves": [
         "SURF",
         "EARTHQUAKE",
-        "STONE_EDGE"
+        "STONE_EDGE",
+        "MEGAHORN"
       ],
       "baseAttack": 222,
       "baseDefense": 171,
@@ -3102,7 +3182,8 @@
       "chargeMoves": [
         "PSYCHIC",
         "HYPER_BEAM",
-        "DAZZLING_GLEAM"
+        "DAZZLING_GLEAM",
+        "PSYBEAM"
       ],
       "baseAttack": 60,
       "baseDefense": 128,
@@ -3125,7 +3206,8 @@
       "chargeMoves": [
         "GRASS_KNOT",
         "SLUDGE_BOMB",
-        "SOLAR_BEAM"
+        "SOLAR_BEAM",
+        "POWER_WHIP"
       ],
       "baseAttack": 183,
       "baseDefense": 169,
@@ -3149,7 +3231,8 @@
         "CRUNCH",
         "EARTHQUAKE",
         "OUTRAGE",
-        "POWER_UP_PUNCH"
+        "POWER_UP_PUNCH",
+        "STOMP"
       ],
       "baseAttack": 181,
       "baseDefense": 165,
@@ -3195,7 +3278,8 @@
       "chargeMoves": [
         "AURORA_BEAM",
         "DRAGON_PULSE",
-        "HYDRO_PUMP"
+        "HYDRO_PUMP",
+        "BLIZZARD"
       ],
       "baseAttack": 187,
       "baseDefense": 156,
@@ -3236,12 +3320,14 @@
       ],
       "fastMoves": [
         "PECK_FAST",
-        "WATERFALL_FAST"
+        "WATERFALL_FAST",
+        "POISON_JAB_FAST"
       ],
       "chargeMoves": [
         "ICE_BEAM",
         "WATER_PULSE",
-        "MEGAHORN"
+        "MEGAHORN",
+        "DRILL_RUN"
       ],
       "baseAttack": 175,
       "baseDefense": 147,
@@ -3259,7 +3345,8 @@
       ],
       "fastMoves": [
         "TACKLE_FAST",
-        "WATER_GUN_FAST"
+        "WATER_GUN_FAST",
+        "QUICK_ATTACK_FAST"
       ],
       "chargeMoves": [
         "SWIFT",
@@ -3282,14 +3369,16 @@
       ],
       "fastMoves": [
         "HIDDEN_POWER_FAST",
-        "WATER_GUN_FAST"
+        "WATER_GUN_FAST",
+        "TACKLE_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
         "POWER_GEM",
         "PSYCHIC",
         "THUNDER",
-        "ICE_BEAM"
+        "ICE_BEAM",
+        "PSYBEAM"
       ],
       "baseAttack": 210,
       "baseDefense": 184,
@@ -3330,14 +3419,16 @@
       ],
       "fastMoves": [
         "FURY_CUTTER_FAST",
-        "AIR_SLASH_FAST"
+        "AIR_SLASH_FAST",
+        "STEEL_WING_FAST"
       ],
       "chargeMoves": [
         "NIGHT_SLASH",
         "X_SCISSOR",
         "AERIAL_ACE",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "BUG_BUZZ"
       ],
       "baseAttack": 218,
       "baseDefense": 170,
@@ -3355,13 +3446,15 @@
       ],
       "fastMoves": [
         "FROST_BREATH_FAST",
-        "CONFUSION_FAST"
+        "CONFUSION_FAST",
+        "POUND_FAST"
       ],
       "chargeMoves": [
         "DRAINING_KISS",
         "AVALANCHE",
         "PSYSHOCK",
-        "FOCUS_BLAST"
+        "FOCUS_BLAST",
+        "ICE_PUNCH"
       ],
       "baseAttack": 223,
       "baseDefense": 151,
@@ -3425,12 +3518,14 @@
       ],
       "fastMoves": [
         "ROCK_SMASH_FAST",
-        "BUG_BITE_FAST"
+        "BUG_BITE_FAST",
+        "FURY_CUTTER_FAST"
       ],
       "chargeMoves": [
         "VICE_GRIP",
         "X_SCISSOR",
-        "CLOSE_COMBAT"
+        "CLOSE_COMBAT",
+        "SUBMISSION"
       ],
       "baseAttack": 238,
       "baseDefense": 182,
@@ -3493,14 +3588,16 @@
       ],
       "fastMoves": [
         "BITE_FAST",
-        "WATERFALL_FAST"
+        "WATERFALL_FAST",
+        "DRAGON_TAIL_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
         "CRUNCH",
         "OUTRAGE",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "TWISTER"
       ],
       "baseAttack": 237,
       "baseDefense": 186,
@@ -3518,7 +3615,8 @@
       ],
       "fastMoves": [
         "FROST_BREATH_FAST",
-        "WATER_GUN_FAST"
+        "WATER_GUN_FAST",
+        "ICE_SHARD_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
@@ -3526,7 +3624,8 @@
         "BLIZZARD",
         "SKULL_BASH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "ICE_BEAM"
       ],
       "baseAttack": 165,
       "baseDefense": 174,
@@ -3568,7 +3667,8 @@
       ],
       "chargeMoves": [
         "DIG",
-        "SWIFT"
+        "SWIFT",
+        "LAST_RESORT"
       ],
       "baseAttack": 104,
       "baseDefense": 114,
@@ -3590,7 +3690,8 @@
       "chargeMoves": [
         "WATER_PULSE",
         "HYDRO_PUMP",
-        "AQUA_TAIL"
+        "AQUA_TAIL",
+        "LAST_RESORT"
       ],
       "baseAttack": 205,
       "baseDefense": 161,
@@ -3613,7 +3714,8 @@
       "chargeMoves": [
         "DISCHARGE",
         "THUNDERBOLT",
-        "THUNDER"
+        "THUNDER",
+        "LAST_RESORT"
       ],
       "baseAttack": 232,
       "baseDefense": 182,
@@ -3636,7 +3738,8 @@
       "chargeMoves": [
         "FIRE_BLAST",
         "FLAMETHROWER",
-        "OVERHEAT"
+        "OVERHEAT",
+        "LAST_RESORT"
       ],
       "baseAttack": 246,
       "baseDefense": 179,
@@ -3654,12 +3757,14 @@
       ],
       "fastMoves": [
         "CHARGE_BEAM_FAST",
-        "HIDDEN_POWER_FAST"
+        "HIDDEN_POWER_FAST",
+        "ZEN_HEADBUTT_FAST"
       ],
       "chargeMoves": [
         "SOLAR_BEAM",
         "HYPER_BEAM",
-        "ZAP_CANNON"
+        "ZAP_CANNON",
+        "SIGNAL_BEAM"
       ],
       "baseAttack": 153,
       "baseDefense": 136,
@@ -3682,7 +3787,8 @@
       "chargeMoves": [
         "ANCIENT_POWER",
         "BUBBLE_BEAM",
-        "ROCK_BLAST"
+        "ROCK_BLAST",
+        "BRINE"
       ],
       "baseAttack": 155,
       "baseDefense": 153,
@@ -3700,12 +3806,14 @@
       ],
       "fastMoves": [
         "MUD_SHOT_FAST",
-        "WATER_GUN_FAST"
+        "WATER_GUN_FAST",
+        "ROCK_THROW_FAST"
       ],
       "chargeMoves": [
         "ANCIENT_POWER",
         "HYDRO_PUMP",
-        "ROCK_BLAST"
+        "ROCK_BLAST",
+        "ROCK_SLIDE"
       ],
       "baseAttack": 207,
       "baseDefense": 201,
@@ -3747,7 +3855,8 @@
       "fastMoves": [
         "MUD_SHOT_FAST",
         "ROCK_SMASH_FAST",
-        "WATERFALL_FAST"
+        "WATERFALL_FAST",
+        "FURY_CUTTER_FAST"
       ],
       "chargeMoves": [
         "ANCIENT_POWER",
@@ -3796,7 +3905,8 @@
       ],
       "fastMoves": [
         "ZEN_HEADBUTT_FAST",
-        "LICK_FAST"
+        "LICK_FAST",
+        "YAWN_FAST"
       ],
       "chargeMoves": [
         "HEAVY_SLAM",
@@ -3805,7 +3915,8 @@
         "OUTRAGE",
         "SKULL_BASH",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "BODY_SLAM"
       ],
       "baseAttack": 190,
       "baseDefense": 169,
@@ -3829,7 +3940,8 @@
         "ICE_BEAM",
         "ICY_WIND",
         "BLIZZARD",
-        "ANCIENT_POWER"
+        "ANCIENT_POWER",
+        "HURRICANE"
       ],
       "baseAttack": 192,
       "baseDefense": 236,
@@ -3846,14 +3958,16 @@
         "FLYING"
       ],
       "fastMoves": [
-        "CHARGE_BEAM_FAST"
+        "CHARGE_BEAM_FAST",
+        "THUNDER_SHOCK_FAST"
       ],
       "chargeMoves": [
         "ZAP_CANNON",
         "THUNDERBOLT",
         "THUNDER",
         "ANCIENT_POWER",
-        "DRILL_PECK"
+        "DRILL_PECK",
+        "DISCHARGE"
       ],
       "baseAttack": 253,
       "baseDefense": 185,
@@ -3871,13 +3985,15 @@
       ],
       "fastMoves": [
         "FIRE_SPIN_FAST",
-        "WING_ATTACK_FAST"
+        "WING_ATTACK_FAST",
+        "EMBER_FAST"
       ],
       "chargeMoves": [
         "FIRE_BLAST",
         "HEAT_WAVE",
         "OVERHEAT",
-        "ANCIENT_POWER"
+        "ANCIENT_POWER",
+        "SKY_ATTACK"
       ],
       "baseAttack": 251,
       "baseDefense": 181,
@@ -3945,14 +4061,16 @@
       ],
       "fastMoves": [
         "DRAGON_TAIL_FAST",
-        "STEEL_WING_FAST"
+        "STEEL_WING_FAST",
+        "DRAGON_BREATH_FAST"
       ],
       "chargeMoves": [
         "HURRICANE",
         "HYPER_BEAM",
         "OUTRAGE",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "DRACO_METEOR"
       ],
       "baseAttack": 263,
       "baseDefense": 198,
@@ -3963,7 +4081,7 @@
       "pokedexNumber": 150,
       "speciesId": "MEWTWO",
       "form": "A",
-      "speciesName": "Mewtwo (A)",
+      "speciesName": "Mewtwo (Armored)",
       "types": [
         "PSYCHIC",
         null
@@ -4001,7 +4119,8 @@
         "THUNDERBOLT",
         "ICE_BEAM",
         "FOCUS_BLAST",
-        "FLAMETHROWER"
+        "FLAMETHROWER",
+        "PSYSTRIKE"
       ],
       "baseAttack": 300,
       "baseDefense": 182,
@@ -4137,7 +4256,8 @@
       "chargeMoves": [
         "PETAL_BLIZZARD",
         "SOLAR_BEAM",
-        "EARTHQUAKE"
+        "EARTHQUAKE",
+        "FRENZY_PLANT"
       ],
       "baseAttack": 168,
       "baseDefense": 202,
@@ -4206,7 +4326,8 @@
       "chargeMoves": [
         "FIRE_BLAST",
         "OVERHEAT",
-        "SOLAR_BEAM"
+        "SOLAR_BEAM",
+        "BLAST_BURN"
       ],
       "baseAttack": 223,
       "baseDefense": 173,
@@ -4270,12 +4391,14 @@
       ],
       "fastMoves": [
         "WATERFALL_FAST",
-        "BITE_FAST"
+        "BITE_FAST",
+        "WATER_GUN_FAST"
       ],
       "chargeMoves": [
         "CRUNCH",
         "HYDRO_PUMP",
-        "ICE_BEAM"
+        "ICE_BEAM",
+        "HYDRO_CANNON"
       ],
       "baseAttack": 205,
       "baseDefense": 188,
@@ -4547,7 +4670,8 @@
         null
       ],
       "fastMoves": [
-        "THUNDER_SHOCK_FAST"
+        "THUNDER_SHOCK_FAST",
+        "QUICK_ATTACK_FAST"
       ],
       "chargeMoves": [
         "THUNDERBOLT",
@@ -4575,7 +4699,8 @@
       "chargeMoves": [
         "GRASS_KNOT",
         "PSYSHOCK",
-        "SIGNAL_BEAM"
+        "SIGNAL_BEAM",
+        "BODY_SLAM"
       ],
       "baseAttack": 75,
       "baseDefense": 79,
@@ -4598,7 +4723,8 @@
       "chargeMoves": [
         "WILD_CHARGE",
         "SHADOW_BALL",
-        "PSYCHIC"
+        "PSYCHIC",
+        "BODY_SLAM"
       ],
       "baseAttack": 69,
       "baseDefense": 32,
@@ -4616,7 +4742,8 @@
       ],
       "fastMoves": [
         "HIDDEN_POWER_FAST",
-        "PECK_FAST"
+        "PECK_FAST",
+        "ZEN_HEADBUTT_FAST"
       ],
       "chargeMoves": [
         "ANCIENT_POWER",
@@ -4639,7 +4766,8 @@
       ],
       "fastMoves": [
         "EXTRASENSORY_FAST",
-        "HIDDEN_POWER_FAST"
+        "HIDDEN_POWER_FAST",
+        "ZEN_HEADBUTT_FAST"
       ],
       "chargeMoves": [
         "ANCIENT_POWER",
@@ -4760,7 +4888,8 @@
         "ZAP_CANNON",
         "FOCUS_BLAST",
         "THUNDER",
-        "POWER_GEM"
+        "POWER_GEM",
+        "DRAGON_PULSE"
       ],
       "baseAttack": 211,
       "baseDefense": 169,
@@ -4879,7 +5008,8 @@
         "BLIZZARD",
         "SURF",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "EARTHQUAKE"
       ],
       "baseAttack": 174,
       "baseDefense": 179,
@@ -5110,7 +5240,8 @@
       "chargeMoves": [
         "PSYBEAM",
         "PSYCHIC",
-        "FUTURESIGHT"
+        "FUTURESIGHT",
+        "LAST_RESORT"
       ],
       "baseAttack": 261,
       "baseDefense": 175,
@@ -5132,7 +5263,8 @@
       ],
       "chargeMoves": [
         "DARK_PULSE",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "LAST_RESORT"
       ],
       "baseAttack": 126,
       "baseDefense": 240,
@@ -5772,7 +5904,8 @@
         "FLYING"
       ],
       "fastMoves": [
-        "PRESENT_FAST"
+        "PRESENT_FAST",
+        "QUICK_ATTACK_FAST"
       ],
       "chargeMoves": [
         "ICE_PUNCH",
@@ -5893,7 +6026,8 @@
       ],
       "fastMoves": [
         "WATERFALL_FAST",
-        "DRAGON_BREATH_FAST"
+        "DRAGON_BREATH_FAST",
+        "WATER_GUN_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
@@ -6070,7 +6204,8 @@
       ],
       "fastMoves": [
         "POWDER_SNOW_FAST",
-        "POUND_FAST"
+        "POUND_FAST",
+        "FROST_BREATH_FAST"
       ],
       "chargeMoves": [
         "ICE_BEAM",
@@ -6098,7 +6233,8 @@
       "chargeMoves": [
         "THUNDER_PUNCH",
         "BRICK_BREAK",
-        "DISCHARGE"
+        "DISCHARGE",
+        "THUNDERBOLT"
       ],
       "baseAttack": 135,
       "baseDefense": 101,
@@ -6121,7 +6257,8 @@
       "chargeMoves": [
         "BRICK_BREAK",
         "FIRE_PUNCH",
-        "FLAME_BURST"
+        "FLAME_BURST",
+        "FLAMETHROWER"
       ],
       "baseAttack": 151,
       "baseDefense": 99,
@@ -6235,7 +6372,8 @@
       ],
       "fastMoves": [
         "EXTRASENSORY_FAST",
-        "SNARL_FAST"
+        "SNARL_FAST",
+        "HIDDEN_POWER_FAST"
       ],
       "chargeMoves": [
         "HYDRO_PUMP",
@@ -6309,7 +6447,8 @@
       ],
       "fastMoves": [
         "BITE_FAST",
-        "IRON_TAIL_FAST"
+        "IRON_TAIL_FAST",
+        "SMACK_DOWN_FAST"
       ],
       "chargeMoves": [
         "FIRE_BLAST",
@@ -6456,7 +6595,8 @@
         "LEAF_BLADE",
         "AERIAL_ACE",
         "EARTHQUAKE",
-        "DRAGON_CLAW"
+        "DRAGON_CLAW",
+        "FRENZY_PLANT"
       ],
       "baseAttack": 223,
       "baseDefense": 169,
@@ -6526,7 +6666,8 @@
         "FOCUS_BLAST",
         "OVERHEAT",
         "BRAVE_BIRD",
-        "BLAZE_KICK"
+        "BLAZE_KICK",
+        "BLAST_BURN"
       ],
       "baseAttack": 240,
       "baseDefense": 141,
@@ -6602,7 +6743,8 @@
         "SURF",
         "MUDDY_WATER",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "HYDRO_CANNON"
       ],
       "baseAttack": 208,
       "baseDefense": 175,
@@ -7108,7 +7250,8 @@
         "DAZZLING_GLEAM",
         "SHADOW_BALL",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SYNCHRONOISE"
       ],
       "baseAttack": 237,
       "baseDefense": 195,
@@ -7200,7 +7343,8 @@
       "chargeMoves": [
         "DYNAMIC_PUNCH",
         "SEED_BOMB",
-        "SLUDGE_BOMB"
+        "SLUDGE_BOMB",
+        "GRASS_KNOT"
       ],
       "baseAttack": 241,
       "baseDefense": 144,
@@ -7267,7 +7411,8 @@
       "chargeMoves": [
         "HYPER_BEAM",
         "PLAY_ROUGH",
-        "EARTHQUAKE"
+        "EARTHQUAKE",
+        "BODY_SLAM"
       ],
       "baseAttack": 290,
       "baseDefense": 166,
@@ -7331,7 +7476,8 @@
       ],
       "fastMoves": [
         "BUG_BITE_FAST",
-        "SHADOW_CLAW_FAST"
+        "SHADOW_CLAW_FAST",
+        "STRUGGLE_BUG_FAST"
       ],
       "chargeMoves": [
         "SHADOW_SNEAK",
@@ -7382,7 +7528,8 @@
       "chargeMoves": [
         "STOMP",
         "DISARMING_VOICE",
-        "FLAMETHROWER"
+        "FLAMETHROWER",
+        "CRUNCH"
       ],
       "baseAttack": 134,
       "baseDefense": 81,
@@ -9276,7 +9423,8 @@
       "chargeMoves": [
         "FIRE_BLAST",
         "HYDRO_PUMP",
-        "DRACO_METEOR"
+        "DRACO_METEOR",
+        "OUTRAGE"
       ],
       "baseAttack": 277,
       "baseDefense": 168,
@@ -9342,7 +9490,8 @@
       "chargeMoves": [
         "PSYCHIC",
         "FLASH_CANNON",
-        "EARTHQUAKE"
+        "EARTHQUAKE",
+        "METEOR_MASH"
       ],
       "baseAttack": 257,
       "baseDefense": 228,
@@ -9716,7 +9865,8 @@
         "SOLAR_BEAM",
         "EARTHQUAKE",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "FRENZY_PLANT"
       ],
       "baseAttack": 202,
       "baseDefense": 188,
@@ -11806,7 +11956,8 @@
       "chargeMoves": [
         "AVALANCHE",
         "BULLDOZE",
-        "STONE_EDGE"
+        "STONE_EDGE",
+        "ANCIENT_POWER"
       ],
       "baseAttack": 247,
       "baseDefense": 146,
@@ -11856,7 +12007,8 @@
         "PSYCHIC",
         "LEAF_BLADE",
         "RETURN",
-        "FRUSTRATION"
+        "FRUSTRATION",
+        "SYNCHRONOISE"
       ],
       "baseAttack": 237,
       "baseDefense": 195,
