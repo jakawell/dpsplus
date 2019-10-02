@@ -12,7 +12,7 @@
     "e2e": "ng e2e",
     "dev": "npm run develop",
     "develop": "ng serve --port 42001",
-    "data": "node ./node_modules/pogo-master-import/dist/index.js --includeLegacyMoves=true --save=true --saveFile='./src/app/shared/services/master.json' --language='en-us'"
+    "data": "node ./node_modules/pogo-master-import/dist/index.js --includeLegacyMoves=true --legacyMovesFile='./legacyMoves.json' --save=true --saveFile='./src/app/shared/services/master.json' --language='en-us'"
   },
   "private": true,
   "dependencies": {

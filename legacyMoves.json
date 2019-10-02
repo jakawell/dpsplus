@@ -1,0 +1,821 @@
+[
+  {
+    "species": "VENUSAUR_NORMAL",
+    "legacyCharge": [
+      "FRENZY_PLANT"
+    ]
+  },
+  {
+    "species": "CHARMELEON_NORMAL",
+    "legacyFast": [
+      "SCRATCH_FAST"
+    ]
+  },
+  {
+    "species": "CHARIZARD_NORMAL",
+    "legacyFast": [
+      "WING_ATTACK_FAST"
+    ],
+    "legacyCharge": [
+      "BLAST_BURN"
+    ]
+  },
+  {
+    "species": "BLASTOISE_NORMAL",
+    "legacyCharge": [
+      "HYDRO_CANNON"
+    ]
+  },
+  {
+    "species": "BUTTERFREE_NORMAL",
+    "legacyFast": [
+      "BUG_BITE_FAST"
+    ]
+  },
+  {
+    "species": "BEEDRILL_NORMAL",
+    "legacyFast": [
+      "BUG_BITE_FAST"
+    ]
+  },
+  {
+    "species": "PIDGEOT_NORMAL",
+    "legacyFast": [
+      "WING_ATTACK_FAST"
+    ],
+    "legacyCharge": [
+      "AIR_CUTTER"
+    ]
+  },
+  {
+    "species": "SPEAROW_NORMAL",
+    "legacyCharge": [
+      "TWISTER"
+    ]
+  },
+  {
+    "species": "FEAROW_NORMAL",
+    "legacyCharge": [
+      "TWISTER"
+    ]
+  },
+  {
+    "species": "EKANS_NORMAL",
+    "legacyCharge": [
+      "GUNK_SHOT"
+    ]
+  },
+  {
+    "species": "PIKACHU_NORMAL",
+    "legacyFast": [
+      "PRESENT_FAST"
+    ],
+    "legacyCharge": [
+      "THUNDER"
+    ]
+  },
+  {
+    "species": "RAICHU_NORMAL",
+    "legacyFast": [
+      "THUNDER_SHOCK_FAST"
+    ],
+    "legacyCharge": [
+      "THUNDER"
+    ]
+  },
+  {
+    "species": "SANDSHREW_NORMAL",
+    "legacyCharge": [
+      "ROCK_TOMB"
+    ]
+  },
+  {
+    "species": "NIDOKING_NORMAL",
+    "legacyFast": [
+      "FURY_CUTTER_FAST"
+    ]
+  },
+  {
+    "species": "CLEFABLE_NORMAL",
+    "legacyFast": [
+      "POUND_FAST"
+    ]
+  },
+  {
+    "species": "NINETALES_NORMAL",
+    "legacyFast": [
+      "EMBER_FAST"
+    ],
+    "legacyCharge": [
+      "FLAMETHROWER"
+    ]
+  },
+  {
+    "species": "JIGGLYPUFF_NORMAL",
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "ZUBAT_NORMAL",
+    "legacyCharge": [
+      "SLUDGE_BOMB"
+    ]
+  },
+  {
+    "species": "GOLBAT_NORMAL",
+    "legacyCharge": [
+      "OMINOUS_WIND"
+    ]
+  },
+  {
+    "species": "PARASECT_NORMAL",
+    "legacyFast": [
+      "BUG_BITE_FAST"
+    ]
+  },
+  {
+    "species": "VENOMOTH_NORMAL",
+    "legacyFast": [
+      "BUG_BITE_FAST"
+    ],
+    "legacyCharge": [
+      "POISON_FANG"
+    ]
+  },
+  {
+    "species": "DIGLETT_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ]
+  },
+  {
+    "species": "DUGTRIO_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ]
+  },
+  {
+    "species": "MEOWTH_NORMAL",
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "PERSIAN_NORMAL",
+    "legacyCharge": [
+      "NIGHT_SLASH"
+    ]
+  },
+  {
+    "species": "PRIMEAPE_NORMAL",
+    "legacyFast": [
+      "KARATE_CHOP_FAST"
+    ],
+    "legacyCharge": [
+      "CROSS_CHOP"
+    ]
+  },
+  {
+    "species": "ARCANINE_NORMAL",
+    "legacyFast": [
+      "BITE_FAST"
+    ],
+    "legacyCharge": [
+      "FLAMETHROWER"
+    ]
+  },
+  {
+    "species": "POLIWHIRL_NORMAL",
+    "legacyCharge": [
+      "SCALD"
+    ]
+  },
+  {
+    "species": "POLIWRATH_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ],
+    "legacyCharge": [
+      "SUBMISSION"
+    ]
+  },
+  {
+    "species": "ALAKAZAM_NORMAL",
+    "legacyCharge": [
+      "PSYCHIC"
+    ]
+  },
+  {
+    "species": "MACHOP_NORMAL",
+    "legacyFast": [
+      "LOW_KICK_FAST"
+    ]
+  },
+  {
+    "species": "MACHOKE_NORMAL",
+    "legacyCharge": [
+      "CROSS_CHOP"
+    ]
+  },
+  {
+    "species": "MACHAMP_NORMAL",
+    "legacyFast": [
+      "KARATE_CHOP_FAST"
+    ],
+    "legacyCharge": [
+      "SUBMISSION"
+    ]
+  },
+  {
+    "species": "WEEPINBELL_NORMAL",
+    "legacyFast": [
+      "RAZOR_LEAF_FAST"
+    ]
+  },
+  {
+    "species": "GRAVELER_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ],
+    "legacyCharge": [
+      "ROCK_SLIDE"
+    ]
+  },
+  {
+    "species": "GOLEM_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ],
+    "legacyCharge": [
+      "ANCIENT_POWER"
+    ]
+  },
+  {
+    "species": "PONYTA_NORMAL",
+    "legacyCharge": [
+      "FIRE_BLAST"
+    ]
+  },
+  {
+    "species": "RAPIDASH_NORMAL",
+    "legacyFast": [
+      "EMBER_FAST"
+    ]
+  },
+  {
+    "species": "MAGNETON_NORMAL",
+    "legacyFast": [
+      "THUNDER_SHOCK_FAST"
+    ],
+    "legacyCharge": [
+      "DISCHARGE"
+    ]
+  },
+  {
+    "species": "FARFETCHD_NORMAL",
+    "legacyFast": [
+      "CUT_FAST"
+    ]
+  },
+  {
+    "species": "DODUO_NORMAL",
+    "legacyCharge": [
+      "SWIFT"
+    ]
+  },
+  {
+    "species": "DODRIO_NORMAL",
+    "legacyCharge": [
+      "AIR_CUTTER"
+    ]
+  },
+  {
+    "species": "SEEL_NORMAL",
+    "legacyFast": [
+      "WATER_GUN_FAST"
+    ],
+    "legacyCharge": [
+      "AQUA_JET"
+    ]
+  },
+  {
+    "species": "DEWGONG_NORMAL",
+    "legacyFast": [
+      "ICE_SHARD_FAST"
+    ],
+    "legacyCharge": [
+      "ICY_WIND"
+    ]
+  },
+  {
+    "species": "GRIMER_NORMAL",
+    "legacyFast": [
+      "ACID_FAST"
+    ]
+  },
+  {
+    "species": "MUK_NORMAL",
+    "legacyFast": [
+      "LICK_FAST"
+    ]
+  },
+  {
+    "species": "CLOYSTER_NORMAL",
+    "legacyCharge": [
+      "ICY_WIND"
+    ]
+  },
+  {
+    "species": "GASTLY_NORMAL",
+    "legacyFast": [
+      "SUCKER_PUNCH_FAST"
+    ],
+    "legacyCharge": [
+      "OMINOUS_WIND"
+    ]
+  },
+  {
+    "species": "HAUNTER_NORMAL",
+    "legacyFast": [
+      "LICK_FAST"
+    ],
+    "legacyCharge": [
+      "SHADOW_BALL"
+    ]
+  },
+  {
+    "species": "GENGAR_NORMAL",
+    "legacyFast": [
+      "LICK_FAST"
+    ],
+    "legacyCharge": [
+      "PSYCHIC"
+    ]
+  },
+  {
+    "species": "ONIX_NORMAL",
+    "legacyCharge": [
+      "ROCK_SLIDE"
+    ]
+  },
+  {
+    "species": "HYPNO_NORMAL",
+    "legacyCharge": [
+      "SHADOW_BALL"
+    ]
+  },
+  {
+    "species": "KINGLER_NORMAL",
+    "legacyFast": [
+      "MUD_SHOT_FAST"
+    ]
+  },
+  {
+    "species": "VOLTORB_NORMAL",
+    "legacyCharge": [
+      "SIGNAL_BEAM"
+    ]
+  },
+  {
+    "species": "ELECTRODE_NORMAL",
+    "legacyFast": [
+      "TACKLE_FAST"
+    ]
+  },
+  {
+    "species": "EXEGGUTOR_NORMAL",
+    "legacyFast": [
+      "ZEN_HEADBUTT_FAST"
+    ]
+  },
+  {
+    "species": "HITMONLEE_NORMAL",
+    "legacyCharge": [
+      "BRICK_BREAK"
+    ]
+  },
+  {
+    "species": "HITMONCHAN_NORMAL",
+    "legacyFast": [
+      "ROCK_SMASH_FAST"
+    ],
+    "legacyCharge": [
+      "BRICK_BREAK"
+    ]
+  },
+  {
+    "species": "KOFFING_NORMAL",
+    "legacyFast": [
+      "ACID_FAST"
+    ]
+  },
+  {
+    "species": "WEEZING_NORMAL",
+    "legacyFast": [
+      "ACID_FAST"
+    ]
+  },
+  {
+    "species": "RHYDON_NORMAL",
+    "legacyCharge": [
+      "MEGAHORN"
+    ]
+  },
+  {
+    "species": "CHANSEY_NORMAL",
+    "legacyCharge": [
+      "PSYBEAM"
+    ]
+  },
+  {
+    "species": "TANGELA_NORMAL",
+    "legacyCharge": [
+      "POWER_WHIP"
+    ]
+  },
+  {
+    "species": "KANGASKHAN_NORMAL",
+    "legacyCharge": [
+      "STOMP"
+    ]
+  },
+  {
+    "species": "SEADRA_NORMAL",
+    "legacyCharge": [
+      "BLIZZARD"
+    ]
+  },
+  {
+    "species": "SEAKING_NORMAL",
+    "legacyFast": [
+      "POISON_JAB_FAST"
+    ],
+    "legacyCharge": [
+      "DRILL_RUN"
+    ]
+  },
+  {
+    "species": "STARYU_NORMAL",
+    "legacyFast": [
+      "QUICK_ATTACK_FAST"
+    ]
+  },
+  {
+    "species": "STARMIE_NORMAL",
+    "legacyFast": [
+      "TACKLE_FAST"
+    ],
+    "legacyCharge": [
+      "PSYBEAM"
+    ]
+  },
+  {
+    "species": "SCYTHER_NORMAL",
+    "legacyFast": [
+      "STEEL_WING_FAST"
+    ],
+    "legacyCharge": [
+      "BUG_BUZZ"
+    ]
+  },
+  {
+    "species": "JYNX_NORMAL",
+    "legacyFast": [
+      "POUND_FAST"
+    ],
+    "legacyCharge": [
+      "ICE_PUNCH"
+    ]
+  },
+  {
+    "species": "PINSIR_NORMAL",
+    "legacyFast": [
+      "FURY_CUTTER_FAST"
+    ],
+    "legacyCharge": [
+      "SUBMISSION"
+    ]
+  },
+  {
+    "species": "GYARADOS_NORMAL",
+    "legacyFast": [
+      "DRAGON_TAIL_FAST"
+    ],
+    "legacyCharge": [
+      "TWISTER"
+    ]
+  },
+  {
+    "species": "LAPRAS_NORMAL",
+    "legacyFast": [
+      "ICE_SHARD_FAST"
+    ],
+    "legacyCharge": [
+      "ICE_BEAM"
+    ]
+  },
+  {
+    "species": "EEVEE_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "VAPOREON_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "JOLTEON_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "FLAREON_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "PORYGON_NORMAL",
+    "legacyFast": [
+      "ZEN_HEADBUTT_FAST"
+    ],
+    "legacyCharge": [
+      "SIGNAL_BEAM"
+    ]
+  },
+  {
+    "species": "OMANYTE_NORMAL",
+    "legacyCharge": [
+      "BRINE"
+    ]
+  },
+  {
+    "species": "OMASTAR_NORMAL",
+    "legacyFast": [
+      "ROCK_THROW_FAST"
+    ],
+    "legacyCharge": [
+      "ROCK_SLIDE"
+    ]
+  },
+  {
+    "species": "KABUTOPS_NORMAL",
+    "legacyFast": [
+      "FURY_CUTTER_FAST"
+    ]
+  },
+  {
+    "species": "SNORLAX_NORMAL",
+    "legacyFast": [
+      "YAWN_FAST"
+    ],
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "ARTICUNO_NORMAL",
+    "legacyCharge": [
+      "HURRICANE"
+    ]
+  },
+  {
+    "species": "ZAPDOS_NORMAL",
+    "legacyFast": [
+      "THUNDER_SHOCK_FAST"
+    ],
+    "legacyCharge": [
+      "DISCHARGE"
+    ]
+  },
+  {
+    "species": "MOLTRES_NORMAL",
+    "legacyFast": [
+      "EMBER_FAST"
+    ],
+    "legacyCharge": [
+      "SKY_ATTACK"
+    ]
+  },
+  {
+    "species": "DRAGONITE_NORMAL",
+    "legacyFast": [
+      "DRAGON_BREATH_FAST"
+    ],
+    "legacyCharge": [
+      "DRACO_METEOR"
+    ]
+  },
+  {
+    "species": "MEWTWO_NORMAL",
+    "legacyCharge": [
+      "PSYSTRIKE"
+    ]
+  },
+  {
+    "species": "MEGANIUM_NORMAL",
+    "legacyCharge": [
+      "FRENZY_PLANT"
+    ]
+  },
+  {
+    "species": "TYPHLOSION_NORMAL",
+    "legacyCharge": [
+      "BLAST_BURN"
+    ]
+  },
+  {
+    "species": "FERALIGATR_NORMAL",
+    "legacyFast": [
+      "WATER_GUN_FAST"
+    ],
+    "legacyCharge": [
+      "HYDRO_CANNON"
+    ]
+  },
+  {
+    "species": "PICHU_NORMAL",
+    "legacyFast": [
+      "QUICK_ATTACK_FAST"
+    ]
+  },
+  {
+    "species": "CLEFFA_NORMAL",
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "IGGLYBUFF_NORMAL",
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "TOGEPI_NORMAL",
+    "legacyFast": [
+      "ZEN_HEADBUTT_FAST"
+    ]
+  },
+  {
+    "species": "TOGETIC_NORMAL",
+    "legacyFast": [
+      "ZEN_HEADBUTT_FAST"
+    ]
+  },
+  {
+    "species": "AMPHAROS_NORMAL",
+    "legacyCharge": [
+      "DRAGON_PULSE"
+    ]
+  },
+  {
+    "species": "POLITOED_NORMAL",
+    "legacyCharge": [
+      "EARTHQUAKE"
+    ]
+  },
+  {
+    "species": "ESPEON_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "UMBREON_NORMAL",
+    "legacyCharge": [
+      "LAST_RESORT"
+    ]
+  },
+  {
+    "species": "DELIBIRD_NORMAL",
+    "legacyFast": [
+      "QUICK_ATTACK_FAST"
+    ]
+  },
+  {
+    "species": "KINGDRA_NORMAL",
+    "legacyFast": [
+      "WATER_GUN_FAST"
+    ]
+  },
+  {
+    "species": "SMOOCHUM_NORMAL",
+    "legacyFast": [
+      "FROST_BREATH_FAST"
+    ]
+  },
+  {
+    "species": "ELEKID_NORMAL",
+    "legacyCharge": [
+      "THUNDERBOLT"
+    ]
+  },
+  {
+    "species": "MAGBY_NORMAL",
+    "legacyCharge": [
+      "FLAMETHROWER"
+    ]
+  },
+  {
+    "species": "SUICUNE_NORMAL",
+    "legacyFast": [
+      "HIDDEN_POWER_FAST"
+    ]
+  },
+  {
+    "species": "TYRANITAR_NORMAL",
+    "legacyFast": [
+      "SMACK_DOWN_FAST"
+    ]
+  },
+  {
+    "species": "SCEPTILE_NORMAL",
+    "legacyCharge": [
+      "FRENZY_PLANT"
+    ]
+  },
+  {
+    "species": "BLAZIKEN_NORMAL",
+    "legacyCharge": [
+      "BLAST_BURN"
+    ]
+  },
+  {
+    "species": "SWAMPERT_NORMAL",
+    "legacyCharge": [
+      "HYDRO_CANNON"
+    ]
+  },
+  {
+    "species": "GARDEVOIR_NORMAL",
+    "legacyCharge": [
+      "SYNCHRONOISE"
+    ]
+  },
+  {
+    "species": "BRELOOM_NORMAL",
+    "legacyCharge": [
+      "GRASS_KNOT"
+    ]
+  },
+  {
+    "species": "SLAKING_NORMAL",
+    "legacyCharge": [
+      "BODY_SLAM"
+    ]
+  },
+  {
+    "species": "SHEDINJA_NORMAL",
+    "legacyFast": [
+      "STRUGGLE_BUG_FAST"
+    ]
+  },
+  {
+    "species": "LOUDRED_NORMAL",
+    "legacyCharge": [
+      "CRUNCH"
+    ]
+  },
+  {
+    "species": "SALAMENCE_NORMAL",
+    "legacyCharge": [
+      "OUTRAGE"
+    ]
+  },
+  {
+    "species": "METAGROSS_NORMAL",
+    "legacyCharge": [
+      "METEOR_MASH"
+    ]
+  },
+  {
+    "species": "TORTERRA_NORMAL",
+    "legacyCharge": [
+      "FRENZY_PLANT"
+    ]
+  },
+  {
+    "species": "MAMOSWINE_NORMAL",
+    "legacyCharge": [
+      "ANCIENT_POWER"
+    ]
+  },
+  {
+    "species": "GALLADE_NORMAL",
+    "legacyCharge": [
+      "SYNCHRONOISE"
+    ]
+  },
+  {
+    "species": "GASTRODON_NORMAL",
+    "legacyCharge": [
+      "EARTHQUAKE"
+    ]
+  }
+]
