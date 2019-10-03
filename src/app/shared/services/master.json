@@ -664,7 +664,8 @@
       ],
       "fastMoves": [
         "VOLT_SWITCH_FAST",
-        "SPARK_FAST"
+        "SPARK_FAST",
+        "THUNDER_SHOCK_FAST"
       ],
       "chargeMoves": [
         "PSYCHIC",
@@ -767,7 +768,8 @@
       "chargeMoves": [
         "BLIZZARD",
         "GYRO_BALL",
-        "BULLDOZE"
+        "BULLDOZE",
+        "ICE_PUNCH"
       ],
       "baseAttack": 177,
       "baseDefense": 195,
@@ -1044,7 +1046,8 @@
       ],
       "fastMoves": [
         "FEINT_ATTACK_FAST",
-        "POWDER_SNOW_FAST"
+        "POWDER_SNOW_FAST",
+        "CHARM_FAST"
       ],
       "chargeMoves": [
         "DAZZLING_GLEAM",
@@ -1589,6 +1592,9 @@
         "PSYCHIC",
         "HYDRO_PUMP",
         "ICE_BEAM",
+        "BUBBLE_BEAM",
+        "SYNCHRONOISE",
+        "CROSS_CHOP",
         "RETURN",
         "FRUSTRATION"
       ],
@@ -1682,6 +1688,7 @@
       "fastMoves": [
         "FIRE_FANG_FAST",
         "SNARL_FAST",
+        "THUNDER_FANG_FAST",
         "BITE_FAST"
       ],
       "chargeMoves": [
@@ -2957,12 +2964,14 @@
       ],
       "fastMoves": [
         "HEX_FAST",
-        "ROCK_SMASH_FAST"
+        "ROCK_SMASH_FAST",
+        "FIRE_SPIN_FAST"
       ],
       "chargeMoves": [
         "BONE_CLUB",
         "SHADOW_BALL",
-        "FIRE_BLAST"
+        "FIRE_BLAST",
+        "FLAME_WHEEL"
       ],
       "baseAttack": 144,
       "baseDefense": 186,
@@ -5508,7 +5517,8 @@
       ],
       "fastMoves": [
         "IRON_TAIL_FAST",
-        "DRAGON_TAIL_FAST"
+        "DRAGON_TAIL_FAST",
+        "THUNDER_FANG_FAST"
       ],
       "chargeMoves": [
         "EARTHQUAKE",
@@ -5934,7 +5944,8 @@
       "chargeMoves": [
         "WATER_PULSE",
         "ICE_BEAM",
-        "AERIAL_ACE"
+        "AERIAL_ACE",
+        "BUBBLE_BEAM"
       ],
       "baseAttack": 148,
       "baseDefense": 226,
@@ -6373,6 +6384,7 @@
       "fastMoves": [
         "EXTRASENSORY_FAST",
         "SNARL_FAST",
+        "ICE_FANG_FAST",
         "HIDDEN_POWER_FAST"
       ],
       "chargeMoves": [
@@ -6785,7 +6797,9 @@
       ],
       "fastMoves": [
         "BITE_FAST",
-        "FIRE_FANG_FAST"
+        "FIRE_FANG_FAST",
+        "THUNDER_FANG_FAST",
+        "ICE_FANG_FAST"
       ],
       "chargeMoves": [
         "CRUNCH",
@@ -7732,12 +7746,15 @@
       ],
       "fastMoves": [
         "BITE_FAST",
-        "ASTONISH_FAST"
+        "ASTONISH_FAST",
+        "ICE_FANG_FAST",
+        "FIRE_FANG_FAST"
       ],
       "chargeMoves": [
         "PLAY_ROUGH",
         "VICE_GRIP",
-        "IRON_HEAD"
+        "IRON_HEAD",
+        "POWER_UP_PUNCH"
       ],
       "baseAttack": 155,
       "baseDefense": 141,
@@ -11415,7 +11432,9 @@
       ],
       "fastMoves": [
         "FIRE_FANG_FAST",
-        "BITE_FAST"
+        "BITE_FAST",
+        "THUNDER_FANG_FAST",
+        "ICE_FANG_FAST"
       ],
       "chargeMoves": [
         "EARTHQUAKE",
@@ -11463,7 +11482,8 @@
       "fastMoves": [
         "POISON_STING_FAST",
         "INFESTATION_FAST",
-        "BITE_FAST"
+        "BITE_FAST",
+        "ICE_FANG_FAST"
       ],
       "chargeMoves": [
         "CRUNCH",
@@ -11670,7 +11690,8 @@
       ],
       "fastMoves": [
         "ICE_SHARD_FAST",
-        "FEINT_ATTACK_FAST"
+        "FEINT_ATTACK_FAST",
+        "SNARL_FAST"
       ],
       "chargeMoves": [
         "AVALANCHE",
@@ -17544,7 +17565,7 @@
         "castTime": 1900
       },
       "pvpStats": {
-        "power": 45,
+        "power": 25,
         "energyDelta": -40,
         "turns": 1
       }
@@ -18259,13 +18280,13 @@
       "name": "Psychic",
       "isLegacy": false,
       "pveStats": {
-        "power": 100,
-        "energyDelta": -100,
+        "power": 90,
+        "energyDelta": -50,
         "castTime": 2800
       },
       "pvpStats": {
-        "power": 100,
-        "energyDelta": -70,
+        "power": 90,
+        "energyDelta": -55,
         "turns": 1
       }
     },
@@ -19248,12 +19269,12 @@
       "name": "Fire Fang",
       "isLegacy": false,
       "pveStats": {
-        "power": 11,
+        "power": 12,
         "energyDelta": 8,
         "castTime": 900
       },
       "pvpStats": {
-        "power": 7,
+        "power": 8,
         "energyDelta": 5,
         "turns": 1
       }
@@ -19853,12 +19874,12 @@
       "isLegacy": false,
       "pveStats": {
         "power": 12,
-        "energyDelta": 12,
+        "energyDelta": 14,
         "castTime": 1100
       },
       "pvpStats": {
-        "power": 8,
-        "energyDelta": 10,
+        "power": 5,
+        "energyDelta": 13,
         "turns": 2
       }
     },
@@ -20351,7 +20372,7 @@
         "castTime": 2000
       },
       "pvpStats": {
-        "power": 40,
+        "power": 20,
         "energyDelta": -35,
         "turns": 1
       }
@@ -20418,6 +20439,237 @@
         "power": 80,
         "energyDelta": -50,
         "turns": 1
+      }
+    },
+    "THUNDER_FANG_FAST": {
+      "id": "THUNDER_FANG_FAST",
+      "type": "ELECTRIC",
+      "name": "Thunder Fang Fast",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 12,
+        "energyDelta": 16,
+        "castTime": 1200
+      },
+      "pvpStats": {
+        "power": 8,
+        "energyDelta": 5,
+        "turns": 1
+      }
+    },
+    "ICE_FANG_FAST": {
+      "id": "ICE_FANG_FAST",
+      "type": "ICE",
+      "name": "Ice Fang Fast",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 12,
+        "energyDelta": 20,
+        "castTime": 1500
+      },
+      "pvpStats": {
+        "power": 8,
+        "energyDelta": 5,
+        "turns": 1
+      }
+    },
+    "LUNGE": {
+      "id": "LUNGE",
+      "type": "BUG",
+      "name": "Lunge",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2900
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "CRUSH_CLAW": {
+      "id": "CRUSH_CLAW",
+      "type": "NORMAL",
+      "name": "Crush Claw",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 1900
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "OCTAZOOKA": {
+      "id": "OCTAZOOKA",
+      "type": "WATER",
+      "name": "Octazooka",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2300
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "MIRROR_SHOT": {
+      "id": "MIRROR_SHOT",
+      "type": "STEEL",
+      "name": "Mirror Shot",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2400
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "SUPER_POWER": {
+      "id": "SUPER_POWER",
+      "type": "FIGHTING",
+      "name": "Super Power",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 3000
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "FELL_STINGER": {
+      "id": "FELL_STINGER",
+      "type": "BUG",
+      "name": "Fell Stinger",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2200
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "LEECH_LIFE": {
+      "id": "LEECH_LIFE",
+      "type": "BUG",
+      "name": "Leech Life",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2500
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "DRAIN_PUNCH": {
+      "id": "DRAIN_PUNCH",
+      "type": "FIGHTING",
+      "name": "Drain Punch",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2400
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "SHADOW_BONE": {
+      "id": "SHADOW_BONE",
+      "type": "GHOST",
+      "name": "Shadow Bone",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2800
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "RAZOR_SHELL": {
+      "id": "RAZOR_SHELL",
+      "type": "WATER",
+      "name": "Razor Shell",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 1300
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "GIGA_IMPACT": {
+      "id": "GIGA_IMPACT",
+      "type": "NORMAL",
+      "name": "Giga Impact",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 9001,
+        "energyDelta": 100,
+        "castTime": 4700
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "LOCK_ON_FAST": {
+      "id": "LOCK_ON_FAST",
+      "type": "NORMAL",
+      "name": "Lock On Fast",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 8,
+        "castTime": 300
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "HORN_DRILL": {
+      "id": "HORN_DRILL",
+      "type": "NORMAL",
+      "name": "Horn Drill",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 1900
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
+      }
+    },
+    "FISSURE": {
+      "id": "FISSURE",
+      "type": "GROUND",
+      "name": "Fissure",
+      "isLegacy": false,
+      "pveStats": {
+        "castTime": 2800
+      },
+      "pvpStats": {
+        "power": 0,
+        "energyDelta": -100,
+        "turns": 100
       }
     }
   }
