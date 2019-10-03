@@ -164,13 +164,13 @@ export class DpsPlusService {
       defHP = 18750;
       raidTime = 300;
     } else if (raidT === 5) {
-      defHP = 12500;
+      defHP = 15000;
       raidTime = 300;
     } else if (raidT === 4) {
-      defHP = 7500;
+      defHP = 9000;
       raidTime = 180;
     } else if (raidT === 3) {
-      defHP = 3000;
+      defHP = 3600;
       raidTime = 180;
     } else if (raidT === 2) {
       defHP = 1800;
