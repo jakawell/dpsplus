@@ -817,5 +817,11 @@
     "legacyCharge": [
       "EARTHQUAKE"
     ]
+  },
+  {
+    "species": "FLYGON_NORMAL",
+    "legacyCharge": [
+      "EARTH_POWER"
+    ]
   }
 ]

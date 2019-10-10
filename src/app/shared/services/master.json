@@ -8379,7 +8379,8 @@
       "chargeMoves": [
         "EARTHQUAKE",
         "DRAGON_CLAW",
-        "STONE_EDGE"
+        "STONE_EDGE",
+        "EARTH_POWER"
       ],
       "baseAttack": 205,
       "baseDefense": 168,
