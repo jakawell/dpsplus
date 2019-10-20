@@ -298,7 +298,7 @@
       "baseStamina": 155
     },
     "WEEDLE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 13,
       "speciesId": "WEEDLE",
       "form": "NORMAL",
@@ -312,14 +312,16 @@
         "POISON_STING_FAST"
       ],
       "chargeMoves": [
-        "STRUGGLE"
+        "STRUGGLE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 63,
       "baseDefense": 50,
       "baseStamina": 120
     },
     "KAKUNA_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 14,
       "speciesId": "KAKUNA",
       "form": "NORMAL",
@@ -333,14 +335,16 @@
         "POISON_STING_FAST"
       ],
       "chargeMoves": [
-        "STRUGGLE"
+        "STRUGGLE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 46,
       "baseDefense": 75,
       "baseStamina": 128
     },
     "BEEDRILL_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 15,
       "speciesId": "BEEDRILL",
       "form": "NORMAL",
@@ -357,7 +361,9 @@
       "chargeMoves": [
         "SLUDGE_BOMB",
         "AERIAL_ACE",
-        "X_SCISSOR"
+        "X_SCISSOR",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 169,
       "baseDefense": 130,
@@ -628,7 +634,7 @@
       "baseStamina": 155
     },
     "PIKACHU_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 25,
       "speciesId": "PIKACHU",
       "form": "NORMAL",
@@ -3470,7 +3476,7 @@
       "baseStamina": 163
     },
     "ELECTABUZZ_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 125,
       "speciesId": "ELECTABUZZ",
       "form": "NORMAL",
@@ -3486,14 +3492,16 @@
       "chargeMoves": [
         "THUNDER_PUNCH",
         "THUNDERBOLT",
-        "THUNDER"
+        "THUNDER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 198,
       "baseDefense": 158,
       "baseStamina": 163
     },
     "MAGMAR_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 126,
       "speciesId": "MAGMAR",
       "form": "NORMAL",
@@ -3509,7 +3517,9 @@
       "chargeMoves": [
         "FIRE_BLAST",
         "FIRE_PUNCH",
-        "FLAMETHROWER"
+        "FLAMETHROWER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 206,
       "baseDefense": 154,
@@ -4834,7 +4844,7 @@
       "baseStamina": 163
     },
     "MAREEP_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 179,
       "speciesId": "MAREEP",
       "form": "NORMAL",
@@ -4850,14 +4860,16 @@
       "chargeMoves": [
         "BODY_SLAM",
         "THUNDERBOLT",
-        "DISCHARGE"
+        "DISCHARGE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 114,
       "baseDefense": 79,
       "baseStamina": 146
     },
     "FLAAFFY_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 180,
       "speciesId": "FLAAFFY",
       "form": "NORMAL",
@@ -4873,14 +4885,16 @@
       "chargeMoves": [
         "POWER_GEM",
         "THUNDERBOLT",
-        "DISCHARGE"
+        "DISCHARGE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 145,
       "baseDefense": 109,
       "baseStamina": 172
     },
     "AMPHAROS_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 181,
       "speciesId": "AMPHAROS",
       "form": "NORMAL",
@@ -4898,6 +4912,8 @@
         "FOCUS_BLAST",
         "THUNDER",
         "POWER_GEM",
+        "RETURN",
+        "FRUSTRATION",
         "DRAGON_PULSE"
       ],
       "baseAttack": 211,
@@ -7035,7 +7051,7 @@
       "baseStamina": 190
     },
     "SEEDOT_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 273,
       "speciesId": "SEEDOT",
       "form": "NORMAL",
@@ -7051,14 +7067,16 @@
       "chargeMoves": [
         "ENERGY_BALL",
         "GRASS_KNOT",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 71,
       "baseDefense": 77,
       "baseStamina": 120
     },
     "NUZLEAF_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 274,
       "speciesId": "NUZLEAF",
       "form": "NORMAL",
@@ -7074,14 +7092,16 @@
       "chargeMoves": [
         "LEAF_BLADE",
         "GRASS_KNOT",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 134,
       "baseDefense": 78,
       "baseStamina": 172
     },
     "SHIFTRY_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 275,
       "speciesId": "SHIFTRY",
       "form": "NORMAL",
@@ -7098,7 +7118,9 @@
         "LEAF_BLADE",
         "HURRICANE",
         "FOUL_PLAY",
-        "LEAF_TORNADO"
+        "LEAF_TORNADO",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 200,
       "baseDefense": 121,
@@ -7712,7 +7734,7 @@
       "baseStamina": 172
     },
     "SABLEYE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 302,
       "speciesId": "SABLEYE",
       "form": "NORMAL",
@@ -7728,7 +7750,9 @@
       "chargeMoves": [
         "POWER_GEM",
         "FOUL_PLAY",
-        "SHADOW_SNEAK"
+        "SHADOW_SNEAK",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 141,
       "baseDefense": 136,
@@ -8317,7 +8341,7 @@
       "baseStamina": 155
     },
     "TRAPINCH_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 328,
       "speciesId": "TRAPINCH",
       "form": "NORMAL",
@@ -8333,14 +8357,16 @@
       "chargeMoves": [
         "SAND_TOMB",
         "DIG",
-        "CRUNCH"
+        "CRUNCH",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 162,
       "baseDefense": 78,
       "baseStamina": 128
     },
     "VIBRAVA_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 329,
       "speciesId": "VIBRAVA",
       "form": "NORMAL",
@@ -8356,14 +8382,16 @@
       "chargeMoves": [
         "SAND_TOMB",
         "BULLDOZE",
-        "BUG_BUZZ"
+        "BUG_BUZZ",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 134,
       "baseDefense": 99,
       "baseStamina": 137
     },
     "FLYGON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 330,
       "speciesId": "FLYGON",
       "form": "NORMAL",
@@ -8380,6 +8408,8 @@
         "EARTHQUAKE",
         "DRAGON_CLAW",
         "STONE_EDGE",
+        "RETURN",
+        "FRUSTRATION",
         "EARTH_POWER"
       ],
       "baseAttack": 205,
@@ -8387,7 +8417,7 @@
       "baseStamina": 190
     },
     "CACNEA_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 331,
       "speciesId": "CACNEA",
       "form": "NORMAL",
@@ -8403,14 +8433,16 @@
       "chargeMoves": [
         "GRASS_KNOT",
         "BRICK_BREAK",
-        "SEED_BOMB"
+        "SEED_BOMB",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 156,
       "baseDefense": 74,
       "baseStamina": 137
     },
     "CACTURNE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 332,
       "speciesId": "CACTURNE",
       "form": "NORMAL",
@@ -8426,7 +8458,9 @@
       "chargeMoves": [
         "DARK_PULSE",
         "DYNAMIC_PUNCH",
-        "GRASS_KNOT"
+        "GRASS_KNOT",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 221,
       "baseDefense": 115,
@@ -8966,7 +9000,7 @@
       "baseStamina": 155
     },
     "SHUPPET_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 353,
       "speciesId": "SHUPPET",
       "form": "NORMAL",
@@ -8982,14 +9016,16 @@
       "chargeMoves": [
         "OMINOUS_WIND",
         "NIGHT_SHADE",
-        "SHADOW_SNEAK"
+        "SHADOW_SNEAK",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 138,
       "baseDefense": 65,
       "baseStamina": 127
     },
     "BANETTE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 354,
       "speciesId": "BANETTE",
       "form": "NORMAL",
@@ -9005,14 +9041,16 @@
       "chargeMoves": [
         "SHADOW_BALL",
         "DAZZLING_GLEAM",
-        "THUNDER"
+        "THUNDER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 218,
       "baseDefense": 126,
       "baseStamina": 162
     },
     "DUSKULL_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 355,
       "speciesId": "DUSKULL",
       "form": "NORMAL",
@@ -9028,14 +9066,16 @@
       "chargeMoves": [
         "OMINOUS_WIND",
         "NIGHT_SHADE",
-        "SHADOW_SNEAK"
+        "SHADOW_SNEAK",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 70,
       "baseDefense": 162,
       "baseStamina": 85
     },
     "DUSCLOPS_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 356,
       "speciesId": "DUSCLOPS",
       "form": "NORMAL",
@@ -9051,7 +9091,9 @@
       "chargeMoves": [
         "SHADOW_PUNCH",
         "ICE_PUNCH",
-        "FIRE_PUNCH"
+        "FIRE_PUNCH",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 124,
       "baseDefense": 234,
@@ -9953,7 +9995,8 @@
       "chargeMoves": [
         "SOLAR_BEAM",
         "FLAMETHROWER",
-        "CLOSE_COMBAT"
+        "CLOSE_COMBAT",
+        "BLAST_BURN"
       ],
       "baseAttack": 222,
       "baseDefense": 151,
@@ -11797,7 +11840,7 @@
       "baseStamina": 225
     },
     "ELECTIVIRE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 466,
       "speciesId": "ELECTIVIRE",
       "form": "NORMAL",
@@ -11814,14 +11857,16 @@
         "THUNDER_PUNCH",
         "WILD_CHARGE",
         "THUNDER",
-        "ICE_PUNCH"
+        "ICE_PUNCH",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 249,
       "baseDefense": 163,
       "baseStamina": 181
     },
     "MAGMORTAR_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 467,
       "speciesId": "MAGMORTAR",
       "form": "NORMAL",
@@ -11838,7 +11883,9 @@
         "BRICK_BREAK",
         "FIRE_PUNCH",
         "FIRE_BLAST",
-        "PSYCHIC"
+        "PSYCHIC",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 247,
       "baseDefense": 172,
@@ -12060,7 +12107,7 @@
       "baseStamina": 155
     },
     "DUSKNOIR_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 477,
       "speciesId": "DUSKNOIR",
       "form": "NORMAL",
@@ -12076,7 +12123,9 @@
       "chargeMoves": [
         "OMINOUS_WIND",
         "PSYCHIC",
-        "DARK_PULSE"
+        "DARK_PULSE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 180,
       "baseDefense": 254,

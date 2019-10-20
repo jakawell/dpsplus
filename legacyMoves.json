@@ -823,5 +823,11 @@
     "legacyCharge": [
       "EARTH_POWER"
     ]
+  },
+  {
+    "species": "INFERNAPE_NORMAL",
+    "legacyCharge": [
+      "BLAST_BURN"
+    ]
   }
 ]
