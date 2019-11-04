@@ -20607,7 +20607,7 @@
     "LOCK_ON_FAST": {
       "id": "LOCK_ON_FAST",
       "type": "NORMAL",
-      "name": "Lock On Fast",
+      "name": "Lock On",
       "isLegacy": false,
       "pveStats": {
         "power": 1,
@@ -20623,7 +20623,7 @@
     "THUNDER_FANG_FAST": {
       "id": "THUNDER_FANG_FAST",
       "type": "ELECTRIC",
-      "name": "Thunder Fang Fast",
+      "name": "Thunder Fang",
       "isLegacy": false,
       "pveStats": {
         "power": 12,
@@ -20639,7 +20639,7 @@
     "ICE_FANG_FAST": {
       "id": "ICE_FANG_FAST",
       "type": "ICE",
-      "name": "Ice Fang Fast",
+      "name": "Ice Fang",
       "isLegacy": false,
       "pveStats": {
         "power": 12,
