@@ -585,7 +585,7 @@
       "baseStamina": 163
     },
     "EKANS_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 23,
       "speciesId": "EKANS",
       "form": "NORMAL",
@@ -602,6 +602,8 @@
         "WRAP",
         "POISON_FANG",
         "SLUDGE_BOMB",
+        "RETURN",
+        "FRUSTRATION",
         "GUNK_SHOT"
       ],
       "baseAttack": 110,
@@ -609,7 +611,7 @@
       "baseStamina": 111
     },
     "ARBOK_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 24,
       "speciesId": "ARBOK",
       "form": "NORMAL",
@@ -627,14 +629,16 @@
         "DARK_PULSE",
         "SLUDGE_WAVE",
         "GUNK_SHOT",
-        "ACID_SPRAY"
+        "ACID_SPRAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 167,
       "baseDefense": 153,
       "baseStamina": 155
     },
     "PIKACHU_NORMAL": {
-      "isFormless": false,
+      "isFormless": true,
       "pokedexNumber": 25,
       "speciesId": "PIKACHU",
       "form": "NORMAL",
@@ -751,6 +755,8 @@
         "DIG",
         "ROCK_SLIDE",
         "SAND_TOMB",
+        "RETURN",
+        "FRUSTRATION",
         "ROCK_TOMB"
       ],
       "baseAttack": 126,
@@ -798,7 +804,9 @@
       "chargeMoves": [
         "EARTHQUAKE",
         "ROCK_TOMB",
-        "BULLDOZE"
+        "BULLDOZE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 182,
       "baseDefense": 175,
@@ -1408,7 +1416,9 @@
       "chargeMoves": [
         "DIG",
         "MUD_BOMB",
-        "ROCK_TOMB"
+        "ROCK_TOMB",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 109,
       "baseDefense": 78,
@@ -1455,10 +1465,12 @@
       "chargeMoves": [
         "EARTHQUAKE",
         "MUD_BOMB",
-        "STONE_EDGE"
+        "STONE_EDGE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 167,
-      "baseDefense": 136,
+      "baseDefense": 134,
       "baseStamina": 111
     },
     "MEOWTH_ALOLA": {
@@ -1502,6 +1514,8 @@
         "NIGHT_SLASH",
         "DARK_PULSE",
         "FOUL_PLAY",
+        "RETURN",
+        "FRUSTRATION",
         "BODY_SLAM"
       ],
       "baseAttack": 92,
@@ -1549,6 +1563,8 @@
         "FOUL_PLAY",
         "POWER_GEM",
         "PLAY_ROUGH",
+        "RETURN",
+        "FRUSTRATION",
         "NIGHT_SLASH"
       ],
       "baseAttack": 150,
@@ -1940,7 +1956,7 @@
       "baseStamina": 207
     },
     "BELLSPROUT_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 69,
       "speciesId": "BELLSPROUT",
       "form": "NORMAL",
@@ -1956,14 +1972,16 @@
       "chargeMoves": [
         "POWER_WHIP",
         "SLUDGE_BOMB",
-        "WRAP"
+        "WRAP",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 139,
       "baseDefense": 61,
       "baseStamina": 137
     },
     "WEEPINBELL_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 70,
       "speciesId": "WEEPINBELL",
       "form": "NORMAL",
@@ -1980,14 +1998,16 @@
       "chargeMoves": [
         "POWER_WHIP",
         "SLUDGE_BOMB",
-        "SEED_BOMB"
+        "SEED_BOMB",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 172,
       "baseDefense": 92,
       "baseStamina": 163
     },
     "VICTREEBEL_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 71,
       "speciesId": "VICTREEBEL",
       "form": "NORMAL",
@@ -2005,7 +2025,9 @@
         "SLUDGE_BOMB",
         "SOLAR_BEAM",
         "LEAF_TORNADO",
-        "ACID_SPRAY"
+        "ACID_SPRAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 207,
       "baseDefense": 135,
@@ -2098,7 +2120,9 @@
       "chargeMoves": [
         "ROCK_SLIDE",
         "ROCK_TOMB",
-        "DIG"
+        "DIG",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 132,
       "baseDefense": 132,
@@ -2146,6 +2170,8 @@
         "DIG",
         "STONE_EDGE",
         "ROCK_BLAST",
+        "RETURN",
+        "FRUSTRATION",
         "ROCK_SLIDE"
       ],
       "baseAttack": 164,
@@ -2194,6 +2220,8 @@
         "STONE_EDGE",
         "ROCK_BLAST",
         "EARTHQUAKE",
+        "RETURN",
+        "FRUSTRATION",
         "ANCIENT_POWER"
       ],
       "baseAttack": 211,
@@ -2295,7 +2323,7 @@
       "baseStamina": 216
     },
     "MAGNEMITE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 81,
       "speciesId": "MAGNEMITE",
       "form": "NORMAL",
@@ -2311,14 +2339,16 @@
       "chargeMoves": [
         "DISCHARGE",
         "MAGNET_BOMB",
-        "THUNDERBOLT"
+        "THUNDERBOLT",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 165,
       "baseDefense": 121,
       "baseStamina": 93
     },
     "MAGNETON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 82,
       "speciesId": "MAGNETON",
       "form": "NORMAL",
@@ -2336,6 +2366,8 @@
         "ZAP_CANNON",
         "MAGNET_BOMB",
         "FLASH_CANNON",
+        "RETURN",
+        "FRUSTRATION",
         "DISCHARGE"
       ],
       "baseAttack": 223,
@@ -2567,7 +2599,7 @@
       "baseStamina": 233
     },
     "SHELLDER_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 90,
       "speciesId": "SHELLDER",
       "form": "NORMAL",
@@ -2583,14 +2615,16 @@
       "chargeMoves": [
         "BUBBLE_BEAM",
         "WATER_PULSE",
-        "ICY_WIND"
+        "ICY_WIND",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 116,
       "baseDefense": 134,
       "baseStamina": 102
     },
     "CLOYSTER_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 91,
       "speciesId": "CLOYSTER",
       "form": "NORMAL",
@@ -2607,6 +2641,8 @@
         "AURORA_BEAM",
         "HYDRO_PUMP",
         "AVALANCHE",
+        "RETURN",
+        "FRUSTRATION",
         "ICY_WIND"
       ],
       "baseAttack": 186,
@@ -2689,7 +2725,7 @@
       "baseStamina": 155
     },
     "ONIX_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 95,
       "speciesId": "ONIX",
       "form": "NORMAL",
@@ -2706,6 +2742,8 @@
         "SAND_TOMB",
         "STONE_EDGE",
         "HEAVY_SLAM",
+        "RETURN",
+        "FRUSTRATION",
         "ROCK_SLIDE"
       ],
       "baseAttack": 85,
@@ -2767,7 +2805,7 @@
       "baseStamina": 198
     },
     "KRABBY_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 98,
       "speciesId": "KRABBY",
       "form": "NORMAL",
@@ -2783,14 +2821,16 @@
       "chargeMoves": [
         "VICE_GRIP",
         "BUBBLE_BEAM",
-        "WATER_PULSE"
+        "WATER_PULSE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 181,
       "baseDefense": 124,
       "baseStamina": 102
     },
     "KINGLER_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 99,
       "speciesId": "KINGLER",
       "form": "NORMAL",
@@ -2808,7 +2848,9 @@
         "VICE_GRIP",
         "X_SCISSOR",
         "WATER_PULSE",
-        "CRABHAMMER"
+        "CRABHAMMER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 240,
       "baseDefense": 181,
@@ -3009,7 +3051,7 @@
       "baseStamina": 155
     },
     "HITMONLEE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 106,
       "speciesId": "HITMONLEE",
       "form": "NORMAL",
@@ -3026,6 +3068,8 @@
         "CLOSE_COMBAT",
         "LOW_SWEEP",
         "STONE_EDGE",
+        "RETURN",
+        "FRUSTRATION",
         "BRICK_BREAK"
       ],
       "baseAttack": 224,
@@ -3085,7 +3129,7 @@
       "baseStamina": 207
     },
     "KOFFING_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 109,
       "speciesId": "KOFFING",
       "form": "NORMAL",
@@ -3102,14 +3146,16 @@
       "chargeMoves": [
         "SLUDGE",
         "SLUDGE_BOMB",
-        "DARK_PULSE"
+        "DARK_PULSE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 119,
       "baseDefense": 141,
       "baseStamina": 120
     },
     "WEEZING_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 110,
       "speciesId": "WEEZING",
       "form": "NORMAL",
@@ -3127,14 +3173,16 @@
         "SLUDGE_BOMB",
         "SHADOW_BALL",
         "DARK_PULSE",
-        "THUNDERBOLT"
+        "THUNDERBOLT",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 174,
       "baseDefense": 197,
       "baseStamina": 163
     },
     "RHYHORN_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 111,
       "speciesId": "RHYHORN",
       "form": "NORMAL",
@@ -3150,14 +3198,16 @@
       "chargeMoves": [
         "BULLDOZE",
         "HORN_ATTACK",
-        "STOMP"
+        "STOMP",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 140,
       "baseDefense": 127,
       "baseStamina": 190
     },
     "RHYDON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 112,
       "speciesId": "RHYDON",
       "form": "NORMAL",
@@ -3174,6 +3224,8 @@
         "SURF",
         "EARTHQUAKE",
         "STONE_EDGE",
+        "RETURN",
+        "FRUSTRATION",
         "MEGAHORN"
       ],
       "baseAttack": 222,
@@ -3229,7 +3281,7 @@
       "baseStamina": 163
     },
     "KANGASKHAN_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 115,
       "speciesId": "KANGASKHAN",
       "form": "NORMAL",
@@ -3247,6 +3299,8 @@
         "EARTHQUAKE",
         "OUTRAGE",
         "POWER_UP_PUNCH",
+        "RETURN",
+        "FRUSTRATION",
         "STOMP"
       ],
       "baseAttack": 181,
@@ -3765,7 +3819,7 @@
       "baseStamina": 163
     },
     "PORYGON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 137,
       "speciesId": "PORYGON",
       "form": "NORMAL",
@@ -3783,6 +3837,8 @@
         "SOLAR_BEAM",
         "HYPER_BEAM",
         "ZAP_CANNON",
+        "RETURN",
+        "FRUSTRATION",
         "SIGNAL_BEAM"
       ],
       "baseAttack": 153,
@@ -3942,7 +3998,7 @@
       "baseStamina": 330
     },
     "ARTICUNO_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 144,
       "speciesId": "ARTICUNO",
       "form": "NORMAL",
@@ -3960,6 +4016,8 @@
         "ICY_WIND",
         "BLIZZARD",
         "ANCIENT_POWER",
+        "RETURN",
+        "FRUSTRATION",
         "HURRICANE"
       ],
       "baseAttack": 192,
@@ -5296,7 +5354,7 @@
       "baseStamina": 216
     },
     "MURKROW_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 198,
       "speciesId": "MURKROW",
       "form": "NORMAL",
@@ -5312,7 +5370,9 @@
       "chargeMoves": [
         "DRILL_PECK",
         "FOUL_PLAY",
-        "DARK_PULSE"
+        "DARK_PULSE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 175,
       "baseDefense": 87,
@@ -5385,7 +5445,7 @@
       "baseStamina": 134
     },
     "WOBBUFFET_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 202,
       "speciesId": "WOBBUFFET",
       "form": "NORMAL",
@@ -5400,7 +5460,9 @@
         "CHARM_FAST"
       ],
       "chargeMoves": [
-        "MIRROR_COAT"
+        "MIRROR_COAT",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 60,
       "baseDefense": 106,
@@ -5522,7 +5584,7 @@
       "baseStamina": 163
     },
     "STEELIX_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 208,
       "speciesId": "STEELIX",
       "form": "NORMAL",
@@ -5539,7 +5601,9 @@
       "chargeMoves": [
         "EARTHQUAKE",
         "HEAVY_SLAM",
-        "CRUNCH"
+        "CRUNCH",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 148,
       "baseDefense": 272,
@@ -5688,7 +5752,7 @@
       "baseStamina": 190
     },
     "SNEASEL_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 215,
       "speciesId": "SNEASEL",
       "form": "NORMAL",
@@ -5704,7 +5768,9 @@
       "chargeMoves": [
         "AVALANCHE",
         "ICE_PUNCH",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 189,
       "baseDefense": 146,
@@ -6114,7 +6180,7 @@
       "baseStamina": 207
     },
     "PORYGON2_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 233,
       "speciesId": "PORYGON2",
       "form": "NORMAL",
@@ -6130,7 +6196,9 @@
       "chargeMoves": [
         "SOLAR_BEAM",
         "HYPER_BEAM",
-        "ZAP_CANNON"
+        "ZAP_CANNON",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 198,
       "baseDefense": 180,
@@ -9569,7 +9637,8 @@
       ],
       "fastMoves": [
         "ROCK_THROW_FAST",
-        "ROCK_SMASH_FAST"
+        "ROCK_SMASH_FAST",
+        "LOCK_ON_FAST"
       ],
       "chargeMoves": [
         "STONE_EDGE",
@@ -9592,7 +9661,8 @@
       ],
       "fastMoves": [
         "FROST_BREATH_FAST",
-        "ROCK_SMASH_FAST"
+        "ROCK_SMASH_FAST",
+        "LOCK_ON_FAST"
       ],
       "chargeMoves": [
         "BLIZZARD",
@@ -9615,7 +9685,8 @@
       ],
       "fastMoves": [
         "METAL_CLAW_FAST",
-        "ROCK_SMASH_FAST"
+        "ROCK_SMASH_FAST",
+        "LOCK_ON_FAST"
       ],
       "chargeMoves": [
         "FLASH_CANNON",
@@ -9933,7 +10004,7 @@
       "baseStamina": 216
     },
     "CHIMCHAR_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 390,
       "speciesId": "CHIMCHAR",
       "form": "NORMAL",
@@ -9949,14 +10020,16 @@
       "chargeMoves": [
         "FLAME_WHEEL",
         "FLAMETHROWER",
-        "FLAME_CHARGE"
+        "FLAME_CHARGE",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 113,
       "baseDefense": 86,
       "baseStamina": 127
     },
     "MONFERNO_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 391,
       "speciesId": "MONFERNO",
       "form": "NORMAL",
@@ -9972,14 +10045,16 @@
       "chargeMoves": [
         "FLAME_WHEEL",
         "FLAMETHROWER",
-        "LOW_SWEEP"
+        "LOW_SWEEP",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 158,
       "baseDefense": 105,
       "baseStamina": 162
     },
     "INFERNAPE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 392,
       "speciesId": "INFERNAPE",
       "form": "NORMAL",
@@ -9996,6 +10071,8 @@
         "SOLAR_BEAM",
         "FLAMETHROWER",
         "CLOSE_COMBAT",
+        "RETURN",
+        "FRUSTRATION",
         "BLAST_BURN"
       ],
       "baseAttack": 222,
@@ -11003,7 +11080,7 @@
       "baseStamina": 155
     },
     "HONCHKROW_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 430,
       "speciesId": "HONCHKROW",
       "form": "NORMAL",
@@ -11020,7 +11097,9 @@
         "BRAVE_BIRD",
         "PSYCHIC",
         "DARK_PULSE",
-        "SKY_ATTACK"
+        "SKY_ATTACK",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 243,
       "baseDefense": 103,
@@ -11303,7 +11382,7 @@
       "baseStamina": 137
     },
     "GIBLE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 443,
       "speciesId": "GIBLE",
       "form": "NORMAL",
@@ -11319,14 +11398,16 @@
       "chargeMoves": [
         "DIG",
         "TWISTER",
-        "BODY_SLAM"
+        "BODY_SLAM",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 124,
       "baseDefense": 84,
       "baseStamina": 151
     },
     "GABITE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 444,
       "speciesId": "GABITE",
       "form": "NORMAL",
@@ -11342,14 +11423,16 @@
       "chargeMoves": [
         "DIG",
         "TWISTER",
-        "FLAMETHROWER"
+        "FLAMETHROWER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 172,
       "baseDefense": 125,
       "baseStamina": 169
     },
     "GARCHOMP_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 445,
       "speciesId": "GARCHOMP",
       "form": "NORMAL",
@@ -11365,7 +11448,9 @@
       "chargeMoves": [
         "OUTRAGE",
         "EARTHQUAKE",
-        "FIRE_BLAST"
+        "FIRE_BLAST",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 261,
       "baseDefense": 193,
@@ -11442,7 +11527,7 @@
       "baseStamina": 172
     },
     "HIPPOPOTAS_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 449,
       "speciesId": "HIPPOPOTAS",
       "form": "NORMAL",
@@ -11458,14 +11543,16 @@
       "chargeMoves": [
         "DIG",
         "ROCK_TOMB",
-        "BODY_SLAM"
+        "BODY_SLAM",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 124,
       "baseDefense": 118,
       "baseStamina": 169
     },
     "HIPPOWDON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 450,
       "speciesId": "HIPPOWDON",
       "form": "NORMAL",
@@ -11484,7 +11571,9 @@
         "EARTHQUAKE",
         "STONE_EDGE",
         "BODY_SLAM",
-        "EARTH_POWER"
+        "EARTH_POWER",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 201,
       "baseDefense": 191,
@@ -11723,7 +11812,7 @@
       "baseStamina": 207
     },
     "WEAVILE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 461,
       "speciesId": "WEAVILE",
       "form": "NORMAL",
@@ -11740,14 +11829,16 @@
       "chargeMoves": [
         "AVALANCHE",
         "FOCUS_BLAST",
-        "FOUL_PLAY"
+        "FOUL_PLAY",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 243,
       "baseDefense": 171,
       "baseStamina": 172
     },
     "MAGNEZONE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 462,
       "speciesId": "MAGNEZONE",
       "form": "NORMAL",
@@ -11763,7 +11854,9 @@
       "chargeMoves": [
         "ZAP_CANNON",
         "WILD_CHARGE",
-        "FLASH_CANNON"
+        "FLASH_CANNON",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 238,
       "baseDefense": 205,
@@ -11793,7 +11886,7 @@
       "baseStamina": 242
     },
     "RHYPERIOR_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 464,
       "speciesId": "RHYPERIOR",
       "form": "NORMAL",
@@ -11810,7 +11903,9 @@
         "SURF",
         "EARTHQUAKE",
         "STONE_EDGE",
-        "SKULL_BASH"
+        "SKULL_BASH",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 241,
       "baseDefense": 190,
@@ -12033,7 +12128,7 @@
       "baseStamina": 242
     },
     "PORYGON_Z_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 474,
       "speciesId": "PORYGON_Z",
       "form": "NORMAL",
@@ -12050,7 +12145,9 @@
         "SOLAR_BEAM",
         "HYPER_BEAM",
         "ZAP_CANNON",
-        "BLIZZARD"
+        "BLIZZARD",
+        "RETURN",
+        "FRUSTRATION"
       ],
       "baseAttack": 264,
       "baseDefense": 150,
@@ -12442,12 +12539,12 @@
       ],
       "fastMoves": [
         "ZEN_HEADBUTT_FAST",
-        "ROCK_SMASH_FAST"
+        "HIDDEN_POWER_FAST"
       ],
       "chargeMoves": [
-        "STONE_EDGE",
-        "AVALANCHE",
-        "HEAVY_SLAM"
+        "GIGA_IMPACT",
+        "FOCUS_BLAST",
+        "THUNDER"
       ],
       "baseAttack": 287,
       "baseDefense": 210,
@@ -20443,6 +20540,22 @@
         "turns": 2
       }
     },
+    "GIGA_IMPACT": {
+      "id": "GIGA_IMPACT",
+      "type": "NORMAL",
+      "name": "Giga Impact",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 200,
+        "energyDelta": -100,
+        "castTime": 4700
+      },
+      "pvpStats": {
+        "power": 150,
+        "energyDelta": -80,
+        "turns": 1
+      }
+    },
     "FRUSTRATION": {
       "id": "FRUSTRATION",
       "type": "NORMAL",
@@ -20488,6 +20601,22 @@
       "pvpStats": {
         "power": 80,
         "energyDelta": -50,
+        "turns": 1
+      }
+    },
+    "LOCK_ON_FAST": {
+      "id": "LOCK_ON_FAST",
+      "type": "NORMAL",
+      "name": "Lock On Fast",
+      "isLegacy": false,
+      "pveStats": {
+        "power": 1,
+        "energyDelta": 6,
+        "castTime": 300
+      },
+      "pvpStats": {
+        "power": 1,
+        "energyDelta": 5,
         "turns": 1
       }
     },
@@ -20656,37 +20785,6 @@
       "isLegacy": false,
       "pveStats": {
         "castTime": 1300
-      },
-      "pvpStats": {
-        "power": 0,
-        "energyDelta": -100,
-        "turns": 100
-      }
-    },
-    "GIGA_IMPACT": {
-      "id": "GIGA_IMPACT",
-      "type": "NORMAL",
-      "name": "Giga Impact",
-      "isLegacy": false,
-      "pveStats": {
-        "power": 9001,
-        "energyDelta": 100,
-        "castTime": 4700
-      },
-      "pvpStats": {
-        "power": 0,
-        "energyDelta": -100,
-        "turns": 100
-      }
-    },
-    "LOCK_ON_FAST": {
-      "id": "LOCK_ON_FAST",
-      "type": "NORMAL",
-      "name": "Lock On Fast",
-      "isLegacy": false,
-      "pveStats": {
-        "power": 8,
-        "castTime": 300
       },
       "pvpStats": {
         "power": 0,
