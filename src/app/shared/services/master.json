@@ -3154,6 +3154,30 @@
       "baseDefense": 141,
       "baseStamina": 120
     },
+    "WEEZING_GALARIAN": {
+      "isFormless": false,
+      "pokedexNumber": 110,
+      "speciesId": "WEEZING",
+      "form": "GALARIAN",
+      "speciesName": "Weezing Galarian",
+      "types": [
+        "POISON",
+        "FAIRY"
+      ],
+      "fastMoves": [
+        "TACKLE_FAST"
+      ],
+      "chargeMoves": [
+        "SLUDGE",
+        "HYPER_BEAM",
+        "PLAY_ROUGH",
+        "HYPER_BEAM",
+        "OVERHEAT"
+      ],
+      "baseAttack": 174,
+      "baseDefense": 197,
+      "baseStamina": 163
+    },
     "WEEZING_NORMAL": {
       "isFormless": false,
       "pokedexNumber": 110,
@@ -6894,8 +6918,31 @@
       "baseDefense": 132,
       "baseStamina": 172
     },
+    "ZIGZAGOON_GALARIAN": {
+      "isFormless": false,
+      "pokedexNumber": 263,
+      "speciesId": "ZIGZAGOON",
+      "form": "GALARIAN",
+      "speciesName": "Zigzagoon Galarian",
+      "types": [
+        "DARK",
+        "NORMAL"
+      ],
+      "fastMoves": [
+        "TACKLE_FAST",
+        "ROCK_SMASH_FAST"
+      ],
+      "chargeMoves": [
+        "DIG",
+        "GRASS_KNOT",
+        "THUNDERBOLT"
+      ],
+      "baseAttack": 58,
+      "baseDefense": 80,
+      "baseStamina": 116
+    },
     "ZIGZAGOON_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 263,
       "speciesId": "ZIGZAGOON",
       "form": "NORMAL",
@@ -6917,8 +6964,31 @@
       "baseDefense": 80,
       "baseStamina": 116
     },
+    "LINOONE_GALARIAN": {
+      "isFormless": false,
+      "pokedexNumber": 264,
+      "speciesId": "LINOONE",
+      "form": "GALARIAN",
+      "speciesName": "Linoone Galarian",
+      "types": [
+        "DARK",
+        "NORMAL"
+      ],
+      "fastMoves": [
+        "SHADOW_CLAW_FAST",
+        "TACKLE_FAST"
+      ],
+      "chargeMoves": [
+        "DIG",
+        "GRASS_KNOT",
+        "THUNDER"
+      ],
+      "baseAttack": 142,
+      "baseDefense": 128,
+      "baseStamina": 186
+    },
     "LINOONE_NORMAL": {
-      "isFormless": true,
+      "isFormless": false,
       "pokedexNumber": 264,
       "speciesId": "LINOONE",
       "form": "NORMAL",
@@ -16924,30 +16994,6 @@
       "baseDefense": 179,
       "baseStamina": 205
     },
-    "KYUREM_NORMAL": {
-      "isFormless": false,
-      "pokedexNumber": 646,
-      "speciesId": "KYUREM",
-      "form": "NORMAL",
-      "speciesName": "Kyurem (Normal)",
-      "types": [
-        "DRAGON",
-        "ICE"
-      ],
-      "fastMoves": [
-        "DRAGON_BREATH_FAST",
-        "STEEL_WING_FAST"
-      ],
-      "chargeMoves": [
-        "DRAGON_CLAW",
-        "BLIZZARD",
-        "ICY_WIND",
-        "DRACO_METEOR"
-      ],
-      "baseAttack": 246,
-      "baseDefense": 170,
-      "baseStamina": 245
-    },
     "KYUREM_BLACK": {
       "isFormless": false,
       "pokedexNumber": 646,
@@ -16970,6 +17016,30 @@
       ],
       "baseAttack": 310,
       "baseDefense": 183,
+      "baseStamina": 245
+    },
+    "KYUREM_NORMAL": {
+      "isFormless": false,
+      "pokedexNumber": 646,
+      "speciesId": "KYUREM",
+      "form": "NORMAL",
+      "speciesName": "Kyurem (Normal)",
+      "types": [
+        "DRAGON",
+        "ICE"
+      ],
+      "fastMoves": [
+        "DRAGON_BREATH_FAST",
+        "STEEL_WING_FAST"
+      ],
+      "chargeMoves": [
+        "DRAGON_CLAW",
+        "BLIZZARD",
+        "ICY_WIND",
+        "DRACO_METEOR"
+      ],
+      "baseAttack": 246,
+      "baseDefense": 170,
       "baseStamina": 245
     },
     "KYUREM_WHITE": {
