@@ -38,7 +38,7 @@
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
     "localforage": "^1.6.0",
-    "ngx-papaparse": "^3.0.0-beta.0",
+    "ngx-papaparse": "^6.0.2",
     "pogo-objects": "^1.0.1",
     "rxjs": "^6.5.3",
     "ssri": "^5.2.4",
